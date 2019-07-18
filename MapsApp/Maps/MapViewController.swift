@@ -20,7 +20,7 @@ class MapViewController: UIViewController {
     let regionInMeters: Double = 10000
     var previousLocation: CLLocation?
     
-    let geoCoder = CLGeocoder() //asedfasf
+    let geoCoder = CLGeocoder()
     var directionsArray: [MKDirections] = []
     
     override func viewDidLoad() {
