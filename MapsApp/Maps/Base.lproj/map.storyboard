@@ -22,53 +22,18 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
                                     <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="aRk-oI-89r">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="597"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                                         <connections>
                                             <outlet property="delegate" destination="BYZ-38-t0r" id="fJl-aX-ukj"/>
                                         </connections>
                                     </mapView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" translatesAutoresizingMaskIntoConstraints="NO" id="dMY-yg-jWG">
-                                        <rect key="frame" x="171.5" y="267.5" width="32" height="32"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="32" id="JCf-3V-1aV"/>
-                                            <constraint firstAttribute="width" constant="32" id="ima-2U-79n"/>
-                                        </constraints>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="addressLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="emh-g1-bHs">
-                                        <rect key="frame" x="5" y="602" width="310" height="40"/>
-                                        <fontDescription key="fontDescription" name="Kailasa" family="Kailasa" pointSize="15"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rly-0k-kfW">
-                                        <rect key="frame" x="320" y="602" width="50" height="40"/>
-                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="50" id="BUD-l3-yGq"/>
-                                        </constraints>
-                                        <state key="normal" title="Ir">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="goButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vtB-SW-cTQ"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="aRk-oI-89r" firstAttribute="top" secondItem="cEF-Pn-FLN" secondAttribute="top" id="1fV-xs-sGg"/>
                                     <constraint firstAttribute="trailing" secondItem="aRk-oI-89r" secondAttribute="trailing" id="2cL-tc-GJy"/>
-                                    <constraint firstAttribute="bottom" secondItem="aRk-oI-89r" secondAttribute="bottom" constant="50" id="7k5-TP-SXz"/>
-                                    <constraint firstItem="emh-g1-bHs" firstAttribute="leading" secondItem="cEF-Pn-FLN" secondAttribute="leading" constant="5" id="MIo-Nt-Qa0"/>
-                                    <constraint firstItem="emh-g1-bHs" firstAttribute="top" secondItem="aRk-oI-89r" secondAttribute="bottom" constant="5" id="O75-C1-AwH"/>
+                                    <constraint firstAttribute="bottom" secondItem="aRk-oI-89r" secondAttribute="bottom" id="7k5-TP-SXz"/>
                                     <constraint firstItem="aRk-oI-89r" firstAttribute="leading" secondItem="cEF-Pn-FLN" secondAttribute="leading" id="QKZ-L7-5Ox"/>
-                                    <constraint firstItem="dMY-yg-jWG" firstAttribute="centerX" secondItem="aRk-oI-89r" secondAttribute="centerX" id="elT-jo-uyC"/>
-                                    <constraint firstItem="rly-0k-kfW" firstAttribute="leading" secondItem="emh-g1-bHs" secondAttribute="trailing" constant="5" id="kzH-E6-TFL"/>
-                                    <constraint firstAttribute="bottom" secondItem="emh-g1-bHs" secondAttribute="bottom" constant="5" id="nh1-QN-z5o"/>
-                                    <constraint firstAttribute="bottom" secondItem="rly-0k-kfW" secondAttribute="bottom" constant="5" id="pdb-fF-WzV"/>
-                                    <constraint firstAttribute="trailing" secondItem="rly-0k-kfW" secondAttribute="trailing" constant="5" id="sTI-16-0Bs"/>
-                                    <constraint firstItem="rly-0k-kfW" firstAttribute="top" secondItem="aRk-oI-89r" secondAttribute="bottom" constant="5" id="usu-xj-z3z"/>
-                                    <constraint firstItem="dMY-yg-jWG" firstAttribute="centerY" secondItem="aRk-oI-89r" secondAttribute="centerY" constant="-15" id="xhj-Au-UiT"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -82,8 +47,6 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="addressLabel" destination="emh-g1-bHs" id="eaA-ty-3yb"/>
-                        <outlet property="goButton" destination="rly-0k-kfW" id="Xts-eG-Z9b"/>
                         <outlet property="mapView" destination="aRk-oI-89r" id="DiB-qu-ogE"/>
                     </connections>
                 </viewController>
@@ -92,7 +55,4 @@
             <point key="canvasLocation" x="56.799999999999997" y="27.436281859070466"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="star" width="96" height="96"/>
-    </resources>
 </document>
