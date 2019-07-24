@@ -13,19 +13,18 @@ import CoreLocation
 class MapViewController: UIViewController {
     
     @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var addressLabel: UILabel!
-    @IBOutlet weak var goButton: UIButton!
     
     let locationManager = CLLocationManager()
     let regionInMeters: Double = 10000
     var previousLocation: CLLocation?
     
     let geoCoder = CLGeocoder()
-    var directionsArray: [MKDirections] = []
+    //var directionsArray: [MKDirections] = []
+    var markers: Markers?
+    var annotationsArray: [MKAnnotation] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        addressLabel.text = ""
         checkLocationServices()
     }
     
@@ -35,16 +34,23 @@ class MapViewController: UIViewController {
     }
 
     func centerViewOnUserLocation() {
-        if let location = locationManager.location?.coordinate {
-            let region = MKCoordinateRegion(center: location, latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters)
-            mapView.setRegion(region, animated: true)
-        }
+        //TODO harcoded to work with Simulator (if not harcoded, we are in California)
+        let location = CLLocationCoordinate2DMake(41.397272, 2.159148)
+        let region = MKCoordinateRegion(center: location, latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters)
+        mapView.setRegion(region, animated: true)
+        
+        //TODO CORRECT CODE to use with a DEVICE!!!
+        // if let location = locationManager.location?.coordinate {
+        // let region = MKCoordinateRegion(center: location, latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters)
+        // mapView.setRegion(region, animated: true)
+        // }
     }
     
     func checkLocationServices(){
         if CLLocationManager.locationServicesEnabled(){
             setupLocationManager()
             checkLocationAuthorization()
+            setupMap()
         } else {
             //self.present(Alert.alert(message: "You should enable Location services!"), animated: true)
         }
@@ -77,7 +83,7 @@ class MapViewController: UIViewController {
         locationManager.startUpdatingLocation()
         
         //it gets the previous location
-        previousLocation = getCenterLocation(for: mapView)
+        //previousLocation = getCenterLocation(for: mapView)
     }
     
     func getCenterLocation(for mapView: MKMapView) -> CLLocation {
@@ -85,44 +91,65 @@ class MapViewController: UIViewController {
         let longitude = mapView.centerCoordinate.longitude
         return CLLocation(latitude: latitude, longitude: longitude)
     }
+
     
     func setupMap() {
-        let location = CLLocationCoordinate2DMake(41.406618, 2.201630)
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = location
-        annotation.title = "Everis"
-        annotation.subtitle = "everis Diagonal"
         
-        let region = MKCoordinateRegion(center: location, latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters)
-        mapView.addAnnotation(annotation)
-        mapView.region = region
-    }
-    
-    
-    @IBAction func goButtonTapped(_ sender: Any) {
-        getDirections()
-    }
-    
-    func getDirections() {
-        guard let location = locationManager.location?.coordinate else { return }
-        
-        let request = createDirectionsRequest(from: location)
-        let directions = MKDirections(request: request)
-        
-        resetMapView(withNew: directions)
-        
-        directions.calculate { [unowned self] (response, error) in
-            guard let response = response else { return }
-            for route in response.routes {
-                //this allow to get the instructions (gira a la derecha, segunda a la izquierda, etc)
-                //let steps = route.steps
-                self.mapView.addOverlay(route.polyline)
-                self.mapView.setVisibleMapRect(route.polyline.boundingMapRect, animated: true)
-                
-            }
+        guard let path = Bundle.main.path(forResource: "bcnlocations", ofType: "json") else { return }
+        let url = URL(fileURLWithPath: path)
+        do {
+            let data = try Data(contentsOf: url)
+            let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
+            print(json)
             
+            guard let array = json as? [String: Any] else { return }
+            self.markers = Markers.init(json: array)
+             setAnnotationsInMap()
+
+        } catch {
+            print(error)
         }
     }
+    
+    
+    fileprivate func setAnnotationsInMap() {
+        
+        guard let markersArray = markers?.markers else { return }
+        for marker in markersArray {
+            //TODO first / last i'm not sure if can be better
+            guard let latitude = marker.coordinates.first, let longitude = marker.coordinates.last else { return }
+            let location = CLLocationCoordinate2DMake(latitude, longitude)
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = location
+            annotation.title = marker.name
+            mapView.addAnnotation(annotation)
+        }
+    }
+    
+//    @IBAction func goButtonTapped(_ sender: Any) {
+//        getDirections()
+//    }
+    
+//    func getDirections() {
+//        guard let location = locationManager.location?.coordinate else { return }
+//
+//        let request = createDirectionsRequest(from: location)
+//        let directions = MKDirections(request: request)
+//
+//        resetMapView(withNew: directions)
+//
+//        directions.calculate { [unowned self] (response, error) in
+//            guard let response = response else { return }
+//            for route in response.routes {
+//                //this allow to get the instructions (gira a la derecha, segunda a la izquierda, etc)
+//                //let steps = route.steps
+//                self.mapView.addOverlay(route.polyline)
+//                self.mapView.setVisibleMapRect(route.polyline.boundingMapRect, animated: true)
+//
+//            }
+//
+//        }
+//    }
     
     func createDirectionsRequest(from coordinate: CLLocationCoordinate2D) -> MKDirections.Request {
         
@@ -141,8 +168,8 @@ class MapViewController: UIViewController {
     
     func resetMapView(withNew directions: MKDirections) {
         mapView.removeOverlays(mapView.overlays)
-        directionsArray.append(directions)
-        let _ = directionsArray.map { $0.cancel }
+        //directionsArray.append(directions)
+        //let _ = directionsArray.map { $0.cancel }
     }
 }
 
@@ -183,11 +210,10 @@ extension MapViewController: MKMapViewDelegate {
             let country = placemark.country ?? ""
             
             DispatchQueue.main.async {
-                self.addressLabel.text = "\(streetName) \(streetNumber), \(city), \(country)"
-                
-                self.goButton.isEnabled = true
-                self.goButton.backgroundColor = UIColor.blue
-                self.goButton.setTitleColor(.white, for: . normal)
+// self.addressLabel.text = "\(streetName) \(streetNumber), \(city), \(country)"
+// self.goButton.isEnabled = true
+// self.goButton.backgroundColor = UIColor.blue
+// self.goButton.setTitleColor(.white, for: . normal)
             }
         }
     }
@@ -197,27 +223,5 @@ extension MapViewController: MKMapViewDelegate {
         renderer.strokeColor = .blue
         renderer.lineWidth = 1
         return renderer
-    }
-}
-
-
-class Alert {
-    static func alert(message: String) -> UIAlertController {
-        let alert = UIAlertController(title: "Alert", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Accept", style: .default, handler: { (_) -> Void in
-            
-            guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
-                return
-            }
-            
-            if UIApplication.shared.canOpenURL(settingsUrl) {
-                UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
-                    print("Settings opened: \(success)") // Prints true
-                })
-            }
-        }))
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-
-        return alert
     }
 }
