@@ -23,9 +23,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         
         ARScene.delegate = self
         
-        
         //self.configureCapsule()
-
         // Do any additional setup after loading the view.
     }
 
