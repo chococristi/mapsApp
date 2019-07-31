@@ -7,78 +7,138 @@
 //
 
 import UIKit
+import SceneKit
 import ARKit
 
 class ARViewController: UIViewController, ARSCNViewDelegate {
+    
 
-    @IBOutlet var ARScene: ARSCNView!
-    let config = ARWorldTrackingConfiguration()
-    let capsuleNode = SCNNode(geometry: SCNCapsule(capRadius: 0.03, height: 0.1))
-
+    @IBOutlet var sceneView: ARSCNView!
+    
+    var animations  = [String: CAAnimation]()
+    var idle: Bool = true
+    var animationNode = SCNNode()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        ARScene.debugOptions = [ARSCNDebugOptions.showFeaturePoints, ARSCNDebugOptions.showWorldOrigin]
-        config.planeDetection = .vertical
-        ARScene.session.run(config)
         
-        ARScene.delegate = self
+        // Set the view's delegate
+        sceneView.delegate = self
         
-        //self.configureCapsule()
-        // Do any additional setup after loading the view.
-    }
-
-    
-    func configureCapsule() {
-        capsuleNode.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
-        capsuleNode.eulerAngles = SCNVector3(0,0,Double.pi/2)
-        capsuleNode.position = SCNVector3(0.1, 0.1, -0.1)
-        ARScene.scene.rootNode.addChildNode(capsuleNode)
+        // Create a new scene
+        let scene = SCNScene(named: "art.scnassets/GameScene.scn")!
+        animationNode = loadAnimations()
+        
+        // Set the scene to the view
+        sceneView.scene = scene
     }
     
-    func createFloorNode(anchor:ARPlaneAnchor) ->SCNNode{
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-        let floorNode = SCNNode(geometry: SCNPlane(width: CGFloat(anchor.extent.x), height: CGFloat(anchor.extent.z))) //1
+        // Create a session configuration
+        let configuration = ARImageTrackingConfiguration()
         
-        floorNode.position=SCNVector3(anchor.center.x,0,anchor.center.z)
-        
-        floorNode.geometry?.firstMaterial?.diffuse.contents = UIColor.blue
-        
-        floorNode.geometry?.firstMaterial?.isDoubleSided = true
-        
-        floorNode.eulerAngles = SCNVector3(Double.pi/2,0,0)
-        
-        return floorNode
-    }
-
-    //Delegates:
-    
-    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
-        
-        guard let planeAnchor = anchor as? ARPlaneAnchor else {return} //1
-        
-        let planeNode = createFloorNode(anchor: planeAnchor) //2
-        
-        node.addChildNode(planeNode) //3
-    }
-
-    func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
-        
-        guard let planeAnchor = anchor as? ARPlaneAnchor else {return}
-        
-        node.enumerateChildNodes{(node, _) in
-        node.removeFromParentNode()
+        guard let trackedImages = ARReferenceImage.referenceImages(inGroupNamed: "Photos", bundle: Bundle.main) else {
+            print("No images available")
+            return
         }
         
-        let planeNode = createFloorNode(anchor: planeAnchor)
-        node.addChildNode(planeNode)
+        configuration.trackingImages = trackedImages
+        configuration.maximumNumberOfTrackedImages = 1
+        
+        // Run the view's session
+        sceneView.session.run(configuration)
     }
     
-    func renderer(_ renderer: SCNSceneRenderer, didRemove node: SCNNode, for anchor: ARAnchor) {
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         
-        guard let _ = anchor as? ARPlaneAnchor else {return}
+        // Pause the view's session
+        sceneView.session.pause()
+    }
+    
+    // MARK: - ARSCNViewDelegate
+    
+    func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
         
-        node.enumerateChildNodes{(node,_) in
-            node.removeFromParentNode()
+        let node = SCNNode()
+        
+        if let imageAnchor = anchor as? ARImageAnchor {
+            let plane = SCNPlane(width: imageAnchor.referenceImage.physicalSize.width, height: imageAnchor.referenceImage.physicalSize.height)
+            
+            plane.firstMaterial?.diffuse.contents = UIColor(white: 1, alpha: 0.9)
+            
+            
+            let planeNode = SCNNode(geometry: plane)
+            planeNode.eulerAngles.x = -.pi / 2
+            
+            
+            //            let shipScene = SCNScene(named: "art.scnassets/ship.scn")!
+            //            let shipNode = shipScene.rootNode.childNodes.first!
+            //            shipNode.position = SCNVector3Zero
+            //            shipNode.position.z = 0.15
+            
+           
+            // Set up some properties
+            animationNode.position = SCNVector3Zero
+            animationNode.position.z = 0.15
+            animationNode.scale = SCNVector3(0.001, 0.001, 0.001)
+            
+            
+            planeNode.addChildNode(animationNode)
+            planeNode.addAnimation(animations["dancing"]!, forKey: "dancing")
+//            sceneView.scene.rootNode.addChildNode(animationNode)
+//            sceneView.scene.rootNode.addAnimation(animations["dancing"]!, forKey: "dancing")
+            //planeNode.addChildNode(shipNode)
+            
+            node.addChildNode(planeNode)
+            
+        }
+        
+        return node
+        
+    }
+    
+    func loadAnimations () -> SCNNode{
+        // Load the character in the idle animation
+        guard let idleScene = SCNScene(named: "art.scnassets/SalsaDancing/SalsaDancingFixed.dae") else {
+            return SCNNode()
+        }
+        
+        // This node will be parent of all the animation models
+        let node = SCNNode()
+        
+        // Add all the child nodes to the parent node
+        for child in idleScene.rootNode.childNodes {
+            node.addChildNode(child)
+        }
+        
+        // Add the node to the scene
+        //planeNode.addChildNode(node)
+        
+        // Load all the DAE animations
+        loadAnimation(withKey: "dancing", sceneName: "art.scnassets/SalsaDancing/SalsaDancingFixed", animationIdentifier: "SalsaDancingFixed-1")
+        
+        return node
+        
+    }
+    
+    func loadAnimation(withKey: String, sceneName:String, animationIdentifier:String) {
+        let sceneURL = Bundle.main.url(forResource: sceneName, withExtension: "dae")
+        let sceneSource = SCNSceneSource(url: sceneURL!, options: nil)
+        
+        if let animationObject = sceneSource?.entryWithIdentifier(animationIdentifier, withClass: CAAnimation.self) {
+            // The animation will only play once
+            animationObject.repeatCount = 1
+            // To create smooth transitions between animations
+            animationObject.fadeInDuration = CGFloat(1)
+            animationObject.fadeOutDuration = CGFloat(0.5)
+            
+            // Store the animation for later use
+            animations[withKey] = animationObject
         }
     }
+    
+    
 }

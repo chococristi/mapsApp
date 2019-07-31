@@ -13,8 +13,7 @@
 		5B0F40B722E71A9D00C3FC12 /* GiroscopioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B0F40B522E71A9D00C3FC12 /* GiroscopioViewController.xib */; };
 		5B3293E022E9977D00F3E268 /* QRViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3293DE22E9977D00F3E268 /* QRViewController.swift */; };
 		5B3293E122E9977D00F3E268 /* QRViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B3293DF22E9977D00F3E268 /* QRViewController.xib */; };
-		5B3293E522F02F2E00F3E268 /* car.dae in Resources */ = {isa = PBXBuildFile; fileRef = 5B3293E322F02F2E00F3E268 /* car.dae */; };
-		5B3293E622F02F2E00F3E268 /* paperPlane.scn in Resources */ = {isa = PBXBuildFile; fileRef = 5B3293E422F02F2E00F3E268 /* paperPlane.scn */; };
+		5B32AE8222F1C0AA000872ED /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B32AE8122F1C0AA000872ED /* art.scnassets */; };
 		5BB71BD022E0738100F14DBB /* SelectProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB71BCF22E0738100F14DBB /* SelectProjectViewController.swift */; };
 		5BB71BD222E0739500F14DBB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BB71BD122E0739500F14DBB /* Main.storyboard */; };
 		AA2121C422D32A25005D058D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2121C322D32A25005D058D /* AppDelegate.swift */; };
@@ -33,8 +32,7 @@
 		5B0F40B522E71A9D00C3FC12 /* GiroscopioViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GiroscopioViewController.xib; sourceTree = "<group>"; };
 		5B3293DE22E9977D00F3E268 /* QRViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRViewController.swift; sourceTree = "<group>"; };
 		5B3293DF22E9977D00F3E268 /* QRViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QRViewController.xib; sourceTree = "<group>"; };
-		5B3293E322F02F2E00F3E268 /* car.dae */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml.dae; path = car.dae; sourceTree = "<group>"; };
-		5B3293E422F02F2E00F3E268 /* paperPlane.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = paperPlane.scn; sourceTree = "<group>"; };
+		5B32AE8122F1C0AA000872ED /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		5BB71BCF22E0738100F14DBB /* SelectProjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectProjectViewController.swift; sourceTree = "<group>"; };
 		5BB71BD122E0739500F14DBB /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		AA2121C022D32A25005D058D /* mapsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mapsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -62,8 +60,7 @@
 		5B3293E222F02F2E00F3E268 /* 3D Objects */ = {
 			isa = PBXGroup;
 			children = (
-				5B3293E322F02F2E00F3E268 /* car.dae */,
-				5B3293E422F02F2E00F3E268 /* paperPlane.scn */,
+				5B32AE8122F1C0AA000872ED /* art.scnassets */,
 			);
 			path = "3D Objects";
 			sourceTree = "<group>";
@@ -182,7 +179,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5B3293E522F02F2E00F3E268 /* car.dae in Resources */,
+				5B32AE8222F1C0AA000872ED /* art.scnassets in Resources */,
 				5B0F40B722E71A9D00C3FC12 /* GiroscopioViewController.xib in Resources */,
 				AA2121CE22D32A26005D058D /* LaunchScreen.storyboard in Resources */,
 				AA2829A922E1D7BA00A5F6C7 /* bcnlocations.json in Resources */,
@@ -190,7 +187,6 @@
 				5B0F40B322E6F5EA00C3FC12 /* ARViewController.xib in Resources */,
 				5B3293E122E9977D00F3E268 /* QRViewController.xib in Resources */,
 				AA2121C922D32A25005D058D /* map.storyboard in Resources */,
-				5B3293E622F02F2E00F3E268 /* paperPlane.scn in Resources */,
 				5BB71BD222E0739500F14DBB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
