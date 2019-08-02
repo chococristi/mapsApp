@@ -22,6 +22,8 @@
 		AA2121CE22D32A26005D058D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA2121CC22D32A26005D058D /* LaunchScreen.storyboard */; };
 		AA2829A922E1D7BA00A5F6C7 /* bcnlocations.json in Resources */ = {isa = PBXBuildFile; fileRef = AA2829A822E1D7BA00A5F6C7 /* bcnlocations.json */; };
 		AA2829AB22E1D80A00A5F6C7 /* MarkersResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2829AA22E1D80A00A5F6C7 /* MarkersResponseModel.swift */; };
+		AAAD742522F2DE9100C3ED15 /* MapDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAD742322F2DE9100C3ED15 /* MapDetailViewController.swift */; };
+		AAAD742622F2DE9100C3ED15 /* MapDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAAD742422F2DE9100C3ED15 /* MapDetailViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +44,8 @@
 		AA2121CF22D32A26005D058D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA2829A822E1D7BA00A5F6C7 /* bcnlocations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bcnlocations.json; sourceTree = "<group>"; };
 		AA2829AA22E1D80A00A5F6C7 /* MarkersResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkersResponseModel.swift; sourceTree = "<group>"; };
+		AAAD742322F2DE9100C3ED15 /* MapDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDetailViewController.swift; sourceTree = "<group>"; };
+		AAAD742422F2DE9100C3ED15 /* MapDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapDetailViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +79,8 @@
 				AA2121C522D32A25005D058D /* MapViewController.swift */,
 				AA2121C722D32A25005D058D /* map.storyboard */,
 				AA2829AA22E1D80A00A5F6C7 /* MarkersResponseModel.swift */,
+				AAAD742322F2DE9100C3ED15 /* MapDetailViewController.swift */,
+				AAAD742422F2DE9100C3ED15 /* MapDetailViewController.xib */,
 			);
 			path = Maps;
 			sourceTree = "<group>";
@@ -170,6 +176,7 @@
 			files = (
 				5B0F40B722E71A9D00C3FC12 /* GiroscopioViewController.xib in Resources */,
 				AA2121CE22D32A26005D058D /* LaunchScreen.storyboard in Resources */,
+				AAAD742622F2DE9100C3ED15 /* MapDetailViewController.xib in Resources */,
 				AA2829A922E1D7BA00A5F6C7 /* bcnlocations.json in Resources */,
 				AA2121CB22D32A26005D058D /* Assets.xcassets in Resources */,
 				5B0F40B322E6F5EA00C3FC12 /* ARViewController.xib in Resources */,
@@ -186,6 +193,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAAD742522F2DE9100C3ED15 /* MapDetailViewController.swift in Sources */,
 				AA2121C622D32A25005D058D /* MapViewController.swift in Sources */,
 				AA2121C422D32A25005D058D /* AppDelegate.swift in Sources */,
 				AA2829AB22E1D80A00A5F6C7 /* MarkersResponseModel.swift in Sources */,
