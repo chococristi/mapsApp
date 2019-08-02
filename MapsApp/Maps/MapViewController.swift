@@ -35,7 +35,7 @@ class MapViewController: UIViewController {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
     }
-
+    
     func setupMap() {
         guard let path = Bundle.main.path(forResource: "bcnlocations", ofType: "json") else { return }
         let url = URL(fileURLWithPath: path)
@@ -92,16 +92,16 @@ class MapViewController: UIViewController {
     
     func centerViewOnUserLocation() {
         #if targetEnvironment(simulator)
-            // TODO harcoded to work with Simulator (if not harcoded, we are in California)
-            let location = CLLocationCoordinate2DMake(41.397272, 2.159148)
-            let region = MKCoordinateRegion(center: location, latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters)
-            mapView.setRegion(region, animated: true)
+        // TODO harcoded to work with Simulator (if not harcoded, we are in California)
+        let location = CLLocationCoordinate2DMake(41.397272, 2.159148)
+        let region = MKCoordinateRegion(center: location, latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters)
+        mapView.setRegion(region, animated: true)
         #else
-            //TODO CORRECT CODE to use with a DEVICE!!!
-            if let location = locationManager.location?.coordinate {
+        //TODO CORRECT CODE to use with a DEVICE!!!
+        if let location = locationManager.location?.coordinate {
             let region = MKCoordinateRegion(center: location, latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters)
             mapView.setRegion(region, animated: true)
-            }
+        }
         #endif
     }
     
@@ -110,7 +110,7 @@ class MapViewController: UIViewController {
         let longitude = mapView.centerCoordinate.longitude
         return CLLocation(latitude: latitude, longitude: longitude)
     }
-
+    
     // MARK: Map functions
     
     fileprivate func setAnnotationsInMap() {
@@ -140,7 +140,7 @@ extension MapViewController: CLLocationManagerDelegate {
 }
 
 extension MapViewController: MKMapViewDelegate {
-
+    
     //this function allow SHOW THE NUMBER OF CLUSTER annotations
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier, for: annotation)
@@ -149,6 +149,7 @@ extension MapViewController: MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        print("regionDidChangeAnimated")
         //let allAnnotations : [MKAnnotation] = mapView.annotations
         //print("number of total annotations : \(allAnnotations.count)")
         //print(allAnnotations.first?.title) //this is random orderer
@@ -159,11 +160,32 @@ extension MapViewController: MKMapViewDelegate {
         
     }
     
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        //this center the region on the annotation that the user has tapped
+        print("didSelect annotation")
+        guard let location = view.annotation?.coordinate else { return }
+        let region = MKCoordinateRegion(center: location, latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters)
+        mapView.setRegion(region, animated: true)
+        
+        // navigateToDetail()
+    }
+    
+    func navigateToDetail() {
+        
+        let next: MapDetailViewController = MapDetailViewController()
+        self.present(next, animated: true, completion: nil)
+//        
+//        let mapStoryboard = UIStoryboard(name: "map", bundle: Bundle.main)
+//        if let mapDetailViewController = mapStoryboard.instantiateViewController(withIdentifier: "MapDetailViewController") as? UIViewController {
+//            self.present(mapDetailViewController, animated: true, completion: nil)
+//        }
+    }
+    
     // func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-        // let renderer = MKPolylineRenderer(overlay: overlay as! MKPolyline)
-        // renderer.strokeColor = .blue
-        // renderer.lineWidth = 1
-        // return renderer
+    // let renderer = MKPolylineRenderer(overlay: overlay as! MKPolyline)
+    // renderer.strokeColor = .blue
+    // renderer.lineWidth = 1
+    // return renderer
     // }
     
 }
