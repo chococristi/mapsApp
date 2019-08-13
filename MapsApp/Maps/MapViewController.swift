@@ -4,7 +4,7 @@
 //
 //  Created by Cristina Saura Pérez on 08/07/2019.
 //  Copyright © 2019 Cristina Saura Pérez. All rights reserved.
-//
+// https://www.raywenderlich.com/823-advanced-mapkit-tutorial-custom-tiles
 
 import UIKit
 import MapKit
@@ -15,37 +15,43 @@ class MapViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     
     let locationManager = CLLocationManager()
-    let regionInMeters: Double = 10000
+    let regionInMeters: Double = 10000 //put 900 to zoom in directly
     var previousLocation: CLLocation?
     
     let geoCoder = CLGeocoder()
-    //var directionsArray: [MKDirections] = []
     var markers: Markers?
     var annotationsArray: [MKAnnotation] = []
+    
+    // MARK: LifeCycle functions
     
     override func viewDidLoad() {
         super.viewDidLoad()
         checkLocationServices()
     }
     
+    // MARK: Setup functions
+    
     func setupLocationManager() {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
     }
-
-    func centerViewOnUserLocation() {
-        //TODO harcoded to work with Simulator (if not harcoded, we are in California)
-        let location = CLLocationCoordinate2DMake(41.397272, 2.159148)
-        let region = MKCoordinateRegion(center: location, latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters)
-        mapView.setRegion(region, animated: true)
-        
-        //TODO CORRECT CODE to use with a DEVICE!!!
-        // if let location = locationManager.location?.coordinate {
-        // let region = MKCoordinateRegion(center: location, latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters)
-        // mapView.setRegion(region, animated: true)
-        // }
+    
+    func setupMap() {
+        guard let path = Bundle.main.path(forResource: "bcnlocations", ofType: "json") else { return }
+        let url = URL(fileURLWithPath: path)
+        do {
+            let data = try Data(contentsOf: url)
+            let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
+            
+            guard let array = json as? [String: Any] else { return }
+            self.markers = Markers.init(json: array)
+            setAnnotationsInMap()
+        } catch {
+            print(error)
+        }
     }
     
+    // MARK: Check functions
     func checkLocationServices(){
         if CLLocationManager.locationServicesEnabled(){
             setupLocationManager()
@@ -60,7 +66,6 @@ class MapViewController: UIViewController {
         switch CLLocationManager.authorizationStatus() {
         case .authorizedWhenInUse:
             startTrackingUserLocation()
-            //setupMap()
         case .denied:
             break
         case .notDetermined:
@@ -72,6 +77,8 @@ class MapViewController: UIViewController {
         }
     }
     
+    // MARK: Location functions
+    
     func startTrackingUserLocation(){
         //it shows the blue point in the map
         mapView.showsUserLocation = true
@@ -81,9 +88,21 @@ class MapViewController: UIViewController {
         
         //it starts the didUpdateLocations function in delegate
         locationManager.startUpdatingLocation()
-        
-        //it gets the previous location
-        //previousLocation = getCenterLocation(for: mapView)
+    }
+    
+    func centerViewOnUserLocation() {
+        #if targetEnvironment(simulator)
+        // TODO harcoded to work with Simulator (if not harcoded, we are in California)
+        let location = CLLocationCoordinate2DMake(41.397272, 2.159148)
+        let region = MKCoordinateRegion(center: location, latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters)
+        mapView.setRegion(region, animated: true)
+        #else
+        //TODO CORRECT CODE to use with a DEVICE!!!
+        if let location = locationManager.location?.coordinate {
+            let region = MKCoordinateRegion(center: location, latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters)
+            mapView.setRegion(region, animated: true)
+        }
+        #endif
     }
     
     func getCenterLocation(for mapView: MKMapView) -> CLLocation {
@@ -91,32 +110,14 @@ class MapViewController: UIViewController {
         let longitude = mapView.centerCoordinate.longitude
         return CLLocation(latitude: latitude, longitude: longitude)
     }
-
     
-    func setupMap() {
-        
-        guard let path = Bundle.main.path(forResource: "bcnlocations", ofType: "json") else { return }
-        let url = URL(fileURLWithPath: path)
-        do {
-            let data = try Data(contentsOf: url)
-            let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
-            print(json)
-            
-            guard let array = json as? [String: Any] else { return }
-            self.markers = Markers.init(json: array)
-             setAnnotationsInMap()
-
-        } catch {
-            print(error)
-        }
-    }
-    
+    // MARK: Map functions
     
     fileprivate func setAnnotationsInMap() {
         
         guard let markersArray = markers?.markers else { return }
         for marker in markersArray {
-            //TODO first / last i'm not sure if can be better
+            //TODO first / last i'm not sure if can be done better
             guard let latitude = marker.coordinates.first, let longitude = marker.coordinates.last else { return }
             let location = CLLocationCoordinate2DMake(latitude, longitude)
             let annotation = MKPointAnnotation()
@@ -126,61 +127,12 @@ class MapViewController: UIViewController {
         }
     }
     
-//    @IBAction func goButtonTapped(_ sender: Any) {
-//        getDirections()
-//    }
-    
-//    func getDirections() {
-//        guard let location = locationManager.location?.coordinate else { return }
-//
-//        let request = createDirectionsRequest(from: location)
-//        let directions = MKDirections(request: request)
-//
-//        resetMapView(withNew: directions)
-//
-//        directions.calculate { [unowned self] (response, error) in
-//            guard let response = response else { return }
-//            for route in response.routes {
-//                //this allow to get the instructions (gira a la derecha, segunda a la izquierda, etc)
-//                //let steps = route.steps
-//                self.mapView.addOverlay(route.polyline)
-//                self.mapView.setVisibleMapRect(route.polyline.boundingMapRect, animated: true)
-//
-//            }
-//
-//        }
-//    }
-    
-    func createDirectionsRequest(from coordinate: CLLocationCoordinate2D) -> MKDirections.Request {
-        
-        let destinationCoordinate       = getCenterLocation(for: mapView).coordinate
-        let startingLocation            = MKPlacemark(coordinate: coordinate)
-        let destination                 = MKPlacemark(coordinate: destinationCoordinate)
-
-        let request                     = MKDirections.Request()
-        request.source                  = MKMapItem(placemark: startingLocation)
-        request.destination             = MKMapItem(placemark: destination)
-        request.transportType           = .automobile
-        request.requestsAlternateRoutes = true
-
-        return request
-    }
-    
     func resetMapView(withNew directions: MKDirections) {
         mapView.removeOverlays(mapView.overlays)
-        //directionsArray.append(directions)
-        //let _ = directionsArray.map { $0.cancel }
     }
 }
 
 extension MapViewController: CLLocationManagerDelegate {
-    
-//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-//        guard let location = locations.last else { return }
-//        let newCenter = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-//        let region = MKCoordinateRegion(center: newCenter, latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters)
-//        mapView.setRegion(region, animated: true)
-//    }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         checkLocationAuthorization()
@@ -188,40 +140,52 @@ extension MapViewController: CLLocationManagerDelegate {
 }
 
 extension MapViewController: MKMapViewDelegate {
-   
-    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-        let center = getCenterLocation(for: mapView)
-        let geoCoder = CLGeocoder()
-
-        guard let previousLocation = self.previousLocation else { return }
-        guard center.distance(from: previousLocation) > 50 else { return }
-        self.previousLocation = center
-        
-        geoCoder.cancelGeocode()
-        
-        geoCoder.reverseGeocodeLocation(center) { [weak self] (placemarks, error) in
-            guard let self = self else { return }
-            if let _ = error { return }
-            guard let placemark = placemarks?.first else { return }
-            
-            let streetName = placemark.thoroughfare ?? ""
-            let streetNumber = placemark.subThoroughfare ?? ""
-            let city = placemark.locality ?? ""
-            let country = placemark.country ?? ""
-            
-            DispatchQueue.main.async {
-// self.addressLabel.text = "\(streetName) \(streetNumber), \(city), \(country)"
-// self.goButton.isEnabled = true
-// self.goButton.backgroundColor = UIColor.blue
-// self.goButton.setTitleColor(.white, for: . normal)
-            }
-        }
+    
+    //this function allows to SHOW THE NUMBER OF CLUSTER annotations
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier, for: annotation)
+        annotationView.clusteringIdentifier = "identifier"
+        return annotationView
     }
     
-    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-        let renderer = MKPolylineRenderer(overlay: overlay as! MKPolyline)
-        renderer.strokeColor = .blue
-        renderer.lineWidth = 1
-        return renderer
+    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        print("regionDidChangeAnimated")
+        //let allAnnotations : [MKAnnotation] = mapView.annotations
+        //print("number of total annotations : \(allAnnotations.count)")
+        //print(allAnnotations.first?.title) //this is random orderer
+        
+        //let selectedAnnotations : [MKAnnotation] = mapView.selectedAnnotations
+        //print("number of selected annotations : \(selectedAnnotations.count)")
+        //print(selectedAnnotations.first?.title)
+        
     }
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        //this center the region on the annotation that the user has tapped
+        print("didSelect annotation")
+        guard let location = view.annotation?.coordinate else { return }
+        let region = MKCoordinateRegion(center: location, latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters)
+        mapView.setRegion(region, animated: true)
+        
+        // navigateToDetail()
+    }
+    
+    func navigateToDetail() {
+        
+        let next: MapDetailViewController = MapDetailViewController()
+        self.present(next, animated: true, completion: nil)
+//        
+//        let mapStoryboard = UIStoryboard(name: "map", bundle: Bundle.main)
+//        if let mapDetailViewController = mapStoryboard.instantiateViewController(withIdentifier: "MapDetailViewController") as? UIViewController {
+//            self.present(mapDetailViewController, animated: true, completion: nil)
+//        }
+    }
+    
+    // func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+    // let renderer = MKPolylineRenderer(overlay: overlay as! MKPolyline)
+    // renderer.strokeColor = .blue
+    // renderer.lineWidth = 1
+    // return renderer
+    // }
+    
 }
