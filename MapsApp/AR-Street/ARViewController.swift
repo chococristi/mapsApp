@@ -24,6 +24,8 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         
         // Set the view's delegate
         sceneView.delegate = self
+        sceneView.showsStatistics = true
+        sceneView.debugOptions = ARSCNDebugOptions.showWorldOrigin
         
         // Create a new scene
         let scene = SCNScene(named: "art.scnassets/GameScene.scn")!
@@ -59,8 +61,8 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     }
     
     // MARK: - ARSCNViewDelegate
-    
-    func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
+    // render para bailarin
+ /*   func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
         
         let node = SCNNode()
         
@@ -73,7 +75,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
             let planeNode = SCNNode(geometry: plane)
             planeNode.eulerAngles.x = -.pi / 2
             
-            
+            //CASO VER NAVE SIN ANIMACION
             //            let shipScene = SCNScene(named: "art.scnassets/ship.scn")!
             //            let shipNode = shipScene.rootNode.childNodes.first!
             //            shipNode.position = SCNVector3Zero
@@ -93,11 +95,40 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
             //planeNode.addChildNode(shipNode)
             
             node.addChildNode(planeNode)
+            node.addChildNode(animationNode)
+            node.addAnimation(animations["dancing"]!, forKey: "dancing")
             
         }
         
         return node
         
+    }*/
+    
+    // detector de planos
+    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
+        // 1
+        guard let planeAnchor = anchor as? ARPlaneAnchor else { return }
+        
+        // 2
+        let width = CGFloat(planeAnchor.extent.x)
+        let height = CGFloat(planeAnchor.extent.z)
+        let plane = SCNPlane(width: width, height: height)
+        
+        // 3
+        plane.materials.first?.diffuse.contents = UIColor.blue
+        
+        // 4
+        let planeNode = SCNNode(geometry: plane)
+        
+        // 5
+        let x = CGFloat(planeAnchor.center.x)
+        let y = CGFloat(planeAnchor.center.y)
+        let z = CGFloat(planeAnchor.center.z)
+        planeNode.position = SCNVector3(x,y,z)
+        planeNode.eulerAngles.x = -.pi / 2
+        
+        // 6
+        node.addChildNode(planeNode)
     }
     
     func loadAnimations () -> SCNNode{
