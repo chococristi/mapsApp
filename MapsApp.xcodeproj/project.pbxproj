@@ -8,7 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		52AC051D2302BC4B00438113 /* TensorFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52AC051C2302BC4B00438113 /* TensorFlow.storyboard */; };
-		52AC05242302BF5E00438113 /* TFHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC05232302BF5E00438113 /* TFHomeViewController.swift */; };
+		52AC05242302BF5E00438113 /* TFMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC05232302BF5E00438113 /* TFMainViewController.swift */; };
+		52AC05262302CBCE00438113 /* CVPixelBufferExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC05252302CBCE00438113 /* CVPixelBufferExtension.swift */; };
+		52AC052B2302CC9500438113 /* InfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC052A2302CC9500438113 /* InfoCell.swift */; };
+		52AC052F2302CE1F00438113 /* CurvedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC052E2302CE1F00438113 /* CurvedView.swift */; };
+		52AC05332302CEC000438113 /* PreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC05322302CEC000438113 /* PreviewView.swift */; };
+		52AC05352302CEDE00438113 /* CameraFeedManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC05342302CEDE00438113 /* CameraFeedManagerDelegate.swift */; };
+		52AC05392302CF6A00438113 /* TFEmbededViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC05382302CF6A00438113 /* TFEmbededViewController.swift */; };
+		52AC053C2302D78300438113 /* mobilenet_quant_v1_224.tflite in Resources */ = {isa = PBXBuildFile; fileRef = 52AC053A2302D78300438113 /* mobilenet_quant_v1_224.tflite */; };
+		52AC053D2302D78300438113 /* labels.txt in Resources */ = {isa = PBXBuildFile; fileRef = 52AC053B2302D78300438113 /* labels.txt */; };
+		52AC05402302D86000438113 /* ModelDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC053F2302D86000438113 /* ModelDataHandler.swift */; };
 		5B0F40B222E6F5EA00C3FC12 /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0F40B022E6F5EA00C3FC12 /* ARViewController.swift */; };
 		5B0F40B322E6F5EA00C3FC12 /* ARViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B0F40B122E6F5EA00C3FC12 /* ARViewController.xib */; };
 		5B0F40B622E71A9D00C3FC12 /* GiroscopioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0F40B422E71A9D00C3FC12 /* GiroscopioViewController.swift */; };
@@ -33,7 +42,16 @@
 /* Begin PBXFileReference section */
 		215839EF678DCE0FB90BEAC7 /* Pods-mapsApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mapsApp.release.xcconfig"; path = "Target Support Files/Pods-mapsApp/Pods-mapsApp.release.xcconfig"; sourceTree = "<group>"; };
 		52AC051C2302BC4B00438113 /* TensorFlow.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TensorFlow.storyboard; sourceTree = "<group>"; };
-		52AC05232302BF5E00438113 /* TFHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFHomeViewController.swift; sourceTree = "<group>"; };
+		52AC05232302BF5E00438113 /* TFMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFMainViewController.swift; sourceTree = "<group>"; };
+		52AC05252302CBCE00438113 /* CVPixelBufferExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVPixelBufferExtension.swift; sourceTree = "<group>"; };
+		52AC052A2302CC9500438113 /* InfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCell.swift; sourceTree = "<group>"; };
+		52AC052E2302CE1F00438113 /* CurvedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurvedView.swift; sourceTree = "<group>"; };
+		52AC05322302CEC000438113 /* PreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewView.swift; sourceTree = "<group>"; };
+		52AC05342302CEDE00438113 /* CameraFeedManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraFeedManagerDelegate.swift; sourceTree = "<group>"; };
+		52AC05382302CF6A00438113 /* TFEmbededViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFEmbededViewController.swift; sourceTree = "<group>"; };
+		52AC053A2302D78300438113 /* mobilenet_quant_v1_224.tflite */ = {isa = PBXFileReference; lastKnownFileType = file; path = mobilenet_quant_v1_224.tflite; sourceTree = "<group>"; };
+		52AC053B2302D78300438113 /* labels.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = labels.txt; sourceTree = "<group>"; };
+		52AC053F2302D86000438113 /* ModelDataHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelDataHandler.swift; sourceTree = "<group>"; };
 		5B0F40B022E6F5EA00C3FC12 /* ARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewController.swift; sourceTree = "<group>"; };
 		5B0F40B122E6F5EA00C3FC12 /* ARViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ARViewController.xib; sourceTree = "<group>"; };
 		5B0F40B422E71A9D00C3FC12 /* GiroscopioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiroscopioViewController.swift; sourceTree = "<group>"; };
@@ -84,7 +102,7 @@
 		52AC051E2302BD5B00438113 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				52AC05232302BF5E00438113 /* TFHomeViewController.swift */,
+				52AC05272302CC6700438113 /* Home */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -100,6 +118,9 @@
 		52AC05202302BE3E00438113 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				52AC05312302CEAD00438113 /* CameraFeed */,
+				52AC052C2302CE0300438113 /* Custom */,
+				52AC053E2302D84100438113 /* DataHandler */,
 				52AC05212302BE4C00438113 /* Extensions */,
 			);
 			path = Utils;
@@ -108,6 +129,7 @@
 		52AC05212302BE4C00438113 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				52AC05252302CBCE00438113 /* CVPixelBufferExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -115,8 +137,93 @@
 		52AC05222302BE5400438113 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				52AC05302302CE9400438113 /* Models */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		52AC05272302CC6700438113 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				52AC05362302CF2300438113 /* Main */,
+				52AC05372302CF2B00438113 /* Embeded */,
+				52AC05282302CC7200438113 /* TableView */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		52AC05282302CC7200438113 /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				52AC05292302CC7F00438113 /* Cell */,
+			);
+			path = TableView;
+			sourceTree = "<group>";
+		};
+		52AC05292302CC7F00438113 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				52AC052A2302CC9500438113 /* InfoCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		52AC052C2302CE0300438113 /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				52AC052D2302CE0D00438113 /* UIView */,
+			);
+			path = Custom;
+			sourceTree = "<group>";
+		};
+		52AC052D2302CE0D00438113 /* UIView */ = {
+			isa = PBXGroup;
+			children = (
+				52AC052E2302CE1F00438113 /* CurvedView.swift */,
+			);
+			path = UIView;
+			sourceTree = "<group>";
+		};
+		52AC05302302CE9400438113 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				52AC053B2302D78300438113 /* labels.txt */,
+				52AC053A2302D78300438113 /* mobilenet_quant_v1_224.tflite */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		52AC05312302CEAD00438113 /* CameraFeed */ = {
+			isa = PBXGroup;
+			children = (
+				52AC05322302CEC000438113 /* PreviewView.swift */,
+				52AC05342302CEDE00438113 /* CameraFeedManagerDelegate.swift */,
+			);
+			path = CameraFeed;
+			sourceTree = "<group>";
+		};
+		52AC05362302CF2300438113 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				52AC05232302BF5E00438113 /* TFMainViewController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		52AC05372302CF2B00438113 /* Embeded */ = {
+			isa = PBXGroup;
+			children = (
+				52AC05382302CF6A00438113 /* TFEmbededViewController.swift */,
+			);
+			path = Embeded;
+			sourceTree = "<group>";
+		};
+		52AC053E2302D84100438113 /* DataHandler */ = {
+			isa = PBXGroup;
+			children = (
+				52AC053F2302D86000438113 /* ModelDataHandler.swift */,
+			);
+			path = DataHandler;
 			sourceTree = "<group>";
 		};
 		5B3293E222F02F2E00F3E268 /* 3D Objects */ = {
@@ -270,8 +377,10 @@
 				5B0F40B722E71A9D00C3FC12 /* GiroscopioViewController.xib in Resources */,
 				AA2121CE22D32A26005D058D /* LaunchScreen.storyboard in Resources */,
 				AAAD742622F2DE9100C3ED15 /* MapDetailViewController.xib in Resources */,
+				52AC053D2302D78300438113 /* labels.txt in Resources */,
 				AA2829A922E1D7BA00A5F6C7 /* bcnlocations.json in Resources */,
 				AA2121CB22D32A26005D058D /* Assets.xcassets in Resources */,
+				52AC053C2302D78300438113 /* mobilenet_quant_v1_224.tflite in Resources */,
 				5B0F40B322E6F5EA00C3FC12 /* ARViewController.xib in Resources */,
 				5B3293E122E9977D00F3E268 /* QRViewController.xib in Resources */,
 				AA2121C922D32A25005D058D /* map.storyboard in Resources */,
@@ -311,15 +420,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52AC05332302CEC000438113 /* PreviewView.swift in Sources */,
 				AAAD742522F2DE9100C3ED15 /* MapDetailViewController.swift in Sources */,
 				AA2121C622D32A25005D058D /* MapViewController.swift in Sources */,
-				52AC05242302BF5E00438113 /* TFHomeViewController.swift in Sources */,
+				52AC05242302BF5E00438113 /* TFMainViewController.swift in Sources */,
+				52AC05392302CF6A00438113 /* TFEmbededViewController.swift in Sources */,
 				AA2121C422D32A25005D058D /* AppDelegate.swift in Sources */,
+				52AC05352302CEDE00438113 /* CameraFeedManagerDelegate.swift in Sources */,
 				AA2829AB22E1D80A00A5F6C7 /* MarkersResponseModel.swift in Sources */,
+				52AC05262302CBCE00438113 /* CVPixelBufferExtension.swift in Sources */,
 				5BB71BD022E0738100F14DBB /* SelectProjectViewController.swift in Sources */,
+				52AC05402302D86000438113 /* ModelDataHandler.swift in Sources */,
+				52AC052F2302CE1F00438113 /* CurvedView.swift in Sources */,
 				5B0F40B222E6F5EA00C3FC12 /* ARViewController.swift in Sources */,
 				5B0F40B622E71A9D00C3FC12 /* GiroscopioViewController.swift in Sources */,
 				5B3293E022E9977D00F3E268 /* QRViewController.swift in Sources */,
+				52AC052B2302CC9500438113 /* InfoCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

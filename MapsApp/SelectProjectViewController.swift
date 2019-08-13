@@ -36,7 +36,7 @@ class SelectProjectViewController: UIViewController {
         let storyboard = UIStoryboard.init(name: "TensorFlow",
                                            bundle: nil)
         
-        guard let viewController = storyboard.instantiateInitialViewController() as? TFHomeViewController
+        guard let viewController = storyboard.instantiateInitialViewController() as? TFMainViewController
             else { return }
         
         self.present(viewController,
