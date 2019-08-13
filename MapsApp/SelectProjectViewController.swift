@@ -20,7 +20,7 @@ class SelectProjectViewController: UIViewController {
     @IBAction func goToMaps(_ sender: Any) {
         
         let storyboard = UIStoryboard.init(name: "map", bundle: nil)
-        if let vc = storyboard.instantiateInitialViewController() as? MapViewController{
+        if let vc = storyboard.instantiateInitialViewController() as? MapViewController {
             self.present(vc, animated: false, completion: nil)
         }
     }
@@ -29,6 +29,19 @@ class SelectProjectViewController: UIViewController {
         //let storyboard = UIStoryboard.init(name: "map", bundle: nil)
          let vc = ARViewController()
         self.present(vc, animated: false, completion: nil)
+        
+    }
+    
+    @IBAction func goToTensorFlow(_ sender: Any) {
+        let storyboard = UIStoryboard.init(name: "TensorFlow",
+                                           bundle: nil)
+        
+        guard let viewController = storyboard.instantiateInitialViewController() as? TFHomeViewController
+            else { return }
+        
+        self.present(viewController,
+                     animated: false,
+                     completion: nil)
         
     }
 }

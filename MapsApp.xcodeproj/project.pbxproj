@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		52AC051D2302BC4B00438113 /* TensorFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52AC051C2302BC4B00438113 /* TensorFlow.storyboard */; };
+		52AC05242302BF5E00438113 /* TFHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC05232302BF5E00438113 /* TFHomeViewController.swift */; };
 		5B0F40B222E6F5EA00C3FC12 /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0F40B022E6F5EA00C3FC12 /* ARViewController.swift */; };
 		5B0F40B322E6F5EA00C3FC12 /* ARViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B0F40B122E6F5EA00C3FC12 /* ARViewController.xib */; };
 		5B0F40B622E71A9D00C3FC12 /* GiroscopioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0F40B422E71A9D00C3FC12 /* GiroscopioViewController.swift */; };
@@ -30,6 +32,8 @@
 
 /* Begin PBXFileReference section */
 		215839EF678DCE0FB90BEAC7 /* Pods-mapsApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mapsApp.release.xcconfig"; path = "Target Support Files/Pods-mapsApp/Pods-mapsApp.release.xcconfig"; sourceTree = "<group>"; };
+		52AC051C2302BC4B00438113 /* TensorFlow.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TensorFlow.storyboard; sourceTree = "<group>"; };
+		52AC05232302BF5E00438113 /* TFHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFHomeViewController.swift; sourceTree = "<group>"; };
 		5B0F40B022E6F5EA00C3FC12 /* ARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewController.swift; sourceTree = "<group>"; };
 		5B0F40B122E6F5EA00C3FC12 /* ARViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ARViewController.xib; sourceTree = "<group>"; };
 		5B0F40B422E71A9D00C3FC12 /* GiroscopioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiroscopioViewController.swift; sourceTree = "<group>"; };
@@ -69,8 +73,50 @@
 		52AC051B2302B74A00438113 /* TF */ = {
 			isa = PBXGroup;
 			children = (
+				52AC051F2302BD7800438113 /* Storyboard */,
+				52AC051E2302BD5B00438113 /* ViewControllers */,
+				52AC05202302BE3E00438113 /* Utils */,
+				52AC05222302BE5400438113 /* Resources */,
 			);
 			path = TF;
+			sourceTree = "<group>";
+		};
+		52AC051E2302BD5B00438113 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				52AC05232302BF5E00438113 /* TFHomeViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		52AC051F2302BD7800438113 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				52AC051C2302BC4B00438113 /* TensorFlow.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		52AC05202302BE3E00438113 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				52AC05212302BE4C00438113 /* Extensions */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		52AC05212302BE4C00438113 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		52AC05222302BE5400438113 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		5B3293E222F02F2E00F3E268 /* 3D Objects */ = {
@@ -220,6 +266,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B32AE8222F1C0AA000872ED /* art.scnassets in Resources */,
+				52AC051D2302BC4B00438113 /* TensorFlow.storyboard in Resources */,
 				5B0F40B722E71A9D00C3FC12 /* GiroscopioViewController.xib in Resources */,
 				AA2121CE22D32A26005D058D /* LaunchScreen.storyboard in Resources */,
 				AAAD742622F2DE9100C3ED15 /* MapDetailViewController.xib in Resources */,
@@ -266,6 +313,7 @@
 			files = (
 				AAAD742522F2DE9100C3ED15 /* MapDetailViewController.swift in Sources */,
 				AA2121C622D32A25005D058D /* MapViewController.swift in Sources */,
+				52AC05242302BF5E00438113 /* TFHomeViewController.swift in Sources */,
 				AA2121C422D32A25005D058D /* AppDelegate.swift in Sources */,
 				AA2829AB22E1D80A00A5F6C7 /* MarkersResponseModel.swift in Sources */,
 				5BB71BD022E0738100F14DBB /* SelectProjectViewController.swift in Sources */,
