@@ -8,12 +8,16 @@
 
 import UIKit
 import AVFoundation
+import ARKit
 
-class QRViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
-
-   
+class QRViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate, ARSCNViewDelegate, ARSessionDelegate {
+    
+    @IBOutlet var sceneView: ARSCNView!
     @IBOutlet var videoPreview: UIView!
+    
     var stringCode : String?
+    var objectAppears: Bool = true
+    var discoveredQRCodes = [String]()
     
     enum error: Error {
         case NoCameraAvailable
@@ -22,16 +26,33 @@ class QRViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         
+        sceneView.delegate = self
+        //sceneView.showsStatistics = true
+        let configuration = ARWorldTrackingConfiguration()
+        sceneView.preferredFramesPerSecond = 30
+        sceneView.session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
+        sceneView.session.delegate = self
+       
         do{
-          try self.scanQRCode()
+         // try self.scanQRCode()
         } catch{
             
             print("Failed to scan the QR/BarCode.")
         }
         // Do any additional setup after loading the view.
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
 
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        sceneView.session.pause()
+    }
     
    func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection){
         
@@ -41,10 +62,17 @@ class QRViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate
             if  machineReadableCode?.type == AVMetadataObject.ObjectType.qr{
                self.stringCode = machineReadableCode?.stringValue
                 // AÑADIR ACCION CUANDO HEMOS TENIDO EL VALOR DEL QR
+                if objectAppears {
+                   
+                    self.configureLighting()
+                    self.addPaperPlane()
+                    self.objectAppears = false
+                }
+                }
             }
-        }
-    }
     
+        }
+
     func scanQRCode() throws {
         let avCaptureSession = AVCaptureSession()
         
@@ -71,15 +99,46 @@ class QRViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate
         self.videoPreview.layer.addSublayer(avCaptureVideoPreviewLayer)
         avCaptureSession.startRunning()
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    //3D Objects
+    
+    
+    func addPaperPlane(x: Float = 0, y: Float = 0, z: Float = -0.5) {
+        guard let paperPlaneScene = SCNScene(named: "paperPlane.scn"), let paperPlaneNode = paperPlaneScene.rootNode.childNode(withName: "paperPlane", recursively: true) else {
+            return
+        }
+        paperPlaneNode.position = SCNVector3(x, y, z)
+        sceneView.scene.rootNode.addChildNode(paperPlaneNode)
     }
-    */
-
+    
+    
+    func configureLighting() {
+        sceneView.autoenablesDefaultLighting = true
+        sceneView.automaticallyUpdatesLighting = true
+    }
+    
+//ARSessionDelegate {
+    func session(_ session: ARSession, didUpdate frame: ARFrame) {
+        if objectAppears {
+            let image = CIImage(cvPixelBuffer: frame.capturedImage)
+            let detector = CIDetector(ofType: CIDetectorTypeQRCode, context: nil, options: nil)
+            let features = detector!.features(in: image)
+            
+            for feature in features as! [CIQRCodeFeature] {
+                if !discoveredQRCodes.contains(feature.messageString!) {
+                    discoveredQRCodes.append(feature.messageString!)
+                    
+                    let position = SCNVector3(frame.camera.transform.columns.3.x,
+                                              frame.camera.transform.columns.3.y,
+                                              frame.camera.transform.columns.3.z)
+                    
+                    self.configureLighting()
+                    self.addPaperPlane(x: position.x, y: position.y, z: position.z)
+                    self.objectAppears = false
+                }
+            }
+        }
+    }
+    
+    
 }

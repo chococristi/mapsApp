@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="QRViewController" customModule="mapsApp" customModuleProvider="target">
             <connections>
+                <outlet property="sceneView" destination="2g4-v7-Vwt" id="ccO-Lp-ShT"/>
                 <outlet property="videoPreview" destination="i5M-Pr-FkT" id="5le-8e-kVL"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -20,7 +21,18 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2g4-v7-Vwt">
+                    <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                </arscnView>
+            </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="2g4-v7-Vwt" secondAttribute="bottom" id="DQh-uB-SOI"/>
+                <constraint firstItem="2g4-v7-Vwt" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="QsC-Dl-Tg1"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="2g4-v7-Vwt" secondAttribute="trailing" id="b63-fY-w9y"/>
+                <constraint firstItem="2g4-v7-Vwt" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="wfz-1S-hAQ"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
         </view>
     </objects>
