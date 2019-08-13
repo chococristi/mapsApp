@@ -4,7 +4,7 @@
 //
 //  Created by Cristina Saura Pérez on 08/07/2019.
 //  Copyright © 2019 Cristina Saura Pérez. All rights reserved.
-//
+// https://www.raywenderlich.com/823-advanced-mapkit-tutorial-custom-tiles
 
 import UIKit
 import MapKit
@@ -141,7 +141,7 @@ extension MapViewController: CLLocationManagerDelegate {
 
 extension MapViewController: MKMapViewDelegate {
     
-    //this function allow SHOW THE NUMBER OF CLUSTER annotations
+    //this function allows to SHOW THE NUMBER OF CLUSTER annotations
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier, for: annotation)
         annotationView.clusteringIdentifier = "identifier"
