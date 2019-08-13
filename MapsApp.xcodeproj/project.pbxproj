@@ -23,6 +23,7 @@
 		AA2121CE22D32A26005D058D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA2121CC22D32A26005D058D /* LaunchScreen.storyboard */; };
 		AA2829A922E1D7BA00A5F6C7 /* bcnlocations.json in Resources */ = {isa = PBXBuildFile; fileRef = AA2829A822E1D7BA00A5F6C7 /* bcnlocations.json */; };
 		AA2829AB22E1D80A00A5F6C7 /* MarkersResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2829AA22E1D80A00A5F6C7 /* MarkersResponseModel.swift */; };
+		AA54E5B72302B4E70075D8EA /* HalfModalPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA54E5B62302B4E70075D8EA /* HalfModalPresentationController.swift */; };
 		AAAD742522F2DE9100C3ED15 /* MapDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAD742322F2DE9100C3ED15 /* MapDetailViewController.swift */; };
 		AAAD742622F2DE9100C3ED15 /* MapDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAAD742422F2DE9100C3ED15 /* MapDetailViewController.xib */; };
 /* End PBXBuildFile section */
@@ -46,6 +47,7 @@
 		AA2121CF22D32A26005D058D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA2829A822E1D7BA00A5F6C7 /* bcnlocations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bcnlocations.json; sourceTree = "<group>"; };
 		AA2829AA22E1D80A00A5F6C7 /* MarkersResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkersResponseModel.swift; sourceTree = "<group>"; };
+		AA54E5B62302B4E70075D8EA /* HalfModalPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfModalPresentationController.swift; sourceTree = "<group>"; };
 		AAAD742322F2DE9100C3ED15 /* MapDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDetailViewController.swift; sourceTree = "<group>"; };
 		AAAD742422F2DE9100C3ED15 /* MapDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapDetailViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -92,6 +94,7 @@
 				AA2829AA22E1D80A00A5F6C7 /* MarkersResponseModel.swift */,
 				AAAD742322F2DE9100C3ED15 /* MapDetailViewController.swift */,
 				AAAD742422F2DE9100C3ED15 /* MapDetailViewController.xib */,
+				AA54E5B62302B4E70075D8EA /* HalfModalPresentationController.swift */,
 			);
 			path = Maps;
 			sourceTree = "<group>";
@@ -210,6 +213,7 @@
 				AA2121C422D32A25005D058D /* AppDelegate.swift in Sources */,
 				AA2829AB22E1D80A00A5F6C7 /* MarkersResponseModel.swift in Sources */,
 				5BB71BD022E0738100F14DBB /* SelectProjectViewController.swift in Sources */,
+				AA54E5B72302B4E70075D8EA /* HalfModalPresentationController.swift in Sources */,
 				5B0F40B222E6F5EA00C3FC12 /* ARViewController.swift in Sources */,
 				5B0F40B622E71A9D00C3FC12 /* GiroscopioViewController.swift in Sources */,
 				5B3293E022E9977D00F3E268 /* QRViewController.swift in Sources */,
