@@ -161,31 +161,29 @@ extension MapViewController: MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        //this center the region on the annotation that the user has tapped
-        print("didSelect annotation")
-        guard let location = view.annotation?.coordinate else { return }
-        let region = MKCoordinateRegion(center: location, latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters)
+        centerRegionOnPin(mapView: mapView, pin: view)
+        navigateToDetail()
+    }
+    
+    func centerRegionOnPin(mapView: MKMapView, pin: MKAnnotationView) {
+        guard let location = pin.annotation?.coordinate else { return }
+        let actualSpanRegion = mapView.region.span
+        let region = MKCoordinateRegion(center: location, span: actualSpanRegion)
         mapView.setRegion(region, animated: true)
-        
-        // navigateToDetail()
     }
     
     func navigateToDetail() {
-        
-        let next: MapDetailViewController = MapDetailViewController()
-        self.present(next, animated: true, completion: nil)
-//        
-//        let mapStoryboard = UIStoryboard(name: "map", bundle: Bundle.main)
-//        if let mapDetailViewController = mapStoryboard.instantiateViewController(withIdentifier: "MapDetailViewController") as? UIViewController {
-//            self.present(mapDetailViewController, animated: true, completion: nil)
-//        }
+        let modalViewController = MapDetailViewController()
+        modalViewController.transitioningDelegate = self
+        modalViewController.modalPresentationStyle = .custom
+        self.present(modalViewController, animated: true, completion: nil)
     }
-    
-    // func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-    // let renderer = MKPolylineRenderer(overlay: overlay as! MKPolyline)
-    // renderer.strokeColor = .blue
-    // renderer.lineWidth = 1
-    // return renderer
-    // }
+
+}
+
+extension MapViewController : UIViewControllerTransitioningDelegate {
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+        return HalfSizePresentationController(presentedViewController: presented, presenting: presenting)
+    }
     
 }

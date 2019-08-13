@@ -8,12 +8,34 @@
 
 import UIKit
 
-class MapDetailViewController: UIViewController {
+class HalfSizePresentationController : UIPresentationController {
+    override var frameOfPresentedViewInContainerView: CGRect {
+        get {
+            guard let theView = containerView else {
+                return CGRect.zero
+            }
+            
+            return CGRect(x: 0, y: theView.bounds.height/2 + 20, width: theView.bounds.width, height: theView.bounds.height/2)
+        }
+    }
+}
 
+class MapDetailViewController: UIViewController {
+    
+    @IBAction func maximizeButtonTapped(_ sender: Any) {
+        //maximizeToFullScreen()
+    }
+    
+    @IBAction func cancelButtonTapped(_ sender: Any) {
+//        if let delegate = navigationController?.transitioningDelegate as? HalfModalTransitioningDelegate {
+//            delegate.interactiveDismiss = false
+//        }
+        dismiss(animated: true, completion: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
 
 

@@ -24,7 +24,7 @@
                     <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nombre del parking" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dr6-sk-GB9">
-                            <rect key="frame" x="25" y="25" width="325" height="40"/>
+                            <rect key="frame" x="25" y="46" width="325" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="z4Q-Ig-tFE"/>
                             </constraints>
@@ -33,19 +33,38 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XGm-KS-9Uk">
-                            <rect key="frame" x="0.0" y="90" width="375" height="557"/>
+                            <rect key="frame" x="0.0" y="94" width="375" height="553"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </tableView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YtY-Gn-xAk">
+                            <rect key="frame" x="25" y="8" width="30" height="30"/>
+                            <state key="normal" title="up"/>
+                            <connections>
+                                <action selector="maximizeButtonTapped:" destination="-1" eventType="touchUpInside" id="W7j-0K-zBe"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vrr-W9-GoD">
+                            <rect key="frame" x="302" y="8" width="48" height="30"/>
+                            <state key="normal" title="Cancel"/>
+                            <connections>
+                                <action selector="cancelButtonTapped:" destination="-1" eventType="touchUpInside" id="QWy-Es-S3z"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="XGm-KS-9Uk" firstAttribute="top" secondItem="Dr6-sk-GB9" secondAttribute="bottom" constant="25" id="6JR-sw-mUR"/>
+                        <constraint firstItem="Vrr-W9-GoD" firstAttribute="top" secondItem="dPC-HA-hv1" secondAttribute="top" constant="8" id="9Wf-4v-SMg"/>
+                        <constraint firstAttribute="trailing" secondItem="Vrr-W9-GoD" secondAttribute="trailing" constant="25" id="CNX-31-dcc"/>
+                        <constraint firstItem="YtY-Gn-xAk" firstAttribute="top" secondItem="dPC-HA-hv1" secondAttribute="top" constant="8" id="EMq-MJ-nd5"/>
                         <constraint firstAttribute="trailing" secondItem="Dr6-sk-GB9" secondAttribute="trailing" constant="25" id="IcE-Vx-bjh"/>
                         <constraint firstItem="Dr6-sk-GB9" firstAttribute="leading" secondItem="dPC-HA-hv1" secondAttribute="leading" constant="25" id="UUc-rl-wWF"/>
-                        <constraint firstItem="Dr6-sk-GB9" firstAttribute="top" secondItem="dPC-HA-hv1" secondAttribute="top" constant="25" id="bhF-YY-hvA"/>
+                        <constraint firstItem="XGm-KS-9Uk" firstAttribute="top" secondItem="Dr6-sk-GB9" secondAttribute="bottom" constant="8" id="Yvb-t4-81h"/>
+                        <constraint firstItem="YtY-Gn-xAk" firstAttribute="leading" secondItem="dPC-HA-hv1" secondAttribute="leading" constant="25" id="bnv-S9-QID"/>
                         <constraint firstAttribute="trailing" secondItem="XGm-KS-9Uk" secondAttribute="trailing" id="d90-R6-sfH"/>
                         <constraint firstAttribute="bottom" secondItem="XGm-KS-9Uk" secondAttribute="bottom" id="dJV-QL-Fcn"/>
+                        <constraint firstItem="Dr6-sk-GB9" firstAttribute="top" secondItem="Vrr-W9-GoD" secondAttribute="bottom" constant="8" id="fo2-9D-kRU"/>
                         <constraint firstItem="XGm-KS-9Uk" firstAttribute="leading" secondItem="dPC-HA-hv1" secondAttribute="leading" id="fsF-MW-VVw"/>
+                        <constraint firstItem="Dr6-sk-GB9" firstAttribute="top" secondItem="YtY-Gn-xAk" secondAttribute="bottom" constant="8" id="lvQ-F5-uEC"/>
                     </constraints>
                 </view>
             </subviews>
