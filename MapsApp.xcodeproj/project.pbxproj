@@ -18,6 +18,8 @@
 		52AC053C2302D78300438113 /* mobilenet_quant_v1_224.tflite in Resources */ = {isa = PBXBuildFile; fileRef = 52AC053A2302D78300438113 /* mobilenet_quant_v1_224.tflite */; };
 		52AC053D2302D78300438113 /* labels.txt in Resources */ = {isa = PBXBuildFile; fileRef = 52AC053B2302D78300438113 /* labels.txt */; };
 		52AC05402302D86000438113 /* ModelDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC053F2302D86000438113 /* ModelDataHandler.swift */; };
+		52AC0545230407DC00438113 /* MapsColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC0544230407DC00438113 /* MapsColors.swift */; };
+		52AC05472304088F00438113 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC05462304088F00438113 /* UIColorExtensions.swift */; };
 		5B0F40B222E6F5EA00C3FC12 /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0F40B022E6F5EA00C3FC12 /* ARViewController.swift */; };
 		5B0F40B322E6F5EA00C3FC12 /* ARViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B0F40B122E6F5EA00C3FC12 /* ARViewController.xib */; };
 		5B0F40B622E71A9D00C3FC12 /* GiroscopioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0F40B422E71A9D00C3FC12 /* GiroscopioViewController.swift */; };
@@ -52,6 +54,8 @@
 		52AC053A2302D78300438113 /* mobilenet_quant_v1_224.tflite */ = {isa = PBXFileReference; lastKnownFileType = file; path = mobilenet_quant_v1_224.tflite; sourceTree = "<group>"; };
 		52AC053B2302D78300438113 /* labels.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = labels.txt; sourceTree = "<group>"; };
 		52AC053F2302D86000438113 /* ModelDataHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelDataHandler.swift; sourceTree = "<group>"; };
+		52AC0544230407DC00438113 /* MapsColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsColors.swift; sourceTree = "<group>"; };
+		52AC05462304088F00438113 /* UIColorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
 		5B0F40B022E6F5EA00C3FC12 /* ARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewController.swift; sourceTree = "<group>"; };
 		5B0F40B122E6F5EA00C3FC12 /* ARViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ARViewController.xib; sourceTree = "<group>"; };
 		5B0F40B422E71A9D00C3FC12 /* GiroscopioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiroscopioViewController.swift; sourceTree = "<group>"; };
@@ -129,6 +133,7 @@
 		52AC05212302BE4C00438113 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				52AC05462304088F00438113 /* UIColorExtensions.swift */,
 				52AC05252302CBCE00438113 /* CVPixelBufferExtension.swift */,
 			);
 			path = Extensions;
@@ -137,6 +142,7 @@
 		52AC05222302BE5400438113 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				52AC0543230407C200438113 /* Colors */,
 				52AC05302302CE9400438113 /* Models */,
 			);
 			path = Resources;
@@ -226,6 +232,14 @@
 			path = DataHandler;
 			sourceTree = "<group>";
 		};
+		52AC0543230407C200438113 /* Colors */ = {
+			isa = PBXGroup;
+			children = (
+				52AC0544230407DC00438113 /* MapsColors.swift */,
+			);
+			path = Colors;
+			sourceTree = "<group>";
+		};
 		5B3293E222F02F2E00F3E268 /* 3D Objects */ = {
 			isa = PBXGroup;
 			children = (
@@ -302,12 +316,12 @@
 				52AC051B2302B74A00438113 /* TF */,
 				5BB71BCE22E0731B00F14DBB /* Maps */,
 				5BB71BCD22E072E800F14DBB /* AR-Street */,
-				AA2121C322D32A25005D058D /* AppDelegate.swift */,
 				AA2121CA22D32A26005D058D /* Assets.xcassets */,
 				AA2121CC22D32A26005D058D /* LaunchScreen.storyboard */,
 				AA2121CF22D32A26005D058D /* Info.plist */,
 				5BB71BCF22E0738100F14DBB /* SelectProjectViewController.swift */,
 				5BB71BD122E0739500F14DBB /* Main.storyboard */,
+				AA2121C322D32A25005D058D /* AppDelegate.swift */,
 			);
 			path = MapsApp;
 			sourceTree = "<group>";
@@ -429,6 +443,7 @@
 				52AC05352302CEDE00438113 /* CameraFeedManagerDelegate.swift in Sources */,
 				AA2829AB22E1D80A00A5F6C7 /* MarkersResponseModel.swift in Sources */,
 				52AC05262302CBCE00438113 /* CVPixelBufferExtension.swift in Sources */,
+				52AC05472304088F00438113 /* UIColorExtensions.swift in Sources */,
 				5BB71BD022E0738100F14DBB /* SelectProjectViewController.swift in Sources */,
 				52AC05402302D86000438113 /* ModelDataHandler.swift in Sources */,
 				52AC052F2302CE1F00438113 /* CurvedView.swift in Sources */,
@@ -436,6 +451,7 @@
 				5B0F40B622E71A9D00C3FC12 /* GiroscopioViewController.swift in Sources */,
 				5B3293E022E9977D00F3E268 /* QRViewController.swift in Sources */,
 				52AC052B2302CC9500438113 /* InfoCell.swift in Sources */,
+				52AC0545230407DC00438113 /* MapsColors.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

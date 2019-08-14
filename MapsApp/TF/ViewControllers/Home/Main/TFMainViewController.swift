@@ -46,7 +46,7 @@ class TFMainViewController: UIViewController {
         ModelDataHandler(modelFileInfo: MobileNet.modelInfo, labelsFileInfo: MobileNet.labelsInfo)
     
     // Handles the presenting of results on the screen
-    private var inferenceViewController: TFEmbededViewController?
+    private var tfEmbededViewController: TFEmbededViewController?
     
     // MARK: View Handling Methods
     override func viewDidLoad() {
@@ -96,12 +96,12 @@ class TFMainViewController: UIViewController {
             guard let tempModelDataHandler = modelDataHandler else {
                 return
             }
-            inferenceViewController = segue.destination as? TFEmbededViewController
-            inferenceViewController?.wantedInputHeight = tempModelDataHandler.inputHeight
-            inferenceViewController?.wantedInputWidth = tempModelDataHandler.inputWidth
-            inferenceViewController?.maxResults = tempModelDataHandler.resultCount
-            inferenceViewController?.threadCountLimit = tempModelDataHandler.threadCountLimit
-            inferenceViewController?.delegate = self
+            tfEmbededViewController = segue.destination as? TFEmbededViewController
+            tfEmbededViewController?.wantedInputHeight = tempModelDataHandler.inputHeight
+            tfEmbededViewController?.wantedInputWidth = tempModelDataHandler.inputWidth
+            tfEmbededViewController?.maxResults = tempModelDataHandler.resultCount
+            tfEmbededViewController?.threadCountLimit = tempModelDataHandler.threadCountLimit
+            tfEmbededViewController?.delegate = self
             
         }
     }
@@ -135,9 +135,9 @@ extension TFMainViewController: CameraFeedManagerDelegate {
         // Display results by handing off to the InferenceViewController.
         DispatchQueue.main.async {
             let resolution = CGSize(width: CVPixelBufferGetWidth(pixelBuffer), height: CVPixelBufferGetHeight(pixelBuffer))
-            self.inferenceViewController?.inferenceResult = self.result
-            self.inferenceViewController?.resolution = resolution
-            self.inferenceViewController?.tableView.reloadData()
+            self.tfEmbededViewController?.inferenceResult = self.result
+            self.tfEmbededViewController?.resolution = resolution
+            self.tfEmbededViewController?.tableView.reloadData()
         }
     }
     
@@ -206,7 +206,7 @@ extension TFMainViewController {
      */
     private func changeBottomViewState() {
         
-        guard let inferenceVC = inferenceViewController else {
+        guard let inferenceVC = tfEmbededViewController else {
             return
         }
         
@@ -264,7 +264,7 @@ extension TFMainViewController {
     private func translateBottomSheet(withVerticalTranslation verticalTranslation: CGFloat) {
         
         let bottomSpace = initialBottomSpace - verticalTranslation
-        guard bottomSpace <= 0.0 && bottomSpace >= inferenceViewController!.collapsedHeight - bottomSheetView.bounds.size.height else {
+        guard bottomSpace <= 0.0 && bottomSpace >= tfEmbededViewController!.collapsedHeight - bottomSheetView.bounds.size.height else {
             return
         }
         setBottomSheetLayout(withBottomSpace: bottomSpace)
@@ -293,13 +293,13 @@ extension TFMainViewController {
             height = bottomSheetView.bounds.size.height
         }
         else {
-            height = inferenceViewController!.collapsedHeight
+            height = tfEmbededViewController!.collapsedHeight
         }
         
         let currentHeight = bottomSheetView.bounds.size.height + bottomSpace
         
         if currentHeight - height <= collapseTransitionThreshold {
-            bottomSpace = inferenceViewController!.collapsedHeight - bottomSheetView.bounds.size.height
+            bottomSpace = tfEmbededViewController!.collapsedHeight - bottomSheetView.bounds.size.height
         }
         else if currentHeight - height >= expandThransitionThreshold {
             bottomSpace = 0.0
