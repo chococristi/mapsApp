@@ -13,12 +13,19 @@ import CoreLocation
 class MapViewController: UIViewController {
     
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var bottomSheetView: UIView!
+    @IBOutlet weak var topSheetConstraint: NSLayoutConstraint!
     
     let locationManager = CLLocationManager()
     let regionInMeters: Double = 10000 //put 900 to zoom in directly
-    var previousLocation: CLLocation?
-    
     let geoCoder = CLGeocoder()
+    let DEFAULT_TOP: CGFloat = 300.0
+    let TOP_FULL_SCREEN: CGFloat = 0
+    let TOP_MID_SCREEN: CGFloat = 300
+    let TOP_LOW_SCREEN: CGFloat = 600
+    
+    var initialTopSpace: CGFloat = 300.0
+    var previousLocation: CLLocation?
     var markers: Markers?
     var annotationsArray: [MKAnnotation] = []
     
@@ -27,6 +34,9 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         checkLocationServices()
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(self.didPan(panGesture:)))
+        bottomSheetView.addGestureRecognizer(panGesture)
+
     }
     
     // MARK: Setup functions
@@ -185,5 +195,88 @@ extension MapViewController : UIViewControllerTransitioningDelegate {
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
         return HalfSizePresentationController(presentedViewController: presented, presenting: presenting)
     }
-    
 }
+
+extension MapViewController {
+    
+    @objc func didPan(panGesture: UIPanGestureRecognizer) {
+        
+        let translation = panGesture.translation(in: view)
+        
+        switch panGesture.state {
+        case .began:
+            initialTopSpace = topSheetConstraint.constant
+            setTopSheetLayout(withTopSpace: initialTopSpace + translation.y)
+        case .changed:
+            setTopSheetLayout(withTopSpace: initialTopSpace + translation.y)
+        case .cancelled:
+            setTopSheetLayout(withTopSpace: initialTopSpace)
+        case .ended:
+            translateBottomSheetAtEndOfPan(withVerticalTranslation: translation.y)
+            initialTopSpace = DEFAULT_TOP
+        default:
+            break
+        }
+    }
+    
+    func setTopSheetLayout(withTopSpace bottomSpace: CGFloat) {
+        UIView.animate(withDuration: 2, animations: {
+            self.view.setNeedsLayout()
+            self.topSheetConstraint.constant = bottomSpace
+            self.view.setNeedsLayout()
+        })
+    }
+    
+//    private func translateBottomSheetAtEndOfPan(withVerticalTranslation verticalTranslation: CGFloat) {
+//
+//        // Changes bottom sheet state to either fully open or closed at the end of pan.
+//        var topSpace = initialTopSpace - verticalTranslation
+//        print("++++++++++++ top space : \(topSpace)")
+//        var height: CGFloat = 0.0
+//        if initialTopSpace == 0.0 {
+//            height = bottomSheetView.bounds.size.height
+//        }
+//        else {
+//            height = 100
+//            //height = inferenceViewController!.collapsedHeight
+//        }
+//        print("++++++++++++ height : \(height)")
+//
+//        let currentHeight = bottomSheetView.bounds.size.height + topSpace
+//         print("++++++++++++ currentHeight (height+topSpace) : \(currentHeight)")
+//
+//        if currentHeight - height <= 300 {
+//            topSpace = 100 - bottomSheetView.bounds.size.height
+//        }
+//        else if currentHeight - height >= 100 {
+//            topSpace = 0.0
+//        }
+//        else {
+//            topSpace = initialTopSpace
+//        }
+//        print("++++++++++++ top space : \(topSpace)")
+//        setTopSheetLayout(withTopSpace: topSpace)
+//    }
+
+    private func translateBottomSheetAtEndOfPan(withVerticalTranslation verticalTranslation: CGFloat) {
+        
+        var currentTopSpace = initialTopSpace + verticalTranslation
+        var nextTopSpace: CGFloat = 0
+        print("+++++ initialTopSpace: \(initialTopSpace)")
+        print("+++++ verticalTranslation: \(verticalTranslation)")
+        print("+++++ currentTopSpace (initialTop-Translation): \(currentTopSpace)")
+        
+        if (currentTopSpace >= TOP_FULL_SCREEN) && (currentTopSpace <= TOP_MID_SCREEN) {
+            nextTopSpace = TOP_FULL_SCREEN
+        } else if (currentTopSpace >= TOP_MID_SCREEN) && (currentTopSpace <= TOP_LOW_SCREEN){
+            nextTopSpace = TOP_MID_SCREEN
+        } else {
+            nextTopSpace = TOP_LOW_SCREEN
+        }
+        setTopSheetLayout(withTopSpace: nextTopSpace)
+
+    }
+
+}
+
+

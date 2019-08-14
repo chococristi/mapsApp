@@ -27,13 +27,21 @@
                                             <outlet property="delegate" destination="BYZ-38-t0r" id="fJl-aX-ukj"/>
                                         </connections>
                                     </mapView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tCc-av-yLu">
+                                        <rect key="frame" x="0.0" y="550" width="375" height="647"/>
+                                        <color key="backgroundColor" red="1" green="0.5409764051" blue="0.84731429820000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="aRk-oI-89r" firstAttribute="top" secondItem="cEF-Pn-FLN" secondAttribute="top" id="1fV-xs-sGg"/>
                                     <constraint firstAttribute="trailing" secondItem="aRk-oI-89r" secondAttribute="trailing" id="2cL-tc-GJy"/>
                                     <constraint firstAttribute="bottom" secondItem="aRk-oI-89r" secondAttribute="bottom" id="7k5-TP-SXz"/>
+                                    <constraint firstItem="tCc-av-yLu" firstAttribute="top" secondItem="cEF-Pn-FLN" secondAttribute="top" constant="550" id="BeH-4f-Qk6"/>
+                                    <constraint firstItem="tCc-av-yLu" firstAttribute="height" secondItem="cEF-Pn-FLN" secondAttribute="height" id="E23-oF-EwR"/>
+                                    <constraint firstAttribute="trailing" secondItem="tCc-av-yLu" secondAttribute="trailing" id="Em2-1L-5xf"/>
                                     <constraint firstItem="aRk-oI-89r" firstAttribute="leading" secondItem="cEF-Pn-FLN" secondAttribute="leading" id="QKZ-L7-5Ox"/>
+                                    <constraint firstItem="tCc-av-yLu" firstAttribute="leading" secondItem="cEF-Pn-FLN" secondAttribute="leading" id="Zl3-Ca-ygd"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -47,7 +55,9 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="bottomSheetView" destination="tCc-av-yLu" id="NRp-H2-b3O"/>
                         <outlet property="mapView" destination="aRk-oI-89r" id="DiB-qu-ogE"/>
+                        <outlet property="topSheetConstraint" destination="BeH-4f-Qk6" id="Gv5-cw-1YN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
