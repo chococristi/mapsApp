@@ -21,6 +21,7 @@
 		52AC0545230407DC00438113 /* MapsColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC0544230407DC00438113 /* MapsColors.swift */; };
 		52AC05472304088F00438113 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC05462304088F00438113 /* UIColorExtensions.swift */; };
 		52AC05492304127D00438113 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC05482304127D00438113 /* UIViewExtensions.swift */; };
+		52AC055223041E3A00438113 /* SplashScreen.json in Resources */ = {isa = PBXBuildFile; fileRef = 52AC055123041E3A00438113 /* SplashScreen.json */; };
 		5B0F40B222E6F5EA00C3FC12 /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0F40B022E6F5EA00C3FC12 /* ARViewController.swift */; };
 		5B0F40B322E6F5EA00C3FC12 /* ARViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B0F40B122E6F5EA00C3FC12 /* ARViewController.xib */; };
 		5B0F40B622E71A9D00C3FC12 /* GiroscopioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0F40B422E71A9D00C3FC12 /* GiroscopioViewController.swift */; };
@@ -58,6 +59,7 @@
 		52AC0544230407DC00438113 /* MapsColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsColors.swift; sourceTree = "<group>"; };
 		52AC05462304088F00438113 /* UIColorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
 		52AC05482304127D00438113 /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
+		52AC055123041E3A00438113 /* SplashScreen.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SplashScreen.json; sourceTree = "<group>"; };
 		5B0F40B022E6F5EA00C3FC12 /* ARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewController.swift; sourceTree = "<group>"; };
 		5B0F40B122E6F5EA00C3FC12 /* ARViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ARViewController.xib; sourceTree = "<group>"; };
 		5B0F40B422E71A9D00C3FC12 /* GiroscopioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiroscopioViewController.swift; sourceTree = "<group>"; };
@@ -285,9 +287,18 @@
 		52AC054F23041C4800438113 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				52AC055023041E0000438113 /* Lottie */,
 				52AC0543230407C200438113 /* Colors */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		52AC055023041E0000438113 /* Lottie */ = {
+			isa = PBXGroup;
+			children = (
+				52AC055123041E3A00438113 /* SplashScreen.json */,
+			);
+			path = Lottie;
 			sourceTree = "<group>";
 		};
 		5B3293E222F02F2E00F3E268 /* 3D Objects */ = {
@@ -388,6 +399,7 @@
 				AA2121BC22D32A25005D058D /* Sources */,
 				AA2121BD22D32A25005D058D /* Frameworks */,
 				AA2121BE22D32A25005D058D /* Resources */,
+				ECF1413A4AA9E29309ADA31B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -437,6 +449,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52AC055223041E3A00438113 /* SplashScreen.json in Resources */,
 				5B32AE8222F1C0AA000872ED /* art.scnassets in Resources */,
 				52AC051D2302BC4B00438113 /* TensorFlow.storyboard in Resources */,
 				5B0F40B722E71A9D00C3FC12 /* GiroscopioViewController.xib in Resources */,
@@ -476,6 +489,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ECF1413A4AA9E29309ADA31B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-mapsApp/Pods-mapsApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-mapsApp/Pods-mapsApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-mapsApp/Pods-mapsApp-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
