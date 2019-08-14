@@ -76,11 +76,6 @@ class SelectProjectViewController: UITabBarController {
             UINavigationController(rootViewController: $0)
         }
         
-        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: MapsColors.secondaryColor],
-                                                         for: .normal)
-        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: MapsColors.mainColor],
-                                                         for: .selected)
-        
     }
     
     func setupMaps() -> UIViewController? {
