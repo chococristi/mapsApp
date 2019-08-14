@@ -20,6 +20,7 @@
 		52AC05402302D86000438113 /* ModelDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC053F2302D86000438113 /* ModelDataHandler.swift */; };
 		52AC0545230407DC00438113 /* MapsColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC0544230407DC00438113 /* MapsColors.swift */; };
 		52AC05472304088F00438113 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC05462304088F00438113 /* UIColorExtensions.swift */; };
+		52AC05492304127D00438113 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC05482304127D00438113 /* UIViewExtensions.swift */; };
 		5B0F40B222E6F5EA00C3FC12 /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0F40B022E6F5EA00C3FC12 /* ARViewController.swift */; };
 		5B0F40B322E6F5EA00C3FC12 /* ARViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B0F40B122E6F5EA00C3FC12 /* ARViewController.xib */; };
 		5B0F40B622E71A9D00C3FC12 /* GiroscopioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0F40B422E71A9D00C3FC12 /* GiroscopioViewController.swift */; };
@@ -56,6 +57,7 @@
 		52AC053F2302D86000438113 /* ModelDataHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelDataHandler.swift; sourceTree = "<group>"; };
 		52AC0544230407DC00438113 /* MapsColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsColors.swift; sourceTree = "<group>"; };
 		52AC05462304088F00438113 /* UIColorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
+		52AC05482304127D00438113 /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		5B0F40B022E6F5EA00C3FC12 /* ARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewController.swift; sourceTree = "<group>"; };
 		5B0F40B122E6F5EA00C3FC12 /* ARViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ARViewController.xib; sourceTree = "<group>"; };
 		5B0F40B422E71A9D00C3FC12 /* GiroscopioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiroscopioViewController.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 			children = (
 				52AC05462304088F00438113 /* UIColorExtensions.swift */,
 				52AC05252302CBCE00438113 /* CVPixelBufferExtension.swift */,
+				52AC05482304127D00438113 /* UIViewExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -444,6 +447,7 @@
 				AA2829AB22E1D80A00A5F6C7 /* MarkersResponseModel.swift in Sources */,
 				52AC05262302CBCE00438113 /* CVPixelBufferExtension.swift in Sources */,
 				52AC05472304088F00438113 /* UIColorExtensions.swift in Sources */,
+				52AC05492304127D00438113 /* UIViewExtensions.swift in Sources */,
 				5BB71BD022E0738100F14DBB /* SelectProjectViewController.swift in Sources */,
 				52AC05402302D86000438113 /* ModelDataHandler.swift in Sources */,
 				52AC052F2302CE1F00438113 /* CurvedView.swift in Sources */,

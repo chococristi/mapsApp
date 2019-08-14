@@ -41,6 +41,8 @@ class SelectProjectViewController: UITabBarController {
     
     func setupUI() {
         
+        self.setStatusBarStyle(.lightContent)
+        
         setupTabBarController()
         
     }
