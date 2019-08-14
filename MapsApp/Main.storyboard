@@ -5,80 +5,9 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="xLx-c2-erv">
-            <objects>
-                <viewController id="zbm-J1-9mx" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="CZC-Re-ABY">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="puF-HP-quQ">
-                                <rect key="frame" x="20" y="233.5" width="335" height="100"/>
-                                <color key="backgroundColor" red="0.60392156860000001" green="0.68235294120000001" blue="0.015686274510000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="Zs3-xY-gDy"/>
-                                </constraints>
-                                <state key="normal" title="Maps">
-                                    <color key="titleShadowColor" red="1" green="0.074743433489999997" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="goToMaps:" destination="zbm-J1-9mx" eventType="touchUpInside" id="bdy-cC-x9k"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mrt-Pr-qkq">
-                                <rect key="frame" x="20" y="343.5" width="335" height="100"/>
-                                <color key="backgroundColor" red="0.48627450979999998" green="0.52941176469999995" blue="0.5568627451" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="HjN-Mn-7bB"/>
-                                </constraints>
-                                <state key="normal" title="AR-Street">
-                                    <color key="titleShadowColor" red="1" green="0.074743433489999997" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="goToARStreet:" destination="zbm-J1-9mx" eventType="touchUpInside" id="0nO-cS-kPB"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s5a-vb-DnU">
-                                <rect key="frame" x="20" y="458.5" width="335" height="100"/>
-                                <color key="backgroundColor" red="0.0" green="0.2159098585" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="CFt-Hk-oDK"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
-                                <state key="normal" title="TensorFlow">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="goToTensorFlow:" destination="zbm-J1-9mx" eventType="touchUpInside" id="5eR-RW-TO9"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="Mrt-Pr-qkq" firstAttribute="top" secondItem="kjb-qG-n36" secondAttribute="centerY" id="0Po-v7-ydy"/>
-                            <constraint firstItem="kjb-qG-n36" firstAttribute="trailing" secondItem="Mrt-Pr-qkq" secondAttribute="trailing" constant="20" id="89x-Uh-XVs"/>
-                            <constraint firstItem="Mrt-Pr-qkq" firstAttribute="top" secondItem="puF-HP-quQ" secondAttribute="bottom" constant="10" id="DYA-rj-43M"/>
-                            <constraint firstItem="kjb-qG-n36" firstAttribute="trailing" secondItem="puF-HP-quQ" secondAttribute="trailing" constant="20" id="F7n-Iv-Grs"/>
-                            <constraint firstItem="puF-HP-quQ" firstAttribute="leading" secondItem="kjb-qG-n36" secondAttribute="leading" constant="20" id="cfd-Uo-LCi"/>
-                            <constraint firstItem="s5a-vb-DnU" firstAttribute="leading" secondItem="kjb-qG-n36" secondAttribute="leading" constant="20" id="dwd-3c-mJ5"/>
-                            <constraint firstItem="kjb-qG-n36" firstAttribute="trailing" secondItem="s5a-vb-DnU" secondAttribute="trailing" constant="20" id="e0D-pa-y6V"/>
-                            <constraint firstItem="s5a-vb-DnU" firstAttribute="top" secondItem="Mrt-Pr-qkq" secondAttribute="bottom" constant="15" id="i5n-w5-waE"/>
-                            <constraint firstItem="Mrt-Pr-qkq" firstAttribute="leading" secondItem="kjb-qG-n36" secondAttribute="leading" constant="20" id="ner-cC-81n"/>
-                            <constraint firstItem="puF-HP-quQ" firstAttribute="centerX" secondItem="CZC-Re-ABY" secondAttribute="centerX" id="q8A-yy-WK2"/>
-                            <constraint firstItem="Mrt-Pr-qkq" firstAttribute="centerX" secondItem="CZC-Re-ABY" secondAttribute="centerX" id="s3Z-O3-PJZ"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="kjb-qG-n36"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Mqf-Jm-A6w" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-148" y="-33.733133433283363"/>
-        </scene>
         <!--Select Project View Controller-->
         <scene sceneID="CO7-B4-FUe">
             <objects>
@@ -91,7 +20,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sJs-fT-09h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="850" y="-370"/>
+            <point key="canvasLocation" x="-68" y="-353"/>
         </scene>
     </scenes>
 </document>
