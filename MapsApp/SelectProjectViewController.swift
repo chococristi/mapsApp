@@ -27,7 +27,7 @@ class SelectProjectViewController: UIViewController {
     
     @IBAction func goToARStreet(_ sender: Any) {
         //let storyboard = UIStoryboard.init(name: "map", bundle: nil)
-         let vc = ARViewController()
+         let vc = PlaceObjectsplaneViewController()
         self.present(vc, animated: false, completion: nil)
         
     }

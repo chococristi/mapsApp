@@ -62,14 +62,14 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     
     // MARK: - ARSCNViewDelegate
     // render para bailarin
- /*   func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
+    func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
         
         let node = SCNNode()
         
         if let imageAnchor = anchor as? ARImageAnchor {
             let plane = SCNPlane(width: imageAnchor.referenceImage.physicalSize.width, height: imageAnchor.referenceImage.physicalSize.height)
             
-            plane.firstMaterial?.diffuse.contents = UIColor(white: 1, alpha: 0.9)
+            plane.firstMaterial?.diffuse.contents = UIColor(white: 1, alpha: 0.0)
             
             
             let planeNode = SCNNode(geometry: plane)
@@ -86,13 +86,14 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
             animationNode.position = SCNVector3Zero
             animationNode.position.z = 0.15
             animationNode.scale = SCNVector3(0.001, 0.001, 0.001)
+            animationNode.eulerAngles.x = -.pi / 2
             
             
             planeNode.addChildNode(animationNode)
             planeNode.addAnimation(animations["dancing"]!, forKey: "dancing")
 //            sceneView.scene.rootNode.addChildNode(animationNode)
 //            sceneView.scene.rootNode.addAnimation(animations["dancing"]!, forKey: "dancing")
-            //planeNode.addChildNode(shipNode)
+//          planeNode.addChildNode(shipNode)
             
             node.addChildNode(planeNode)
             node.addChildNode(animationNode)
@@ -102,8 +103,9 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         
         return node
         
-    }*/
-    
+    }
+ 
+ /*
     // detector de planos
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
         // 1
@@ -129,7 +131,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         
         // 6
         node.addChildNode(planeNode)
-    }
+    }*/
     
     func loadAnimations () -> SCNNode{
         // Load the character in the idle animation
