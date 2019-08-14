@@ -53,7 +53,7 @@ class MainViewController: UITabBarController {
     
     func setupUI() {
         
-        self.setStatusBarStyle(.lightContent)
+        //self.setStatusBarStyle(.lightContent)
         
         setupTabBarController()
         

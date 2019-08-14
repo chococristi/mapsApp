@@ -47,6 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Helpers
     
     func setup() {
+
         
         setupNavigationBar()
         
@@ -58,7 +59,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let navigationBarAppearace = UINavigationBar.appearance()
         
-        navigationBarAppearace.tintColor = .white
+        navigationBarAppearace.tintColor = MapsColors.mainColor
         navigationBarAppearace.barTintColor = MapsColors.mainColor
         
         if #available(iOS 11.0, *) {
