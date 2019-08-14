@@ -24,6 +24,8 @@
 	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>$(PRODUCT_NAME) camera use</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>$(PRODUCT_NAME) Photo Library Additions</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>To know where are you</string>
 	<key>UILaunchStoryboardName</key>

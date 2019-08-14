@@ -135,9 +135,7 @@
 		52AC05212302BE4C00438113 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				52AC05462304088F00438113 /* UIColorExtensions.swift */,
 				52AC05252302CBCE00438113 /* CVPixelBufferExtension.swift */,
-				52AC05482304127D00438113 /* UIViewExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -145,7 +143,6 @@
 		52AC05222302BE5400438113 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				52AC0543230407C200438113 /* Colors */,
 				52AC05302302CE9400438113 /* Models */,
 			);
 			path = Resources;
@@ -243,6 +240,56 @@
 			path = Colors;
 			sourceTree = "<group>";
 		};
+		52AC054A23041B0A00438113 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				52AC054B23041BD800438113 /* Storyboard */,
+				52AC054C23041C0000438113 /* ViewControllers */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		52AC054B23041BD800438113 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				5BB71BD122E0739500F14DBB /* Main.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		52AC054C23041C0000438113 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				5BB71BCF22E0738100F14DBB /* SelectProjectViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		52AC054D23041C1D00438113 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				52AC054E23041C3100438113 /* Extensions */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		52AC054E23041C3100438113 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				52AC05482304127D00438113 /* UIViewExtensions.swift */,
+				52AC05462304088F00438113 /* UIColorExtensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		52AC054F23041C4800438113 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				52AC0543230407C200438113 /* Colors */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		5B3293E222F02F2E00F3E268 /* 3D Objects */ = {
 			isa = PBXGroup;
 			children = (
@@ -316,14 +363,15 @@
 		AA2121C222D32A25005D058D /* MapsApp */ = {
 			isa = PBXGroup;
 			children = (
+				52AC054A23041B0A00438113 /* Main */,
+				5BB71BCD22E072E800F14DBB /* AR-Street */,
 				52AC051B2302B74A00438113 /* TF */,
 				5BB71BCE22E0731B00F14DBB /* Maps */,
-				5BB71BCD22E072E800F14DBB /* AR-Street */,
+				52AC054D23041C1D00438113 /* Utils */,
+				52AC054F23041C4800438113 /* Resources */,
 				AA2121CA22D32A26005D058D /* Assets.xcassets */,
-				AA2121CC22D32A26005D058D /* LaunchScreen.storyboard */,
 				AA2121CF22D32A26005D058D /* Info.plist */,
-				5BB71BCF22E0738100F14DBB /* SelectProjectViewController.swift */,
-				5BB71BD122E0739500F14DBB /* Main.storyboard */,
+				AA2121CC22D32A26005D058D /* LaunchScreen.storyboard */,
 				AA2121C322D32A25005D058D /* AppDelegate.swift */,
 			);
 			path = MapsApp;
