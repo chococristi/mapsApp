@@ -8,11 +8,13 @@
 
 import UIKit
 
-class SelectProjectViewController: UITabBarController {
+class MainViewController: UITabBarController {
 
     // MARK: - IBOutlets
     
     // MARK: - Fields
+    
+    let launchScreenView = LaunchScreenView()
     
     let mapsImage: UIImage? = UIImage.init(named: "mapsImage")?.withRenderingMode(.alwaysOriginal)
     let mapsImageSelected: UIImage? = UIImage.init(named: "mapsImageSelected")?.withRenderingMode(.alwaysOriginal)
@@ -29,11 +31,21 @@ class SelectProjectViewController: UITabBarController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        view.addSubview(launchScreenView)
+        view.bringSubviewToFront(launchScreenView)
+        launchScreenView.frame = view.bounds
         
         setupUI()
     }
     
     // MARK: - Life cycle
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        launchScreenView.startAnimation()
+    }
     
     // MARK: - IBAction
     

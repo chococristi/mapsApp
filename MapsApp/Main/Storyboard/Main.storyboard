@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Select Project View Controller-->
+        <!--Main View Controller-->
         <scene sceneID="CO7-B4-FUe">
             <objects>
-                <tabBarController id="ZmQ-Ln-Ljp" customClass="SelectProjectViewController" customModule="mapsApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController id="ZmQ-Ln-Ljp" customClass="MainViewController" customModule="mapsApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="bMb-HO-yFy">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
