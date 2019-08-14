@@ -202,6 +202,7 @@ extension MapViewController {
     @objc func didPan(panGesture: UIPanGestureRecognizer) {
         
         let translation = panGesture.translation(in: view)
+
         
         switch panGesture.state {
         case .began:
@@ -212,7 +213,7 @@ extension MapViewController {
         case .cancelled:
             setTopSheetLayout(withTopSpace: initialTopSpace)
         case .ended:
-            translateBottomSheetAtEndOfPan(withVerticalTranslation: translation.y)
+            translateBottomSheetAtEndOfPan(withVerticalTranslation: translation.y, gesture: panGesture)
             initialTopSpace = DEFAULT_TOP
         default:
             break
@@ -258,18 +259,23 @@ extension MapViewController {
 //        setTopSheetLayout(withTopSpace: topSpace)
 //    }
 
-    private func translateBottomSheetAtEndOfPan(withVerticalTranslation verticalTranslation: CGFloat) {
+    private func translateBottomSheetAtEndOfPan(withVerticalTranslation verticalTranslation: CGFloat, gesture: UIPanGestureRecognizer) {
         
+        let direction = gesture.verticalDirection(target: self.view)
         var currentTopSpace = initialTopSpace + verticalTranslation
         var nextTopSpace: CGFloat = 0
         print("+++++ initialTopSpace: \(initialTopSpace)")
         print("+++++ verticalTranslation: \(verticalTranslation)")
         print("+++++ currentTopSpace (initialTop-Translation): \(currentTopSpace)")
         
-        if (currentTopSpace >= TOP_FULL_SCREEN) && (currentTopSpace <= TOP_MID_SCREEN) {
+        if (currentTopSpace >= TOP_FULL_SCREEN) && (currentTopSpace <= TOP_MID_SCREEN) && direction == .Up {
             nextTopSpace = TOP_FULL_SCREEN
-        } else if (currentTopSpace >= TOP_MID_SCREEN) && (currentTopSpace <= TOP_LOW_SCREEN){
+        } else if (currentTopSpace >= TOP_FULL_SCREEN) && (currentTopSpace <= TOP_MID_SCREEN) && direction == .Down {
+             nextTopSpace = TOP_MID_SCREEN
+        } else if (currentTopSpace >= TOP_MID_SCREEN) && (currentTopSpace <= TOP_LOW_SCREEN) && direction == .Up {
             nextTopSpace = TOP_MID_SCREEN
+        } else if (currentTopSpace >= TOP_MID_SCREEN) && (currentTopSpace <= TOP_LOW_SCREEN) && direction == .Down {
+            nextTopSpace = TOP_LOW_SCREEN
         } else {
             nextTopSpace = TOP_LOW_SCREEN
         }

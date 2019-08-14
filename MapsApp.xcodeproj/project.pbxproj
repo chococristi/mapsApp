@@ -24,6 +24,7 @@
 		AA2829A922E1D7BA00A5F6C7 /* bcnlocations.json in Resources */ = {isa = PBXBuildFile; fileRef = AA2829A822E1D7BA00A5F6C7 /* bcnlocations.json */; };
 		AA2829AB22E1D80A00A5F6C7 /* MarkersResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2829AA22E1D80A00A5F6C7 /* MarkersResponseModel.swift */; };
 		AA54E5B72302B4E70075D8EA /* HalfModalPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA54E5B62302B4E70075D8EA /* HalfModalPresentationController.swift */; };
+		AA69328F230436DA0083AB58 /* UIPanGestureExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA69328E230436DA0083AB58 /* UIPanGestureExtension.swift */; };
 		AAAD742522F2DE9100C3ED15 /* MapDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAD742322F2DE9100C3ED15 /* MapDetailViewController.swift */; };
 		AAAD742622F2DE9100C3ED15 /* MapDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAAD742422F2DE9100C3ED15 /* MapDetailViewController.xib */; };
 /* End PBXBuildFile section */
@@ -48,6 +49,7 @@
 		AA2829A822E1D7BA00A5F6C7 /* bcnlocations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bcnlocations.json; sourceTree = "<group>"; };
 		AA2829AA22E1D80A00A5F6C7 /* MarkersResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkersResponseModel.swift; sourceTree = "<group>"; };
 		AA54E5B62302B4E70075D8EA /* HalfModalPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfModalPresentationController.swift; sourceTree = "<group>"; };
+		AA69328E230436DA0083AB58 /* UIPanGestureExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPanGestureExtension.swift; sourceTree = "<group>"; };
 		AAAD742322F2DE9100C3ED15 /* MapDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDetailViewController.swift; sourceTree = "<group>"; };
 		AAAD742422F2DE9100C3ED15 /* MapDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapDetailViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -95,6 +97,7 @@
 				AAAD742322F2DE9100C3ED15 /* MapDetailViewController.swift */,
 				AAAD742422F2DE9100C3ED15 /* MapDetailViewController.xib */,
 				AA54E5B62302B4E70075D8EA /* HalfModalPresentationController.swift */,
+				AA69328E230436DA0083AB58 /* UIPanGestureExtension.swift */,
 			);
 			path = Maps;
 			sourceTree = "<group>";
@@ -211,6 +214,7 @@
 				AAAD742522F2DE9100C3ED15 /* MapDetailViewController.swift in Sources */,
 				AA2121C622D32A25005D058D /* MapViewController.swift in Sources */,
 				AA2121C422D32A25005D058D /* AppDelegate.swift in Sources */,
+				AA69328F230436DA0083AB58 /* UIPanGestureExtension.swift in Sources */,
 				AA2829AB22E1D80A00A5F6C7 /* MarkersResponseModel.swift in Sources */,
 				5BB71BD022E0738100F14DBB /* SelectProjectViewController.swift in Sources */,
 				AA54E5B72302B4E70075D8EA /* HalfModalPresentationController.swift in Sources */,
