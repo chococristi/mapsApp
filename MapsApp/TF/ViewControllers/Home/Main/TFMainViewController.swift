@@ -59,6 +59,8 @@ class TFMainViewController: UIViewController {
         cameraCapture.delegate = self
         
         addPanGesture()
+        
+        edgesForExtendedLayout = []
     }
     
     override func viewWillAppear(_ animated: Bool) {

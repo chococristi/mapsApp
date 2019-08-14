@@ -68,6 +68,7 @@ class SelectProjectViewController: UITabBarController {
                                                            image: tensorFlowImage,
                                                            selectedImage: tensorFlowImageSelected)
         
+        
         tensorFlowViewController.title = "TensorFlow"
         
         let viewControllerList = [ mapsViewController,
