@@ -196,18 +196,16 @@ class ARkitCarrousel: UIViewController {
                 geometryNode.removeFromParentNode()
                 
                 var index = searchIndexOnArrayNode(nodeToSearch: geometryNode, arrayOfNodes: arrayNodes.map{$0.node})
-
+                
                 if translation.x > 0 {
                     
-                    if index == arrayNodes.count - 1{
-                        index = 0
-                    } else {
-                        index += 1
-                    }
-                    
+                    index =  (index == arrayNodes.count - 1) ? 0 : index+1
+                    print(index)
                     
                 } else {
-
+                    
+                    index =  (index == 0) ? arrayNodes.count - 1 : index-1
+                    print(index)
                 }
                 
                 geometryLabel.text = arrayNodes[index].title
@@ -215,10 +213,11 @@ class ARkitCarrousel: UIViewController {
                 sceneView.scene!.rootNode.addChildNode(geometryNode)
                 
             }
-            if(sender.state == UIGestureRecognizer.State.ended) {
-                enableDoublePan = true
-            }
         }
+        if(sender.state == UIGestureRecognizer.State.ended) {
+            enableDoublePan = true
+        }
+        
     }
     
     func searchIndexOnArrayNode(nodeToSearch: SCNNode, arrayOfNodes: [SCNNode]) -> Int {
