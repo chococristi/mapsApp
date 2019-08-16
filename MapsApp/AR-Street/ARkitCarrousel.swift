@@ -23,24 +23,33 @@
 import UIKit
 import SceneKit
 
+struct nodes {
+    var title : String
+    var node : SCNNode
+}
+
 class ARkitCarrousel: UIViewController {
     // UI
     @IBOutlet weak var geometryLabel: UILabel!
     @IBOutlet weak var sceneView: SCNView!
     
-      var geometryNode: SCNNode = SCNNode()
+    var geometryNode: SCNNode = SCNNode()
     
     // Gestures
     var currentAngleX: Float = 0.0
     var currentAngleY: Float = 0.0
+    var enableDoublePan : Bool = true
+    var arrayNodes : [nodes] = []
     
     
     // MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         sceneSetup()
-        geometryLabel.text = "Atoms\n"
-        geometryNode = Atoms.allAtoms()
+        arrayNodes = self.createNodes()
+        
+        geometryLabel.text = arrayNodes[0].title
+        geometryNode = arrayNodes[0].node
         sceneView.scene!.rootNode.addChildNode(geometryNode)
     }
     
@@ -50,33 +59,48 @@ class ARkitCarrousel: UIViewController {
     }
     
 
-    @IBAction func segmentValueChanged(_ sender: UISegmentedControl) {
-        geometryNode.removeFromParentNode()
-    // 2
-        switch sender.selectedSegmentIndex {
-        case 0:
-            geometryLabel.text = "Atoms\n"
-            geometryNode = Atoms.allAtoms()
-        case 1:
-            geometryLabel.text = "Methane\n(Natural Gas)"
-            geometryNode = Molecules.methaneMolecule()
-        case 2:
-            geometryLabel.text = "Ethanol\n(Alcohol)"
-            geometryNode = Molecules.ethanolMolecule()
-        case 3:
-            geometryLabel.text = "Polytetrafluoroethylene\n(Teflon)"
-            //geometryNode = Molecules.ptfeMolecule()
-            geometryNode = Molecules.coladaObject()
-            geometryNode.scale = SCNVector3(0.1, 0.1, 0.1)
-        default:
-            break
-        }
+//    @IBAction func segmentValueChanged(_ sender: UISegmentedControl) {
+//        geometryNode.removeFromParentNode()
+//    // 2
+//        switch sender.selectedSegmentIndex {
+//        case 0:
+//            geometryLabel.text = "Atoms\n"
+//            geometryNode = Atoms.allAtoms()
+//        case 1:
+//            geometryLabel.text = "Methane\n(Natural Gas)"
+//            geometryNode = Molecules.methaneMolecule()
+//        case 2:
+//            geometryLabel.text = "Ethanol\n(Alcohol)"
+//            geometryNode = Molecules.ethanolMolecule()
+//        case 3:
+//            geometryLabel.text = "Polytetrafluoroethylene\n(Teflon)"
+//            //geometryNode = Molecules.ptfeMolecule()
+//            geometryNode = Molecules.coladaObject()
+//            geometryNode.scale = SCNVector3(0.1, 0.1, 0.1)
+//        default:
+//            break
+//        }
+//        
+//        // 3
+//        sceneView.scene!.rootNode.addChildNode(geometryNode)
+//    }
+    
+    func createNodes() -> [nodes]{
+         var arrayNodes : [nodes] = []
         
-        // 3
-        sceneView.scene!.rootNode.addChildNode(geometryNode)
+        let colladaObject = Molecules.coladaObject()
+        colladaObject.scale = SCNVector3(0.1, 0.1, 0.1)
+        
+        let node1 = nodes(title: "Atoms\n", node: Atoms.allAtoms())
+        let node2 = nodes(title: "Methane\n(Natural Gas)", node: Molecules.methaneMolecule())
+        let node3 = nodes(title: "figure\n", node: colladaObject)
+     
+        arrayNodes.append(node1)
+        arrayNodes.append(node2)
+        arrayNodes.append(node3)
+        
+        return arrayNodes
     }
-    
-    
     
     
     func sceneSetup() {
@@ -119,7 +143,14 @@ class ARkitCarrousel: UIViewController {
         //        geometryNode = boxNode
         
         let panRecognizer = UIPanGestureRecognizer(target: self, action:#selector(panGesture(_:)))
+        panRecognizer.maximumNumberOfTouches = 1
+        panRecognizer.minimumNumberOfTouches = 1
         sceneView.addGestureRecognizer(panRecognizer)
+        
+        let panTwoFingers = UIPanGestureRecognizer(target: self, action:#selector(panGestureTwoFinguers(_:)))
+        panTwoFingers.maximumNumberOfTouches = 2
+        panTwoFingers.minimumNumberOfTouches = 2
+        sceneView.addGestureRecognizer(panTwoFingers)
         
         
         // 3
@@ -153,4 +184,46 @@ class ARkitCarrousel: UIViewController {
             currentAngleX = geometryNode.eulerAngles.x
         }
     }
+    
+    @objc
+    func panGestureTwoFinguers(_ sender: UIPanGestureRecognizer) {
+        
+        let translation = sender.translation(in: sender.view!)
+        
+        if enableDoublePan {
+            if abs(translation.x) > 90 {
+                enableDoublePan = false
+                geometryNode.removeFromParentNode()
+                
+                var index = searchIndexOnArrayNode(nodeToSearch: geometryNode, arrayOfNodes: arrayNodes.map{$0.node})
+
+                if translation.x > 0 {
+                    
+                    if index == arrayNodes.count - 1{
+                        index = 0
+                    } else {
+                        index += 1
+                    }
+                    
+                    
+                } else {
+
+                }
+                
+                geometryLabel.text = arrayNodes[index].title
+                geometryNode = arrayNodes[index].node
+                sceneView.scene!.rootNode.addChildNode(geometryNode)
+                
+            }
+            if(sender.state == UIGestureRecognizer.State.ended) {
+                enableDoublePan = true
+            }
+        }
+    }
+    
+    func searchIndexOnArrayNode(nodeToSearch: SCNNode, arrayOfNodes: [SCNNode]) -> Int {
+
+        return arrayOfNodes.firstIndex(of: nodeToSearch) ?? 0
+    }
+
 }

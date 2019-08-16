@@ -301,6 +301,7 @@
 		52AC054F23041C4800438113 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				5B3293E222F02F2E00F3E268 /* 3D Objects */,
 				52AC055023041E0000438113 /* Lottie */,
 				52AC0543230407C200438113 /* Colors */,
 			);
@@ -337,7 +338,6 @@
 			isa = PBXGroup;
 			children = (
 				5B1993762304370100A6E78D /* models */,
-				5B3293E222F02F2E00F3E268 /* 3D Objects */,
 				5B8E20AD2302B4FB00066534 /* PlaceObjectsplaneViewController.swift */,
 				5B8E20AE2302B4FB00066534 /* PlaceObjectsplaneViewController.xib */,
 				5B0F40B022E6F5EA00C3FC12 /* ARViewController.swift */,
