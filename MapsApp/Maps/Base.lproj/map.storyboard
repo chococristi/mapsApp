@@ -41,7 +41,7 @@
                         <constraints>
                             <constraint firstItem="cEF-Pn-FLN" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="6qi-2D-Sn3"/>
                             <constraint firstAttribute="trailing" secondItem="cEF-Pn-FLN" secondAttribute="trailing" id="QQT-bY-UZm"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="cEF-Pn-FLN" secondAttribute="bottom" id="YCh-Ml-baS"/>
+                            <constraint firstAttribute="bottom" secondItem="cEF-Pn-FLN" secondAttribute="bottom" id="YCh-Ml-baS"/>
                             <constraint firstItem="cEF-Pn-FLN" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="dsY-p8-lQG"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>

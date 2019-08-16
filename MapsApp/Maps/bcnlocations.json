@@ -22,7 +22,7 @@
     },
     {
       "name": "Plaça Catalunya",
-      "coordinates": [25.2084, 55.2719]
+      "coordinates": [41.387219, 2.170041]
     },
     {
       "name": "C.C. La illa",
@@ -51,6 +51,17 @@
     {
       "name": "Certio ITV del Clot",
       "coordinates": [41.400690, 2.191319]
+    },
+    {
+        "name": "Discoteca Merlin",
+        "coordinates": [41.400841, 2.190799]
+    },
+    {
+        "name": "Hewlett Packard",
+        "coordinates": [41.401204, 2.191227]
     }
+    
+    
+    
 ]
  }

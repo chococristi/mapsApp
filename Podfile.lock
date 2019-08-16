@@ -1,0 +1,24 @@
+PODS:
+  - lottie-ios (3.1.2)
+  - TensorFlowLiteC (1.14.0)
+  - TensorFlowLiteSwift (1.14.0):
+    - TensorFlowLiteC (= 1.14.0)
+
+DEPENDENCIES:
+  - lottie-ios
+  - TensorFlowLiteSwift
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - lottie-ios
+    - TensorFlowLiteC
+    - TensorFlowLiteSwift
+
+SPEC CHECKSUMS:
+  lottie-ios: 49cd85b1f24f61a7708ad7ec76a523ab2d0e3100
+  TensorFlowLiteC: a6702011fb661928634e59565b5fe262f69692d0
+  TensorFlowLiteSwift: ac8c816ae2d65f631a96151e7991c46412aec7eb
+
+PODFILE CHECKSUM: 81385640a973ba44f4650444ee19f6dcf2393f15
+
+COCOAPODS: 1.8.0.beta.1
