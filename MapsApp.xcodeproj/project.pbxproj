@@ -3,10 +3,27 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		52AC051D2302BC4B00438113 /* TensorFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52AC051C2302BC4B00438113 /* TensorFlow.storyboard */; };
+		52AC05242302BF5E00438113 /* TFMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC05232302BF5E00438113 /* TFMainViewController.swift */; };
+		52AC05262302CBCE00438113 /* CVPixelBufferExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC05252302CBCE00438113 /* CVPixelBufferExtension.swift */; };
+		52AC052B2302CC9500438113 /* InfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC052A2302CC9500438113 /* InfoCell.swift */; };
+		52AC052F2302CE1F00438113 /* CurvedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC052E2302CE1F00438113 /* CurvedView.swift */; };
+		52AC05332302CEC000438113 /* PreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC05322302CEC000438113 /* PreviewView.swift */; };
+		52AC05352302CEDE00438113 /* CameraFeedManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC05342302CEDE00438113 /* CameraFeedManagerDelegate.swift */; };
+		52AC05392302CF6A00438113 /* TFEmbededViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC05382302CF6A00438113 /* TFEmbededViewController.swift */; };
+		52AC053C2302D78300438113 /* mobilenet_quant_v1_224.tflite in Resources */ = {isa = PBXBuildFile; fileRef = 52AC053A2302D78300438113 /* mobilenet_quant_v1_224.tflite */; };
+		52AC053D2302D78300438113 /* labels.txt in Resources */ = {isa = PBXBuildFile; fileRef = 52AC053B2302D78300438113 /* labels.txt */; };
+		52AC05402302D86000438113 /* ModelDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC053F2302D86000438113 /* ModelDataHandler.swift */; };
+		52AC0545230407DC00438113 /* MapsColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC0544230407DC00438113 /* MapsColors.swift */; };
+		52AC05472304088F00438113 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC05462304088F00438113 /* UIColorExtensions.swift */; };
+		52AC05492304127D00438113 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC05482304127D00438113 /* UIViewExtensions.swift */; };
+		52AC055223041E3A00438113 /* SplashScreenMainColor.json in Resources */ = {isa = PBXBuildFile; fileRef = 52AC055123041E3A00438113 /* SplashScreenMainColor.json */; };
+		52AC055423041FFF00438113 /* LaunchScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC055323041FFF00438113 /* LaunchScreenView.swift */; };
+		52AC055623042C7800438113 /* SplashScreenWhiteColor.json in Resources */ = {isa = PBXBuildFile; fileRef = 52AC055523042C7800438113 /* SplashScreenWhiteColor.json */; };
 		5B0F40B222E6F5EA00C3FC12 /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0F40B022E6F5EA00C3FC12 /* ARViewController.swift */; };
 		5B0F40B322E6F5EA00C3FC12 /* ARViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B0F40B122E6F5EA00C3FC12 /* ARViewController.xib */; };
 		5B0F40B622E71A9D00C3FC12 /* GiroscopioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0F40B422E71A9D00C3FC12 /* GiroscopioViewController.swift */; };
@@ -14,7 +31,7 @@
 		5B3293E022E9977D00F3E268 /* QRViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3293DE22E9977D00F3E268 /* QRViewController.swift */; };
 		5B3293E122E9977D00F3E268 /* QRViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B3293DF22E9977D00F3E268 /* QRViewController.xib */; };
 		5B32AE8222F1C0AA000872ED /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B32AE8122F1C0AA000872ED /* art.scnassets */; };
-		5BB71BD022E0738100F14DBB /* SelectProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB71BCF22E0738100F14DBB /* SelectProjectViewController.swift */; };
+		5BB71BD022E0738100F14DBB /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB71BCF22E0738100F14DBB /* MainViewController.swift */; };
 		5BB71BD222E0739500F14DBB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BB71BD122E0739500F14DBB /* Main.storyboard */; };
 		AA2121C422D32A25005D058D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2121C322D32A25005D058D /* AppDelegate.swift */; };
 		AA2121C622D32A25005D058D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2121C522D32A25005D058D /* MapViewController.swift */; };
@@ -27,9 +44,28 @@
 		AA69328F230436DA0083AB58 /* UIPanGestureExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA69328E230436DA0083AB58 /* UIPanGestureExtension.swift */; };
 		AAAD742522F2DE9100C3ED15 /* MapDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAD742322F2DE9100C3ED15 /* MapDetailViewController.swift */; };
 		AAAD742622F2DE9100C3ED15 /* MapDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAAD742422F2DE9100C3ED15 /* MapDetailViewController.xib */; };
+		AB69A054FF4D56995A01EAEA /* Pods_mapsApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D231BEF31481663D9598A6C /* Pods_mapsApp.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		215839EF678DCE0FB90BEAC7 /* Pods-mapsApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mapsApp.release.xcconfig"; path = "Target Support Files/Pods-mapsApp/Pods-mapsApp.release.xcconfig"; sourceTree = "<group>"; };
+		52AC051C2302BC4B00438113 /* TensorFlow.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TensorFlow.storyboard; sourceTree = "<group>"; };
+		52AC05232302BF5E00438113 /* TFMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFMainViewController.swift; sourceTree = "<group>"; };
+		52AC05252302CBCE00438113 /* CVPixelBufferExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVPixelBufferExtension.swift; sourceTree = "<group>"; };
+		52AC052A2302CC9500438113 /* InfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCell.swift; sourceTree = "<group>"; };
+		52AC052E2302CE1F00438113 /* CurvedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurvedView.swift; sourceTree = "<group>"; };
+		52AC05322302CEC000438113 /* PreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewView.swift; sourceTree = "<group>"; };
+		52AC05342302CEDE00438113 /* CameraFeedManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraFeedManagerDelegate.swift; sourceTree = "<group>"; };
+		52AC05382302CF6A00438113 /* TFEmbededViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFEmbededViewController.swift; sourceTree = "<group>"; };
+		52AC053A2302D78300438113 /* mobilenet_quant_v1_224.tflite */ = {isa = PBXFileReference; lastKnownFileType = file; path = mobilenet_quant_v1_224.tflite; sourceTree = "<group>"; };
+		52AC053B2302D78300438113 /* labels.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = labels.txt; sourceTree = "<group>"; };
+		52AC053F2302D86000438113 /* ModelDataHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelDataHandler.swift; sourceTree = "<group>"; };
+		52AC0544230407DC00438113 /* MapsColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsColors.swift; sourceTree = "<group>"; };
+		52AC05462304088F00438113 /* UIColorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
+		52AC05482304127D00438113 /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
+		52AC055123041E3A00438113 /* SplashScreenMainColor.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SplashScreenMainColor.json; sourceTree = "<group>"; };
+		52AC055323041FFF00438113 /* LaunchScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenView.swift; sourceTree = "<group>"; };
+		52AC055523042C7800438113 /* SplashScreenWhiteColor.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SplashScreenWhiteColor.json; sourceTree = "<group>"; };
 		5B0F40B022E6F5EA00C3FC12 /* ARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewController.swift; sourceTree = "<group>"; };
 		5B0F40B122E6F5EA00C3FC12 /* ARViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ARViewController.xib; sourceTree = "<group>"; };
 		5B0F40B422E71A9D00C3FC12 /* GiroscopioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiroscopioViewController.swift; sourceTree = "<group>"; };
@@ -37,8 +73,10 @@
 		5B3293DE22E9977D00F3E268 /* QRViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRViewController.swift; sourceTree = "<group>"; };
 		5B3293DF22E9977D00F3E268 /* QRViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QRViewController.xib; sourceTree = "<group>"; };
 		5B32AE8122F1C0AA000872ED /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
-		5BB71BCF22E0738100F14DBB /* SelectProjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectProjectViewController.swift; sourceTree = "<group>"; };
+		5BB71BCF22E0738100F14DBB /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		5BB71BD122E0739500F14DBB /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		5D231BEF31481663D9598A6C /* Pods_mapsApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mapsApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		70FB208F7B0D431174A5B939 /* Pods-mapsApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mapsApp.debug.xcconfig"; path = "Target Support Files/Pods-mapsApp/Pods-mapsApp.debug.xcconfig"; sourceTree = "<group>"; };
 		AA2121C022D32A25005D058D /* mapsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mapsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA2121C322D32A25005D058D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AA2121C522D32A25005D058D /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -59,12 +97,221 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB69A054FF4D56995A01EAEA /* Pods_mapsApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		52AC051B2302B74A00438113 /* TF */ = {
+			isa = PBXGroup;
+			children = (
+				52AC051F2302BD7800438113 /* Storyboard */,
+				52AC051E2302BD5B00438113 /* ViewControllers */,
+				52AC05202302BE3E00438113 /* Utils */,
+				52AC05222302BE5400438113 /* Resources */,
+			);
+			path = TF;
+			sourceTree = "<group>";
+		};
+		52AC051E2302BD5B00438113 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				52AC05272302CC6700438113 /* Home */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		52AC051F2302BD7800438113 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				52AC051C2302BC4B00438113 /* TensorFlow.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		52AC05202302BE3E00438113 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				52AC05312302CEAD00438113 /* CameraFeed */,
+				52AC052C2302CE0300438113 /* Custom */,
+				52AC053E2302D84100438113 /* DataHandler */,
+				52AC05212302BE4C00438113 /* Extensions */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		52AC05212302BE4C00438113 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				52AC05252302CBCE00438113 /* CVPixelBufferExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		52AC05222302BE5400438113 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				52AC05302302CE9400438113 /* Models */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		52AC05272302CC6700438113 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				52AC05362302CF2300438113 /* Main */,
+				52AC05372302CF2B00438113 /* Embeded */,
+				52AC05282302CC7200438113 /* TableView */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		52AC05282302CC7200438113 /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				52AC05292302CC7F00438113 /* Cell */,
+			);
+			path = TableView;
+			sourceTree = "<group>";
+		};
+		52AC05292302CC7F00438113 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				52AC052A2302CC9500438113 /* InfoCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		52AC052C2302CE0300438113 /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				52AC052D2302CE0D00438113 /* UIView */,
+			);
+			path = Custom;
+			sourceTree = "<group>";
+		};
+		52AC052D2302CE0D00438113 /* UIView */ = {
+			isa = PBXGroup;
+			children = (
+				52AC052E2302CE1F00438113 /* CurvedView.swift */,
+			);
+			path = UIView;
+			sourceTree = "<group>";
+		};
+		52AC05302302CE9400438113 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				52AC053B2302D78300438113 /* labels.txt */,
+				52AC053A2302D78300438113 /* mobilenet_quant_v1_224.tflite */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		52AC05312302CEAD00438113 /* CameraFeed */ = {
+			isa = PBXGroup;
+			children = (
+				52AC05322302CEC000438113 /* PreviewView.swift */,
+				52AC05342302CEDE00438113 /* CameraFeedManagerDelegate.swift */,
+			);
+			path = CameraFeed;
+			sourceTree = "<group>";
+		};
+		52AC05362302CF2300438113 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				52AC05232302BF5E00438113 /* TFMainViewController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		52AC05372302CF2B00438113 /* Embeded */ = {
+			isa = PBXGroup;
+			children = (
+				52AC05382302CF6A00438113 /* TFEmbededViewController.swift */,
+			);
+			path = Embeded;
+			sourceTree = "<group>";
+		};
+		52AC053E2302D84100438113 /* DataHandler */ = {
+			isa = PBXGroup;
+			children = (
+				52AC053F2302D86000438113 /* ModelDataHandler.swift */,
+			);
+			path = DataHandler;
+			sourceTree = "<group>";
+		};
+		52AC0543230407C200438113 /* Colors */ = {
+			isa = PBXGroup;
+			children = (
+				52AC0544230407DC00438113 /* MapsColors.swift */,
+			);
+			path = Colors;
+			sourceTree = "<group>";
+		};
+		52AC054A23041B0A00438113 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				52AC054B23041BD800438113 /* Storyboard */,
+				52AC054C23041C0000438113 /* ViewControllers */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		52AC054B23041BD800438113 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				AA2121CC22D32A26005D058D /* LaunchScreen.storyboard */,
+				5BB71BD122E0739500F14DBB /* Main.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		52AC054C23041C0000438113 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				52AC055323041FFF00438113 /* LaunchScreenView.swift */,
+				5BB71BCF22E0738100F14DBB /* MainViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		52AC054D23041C1D00438113 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				52AC054E23041C3100438113 /* Extensions */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		52AC054E23041C3100438113 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				52AC05482304127D00438113 /* UIViewExtensions.swift */,
+				52AC05462304088F00438113 /* UIColorExtensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		52AC054F23041C4800438113 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				52AC055023041E0000438113 /* Lottie */,
+				52AC0543230407C200438113 /* Colors */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		52AC055023041E0000438113 /* Lottie */ = {
+			isa = PBXGroup;
+			children = (
+				52AC055523042C7800438113 /* SplashScreenWhiteColor.json */,
+				52AC055123041E3A00438113 /* SplashScreenMainColor.json */,
+			);
+			path = Lottie;
+			sourceTree = "<group>";
+		};
 		5B3293E222F02F2E00F3E268 /* 3D Objects */ = {
 			isa = PBXGroup;
 			children = (
@@ -102,11 +349,30 @@
 			path = Maps;
 			sourceTree = "<group>";
 		};
+		6A2F31E33FFFA3F7FADEBF6D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				70FB208F7B0D431174A5B939 /* Pods-mapsApp.debug.xcconfig */,
+				215839EF678DCE0FB90BEAC7 /* Pods-mapsApp.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		9696D9D0D171FDF865E389F2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5D231BEF31481663D9598A6C /* Pods_mapsApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		AA2121B722D32A25005D058D = {
 			isa = PBXGroup;
 			children = (
 				AA2121C222D32A25005D058D /* MapsApp */,
 				AA2121C122D32A25005D058D /* Products */,
+				6A2F31E33FFFA3F7FADEBF6D /* Pods */,
+				9696D9D0D171FDF865E389F2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -121,14 +387,15 @@
 		AA2121C222D32A25005D058D /* MapsApp */ = {
 			isa = PBXGroup;
 			children = (
-				5BB71BCE22E0731B00F14DBB /* Maps */,
+				52AC054A23041B0A00438113 /* Main */,
 				5BB71BCD22E072E800F14DBB /* AR-Street */,
-				AA2121C322D32A25005D058D /* AppDelegate.swift */,
+				52AC051B2302B74A00438113 /* TF */,
+				5BB71BCE22E0731B00F14DBB /* Maps */,
+				52AC054D23041C1D00438113 /* Utils */,
+				52AC054F23041C4800438113 /* Resources */,
 				AA2121CA22D32A26005D058D /* Assets.xcassets */,
-				AA2121CC22D32A26005D058D /* LaunchScreen.storyboard */,
 				AA2121CF22D32A26005D058D /* Info.plist */,
-				5BB71BCF22E0738100F14DBB /* SelectProjectViewController.swift */,
-				5BB71BD122E0739500F14DBB /* Main.storyboard */,
+				AA2121C322D32A25005D058D /* AppDelegate.swift */,
 			);
 			path = MapsApp;
 			sourceTree = "<group>";
@@ -140,9 +407,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AA2121D222D32A26005D058D /* Build configuration list for PBXNativeTarget "mapsApp" */;
 			buildPhases = (
+				9853D0CF0504061F06734337 /* [CP] Check Pods Manifest.lock */,
 				AA2121BC22D32A25005D058D /* Sources */,
 				AA2121BD22D32A25005D058D /* Frameworks */,
 				AA2121BE22D32A25005D058D /* Resources */,
+				ECF1413A4AA9E29309ADA31B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -165,6 +434,7 @@
 				TargetAttributes = {
 					AA2121BF22D32A25005D058D = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1030;
 					};
 				};
 			};
@@ -191,12 +461,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52AC055223041E3A00438113 /* SplashScreenMainColor.json in Resources */,
+				52AC055623042C7800438113 /* SplashScreenWhiteColor.json in Resources */,
 				5B32AE8222F1C0AA000872ED /* art.scnassets in Resources */,
+				52AC051D2302BC4B00438113 /* TensorFlow.storyboard in Resources */,
 				5B0F40B722E71A9D00C3FC12 /* GiroscopioViewController.xib in Resources */,
 				AA2121CE22D32A26005D058D /* LaunchScreen.storyboard in Resources */,
 				AAAD742622F2DE9100C3ED15 /* MapDetailViewController.xib in Resources */,
+				52AC053D2302D78300438113 /* labels.txt in Resources */,
 				AA2829A922E1D7BA00A5F6C7 /* bcnlocations.json in Resources */,
 				AA2121CB22D32A26005D058D /* Assets.xcassets in Resources */,
+				52AC053C2302D78300438113 /* mobilenet_quant_v1_224.tflite in Resources */,
 				5B0F40B322E6F5EA00C3FC12 /* ARViewController.xib in Resources */,
 				5B3293E122E9977D00F3E268 /* QRViewController.xib in Resources */,
 				AA2121C922D32A25005D058D /* map.storyboard in Resources */,
@@ -206,21 +481,74 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		9853D0CF0504061F06734337 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-mapsApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ECF1413A4AA9E29309ADA31B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-mapsApp/Pods-mapsApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-mapsApp/Pods-mapsApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-mapsApp/Pods-mapsApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		AA2121BC22D32A25005D058D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52AC05332302CEC000438113 /* PreviewView.swift in Sources */,
 				AAAD742522F2DE9100C3ED15 /* MapDetailViewController.swift in Sources */,
 				AA2121C622D32A25005D058D /* MapViewController.swift in Sources */,
+				52AC05242302BF5E00438113 /* TFMainViewController.swift in Sources */,
+				52AC05392302CF6A00438113 /* TFEmbededViewController.swift in Sources */,
 				AA2121C422D32A25005D058D /* AppDelegate.swift in Sources */,
 				AA69328F230436DA0083AB58 /* UIPanGestureExtension.swift in Sources */,
+				52AC05352302CEDE00438113 /* CameraFeedManagerDelegate.swift in Sources */,
 				AA2829AB22E1D80A00A5F6C7 /* MarkersResponseModel.swift in Sources */,
-				5BB71BD022E0738100F14DBB /* SelectProjectViewController.swift in Sources */,
-				AA54E5B72302B4E70075D8EA /* HalfModalPresentationController.swift in Sources */,
+				52AC05262302CBCE00438113 /* CVPixelBufferExtension.swift in Sources */,
+				52AC05472304088F00438113 /* UIColorExtensions.swift in Sources */,
+				52AC05492304127D00438113 /* UIViewExtensions.swift in Sources */,
+				5BB71BD022E0738100F14DBB /* MainViewController.swift in Sources */,
+				52AC05402302D86000438113 /* ModelDataHandler.swift in Sources */,
+				52AC052F2302CE1F00438113 /* CurvedView.swift in Sources */,
 				5B0F40B222E6F5EA00C3FC12 /* ARViewController.swift in Sources */,
+				52AC055423041FFF00438113 /* LaunchScreenView.swift in Sources */,
 				5B0F40B622E71A9D00C3FC12 /* GiroscopioViewController.swift in Sources */,
 				5B3293E022E9977D00F3E268 /* QRViewController.swift in Sources */,
+				52AC052B2302CC9500438113 /* InfoCell.swift in Sources */,
+				52AC0545230407DC00438113 /* MapsColors.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,7 +625,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -352,7 +680,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -364,6 +692,7 @@
 		};
 		AA2121D322D32A26005D058D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 70FB208F7B0D431174A5B939 /* Pods-mapsApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -375,13 +704,14 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = cristina.mapsApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
 		AA2121D422D32A26005D058D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 215839EF678DCE0FB90BEAC7 /* Pods-mapsApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -393,7 +723,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = cristina.mapsApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
