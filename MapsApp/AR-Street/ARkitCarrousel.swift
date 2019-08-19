@@ -34,10 +34,13 @@ class ARkitCarrousel: UIViewController {
     @IBOutlet weak var sceneView: SCNView!
     
     var geometryNode: SCNNode = SCNNode()
+    var parentNode: SCNNode = SCNNode()
     
     // Gestures
     var currentAngleX: Float = 0.0
     var currentAngleY: Float = 0.0
+    var parentAngleY: Float = 0.0
+    var separationAngles: Int = 0
     var enableDoublePan : Bool = true
     var arrayNodes : [nodes] = []
     
@@ -50,40 +53,15 @@ class ARkitCarrousel: UIViewController {
         
         geometryLabel.text = arrayNodes[0].title
         geometryNode = arrayNodes[0].node
-        sceneView.scene!.rootNode.addChildNode(geometryNode)
+        
+        createCarouselOfNodes(nodeArray: arrayNodes.map{$0.node}, parentNode: parentNode)
+        sceneView.scene!.rootNode.addChildNode(parentNode)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
     }
-    
-
-//    @IBAction func segmentValueChanged(_ sender: UISegmentedControl) {
-//        geometryNode.removeFromParentNode()
-//    // 2
-//        switch sender.selectedSegmentIndex {
-//        case 0:
-//            geometryLabel.text = "Atoms\n"
-//            geometryNode = Atoms.allAtoms()
-//        case 1:
-//            geometryLabel.text = "Methane\n(Natural Gas)"
-//            geometryNode = Molecules.methaneMolecule()
-//        case 2:
-//            geometryLabel.text = "Ethanol\n(Alcohol)"
-//            geometryNode = Molecules.ethanolMolecule()
-//        case 3:
-//            geometryLabel.text = "Polytetrafluoroethylene\n(Teflon)"
-//            //geometryNode = Molecules.ptfeMolecule()
-//            geometryNode = Molecules.coladaObject()
-//            geometryNode.scale = SCNVector3(0.1, 0.1, 0.1)
-//        default:
-//            break
-//        }
-//        
-//        // 3
-//        sceneView.scene!.rootNode.addChildNode(geometryNode)
-//    }
     
     func createNodes() -> [nodes]{
          var arrayNodes : [nodes] = []
@@ -133,7 +111,7 @@ class ARkitCarrousel: UIViewController {
         // camera
         let cameraNode = SCNNode()
         cameraNode.camera = SCNCamera()
-        cameraNode.position = SCNVector3Make(0, 0, 25)
+        cameraNode.position = SCNVector3Make(0, 0, 50)
         scene.rootNode.addChildNode(cameraNode)
         
         //        // 2
@@ -159,12 +137,47 @@ class ARkitCarrousel: UIViewController {
         sceneView.scene = scene
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        let location = touches.first!.location(in: sceneView)
+        
+        // Let's test if a 3D Object was touch
+        var hitTestOptions = [SCNHitTestOption: Any]()
+        hitTestOptions[SCNHitTestOption.boundingBoxOnly] = true
+        
+        let hitResults: [SCNHitTestResult]  = sceneView.hitTest(location, options: hitTestOptions)
+        
+        if let hit = hitResults.first {
+            if let node = getParent(hit.node) {
+                geometryNode = node
+                return
+            }
+        }
+    }
+    
+    func getParent(_ nodeFound: SCNNode?) -> SCNNode? {
+        if let node = nodeFound {
+            
+            let arrayOfNodes =  arrayNodes.map{$0.node}
+            if let _ = arrayOfNodes.firstIndex(of: node){
+                return node
+            }
+            else if let parent = node.parent {
+                    return getParent(parent)
+                }
+        }
+        return nil
+    }
+    
+    
+    
+    
     @objc
     func panGesture(_ sender: UIPanGestureRecognizer) {
         
         if(sender.state == UIGestureRecognizer.State.began) {
             currentAngleY = geometryNode.eulerAngles.y
-            currentAngleX = geometryNode.eulerAngles.x
+            currentAngleX = geometryNode.eulerAngles.z
         }
         
         let translation = sender.translation(in: sender.view!)
@@ -177,52 +190,119 @@ class ARkitCarrousel: UIViewController {
         
         //geometryNode.transform = SCNMatrix4MakeRotation(newAngle, 0, 1, 0)
         geometryNode.eulerAngles.y = newAngleY
-        geometryNode.eulerAngles.x = newAngleX
+        geometryNode.eulerAngles.z = newAngleX
         
         if(sender.state == UIGestureRecognizer.State.ended) {
             currentAngleY = geometryNode.eulerAngles.y
-            currentAngleX = geometryNode.eulerAngles.x
+            currentAngleX = geometryNode.eulerAngles.z
         }
     }
+    
+//    @objc
+//    func panGestureTwoFinguers(_ sender: UIPanGestureRecognizer) {
+//
+//        let translation = sender.translation(in: sender.view!)
+//
+//        if enableDoublePan {
+//            if abs(translation.x) > 90 {
+//                enableDoublePan = false
+//                geometryNode.removeFromParentNode()
+//
+//                var index = searchIndexOnArrayNode(nodeToSearch: geometryNode, arrayOfNodes: arrayNodes.map{$0.node})
+//
+//                if translation.x > 0 {
+//
+//                    index =  (index == arrayNodes.count - 1) ? 0 : index+1
+//                    print(index)
+//
+//                } else {
+//
+//                    index =  (index == 0) ? arrayNodes.count - 1 : index-1
+//                    print(index)
+//                }
+//
+//                geometryLabel.text = arrayNodes[index].title
+//                geometryNode = arrayNodes[index].node
+//                sceneView.scene!.rootNode.addChildNode(geometryNode)
+//
+//            }
+//        }
+//        if(sender.state == UIGestureRecognizer.State.ended) {
+//            enableDoublePan = true
+//        }
+//    }
     
     @objc
     func panGestureTwoFinguers(_ sender: UIPanGestureRecognizer) {
         
+        if(sender.state == UIGestureRecognizer.State.began) {
+            parentAngleY = parentNode.eulerAngles.y
+        }
+        
         let translation = sender.translation(in: sender.view!)
         
-        if enableDoublePan {
-            if abs(translation.x) > 90 {
-                enableDoublePan = false
-                geometryNode.removeFromParentNode()
-                
-                var index = searchIndexOnArrayNode(nodeToSearch: geometryNode, arrayOfNodes: arrayNodes.map{$0.node})
-                
-                if translation.x > 0 {
-                    
-                    index =  (index == arrayNodes.count - 1) ? 0 : index+1
-                    print(index)
-                    
-                } else {
-                    
-                    index =  (index == 0) ? arrayNodes.count - 1 : index-1
-                    print(index)
-                }
-                
-                geometryLabel.text = arrayNodes[index].title
-                geometryNode = arrayNodes[index].node
-                sceneView.scene!.rootNode.addChildNode(geometryNode)
-                
-            }
-        }
-        if(sender.state == UIGestureRecognizer.State.ended) {
-            enableDoublePan = true
-        }
+        var newAngleY = (Float)(translation.x)*(Float)(Double.pi)/180.0
+        newAngleY += self.parentAngleY
         
+        //geometryNode.transform = SCNMatrix4MakeRotation(newAngle, 0, 1, 0)
+        parentNode.eulerAngles.y = newAngleY
+        
+        newAngleY = newAngleY > 2*Float.pi ? newAngleY/Float.pi : newAngleY
+        
+//        if(sender.state == UIGestureRecognizer.State.ended) {
+//            
+//            let ajustAngle = self.nearestAngle(angleToCaculate: Double(newAngleY), separationAngle: Double(self.separationAngles))
+//            self.parentNode.eulerAngles.y = Float(ajustAngle)   
+//        }
     }
+    
     
     func searchIndexOnArrayNode(nodeToSearch: SCNNode, arrayOfNodes: [SCNNode]) -> Int {
 
         return arrayOfNodes.firstIndex(of: nodeToSearch) ?? 0
     }
+    
+    func joinNodesOnAParent(node: SCNNode,parentNode: SCNNode, position: SCNVector3) {
+        node.position = position
+        parentNode.addChildNode(node)
+    }
+    
+    func createCarouselOfNodes(nodeArray: [SCNNode],parentNode: SCNNode){
+        
+        let count = nodeArray.count
+        self.separationAngles = 360/count
+        var positions : [SCNVector3] = []
+        
+        for  i in stride(from: 0, to: 360, by: self.separationAngles){
+            
+            let positionX = sin((Double(i) * Double.pi)/180)*30
+            let positionZ = cos((Double(i) * Double.pi) / 180)*20//sin(Float(i))*10
+            positions.append(SCNVector3(positionX, 0, positionZ))
+        }
+        
+        for j in 0 ..< nodeArray.count{
+         self.joinNodesOnAParent(node: nodeArray[j], parentNode: parentNode, position: positions[j])
+        }
+        
+    }
+    
+//    func nearestAngle(angleToCaculate angle: Double, separationAngle: Double) -> Double {
+//
+//        var difAngle : Double = 360.0
+//        var angleToReturn = Double.pi
+//        //var angleCorreciton = (angle * 180) / Double.pi
+//
+//        for newAngle in stride(from: 0, to: 360, by: separationAngle){
+//
+//            let angle1 = abs((newAngle * Double.pi)/180) - abs(angle)
+//
+//            if abs(angle1) < abs(difAngle) {
+//                difAngle = angle1
+//                angleToReturn = abs((newAngle * Double.pi)/180)
+//            }
+//        }
+//
+//        return angleToReturn
+//    }
 
 }

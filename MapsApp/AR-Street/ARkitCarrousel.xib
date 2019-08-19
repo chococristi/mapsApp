@@ -33,9 +33,19 @@
                     <rect key="frame" x="0.0" y="54" width="375" height="554"/>
                     <color key="backgroundColor" red="0.63921568630000003" green="0.63921568630000003" blue="0.63921568630000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </sceneKitView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lby-EJ-7et">
+                    <rect key="frame" x="305" y="66" width="50" height="50"/>
+                    <color key="backgroundColor" red="1" green="0.074743433489999997" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="DeR-3Y-Snd"/>
+                        <constraint firstAttribute="width" constant="50" id="tuQ-tb-fLY"/>
+                    </constraints>
+                    <state key="normal" title="AR"/>
+                </button>
             </subviews>
             <color key="backgroundColor" red="0.63921568630000003" green="0.63921568630000003" blue="0.63921568630000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="lby-EJ-7et" firstAttribute="top" secondItem="1NG-Nn-obb" secondAttribute="bottom" constant="20" id="2XH-Po-bdG"/>
                 <constraint firstItem="IID-Fc-g6j" firstAttribute="bottom" secondItem="cXZ-Fk-H6f" secondAttribute="bottom" constant="59" id="3gB-oY-R1r"/>
                 <constraint firstAttribute="trailing" secondItem="1NG-Nn-obb" secondAttribute="trailing" constant="20" symbolic="YES" id="7gt-DM-wxS"/>
                 <constraint firstItem="1NG-Nn-obb" firstAttribute="leading" secondItem="hhn-MB-s7j" secondAttribute="leading" constant="20" symbolic="YES" id="ZAY-Co-hnl"/>
@@ -43,6 +53,7 @@
                 <constraint firstItem="1NG-Nn-obb" firstAttribute="top" secondItem="IID-Fc-g6j" secondAttribute="top" id="oSp-8v-fXP"/>
                 <constraint firstItem="cXZ-Fk-H6f" firstAttribute="leading" secondItem="hhn-MB-s7j" secondAttribute="leading" id="rWg-04-Dy4"/>
                 <constraint firstAttribute="centerX" secondItem="cXZ-Fk-H6f" secondAttribute="centerX" id="vPt-br-RzH"/>
+                <constraint firstItem="IID-Fc-g6j" firstAttribute="trailing" secondItem="lby-EJ-7et" secondAttribute="trailing" constant="20" id="xWw-HB-ZmH"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="IID-Fc-g6j"/>
             <point key="canvasLocation" x="479" y="179"/>
