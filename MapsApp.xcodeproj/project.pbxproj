@@ -24,6 +24,8 @@
 		52AC055223041E3A00438113 /* SplashScreenMainColor.json in Resources */ = {isa = PBXBuildFile; fileRef = 52AC055123041E3A00438113 /* SplashScreenMainColor.json */; };
 		52AC055423041FFF00438113 /* LaunchScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC055323041FFF00438113 /* LaunchScreenView.swift */; };
 		52AC055623042C7800438113 /* SplashScreenWhiteColor.json in Resources */ = {isa = PBXBuildFile; fileRef = 52AC055523042C7800438113 /* SplashScreenWhiteColor.json */; };
+		52DE5E4E230D75450088BC8C /* GoogleMaps.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52DE5E4D230D75450088BC8C /* GoogleMaps.storyboard */; };
+		52DE5E50230D77FE0088BC8C /* GMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DE5E4F230D77FE0088BC8C /* GMViewController.swift */; };
 		5B0F40B222E6F5EA00C3FC12 /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0F40B022E6F5EA00C3FC12 /* ARViewController.swift */; };
 		5B0F40B322E6F5EA00C3FC12 /* ARViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B0F40B122E6F5EA00C3FC12 /* ARViewController.xib */; };
 		5B0F40B622E71A9D00C3FC12 /* ARkitCarrousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0F40B422E71A9D00C3FC12 /* ARkitCarrousel.swift */; };
@@ -68,6 +70,8 @@
 		52AC055123041E3A00438113 /* SplashScreenMainColor.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SplashScreenMainColor.json; sourceTree = "<group>"; };
 		52AC055323041FFF00438113 /* LaunchScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenView.swift; sourceTree = "<group>"; };
 		52AC055523042C7800438113 /* SplashScreenWhiteColor.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SplashScreenWhiteColor.json; sourceTree = "<group>"; };
+		52DE5E4D230D75450088BC8C /* GoogleMaps.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GoogleMaps.storyboard; sourceTree = "<group>"; };
+		52DE5E4F230D77FE0088BC8C /* GMViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GMViewController.swift; sourceTree = "<group>"; };
 		5B0F40B022E6F5EA00C3FC12 /* ARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewController.swift; sourceTree = "<group>"; };
 		5B0F40B122E6F5EA00C3FC12 /* ARViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ARViewController.xib; sourceTree = "<group>"; };
 		5B0F40B422E71A9D00C3FC12 /* ARkitCarrousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARkitCarrousel.swift; sourceTree = "<group>"; };
@@ -316,6 +320,31 @@
 			path = Lottie;
 			sourceTree = "<group>";
 		};
+		52DE5E4A230D74F60088BC8C /* GoogleMaps */ = {
+			isa = PBXGroup;
+			children = (
+				52DE5E4B230D75170088BC8C /* Storyboard */,
+				52DE5E4C230D75220088BC8C /* ViewControllers */,
+			);
+			path = GoogleMaps;
+			sourceTree = "<group>";
+		};
+		52DE5E4B230D75170088BC8C /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				52DE5E4D230D75450088BC8C /* GoogleMaps.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		52DE5E4C230D75220088BC8C /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				52DE5E4F230D77FE0088BC8C /* GMViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
 		5B1993762304370100A6E78D /* models */ = {
 			isa = PBXGroup;
 			children = (
@@ -403,6 +432,7 @@
 			children = (
 				52AC054A23041B0A00438113 /* Main */,
 				5BB71BCD22E072E800F14DBB /* AR-Street */,
+				52DE5E4A230D74F60088BC8C /* GoogleMaps */,
 				52AC051B2302B74A00438113 /* TF */,
 				5BB71BCE22E0731B00F14DBB /* Maps */,
 				52AC054D23041C1D00438113 /* Utils */,
@@ -427,6 +457,7 @@
 				AA2121BE22D32A25005D058D /* Resources */,
 				ECF1413A4AA9E29309ADA31B /* [CP] Embed Pods Frameworks */,
 				5284D941230D2AD900CC04EE /* SwiftLint */,
+				7931379EB27D9F10B555503E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -478,6 +509,7 @@
 			files = (
 				52AC055223041E3A00438113 /* SplashScreenMainColor.json in Resources */,
 				52AC055623042C7800438113 /* SplashScreenWhiteColor.json in Resources */,
+				52DE5E4E230D75450088BC8C /* GoogleMaps.storyboard in Resources */,
 				5B32AE8222F1C0AA000872ED /* art.scnassets in Resources */,
 				52AC051D2302BC4B00438113 /* TensorFlow.storyboard in Resources */,
 				5B0F40B722E71A9D00C3FC12 /* ARkitCarrousel.xib in Resources */,
@@ -515,6 +547,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\n    \"${PODS_ROOT}/SwiftLint/swiftlint\"\nelse\n    echo \"warning: SwiftLint not installed. Ask Carles how to fix this\"\nfi\n";
+		};
+		7931379EB27D9F10B555503E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-mapsApp/Pods-mapsApp-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-mapsApp/Pods-mapsApp-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-mapsApp/Pods-mapsApp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 		9853D0CF0504061F06734337 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -574,6 +623,7 @@
 				AA2829AB22E1D80A00A5F6C7 /* MarkersResponseModel.swift in Sources */,
 				5B19937A2304370B00A6E78D /* Atoms.swift in Sources */,
 				52AC05262302CBCE00438113 /* CVPixelBufferExtension.swift in Sources */,
+				52DE5E50230D77FE0088BC8C /* GMViewController.swift in Sources */,
 				52AC05472304088F00438113 /* UIColorExtensions.swift in Sources */,
 				52AC05492304127D00438113 /* UIViewExtensions.swift in Sources */,
 				52AC05402302D86000438113 /* ModelDataHandler.swift in Sources */,

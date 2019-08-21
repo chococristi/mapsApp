@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import GoogleMaps
+
+let googleApiKey = "AIzaSyAdE8r0bQcPQfye1dC_LKX16OWIuqPvYmU"
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -53,9 +56,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func setup() {
 
+        setupGoogleMaps()
+
         setupNavigationBar()
 
         setupTabBar()
+    }
+    
+    func setupGoogleMaps() {
+        GMSServices.provideAPIKey(googleApiKey)
     }
 
     func setupNavigationBar() {

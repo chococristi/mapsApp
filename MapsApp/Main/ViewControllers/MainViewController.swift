@@ -18,6 +18,9 @@ class MainViewController: UITabBarController {
 
     let mapsImage: UIImage? = UIImage.init(named: "mapsImage")?.withRenderingMode(.alwaysOriginal)
     let mapsImageSelected: UIImage? = UIImage.init(named: "mapsImageSelected")?.withRenderingMode(.alwaysOriginal)
+    
+    let gmImage: UIImage? = UIImage.init(named: "gmImage")?.withRenderingMode(.alwaysOriginal)
+    let gmImageSelected: UIImage? = UIImage.init(named: "gmImageSelected")?.withRenderingMode(.alwaysOriginal)
 
     let arStreetImage: UIImage? = UIImage.init(named: "arStreetImage")?.withRenderingMode(.alwaysOriginal)
     let arStreetImageSelected: UIImage? = UIImage.init(named: "arStreetImageSelected")?.withRenderingMode(.alwaysOriginal)
@@ -61,6 +64,7 @@ class MainViewController: UITabBarController {
     func setupTabBarController() {
 
         guard let mapsViewController = setupMaps(),
+            let googleMapsViewController = setupGoogleMaps(),
             let arStreetViewController = setupARStreet(),
             let tensorFlowViewController = setupTensorFlow()
             else { return }
@@ -70,18 +74,24 @@ class MainViewController: UITabBarController {
                                                      selectedImage: mapsImageSelected)
         mapsViewController.title = "Maps"
 
-        arStreetViewController.tabBarItem = UITabBarItem(title: "ARStreet",
+        googleMapsViewController.tabBarItem = UITabBarItem(title: "Google Maps",
+                                                     image: gmImage,
+                                                     selectedImage: gmImageSelected)
+        googleMapsViewController.title = "Google Maps"
+
+        arStreetViewController.tabBarItem = UITabBarItem(title: "AR Street",
                                                          image: arStreetImage,
                                                          selectedImage: arStreetImageSelected)
-        arStreetViewController.title = "ARStreet"
+        arStreetViewController.title = "AR Street"
 
-        tensorFlowViewController.tabBarItem = UITabBarItem(title: "TensorFlow",
+        tensorFlowViewController.tabBarItem = UITabBarItem(title: "Tensor Flow",
                                                            image: tensorFlowImage,
                                                            selectedImage: tensorFlowImageSelected)
 
-        tensorFlowViewController.title = "TensorFlow"
+        tensorFlowViewController.title = "Tensor Flow"
 
         let viewControllerList = [ mapsViewController,
+                                   googleMapsViewController,
                                    arStreetViewController,
                                    tensorFlowViewController ]
 
@@ -96,6 +106,13 @@ class MainViewController: UITabBarController {
                                            bundle: nil)
 
         return storyboard.instantiateInitialViewController() as? MapViewController
+    }
+
+    func setupGoogleMaps() -> UIViewController? {
+        let storyboard = UIStoryboard.init(name: "GoogleMaps",
+                                           bundle: nil)
+
+        return storyboard.instantiateInitialViewController() as? GMViewController
     }
 
     func setupARStreet() -> UIViewController? {

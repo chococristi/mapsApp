@@ -1,4 +1,9 @@
 PODS:
+  - GoogleMaps (3.3.0):
+    - GoogleMaps/Maps (= 3.3.0)
+  - GoogleMaps/Base (3.3.0)
+  - GoogleMaps/Maps (3.3.0):
+    - GoogleMaps/Base
   - lottie-ios (3.1.2)
   - SwiftLint (0.34.0)
   - TensorFlowLiteC (1.14.0)
@@ -6,23 +11,26 @@ PODS:
     - TensorFlowLiteC (= 1.14.0)
 
 DEPENDENCIES:
+  - GoogleMaps
   - lottie-ios
   - SwiftLint
   - TensorFlowLiteSwift
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - GoogleMaps
     - lottie-ios
     - SwiftLint
     - TensorFlowLiteC
     - TensorFlowLiteSwift
 
 SPEC CHECKSUMS:
+  GoogleMaps: cfee83da305b9aaeccf92c24ac79df11c3003492
   lottie-ios: 49cd85b1f24f61a7708ad7ec76a523ab2d0e3100
   SwiftLint: 79d48a17c6565dc286c37efb8322c7b450f95c67
   TensorFlowLiteC: a6702011fb661928634e59565b5fe262f69692d0
   TensorFlowLiteSwift: ac8c816ae2d65f631a96151e7991c46412aec7eb
 
-PODFILE CHECKSUM: 804ba8274bb841c055b44e255aeb1b7ff2ff9df1
+PODFILE CHECKSUM: 33de9146d157046430222df7a52c916ad9ced8ac
 
 COCOAPODS: 1.7.5

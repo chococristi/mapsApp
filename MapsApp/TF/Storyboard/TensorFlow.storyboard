@@ -12,7 +12,7 @@
         <!--Main View Controller-->
         <scene sceneID="DPT-3S-d8J">
             <objects>
-                <viewController storyboardIdentifier="TFHomeViewController" id="Isp-5T-0kY" customClass="TFMainViewController" customModule="mapsApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TFHome" id="Isp-5T-0kY" customClass="TFMainViewController" customModule="mapsApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FYP-3w-RmR">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
