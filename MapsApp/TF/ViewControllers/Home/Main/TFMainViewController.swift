@@ -171,7 +171,9 @@ extension TFMainViewController: CameraFeedManagerDelegate {
     }
 
     func presentCameraPermissionsDeniedAlert() {
-        let alertController = UIAlertController(title: "Camera Permissions Denied", message: "Camera permissions have been denied for this app. You can change this by going to Settings", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Camera Permissions Denied",
+                                                message: "Camera permissions have been denied for this app. You can change this by going to Settings",
+                                                preferredStyle: .alert)
 
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         let settingsAction = UIAlertAction(title: "Settings", style: .default) { (_) in
@@ -184,7 +186,10 @@ extension TFMainViewController: CameraFeedManagerDelegate {
     }
 
     func presentVideoConfigurationErrorAlert() {
-        let alert = UIAlertController(title: "Camera Configuration Failed", message: "There was an error while configuring camera.", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Camera Configuration Failed",
+                                      message: "There was an error while configuring camera.",
+                                      preferredStyle: .alert)
+
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
 
         self.present(alert, animated: true)
