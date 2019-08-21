@@ -24,40 +24,40 @@ import Foundation
 import SceneKit
 
 class Molecules {
-    
+
     class func methaneMolecule() -> SCNNode {
         var methaneMolecule = SCNNode()
-        
+
         // 1 Carbon
         let carbonNode1 = nodeWithAtom(atom: Atoms.carbonAtom(), molecule: methaneMolecule, position: SCNVector3Make(0, 0, 0))
-        
+
         // 4 Hydrogen
         let hydrogenNode1 = nodeWithAtom(atom: Atoms.hydrogenAtom(), molecule: methaneMolecule, position: SCNVector3Make(-4, 0, 0))
         let hydrogenNode2 = nodeWithAtom(atom: Atoms.hydrogenAtom(), molecule: methaneMolecule, position: SCNVector3Make(+4, 0, 0))
         let hydrogenNode3 = nodeWithAtom(atom: Atoms.hydrogenAtom(), molecule: methaneMolecule, position: SCNVector3Make(0, -4, 0))
         let hydrogenNode4 = nodeWithAtom(atom: Atoms.hydrogenAtom(), molecule: methaneMolecule, position: SCNVector3Make(0, +4, 0))
-        
+
         methaneMolecule.addChildNode(carbonNode1)
         methaneMolecule.addChildNode(hydrogenNode1)
         methaneMolecule.addChildNode(hydrogenNode2)
         methaneMolecule.addChildNode(hydrogenNode3)
         methaneMolecule.addChildNode(hydrogenNode4)
-        
+
         return methaneMolecule
     }
-    
+
     class func ethanolMolecule() -> SCNNode {
         var ethanolMolecule = SCNNode()
         return ethanolMolecule
     }
-    
+
     class func ptfeMolecule() -> SCNNode {
         var ptfeMolecule = SCNNode()
         return ptfeMolecule
     }
-    
+
     class func coladaObject() -> SCNNode {
-        
+
         let nodeName = "cherub"
        guard let modelScene = SCNScene(named:
         "art.scnassets/cherub/cherub.dae") else {
@@ -68,7 +68,7 @@ class Molecules {
         }
         return node
     }
-    
+
     class func nodeWithAtom(atom: SCNGeometry, molecule: SCNNode, position: SCNVector3) -> SCNNode {
         let node = SCNNode(geometry: atom)
         node.position = position
