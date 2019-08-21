@@ -16,7 +16,7 @@ import Foundation
 import UIKit
 
 // MARK: TFEmbededViewControllerDelegate Method Declarations
-protocol TFEmbededViewControllerDelegate {
+protocol TFEmbededViewControllerDelegate: class {
 
     /**
      This method is called when the user changes the stepper value to update number of threads used for inference.
@@ -81,7 +81,7 @@ class TFEmbededViewController: UIViewController {
     private var currentThreadCount: Int = 0
 
     // MARK: Delegate
-    var delegate: TFEmbededViewControllerDelegate?
+    weak var delegate: TFEmbededViewControllerDelegate?
 
     // MARK: Computed properties
     var collapsedHeight: CGFloat {
