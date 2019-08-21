@@ -258,15 +258,30 @@ class CameraFeedManager: NSObject {
 
     // MARK: Notification Observer Handling
     private func addObservers() {
-        NotificationCenter.default.addObserver(self, selector: #selector(CameraFeedManager.sessionRuntimeErrorOccured(notification:)), name: NSNotification.Name.AVCaptureSessionRuntimeError, object: session)
-        NotificationCenter.default.addObserver(self, selector: #selector(CameraFeedManager.sessionWasInterrupted(notification:)), name: NSNotification.Name.AVCaptureSessionWasInterrupted, object: session)
-        NotificationCenter.default.addObserver(self, selector: #selector(CameraFeedManager.sessionInterruptionEnded), name: NSNotification.Name.AVCaptureSessionInterruptionEnded, object: session)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(CameraFeedManager.sessionRuntimeErrorOccured(notification:)),
+                                               name: NSNotification.Name.AVCaptureSessionRuntimeError,
+                                               object: session)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(CameraFeedManager.sessionWasInterrupted(notification:)),
+                                               name: NSNotification.Name.AVCaptureSessionWasInterrupted,
+                                               object: session)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(CameraFeedManager.sessionInterruptionEnded),
+                                               name: NSNotification.Name.AVCaptureSessionInterruptionEnded,
+                                               object: session)
     }
 
     private func removeObservers() {
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.AVCaptureSessionRuntimeError, object: session)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.AVCaptureSessionWasInterrupted, object: session)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.AVCaptureSessionInterruptionEnded, object: session)
+        NotificationCenter.default.removeObserver(self,
+                                                  name: NSNotification.Name.AVCaptureSessionRuntimeError,
+                                                  object: session)
+        NotificationCenter.default.removeObserver(self,
+                                                  name: NSNotification.Name.AVCaptureSessionWasInterrupted,
+                                                  object: session)
+        NotificationCenter.default.removeObserver(self,
+                                                  name: NSNotification.Name.AVCaptureSessionInterruptionEnded,
+                                                  object: session)
     }
 
     // MARK: Notification Observers

@@ -105,6 +105,7 @@ class ModelDataHandler {
 
     /// Performs image preprocessing, invokes the `Interpreter`, and processes the inference results.
     func runModel(onFrame pixelBuffer: CVPixelBuffer) -> Result? {
+
         let sourcePixelFormat = CVPixelBufferGetPixelFormatType(pixelBuffer)
         assert(sourcePixelFormat == kCVPixelFormatType_32ARGB ||
             sourcePixelFormat == kCVPixelFormatType_32BGRA ||

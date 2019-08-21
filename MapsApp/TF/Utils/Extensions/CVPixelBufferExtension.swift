@@ -27,16 +27,10 @@ extension CVPixelBuffer {
         let imageChannels = 4
 
         let thumbnailSize = min(imageWidth, imageHeight)
-        CVPixelBufferLockBaseAddress(self, CVPixelBufferLockFlags(rawValue: 0))
+        CVPixelBufferLockBaseAddress(self, CVPixelBufferLockFlags(rawValue: .zero))
 
-        var originX = 0
-        var originY = 0
-
-        if imageWidth > imageHeight {
-            originX = (imageWidth - imageHeight) / 2
-        } else {
-            originY = (imageHeight - imageWidth) / 2
-        }
+        let originX = imageWidth > imageHeight ? (imageWidth - imageHeight) / 2 : .zero
+        let originY = imageWidth > imageHeight ? .zero : (imageHeight - imageWidth) / 2
 
         // Finds the biggest square in the pixel buffer and advances rows based on it.
         guard let inputBaseAddress = CVPixelBufferGetBaseAddress(self)?.advanced(
@@ -55,12 +49,15 @@ extension CVPixelBuffer {
         }
 
         // Allocates a vImage buffer for thumbnail image.
-        var thumbnailVImageBuffer = vImage_Buffer(data: thumbnailBytes, height: UInt(size.height), width: UInt(size.width), rowBytes: thumbnailRowBytes)
+        var thumbnailVImageBuffer = vImage_Buffer(data: thumbnailBytes,
+                                                  height: UInt(size.height),
+                                                  width: UInt(size.width),
+                                                  rowBytes: thumbnailRowBytes)
 
         // Performs the scale operation on input image buffer and stores it in thumbnail image buffer.
         let scaleError = vImageScale_ARGB8888(&inputVImageBuffer, &thumbnailVImageBuffer, nil, vImage_Flags(0))
 
-        CVPixelBufferUnlockBaseAddress(self, CVPixelBufferLockFlags(rawValue: 0))
+        CVPixelBufferUnlockBaseAddress(self, CVPixelBufferLockFlags(rawValue: .zero))
 
         guard scaleError == kvImageNoError else {
             return nil
