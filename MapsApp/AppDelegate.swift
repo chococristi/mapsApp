@@ -13,12 +13,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
+
         setup()
-        
+
         return true
     }
 
@@ -43,42 +42,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-    
+
     // MARK: - Helpers
-    
+
     func setup() {
 
-        
         setupNavigationBar()
-        
+
         setupTabBar()
     }
-    
-    
+
     func setupNavigationBar() {
-        
+
         let navigationBarAppearace = UINavigationBar.appearance()
-        
+
         navigationBarAppearace.tintColor = MapsColors.mainColor
         navigationBarAppearace.barTintColor = MapsColors.mainColor
-        
+
         if #available(iOS 11.0, *) {
             //To change iOS 11 navigationBar largeTitle color
-            
+
             navigationBarAppearace.largeTitleTextAttributes = [
                 NSAttributedString.Key.foregroundColor: UIColor.white]
         }
-        
+
         // for default navigation bar title color
         navigationBarAppearace.titleTextAttributes = [
             NSAttributedString.Key.foregroundColor: UIColor.white]
-        
+
     }
-    
+
     func setupTabBar() {
-        
+
         let tabBarAppearace = UITabBarItem.appearance()
-        
+
         tabBarAppearace.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: MapsColors.secondaryColor],
                                                for: .normal)
         tabBarAppearace.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: MapsColors.mainColor],
@@ -86,4 +83,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 }
-

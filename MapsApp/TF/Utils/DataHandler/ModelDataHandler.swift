@@ -41,40 +41,40 @@ enum MobileNet {
 /// by invoking the `Interpreter`. It then formats the inferences obtained and returns the top N
 /// results for a successful inference.
 class ModelDataHandler {
-    
+
     // MARK: - Internal Properties
-    
+
     /// The current thread count used by the TensorFlow Lite Interpreter.
     let threadCount: Int
-    
+
     let resultCount = 3
     let threadCountLimit = 10
-    
+
     // MARK: - Model Parameters
-    
+
     let batchSize = 1
     let inputChannels = 3
     let inputWidth = 224
     let inputHeight = 224
-    
+
     // MARK: - Private Properties
-    
+
     /// List of labels from the given labels file.
     private var labels: [String] = []
-    
+
     /// TensorFlow Lite `Interpreter` object for performing inference on a given model.
     private var interpreter: Interpreter
-    
+
     /// Information about the alpha component in RGBA data.
     private let alphaComponent = (baseOffset: 4, moduloRemainder: 3)
-    
+
     // MARK: - Initialization
-    
+
     /// A failable initializer for `ModelDataHandler`. A new instance is created if the model and
     /// labels files are successfully loaded from the app's main bundle. Default `threadCount` is 1.
     init?(modelFileInfo: FileInfo, labelsFileInfo: FileInfo, threadCount: Int = 1) {
         let modelFilename = modelFileInfo.name
-        
+
         // Construct the path to the model file.
         guard let modelPath = Bundle.main.path(
             forResource: modelFilename,
@@ -83,7 +83,7 @@ class ModelDataHandler {
                 print("Failed to load the model file with name: \(modelFilename).")
                 return nil
         }
-        
+
         // Specify the options for the `Interpreter`.
         self.threadCount = threadCount
         var options = InterpreterOptions()
@@ -100,31 +100,30 @@ class ModelDataHandler {
         // Load the classes listed in the labels file.
         loadLabels(fileInfo: labelsFileInfo)
     }
-    
+
     // MARK: - Internal Methods
-    
+
     /// Performs image preprocessing, invokes the `Interpreter`, and processes the inference results.
     func runModel(onFrame pixelBuffer: CVPixelBuffer) -> Result? {
         let sourcePixelFormat = CVPixelBufferGetPixelFormatType(pixelBuffer)
         assert(sourcePixelFormat == kCVPixelFormatType_32ARGB ||
             sourcePixelFormat == kCVPixelFormatType_32BGRA ||
             sourcePixelFormat == kCVPixelFormatType_32RGBA)
-        
-        
+
         let imageChannels = 4
         assert(imageChannels >= inputChannels)
-        
+
         // Crops the image to the biggest square in the center and scales it down to model dimensions.
         let scaledSize = CGSize(width: inputWidth, height: inputHeight)
         guard let thumbnailPixelBuffer = pixelBuffer.centerThumbnail(ofSize: scaledSize) else {
             return nil
         }
-        
+
         let interval: TimeInterval
         let outputTensor: Tensor
         do {
             let inputTensor = try interpreter.input(at: 0)
-            
+
             // Remove the alpha component from the image buffer to get the RGB data.
             guard let rgbData = rgbDataFromBuffer(
                 thumbnailPixelBuffer,
@@ -134,22 +133,22 @@ class ModelDataHandler {
                     print("Failed to convert the image buffer to RGB data.")
                     return nil
             }
-            
+
             // Copy the RGB data to the input `Tensor`.
             try interpreter.copy(rgbData, toInputAt: 0)
-            
+
             // Run inference by invoking the `Interpreter`.
             let startDate = Date()
             try interpreter.invoke()
             interval = Date().timeIntervalSince(startDate) * 1000
-            
+
             // Get the output `Tensor` to process the inference results.
             outputTensor = try interpreter.output(at: 0)
         } catch let error {
             print("Failed to invoke the interpreter with error: \(error.localizedDescription)")
             return nil
         }
-        
+
         let results: [Float]
         switch outputTensor.dataType {
         case .uInt8:
@@ -167,28 +166,28 @@ class ModelDataHandler {
             print("Output tensor data type \(outputTensor.dataType) is unsupported for this example app.")
             return nil
         }
-        
+
         // Process the results.
         let topNInferences = getTopN(results: results)
-        
+
         // Return the inference time and inference results.
         return Result(inferenceTime: interval, inferences: topNInferences)
     }
-    
+
     // MARK: - Private Methods
-    
+
     /// Returns the top N inference results sorted in descending order.
     private func getTopN(results: [Float]) -> [Inference] {
         // Create a zipped array of tuples [(labelIndex: Int, confidence: Float)].
         let zippedResults = zip(labels.indices, results)
-        
+
         // Sort the zipped results by confidence value in descending order.
         let sortedResults = zippedResults.sorted { $0.1 > $1.1 }.prefix(resultCount)
-        
+
         // Return the `Inference` results.
         return sortedResults.map { result in Inference(confidence: result.1, label: labels[result.0]) }
     }
-    
+
     /// Loads the labels from the labels file and stores them in the `labels` property.
     private func loadLabels(fileInfo: FileInfo) {
         let filename = fileInfo.name
@@ -205,7 +204,7 @@ class ModelDataHandler {
                 "valid labels file and try again.")
         }
     }
-    
+
     /// Returns the RGB data representation of the given image buffer with the specified `byteCount`.
     ///
     /// - Parameters
@@ -279,4 +278,3 @@ extension Array {
         #endif  // swift(>=5.0)
     }
 }
-
