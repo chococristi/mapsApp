@@ -163,7 +163,8 @@ extension TFEmbededViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        let cell = tableView.dequeueReusableCell(withIdentifier: "INFO_CELL") as! InfoCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: InfoCell.identifier, for: indexPath) as? InfoCell ??
+            InfoCell(style: .default, reuseIdentifier: InfoCell.identifier)
 
         guard let inferenceSection = InferenceSections(rawValue: indexPath.section) else {
             return cell
@@ -199,6 +200,7 @@ extension TFEmbededViewController: UITableViewDelegate, UITableViewDataSource {
         cell.fieldNameLabel.textColor = color
         cell.fieldNameLabel.text = fieldName
         cell.infoLabel.text = info
+
         return cell
     }
 
