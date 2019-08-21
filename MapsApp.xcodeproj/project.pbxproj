@@ -77,7 +77,7 @@
 		5B3293DE22E9977D00F3E268 /* QRViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRViewController.swift; sourceTree = "<group>"; };
 		5B3293DF22E9977D00F3E268 /* QRViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QRViewController.xib; sourceTree = "<group>"; };
 		5B32AE8122F1C0AA000872ED /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
-		5B785E8323069BED00176DF6 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = ../../../../../MainViewController.swift; sourceTree = "<group>"; };
+		5B785E8323069BED00176DF6 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		5B8E20AD2302B4FB00066534 /* PlaceObjectsplaneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceObjectsplaneViewController.swift; sourceTree = "<group>"; };
 		5B8E20AE2302B4FB00066534 /* PlaceObjectsplaneViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlaceObjectsplaneViewController.xib; sourceTree = "<group>"; };
 		5BB71BD122E0739500F14DBB /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
