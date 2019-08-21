@@ -107,11 +107,13 @@ class ModelDataHandler {
     func runModel(onFrame pixelBuffer: CVPixelBuffer) -> Result? {
 
         let sourcePixelFormat = CVPixelBufferGetPixelFormatType(pixelBuffer)
+        
         assert(sourcePixelFormat == kCVPixelFormatType_32ARGB ||
             sourcePixelFormat == kCVPixelFormatType_32BGRA ||
             sourcePixelFormat == kCVPixelFormatType_32RGBA)
 
         let imageChannels = 4
+
         assert(imageChannels >= inputChannels)
 
         // Crops the image to the biggest square in the center and scales it down to model dimensions.

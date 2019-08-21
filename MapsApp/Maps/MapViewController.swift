@@ -74,6 +74,8 @@ class MapViewController: UIViewController {
             break
         case .authorizedAlways:
             break
+        default:
+            break
         }
     }
 
