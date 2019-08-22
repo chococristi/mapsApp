@@ -26,18 +26,31 @@ class GMViewController: UIViewController {
 
     public override func viewDidLoad() {
         super.viewDidLoad()
-        
-   
+
     }
-    
+
     public override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        locationManager.delegate = self
-        locationManager.requestWhenInUseAuthorization()
+        setup()
     }
 
     // MARK: - Helpers
+    
+    func setup() {
+        initializeLocationManager()
+    }
+    
+    func initializeLocationManager() {
+
+        locationManager.requestWhenInUseAuthorization()
+
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest // You can change the locaiton accuary here.
+            locationManager.startUpdatingLocation()
+        }
+    }
 }
 
 extension GMViewController: CLLocationManagerDelegate {
@@ -47,8 +60,6 @@ extension GMViewController: CLLocationManagerDelegate {
         guard status == .authorizedWhenInUse else {
             return
         }
-
-        locationManager.startUpdatingLocation()
 
         mapView.isMyLocationEnabled = true
         mapView.settings.myLocationButton = true
@@ -60,19 +71,24 @@ extension GMViewController: CLLocationManagerDelegate {
             return
         }
 
-        mapView.camera = GMSCameraPosition(target: location.coordinate,
-                                           zoom: 15,
-                                           bearing: .zero,
-                                           viewingAngle: .zero)
+        cameraMoveToLocation(toLocation: location.coordinate)
 
-        locationManager.stopUpdatingLocation()
+        //locationManager.stopUpdatingLocation()
     }
 }
 
-extension MapViewController: GMSMapViewDelegate {
+extension GMViewController {
 
-    func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
-        //reverseGeocodeCoordinate(position.target)
+    func cameraMoveToLocation(toLocation: CLLocationCoordinate2D?) {
+        
+        guard let location = toLocation else {
+            return
+        }
+        
+        mapView.camera = GMSCameraPosition(target: location,
+                                           zoom: 15,
+                                           bearing: .zero,
+                                           viewingAngle: .zero)
     }
 
 }
