@@ -90,8 +90,8 @@ class MainViewController: UITabBarController {
 
         tensorFlowViewController.title = "Tensor Flow"
 
-        let viewControllerList = [ mapsViewController,
-                                   googleMapsViewController,
+        let viewControllerList = [ googleMapsViewController,
+                                   mapsViewController,
                                    arStreetViewController,
                                    tensorFlowViewController ]
 

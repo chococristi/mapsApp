@@ -320,11 +320,19 @@
 			path = Lottie;
 			sourceTree = "<group>";
 		};
+		52CBB715230E789300E6E039 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				52DE5E4F230D77FE0088BC8C /* GMViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		52DE5E4A230D74F60088BC8C /* GoogleMaps */ = {
 			isa = PBXGroup;
 			children = (
 				52DE5E4B230D75170088BC8C /* Storyboard */,
-				52DE5E4C230D75220088BC8C /* ViewControllers */,
+				52DE5E4C230D75220088BC8C /* GM */,
 			);
 			path = GoogleMaps;
 			sourceTree = "<group>";
@@ -337,12 +345,12 @@
 			path = Storyboard;
 			sourceTree = "<group>";
 		};
-		52DE5E4C230D75220088BC8C /* ViewControllers */ = {
+		52DE5E4C230D75220088BC8C /* GM */ = {
 			isa = PBXGroup;
 			children = (
-				52DE5E4F230D77FE0088BC8C /* GMViewController.swift */,
+				52CBB715230E789300E6E039 /* ViewController */,
 			);
-			path = ViewControllers;
+			path = GM;
 			sourceTree = "<group>";
 		};
 		5B1993762304370100A6E78D /* models */ = {
