@@ -26,7 +26,7 @@ import SceneKit
 class Molecules {
 
     class func methaneMolecule() -> SCNNode {
-        var methaneMolecule = SCNNode()
+        let methaneMolecule = SCNNode()
 
         // 1 Carbon
         let carbonNode1 = nodeWithAtom(atom: Atoms.carbonAtom(), molecule: methaneMolecule, position: SCNVector3Make(0, 0, 0))
@@ -47,12 +47,12 @@ class Molecules {
     }
 
     class func ethanolMolecule() -> SCNNode {
-        var ethanolMolecule = SCNNode()
+        let ethanolMolecule = SCNNode()
         return ethanolMolecule
     }
 
     class func ptfeMolecule() -> SCNNode {
-        var ptfeMolecule = SCNNode()
+        let ptfeMolecule = SCNNode()
         return ptfeMolecule
     }
 

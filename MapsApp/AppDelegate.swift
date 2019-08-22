@@ -62,7 +62,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         setupTabBar()
     }
-    
+
     func setupGoogleMaps() {
         GMSServices.provideAPIKey(googleApiKey)
     }

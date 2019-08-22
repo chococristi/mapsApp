@@ -31,21 +31,20 @@ class LocationService: NSObject {
     }
 
     // MARK: - Helpers
-    
+
     private func setup() {
         setupLocation()
     }
-    
 
     private func setupLocation() {
-        
+
         // If location services is enabled get the users location
         if CLLocationManager.locationServicesEnabled() {
             setupLocationManager()
             checkLocationAuthorization()
         }
     }
-    
+
     private func setupLocationManager() {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
     }
@@ -59,7 +58,7 @@ class LocationService: NSObject {
         case .notDetermined:
             // For use when the app is open & in the background
             //locationManager.requestAlwaysAuthorization()
-            
+
             // For use when the app is open
             locationManager.requestWhenInUseAuthorization()
         case .restricted:
@@ -70,9 +69,9 @@ class LocationService: NSObject {
             break
         }
     }
-    
+
     private func startTrackingUserLocation() {
-        
+
         //it starts the didUpdateLocations function in delegate
         locationManager.startUpdatingLocation()
     }

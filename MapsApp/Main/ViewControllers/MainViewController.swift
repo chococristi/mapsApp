@@ -18,7 +18,7 @@ class MainViewController: UITabBarController {
 
     let mapsImage: UIImage? = UIImage.init(named: "mapsImage")?.withRenderingMode(.alwaysOriginal)
     let mapsImageSelected: UIImage? = UIImage.init(named: "mapsImageSelected")?.withRenderingMode(.alwaysOriginal)
-    
+
     let gmImage: UIImage? = UIImage.init(named: "gmImage")?.withRenderingMode(.alwaysOriginal)
     let gmImageSelected: UIImage? = UIImage.init(named: "gmImageSelected")?.withRenderingMode(.alwaysOriginal)
 

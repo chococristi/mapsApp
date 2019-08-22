@@ -43,7 +43,7 @@ class GMViewController: UIViewController {
         initializeLocationManager()
         setupMap()
     }
-    
+
     func initializeLocationManager() {
 
         guard let locationService = locationService else {
@@ -52,17 +52,17 @@ class GMViewController: UIViewController {
 
         locationService.setLocationManagerDelegate(delegate: self)
     }
-    
+
     func setupMap() {
         guard let path = Bundle.main.path(forResource: "bcnlocations", ofType: "json") else {
             return
         }
-        
+
         let fileUrl = URL(fileURLWithPath: path)
         do {
             let data = try Data(contentsOf: fileUrl)
             let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
-            
+
             guard let array = json as? [String: Any] else { return }
             self.markers = Markers.init(json: array)
             setAnnotationsInMap()
@@ -70,9 +70,9 @@ class GMViewController: UIViewController {
             print(error)
         }
     }
-    
+
     fileprivate func setAnnotationsInMap() {
-        
+
         guard let markersArray = markers?.markers else {
             return
         }

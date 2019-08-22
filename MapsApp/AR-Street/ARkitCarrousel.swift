@@ -156,7 +156,7 @@ class ARkitCarrousel: UIViewController {
         if let node = nodeFound {
 
             let arrayOfNodes =  arrayNodes.map {$0.node}
-            if let _ = arrayOfNodes.firstIndex(of: node) {
+            if arrayOfNodes.firstIndex(of: node) != nil {
                 return node
             } else if let parent = node.parent {
                     return getParent(parent)

@@ -158,7 +158,7 @@ class PlaceObjectsplaneViewController: UIViewController, ARSCNViewDelegate, UIGe
     }
 
     @objc func didPan(_ gesture: UIPanGestureRecognizer) {
-        guard let _ = self.roteNode else { return }
+        guard self.roteNode != nil else { return }
         let translation = gesture.translation(in: gesture.view)
         var newAngleY = (Float)(translation.x)*(Float)(Double.pi)/180.0
         var newAngleX = (Float)(translation.y)*(Float)(Double.pi)/180.0
