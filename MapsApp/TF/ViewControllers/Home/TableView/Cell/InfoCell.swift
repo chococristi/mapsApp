@@ -11,7 +11,7 @@ import UIKit
 class InfoCell: UITableViewCell {
 
     // MARK: - IBOutlets
-    
+
     @IBOutlet weak var fieldNameLabel: UILabel!
     @IBOutlet weak var infoLabel: UILabel!
 
@@ -21,13 +21,13 @@ class InfoCell: UITableViewCell {
         return UINib(nibName: identifier,
                      bundle: Bundle(for: InfoCell.self))
     }
-    
+
     static var identifier: String {
         return String(describing: self)
     }
 
     // MARK: - Constructor
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

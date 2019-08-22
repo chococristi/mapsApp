@@ -117,7 +117,7 @@ class MainViewController: UITabBarController {
 
     func setupARStreet() -> UIViewController? {
 
-         return ARViewController()
+         return ARkitCarrousel()
     }
 
     func setupTensorFlow() -> UIViewController? {

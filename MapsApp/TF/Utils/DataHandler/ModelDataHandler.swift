@@ -107,7 +107,7 @@ class ModelDataHandler {
     func runModel(onFrame pixelBuffer: CVPixelBuffer) -> Result? {
 
         let sourcePixelFormat = CVPixelBufferGetPixelFormatType(pixelBuffer)
-        
+
         assert(sourcePixelFormat == kCVPixelFormatType_32ARGB ||
             sourcePixelFormat == kCVPixelFormatType_32BGRA ||
             sourcePixelFormat == kCVPixelFormatType_32RGBA)
