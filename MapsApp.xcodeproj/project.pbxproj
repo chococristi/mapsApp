@@ -116,7 +116,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		52AC051B2302B74A00438113 /* TF */ = {
+		52AC051B2302B74A00438113 /* TensorFlow */ = {
 			isa = PBXGroup;
 			children = (
 				52AC051F2302BD7800438113 /* Storyboard */,
@@ -124,7 +124,7 @@
 				52AC05202302BE3E00438113 /* Utils */,
 				52AC05222302BE5400438113 /* Resources */,
 			);
-			path = TF;
+			path = TensorFlow;
 			sourceTree = "<group>";
 		};
 		52AC051E2302BD5B00438113 /* ViewControllers */ = {
@@ -309,6 +309,7 @@
 		52AC054F23041C4800438113 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				52CBB725230EBB7100E6E039 /* Images */,
 				52CBB71B230E984800E6E039 /* Locations */,
 				5B3293E222F02F2E00F3E268 /* 3D Objects */,
 				52AC055023041E0000438113 /* Lottie */,
@@ -365,6 +366,14 @@
 				52CBB721230E99F100E6E039 /* AlertDialogService.swift */,
 			);
 			path = AlertDialog;
+			sourceTree = "<group>";
+		};
+		52CBB725230EBB7100E6E039 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				AA2121CA22D32A26005D058D /* Assets.xcassets */,
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 		52DE5E4A230D74F60088BC8C /* GoogleMaps */ = {
@@ -479,11 +488,10 @@
 				52AC054A23041B0A00438113 /* Main */,
 				5BB71BCD22E072E800F14DBB /* AR-Street */,
 				52DE5E4A230D74F60088BC8C /* GoogleMaps */,
-				52AC051B2302B74A00438113 /* TF */,
+				52AC051B2302B74A00438113 /* TensorFlow */,
 				5BB71BCE22E0731B00F14DBB /* Maps */,
 				52AC054D23041C1D00438113 /* Utils */,
 				52AC054F23041C4800438113 /* Resources */,
-				AA2121CA22D32A26005D058D /* Assets.xcassets */,
 				AA2121CF22D32A26005D058D /* Info.plist */,
 				AA2121C322D32A25005D058D /* AppDelegate.swift */,
 			);
