@@ -41,11 +41,14 @@ class PlaceObjectsplaneViewController: UIViewController, ARSCNViewDelegate, UIGe
         let modelScene = SCNScene(named:
             "art.scnassets/cherub/cherub.dae")!
 
-        nodeModel =  modelScene.rootNode.childNode(withName: nodeName, recursively: true)
-
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(didPan(_:)))
         panGesture.delegate = self
         sceneView.addGestureRecognizer(panGesture)
+        
+        guard let _ = nodeModel else {
+            nodeModel =  modelScene.rootNode.childNode(withName: nodeName, recursively: true)
+            return
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -129,6 +132,7 @@ class PlaceObjectsplaneViewController: UIViewController, ARSCNViewDelegate, UIGe
                 // Add model as a child of the node
                 node.addChildNode(modelClone)
                 self.roteNode = modelClone
+                self.roteNode.scale = SCNVector3( 0.01,0.01,0.01)
             }
         }
     }
@@ -173,5 +177,8 @@ class PlaceObjectsplaneViewController: UIViewController, ARSCNViewDelegate, UIGe
             currentAngleY = newAngleY
             currentAngleX = newAngleX
         }
+    }
+    @IBAction func back(_ sender: Any) {
+        self.dismiss(animated: false, completion: nil)
     }
 }
