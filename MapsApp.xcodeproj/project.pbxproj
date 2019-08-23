@@ -27,6 +27,10 @@
 		52CBB71F230E98DD00E6E039 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CBB71E230E98DD00E6E039 /* LocationService.swift */; };
 		52CBB722230E99F100E6E039 /* AlertDialogService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CBB721230E99F100E6E039 /* AlertDialogService.swift */; };
 		52CBB729230EC2C300E6E039 /* GMSMapViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CBB728230EC2C300E6E039 /* GMSMapViewExtensions.swift */; };
+		52CBB72D230FECB500E6E039 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CBB72C230FECB500E6E039 /* ContainerViewController.swift */; };
+		52CBB72F230FF11000E6E039 /* LeftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CBB72E230FF11000E6E039 /* LeftViewController.swift */; };
+		52CBB731230FF13900E6E039 /* RightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CBB730230FF13900E6E039 /* RightViewController.swift */; };
+		52CBB735230FF43B00E6E039 /* UIStoryboardExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CBB734230FF43B00E6E039 /* UIStoryboardExtensions.swift */; };
 		52DE5E4E230D75450088BC8C /* GoogleMaps.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52DE5E4D230D75450088BC8C /* GoogleMaps.storyboard */; };
 		52DE5E50230D77FE0088BC8C /* GMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DE5E4F230D77FE0088BC8C /* GMViewController.swift */; };
 		5B0F40B222E6F5EA00C3FC12 /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0F40B022E6F5EA00C3FC12 /* ARViewController.swift */; };
@@ -76,6 +80,10 @@
 		52CBB71E230E98DD00E6E039 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		52CBB721230E99F100E6E039 /* AlertDialogService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDialogService.swift; sourceTree = "<group>"; };
 		52CBB728230EC2C300E6E039 /* GMSMapViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GMSMapViewExtensions.swift; sourceTree = "<group>"; };
+		52CBB72C230FECB500E6E039 /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
+		52CBB72E230FF11000E6E039 /* LeftViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftViewController.swift; sourceTree = "<group>"; };
+		52CBB730230FF13900E6E039 /* RightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightViewController.swift; sourceTree = "<group>"; };
+		52CBB734230FF43B00E6E039 /* UIStoryboardExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStoryboardExtensions.swift; sourceTree = "<group>"; };
 		52DE5E4D230D75450088BC8C /* GoogleMaps.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GoogleMaps.storyboard; sourceTree = "<group>"; };
 		52DE5E4F230D77FE0088BC8C /* GMViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GMViewController.swift; sourceTree = "<group>"; };
 		5B0F40B022E6F5EA00C3FC12 /* ARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewController.swift; sourceTree = "<group>"; };
@@ -287,6 +295,8 @@
 			children = (
 				52AC055323041FFF00438113 /* LaunchScreenView.swift */,
 				5B785E8323069BED00176DF6 /* MainViewController.swift */,
+				52CBB72E230FF11000E6E039 /* LeftViewController.swift */,
+				52CBB730230FF13900E6E039 /* RightViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -390,6 +400,39 @@
 			isa = PBXGroup;
 			children = (
 				52CBB728230EC2C300E6E039 /* GMSMapViewExtensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		52CBB72A230FE98000E6E039 /* SlideOutPanel */ = {
+			isa = PBXGroup;
+			children = (
+				52CBB72B230FEC9F00E6E039 /* ViewController */,
+				52CBB732230FF41600E6E039 /* Utils */,
+			);
+			path = SlideOutPanel;
+			sourceTree = "<group>";
+		};
+		52CBB72B230FEC9F00E6E039 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				52CBB72C230FECB500E6E039 /* ContainerViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		52CBB732230FF41600E6E039 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				52CBB733230FF42500E6E039 /* Extensions */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		52CBB733230FF42500E6E039 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				52CBB734230FF43B00E6E039 /* UIStoryboardExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -507,10 +550,11 @@
 				52AC054A23041B0A00438113 /* Main */,
 				5BB71BCD22E072E800F14DBB /* AR-Street */,
 				52DE5E4A230D74F60088BC8C /* GoogleMaps */,
-				52AC051B2302B74A00438113 /* TensorFlow */,
 				5BB71BCE22E0731B00F14DBB /* Maps */,
-				52AC054D23041C1D00438113 /* Utils */,
+				52CBB72A230FE98000E6E039 /* SlideOutPanel */,
+				52AC051B2302B74A00438113 /* TensorFlow */,
 				52AC054F23041C4800438113 /* Resources */,
+				52AC054D23041C1D00438113 /* Utils */,
 				AA2121CF22D32A26005D058D /* Info.plist */,
 				AA2121C322D32A25005D058D /* AppDelegate.swift */,
 			);
@@ -686,11 +730,14 @@
 			files = (
 				52AC05332302CEC000438113 /* PreviewView.swift in Sources */,
 				5B785E8423069BED00176DF6 /* MainViewController.swift in Sources */,
+				52CBB72D230FECB500E6E039 /* ContainerViewController.swift in Sources */,
 				AAAD742522F2DE9100C3ED15 /* MapDetailViewController.swift in Sources */,
 				AA2121C622D32A25005D058D /* MapViewController.swift in Sources */,
+				52CBB72F230FF11000E6E039 /* LeftViewController.swift in Sources */,
 				5B1993792304370B00A6E78D /* Molecules.swift in Sources */,
 				52AC05242302BF5E00438113 /* TFMainViewController.swift in Sources */,
 				52CBB722230E99F100E6E039 /* AlertDialogService.swift in Sources */,
+				52CBB735230FF43B00E6E039 /* UIStoryboardExtensions.swift in Sources */,
 				52CBB729230EC2C300E6E039 /* GMSMapViewExtensions.swift in Sources */,
 				52AC05392302CF6A00438113 /* TFEmbededViewController.swift in Sources */,
 				AA2121C422D32A25005D058D /* AppDelegate.swift in Sources */,
@@ -699,6 +746,7 @@
 				5B19937A2304370B00A6E78D /* Atoms.swift in Sources */,
 				52AC05262302CBCE00438113 /* CVPixelBufferExtension.swift in Sources */,
 				52DE5E50230D77FE0088BC8C /* GMViewController.swift in Sources */,
+				52CBB731230FF13900E6E039 /* RightViewController.swift in Sources */,
 				52AC05472304088F00438113 /* UIColorExtensions.swift in Sources */,
 				52AC05492304127D00438113 /* UIViewExtensions.swift in Sources */,
 				52AC05402302D86000438113 /* ModelDataHandler.swift in Sources */,

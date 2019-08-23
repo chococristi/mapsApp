@@ -27,6 +27,7 @@ class GMViewController: UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
 
+        edgesForExtendedLayout = []
     }
 
     public override func viewDidAppear(_ animated: Bool) {

@@ -59,8 +59,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         setupGoogleMaps()
 
         setupNavigationBar()
-
+        
         setupTabBar()
+
+        setupTabBarItem()
+
+        setupRootViewController()
     }
 
     func setupGoogleMaps() {
@@ -89,12 +93,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func setupTabBar() {
 
-        let tabBarAppearace = UITabBarItem.appearance()
+        let tabBarAppearace = UITabBar.appearance()
 
-        tabBarAppearace.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: MapsColors.secondaryColor],
+        tabBarAppearace.isTranslucent = false
+        tabBarAppearace.barTintColor = .white
+    }
+
+    func setupTabBarItem() {
+
+        let tabBarItemAppearace = UITabBarItem.appearance()
+
+        tabBarItemAppearace.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: MapsColors.secondaryColor],
                                                for: .normal)
-        tabBarAppearace.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: MapsColors.mainColor],
+        tabBarItemAppearace.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: MapsColors.mainColor],
                                                for: .selected)
+    }
+
+    func setupRootViewController() {
+        window = UIWindow(frame: UIScreen.main.bounds)
+
+        let containerViewController = ContainerViewController()
+
+        window.flatMap({ window in
+            window.rootViewController = containerViewController
+            window.makeKeyAndVisible()
+        })
     }
 
 }
