@@ -135,15 +135,15 @@ extension GMViewController: CLLocationManagerDelegate {
         cameraMoveToLocation(toLocation: manager.location?.coordinate)
     }
 
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-
-        guard let location = locations.first else {
-            return
-        }
-
-        cameraMoveToLocation(toLocation: location.coordinate)
-
-    }
+//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+//
+//        guard let location = locations.first else {
+//            return
+//        }
+//
+//        cameraMoveToLocation(toLocation: location.coordinate)
+//
+//    }
 }
 
 extension GMViewController {
