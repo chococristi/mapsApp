@@ -59,7 +59,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         setupGoogleMaps()
 
         setupNavigationBar()
-        
+
         setupTabBar()
 
         setupTabBarItem()

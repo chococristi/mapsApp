@@ -22,7 +22,6 @@ class ContainerViewController: UIViewController {
     // MARK: - Fields
 
     var centerViewController: MainViewController!
-    var centerNavigationController: UINavigationController!
 
     var leftViewController: LeftViewController?
     var rightViewController: RightViewController?
@@ -57,16 +56,14 @@ class ContainerViewController: UIViewController {
     func setupCenterViewController() {
         centerViewController = UIStoryboard.centerViewController()
 
-        centerNavigationController = UINavigationController(rootViewController: centerViewController)
-        view.addSubview(centerNavigationController.view)
-        addChild(centerNavigationController)
-
-        centerNavigationController.didMove(toParent: self)
+        view.addSubview(centerViewController.view)
+        addChild(centerViewController)
+        centerViewController.didMove(toParent: self)
 
         let panGestureRecognizer = UIPanGestureRecognizer(target: self,
                                                           action: #selector(handlePanGesture(_:)))
 
-        centerNavigationController.view.addGestureRecognizer(panGestureRecognizer)
+        centerViewController.view.addGestureRecognizer(panGestureRecognizer)
     }
 }
 
@@ -96,7 +93,7 @@ extension ContainerViewController {
         if shouldExpand {
             currentState = .leftPanelExpanded
             animateCenterPanelXPosition(
-                targetPosition: centerNavigationController.view.frame.width - centerPanelExpandedOffset)
+                targetPosition: centerViewController.view.frame.width - centerPanelExpandedOffset)
         } else {
             animateCenterPanelXPosition(targetPosition: 0) { _ in
                 self.currentState = .bothCollapsed
@@ -129,7 +126,7 @@ extension ContainerViewController {
         if shouldExpand {
             currentState = .rightPanelExpanded
             animateCenterPanelXPosition(
-                targetPosition: -centerNavigationController.view.frame.width + centerPanelExpandedOffset)
+                targetPosition: -centerViewController.view.frame.width + centerPanelExpandedOffset)
         } else {
             animateCenterPanelXPosition(targetPosition: 0) { _ in
                 self.currentState = .bothCollapsed
@@ -157,7 +154,7 @@ extension ContainerViewController {
                        usingSpringWithDamping: 0.8,
                        initialSpringVelocity: 0,
                        options: .curveEaseInOut, animations: {
-                        self.centerNavigationController.view.frame.origin.x = targetPosition
+                        self.centerViewController.view.frame.origin.x = targetPosition
         }, completion: completion)
     }
 
@@ -170,9 +167,9 @@ extension ContainerViewController {
 
     func showShadowForCenterViewController(_ shouldShowShadow: Bool) {
         if shouldShowShadow {
-            centerNavigationController.view.layer.shadowOpacity = 0.8
+            centerViewController.view.layer.shadowOpacity = 0.8
         } else {
-            centerNavigationController.view.layer.shadowOpacity = 0.0
+            centerViewController.view.layer.shadowOpacity = 0.0
         }
     }
 }
