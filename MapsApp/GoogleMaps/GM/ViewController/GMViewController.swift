@@ -10,6 +10,9 @@ import Foundation
 import UIKit
 import GoogleMaps
 
+//https://developers.google.com/maps/documentation/ios-sdk/utility/marker-clustering
+//https://github.com/googlemaps/google-maps-ios-utils/blob/master/Swift.md
+
 class GMViewController: UIViewController {
 
     // MARK: - IBOutlets
