@@ -26,6 +26,7 @@
 		52AC055623042C7800438113 /* SplashScreenWhiteColor.json in Resources */ = {isa = PBXBuildFile; fileRef = 52AC055523042C7800438113 /* SplashScreenWhiteColor.json */; };
 		52CBB71F230E98DD00E6E039 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CBB71E230E98DD00E6E039 /* LocationService.swift */; };
 		52CBB722230E99F100E6E039 /* AlertDialogService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CBB721230E99F100E6E039 /* AlertDialogService.swift */; };
+		52CBB729230EC2C300E6E039 /* GMSMapViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CBB728230EC2C300E6E039 /* GMSMapViewExtensions.swift */; };
 		52DE5E4E230D75450088BC8C /* GoogleMaps.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52DE5E4D230D75450088BC8C /* GoogleMaps.storyboard */; };
 		52DE5E50230D77FE0088BC8C /* GMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DE5E4F230D77FE0088BC8C /* GMViewController.swift */; };
 		5B0F40B222E6F5EA00C3FC12 /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0F40B022E6F5EA00C3FC12 /* ARViewController.swift */; };
@@ -74,6 +75,7 @@
 		52AC055523042C7800438113 /* SplashScreenWhiteColor.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SplashScreenWhiteColor.json; sourceTree = "<group>"; };
 		52CBB71E230E98DD00E6E039 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		52CBB721230E99F100E6E039 /* AlertDialogService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDialogService.swift; sourceTree = "<group>"; };
+		52CBB728230EC2C300E6E039 /* GMSMapViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GMSMapViewExtensions.swift; sourceTree = "<group>"; };
 		52DE5E4D230D75450088BC8C /* GoogleMaps.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GoogleMaps.storyboard; sourceTree = "<group>"; };
 		52DE5E4F230D77FE0088BC8C /* GMViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GMViewController.swift; sourceTree = "<group>"; };
 		5B0F40B022E6F5EA00C3FC12 /* ARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewController.swift; sourceTree = "<group>"; };
@@ -376,11 +378,28 @@
 			path = Images;
 			sourceTree = "<group>";
 		};
+		52CBB726230EC27200E6E039 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				52CBB727230EC27E00E6E039 /* Extensions */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		52CBB727230EC27E00E6E039 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				52CBB728230EC2C300E6E039 /* GMSMapViewExtensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		52DE5E4A230D74F60088BC8C /* GoogleMaps */ = {
 			isa = PBXGroup;
 			children = (
 				52DE5E4B230D75170088BC8C /* Storyboard */,
 				52DE5E4C230D75220088BC8C /* GM */,
+				52CBB726230EC27200E6E039 /* Utils */,
 			);
 			path = GoogleMaps;
 			sourceTree = "<group>";
@@ -396,8 +415,8 @@
 		52DE5E4C230D75220088BC8C /* GM */ = {
 			isa = PBXGroup;
 			children = (
-				52CBB71C230E98C100E6E039 /* Services */,
 				52CBB715230E789300E6E039 /* ViewController */,
+				52CBB71C230E98C100E6E039 /* Services */,
 			);
 			path = GM;
 			sourceTree = "<group>";
@@ -672,6 +691,7 @@
 				5B1993792304370B00A6E78D /* Molecules.swift in Sources */,
 				52AC05242302BF5E00438113 /* TFMainViewController.swift in Sources */,
 				52CBB722230E99F100E6E039 /* AlertDialogService.swift in Sources */,
+				52CBB729230EC2C300E6E039 /* GMSMapViewExtensions.swift in Sources */,
 				52AC05392302CF6A00438113 /* TFEmbededViewController.swift in Sources */,
 				AA2121C422D32A25005D058D /* AppDelegate.swift in Sources */,
 				52AC05352302CEDE00438113 /* CameraFeedManagerDelegate.swift in Sources */,

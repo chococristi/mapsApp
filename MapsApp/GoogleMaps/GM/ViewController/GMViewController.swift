@@ -54,18 +54,21 @@ class GMViewController: UIViewController {
     }
 
     func setupMap() {
-        guard let path = Bundle.main.path(forResource: "bcnlocations", ofType: "json") else {
+        guard let path = Bundle.main.path(forResource: "bcnlocations",
+                                          ofType: "json") else {
             return
         }
 
         let fileUrl = URL(fileURLWithPath: path)
         do {
             let data = try Data(contentsOf: fileUrl)
-            let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
+            let json = try JSONSerialization.jsonObject(with: data,
+                                                        options: .mutableContainers)
 
             guard let array = json as? [String: Any] else { return }
             self.markers = Markers.init(json: array)
             setAnnotationsInMap()
+            //setRouteInMap()   //We need to pay for route
         } catch {
             print(error)
         }
@@ -78,10 +81,9 @@ class GMViewController: UIViewController {
         }
 
         for marker in markersArray {
-            //TODO first / last i'm not sure if can be done better
             guard let latitude = marker.coordinates.first,
                 let longitude = marker.coordinates.last else {
-                return
+                    return
             }
 
             let position = CLLocationCoordinate2DMake(latitude, longitude)
@@ -91,6 +93,31 @@ class GMViewController: UIViewController {
         }
     }
 
+    fileprivate func setRouteInMap() {
+
+        guard let markersArray = markers?.markers else {
+            return
+        }
+
+        let marker = markersArray[0]
+        let marker2 = markersArray[1]
+
+        guard let latitude = marker.coordinates.first,
+            let longitude = marker.coordinates.last else {
+                return
+        }
+
+        guard let latitude2 = marker2.coordinates.first,
+            let longitude2 = marker2.coordinates.last else {
+                return
+        }
+
+        let position = CLLocationCoordinate2DMake(latitude, longitude)
+        let position2 = CLLocationCoordinate2DMake(latitude2, longitude2)
+
+        mapView.drawPolygon(from: position, to: position2)
+
+    }
 }
 
 extension GMViewController: CLLocationManagerDelegate {
@@ -115,7 +142,6 @@ extension GMViewController: CLLocationManagerDelegate {
 
         cameraMoveToLocation(toLocation: location.coordinate)
 
-        //locationManager.stopUpdatingLocation()
     }
 }
 
