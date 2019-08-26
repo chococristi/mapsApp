@@ -15,6 +15,7 @@ class MyCollectionViewCell: UICollectionViewCell {
     @IBOutlet var sceneView: SCNView!
     @IBOutlet weak var lbName: UILabel!
     @IBOutlet var view: UIView!
+    var node = SCNNode()
     
     
     override func awakeFromNib() {
@@ -71,7 +72,21 @@ class MyCollectionViewCell: UICollectionViewCell {
     }
     
         func init3DObject(node: SCNNode){
+            self.node = node
             self.sceneView.scene?.rootNode.addChildNode(node)
         }
+    
+    func play(){
+        
+        let action = SCNAction.repeatForever(SCNAction.rotate(by: .pi, around: SCNVector3(0, 1, 0), duration: 5))
+        node.runAction(action, forKey: "turn")
+        
+    }
+    
+    func stop(node: SCNNode){
+        
+       node.removeAction(forKey: "turn")
+        
+    }
 }
 

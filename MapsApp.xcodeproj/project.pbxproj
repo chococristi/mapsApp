@@ -33,8 +33,6 @@
 		5B3293E022E9977D00F3E268 /* QRViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3293DE22E9977D00F3E268 /* QRViewController.swift */; };
 		5B3293E122E9977D00F3E268 /* QRViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B3293DF22E9977D00F3E268 /* QRViewController.xib */; };
 		5B32AE8222F1C0AA000872ED /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B32AE8122F1C0AA000872ED /* art.scnassets */; };
-		5B4738D7230EAAB00013EB62 /* ARCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4738D5230EAAB00013EB62 /* ARCollectionCell.swift */; };
-		5B4738D8230EAAB00013EB62 /* ARCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B4738D6230EAAB00013EB62 /* ARCollectionCell.xib */; };
 		5B4738DB230EACFB0013EB62 /* ARCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4738D9230EACFB0013EB62 /* ARCollectionViewController.swift */; };
 		5B4738DC230EACFB0013EB62 /* ARCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B4738DA230EACFB0013EB62 /* ARCollectionViewController.xib */; };
 		5B58A3C92313DC780096CF9B /* MyCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B58A3C72313DC780096CF9B /* MyCollectionViewCell.xib */; };
@@ -83,8 +81,6 @@
 		5B3293DE22E9977D00F3E268 /* QRViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRViewController.swift; sourceTree = "<group>"; };
 		5B3293DF22E9977D00F3E268 /* QRViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QRViewController.xib; sourceTree = "<group>"; };
 		5B32AE8122F1C0AA000872ED /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
-		5B4738D5230EAAB00013EB62 /* ARCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARCollectionCell.swift; sourceTree = "<group>"; };
-		5B4738D6230EAAB00013EB62 /* ARCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ARCollectionCell.xib; sourceTree = "<group>"; };
 		5B4738D9230EACFB0013EB62 /* ARCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARCollectionViewController.swift; sourceTree = "<group>"; };
 		5B4738DA230EACFB0013EB62 /* ARCollectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ARCollectionViewController.xib; sourceTree = "<group>"; };
 		5B58A3C72313DC780096CF9B /* MyCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -351,8 +347,6 @@
 			children = (
 				5B58A3C82313DC780096CF9B /* MyCollectionViewCell.swift */,
 				5B58A3C72313DC780096CF9B /* MyCollectionViewCell.xib */,
-				5B4738D5230EAAB00013EB62 /* ARCollectionCell.swift */,
-				5B4738D6230EAAB00013EB62 /* ARCollectionCell.xib */,
 			);
 			path = cells;
 			sourceTree = "<group>";
@@ -502,7 +496,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5B4738D8230EAAB00013EB62 /* ARCollectionCell.xib in Resources */,
 				5B4738DC230EACFB0013EB62 /* ARCollectionViewController.xib in Resources */,
 				52AC055223041E3A00438113 /* SplashScreenMainColor.json in Resources */,
 				52AC055623042C7800438113 /* SplashScreenWhiteColor.json in Resources */,
@@ -600,7 +593,6 @@
 				52AC05392302CF6A00438113 /* TFEmbededViewController.swift in Sources */,
 				AA2121C422D32A25005D058D /* AppDelegate.swift in Sources */,
 				52AC05352302CEDE00438113 /* CameraFeedManagerDelegate.swift in Sources */,
-				5B4738D7230EAAB00013EB62 /* ARCollectionCell.swift in Sources */,
 				AA2829AB22E1D80A00A5F6C7 /* MarkersResponseModel.swift in Sources */,
 				5B19937A2304370B00A6E78D /* Atoms.swift in Sources */,
 				52AC05262302CBCE00438113 /* CVPixelBufferExtension.swift in Sources */,

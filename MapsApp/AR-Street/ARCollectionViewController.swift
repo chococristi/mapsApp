@@ -19,10 +19,6 @@ class ARCollectionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         arrayNodes = self.createNodes()
-
-        let nib = UINib(nibName: "ARCollectionCell", bundle: nil)
-        collectionView.register(nib, forCellWithReuseIdentifier: "ARCell")
-//        collectionView.register(ARCollectionCell.self,forCellWithReuseIdentifier: "ARCell")
         
         let nibCell = UINib(nibName: "MyCollectionViewCell", bundle: nil)
         collectionView.register(nibCell, forCellWithReuseIdentifier: "MyCollectionViewCell")
@@ -98,12 +94,14 @@ extension ARCollectionViewController: UICollectionViewDelegate, UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let cell = collectionView.cellForItem(at: indexPath) as? MyCollectionViewCell {
+            cell.play()
             self.configureCellView(cell: cell, selected: true)}
     }
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? MyCollectionViewCell else {
             return
         }
+         cell.stop(node: arrayNodes[indexPath.row].node)
          self.configureCellView(cell: cell, selected: false)
         
     }
