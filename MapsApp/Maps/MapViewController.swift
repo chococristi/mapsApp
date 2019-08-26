@@ -14,8 +14,11 @@ class MapViewController: UIViewController {
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var bottomSheetView: CurvedView!
+    @IBOutlet weak var bottomContainerView: UIView!
+
     @IBOutlet weak var topSheetConstraint: NSLayoutConstraint!
     @IBOutlet weak var littleView: UIView!
+    
     
     let locationManager = CLLocationManager()
     let regionInMeters: Double = 10000 //put 900 to zoom in directly
@@ -27,7 +30,6 @@ class MapViewController: UIViewController {
     
     var initialTopSpace: CGFloat = 300.0
     var previousLocation: CLLocation?
-    var markers: Markers?
     var annotationsArray: [MKAnnotation] = []
     
     // MARK: LifeCycle functions
@@ -35,13 +37,14 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         checkLocationServices()
-        
+        setAnnotationsInMap()
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(self.didPan(panGesture:)))
         bottomSheetView.addGestureRecognizer(panGesture)
+        //TODO cambiar pines
     }
     
     override func viewDidAppear(_ animated: Bool) {
-       setupBottomView()
+        setupBottomView()
     }
     
     // MARK: Setup functions
@@ -64,27 +67,27 @@ class MapViewController: UIViewController {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
     }
     
-    func setupMap() {
-        guard let path = Bundle.main.path(forResource: "bcnlocations", ofType: "json") else { return }
-        let url = URL(fileURLWithPath: path)
-        do {
-            let data = try Data(contentsOf: url)
-            let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
-            
-            guard let array = json as? [String: Any] else { return }
-            self.markers = Markers.init(json: array)
-            setAnnotationsInMap()
-        } catch {
-            print(error)
-        }
-    }
+    //    func setupMap() {
+    //        guard let path = Bundle.main.path(forResource: "bcnlocations", ofType: "json") else { return }
+    //        let url = URL(fileURLWithPath: path)
+    //        do {
+    //            let data = try Data(contentsOf: url)
+    //            let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
+    //
+    //            guard let array = json as? [String: Any] else { return }
+    //            self.markers = Markers.init(json: array)
+    //            setAnnotationsInMap()
+    //        } catch {
+    //            print(error)
+    //        }
+    //    }
     
     // MARK: Check functions
     func checkLocationServices(){
         if CLLocationManager.locationServicesEnabled(){
             setupLocationManager()
             checkLocationAuthorization()
-            setupMap()
+            //            setupMap()
         } else {
             //self.present(Alert.alert(message: "You should enable Location services!"), animated: true)
         }
@@ -145,7 +148,8 @@ class MapViewController: UIViewController {
     
     fileprivate func setAnnotationsInMap() {
         
-        guard let markersArray = markers?.markers else { return }
+        let markersArray = markers
+        
         for marker in markersArray {
             //TODO first / last i'm not sure if can be done better
             guard let latitude = marker.coordinates.first, let longitude = marker.coordinates.last else { return }
@@ -153,6 +157,7 @@ class MapViewController: UIViewController {
             let annotation = MKPointAnnotation()
             annotation.coordinate = location
             annotation.title = marker.name
+            
             mapView.addAnnotation(annotation)
         }
     }
@@ -192,12 +197,40 @@ extension MapViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         centerRegionOnPin(mapView: mapView, pin: view)
-        navigateToDetail()
+        
         self.view.layoutIfNeeded()
         UIView.animate(withDuration: 0.4, delay: 0.2, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.6, options: .curveEaseInOut, animations: {
             self.topSheetConstraint?.constant = self.TOP_MID_SCREEN
             self.view.layoutIfNeeded()
         }, completion: nil)
+        
+        guard let marker = getMarkerFromAnnotation(view: view) else {
+            //TODO hacer zoom
+            //TODO bajar el cuadrado si está seleccionado
+            return
+            //TODO tambien hacer q se deseleccione al hacer tap fuera
+        }
+        
+        navigateToDetail(marker: marker)
+        
+    }
+    
+    func getMarkerFromAnnotation(view: MKAnnotationView) -> Marker? {
+        var annotation = MKPointAnnotation()
+        if let anAnnotation = view.annotation as? MKPointAnnotation {
+            annotation = anAnnotation
+        }
+        let selectedTitle = "\(annotation.title ?? "")"
+        var index: Int?
+        var i: Int = 0
+        for marker in markers {
+            if marker.name == selectedTitle
+            {
+                return marker
+            }
+            i += 1
+        }
+        return nil
     }
     
     func centerRegionOnPin(mapView: MKMapView, pin: MKAnnotationView) {
@@ -207,12 +240,18 @@ extension MapViewController: MKMapViewDelegate {
         mapView.setRegion(region, animated: true)
     }
     
-    func navigateToDetail() {
-        let modalViewController = CarsListViewController()
-        modalViewController.modalPresentationStyle = .custom
-        self.present(modalViewController, animated: true, completion: nil)
-    }
+    func navigateToDetail(marker : Marker) {
+        
+        let controller = CarsListViewController()
+        
+        addChild(controller)
+        controller.marker = marker
+        controller.view.frame = bottomContainerView.bounds
+        bottomContainerView.addSubview(controller.view)
+        controller.didMove(toParent: self)
 
+    }
+    
 }
 
 extension MapViewController {
@@ -244,7 +283,7 @@ extension MapViewController {
             self.view.layoutIfNeeded()
         })
     }
-
+    
     private func translateBottomSheetAtEndOfPan(withVerticalTranslation verticalTranslation: CGFloat, gesture: UIPanGestureRecognizer) {
         
         let direction = gesture.verticalDirection(target: self.view)
@@ -256,34 +295,35 @@ extension MapViewController {
         
         if isInMiddleTop(currentTopSpace) {
             nextTopSpace = (direction == .Up) ? TOP_FULL_SCREEN : TOP_MID_SCREEN
+            //TODO quitar borde redondeados
             
         } else if isInMiddleDown(currentTopSpace) {
             nextTopSpace = (direction == .Up) ? TOP_MID_SCREEN : TOP_LOW_SCREEN
-            
+            //TODO poner borde redondeados
         } else {
             nextTopSpace = TOP_LOW_SCREEN
-            
+           
         }
         setTopSheetLayout(withTopSpace: nextTopSpace)
-
+        
     }
     
     func isInMiddleTop(_ currentTopSpace: CGFloat) -> Bool {
         if (currentTopSpace >= TOP_FULL_SCREEN)
-        && (currentTopSpace <= TOP_MID_SCREEN) {
-             return true
+            && (currentTopSpace <= TOP_MID_SCREEN) {
+            return true
         }
-       return false
+        return false
     }
     
     func isInMiddleDown(_ currentTopSpace: CGFloat) -> Bool {
         if (currentTopSpace >= TOP_MID_SCREEN)
-        && (currentTopSpace <= TOP_LOW_SCREEN) {
-             return true
+            && (currentTopSpace <= TOP_LOW_SCREEN) {
+            return true
         }
-       return false
+        return false
     }
-
+    
 }
 
 
