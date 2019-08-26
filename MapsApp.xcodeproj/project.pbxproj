@@ -210,7 +210,6 @@
 			isa = PBXGroup;
 			children = (
 				52AC05312302CEAD00438113 /* CameraFeed */,
-				52AC052C2302CE0300438113 /* Custom */,
 				52AC053E2302D84100438113 /* DataHandler */,
 				52AC05212302BE4C00438113 /* Extensions */,
 			);
@@ -257,14 +256,6 @@
 				52AC052A2302CC9500438113 /* InfoCell.swift */,
 			);
 			path = Cell;
-			sourceTree = "<group>";
-		};
-		52AC052C2302CE0300438113 /* Custom */ = {
-			isa = PBXGroup;
-			children = (
-				52AC052D2302CE0D00438113 /* UIView */,
-			);
-			path = Custom;
 			sourceTree = "<group>";
 		};
 		52AC052D2302CE0D00438113 /* UIView */ = {
@@ -357,6 +348,7 @@
 		52AC054D23041C1D00438113 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				52D625282313E981001B2513 /* Components */,
 				52AC054E23041C3100438113 /* Extensions */,
 			);
 			path = Utils;
@@ -365,6 +357,7 @@
 		52AC054E23041C3100438113 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				52CBB734230FF43B00E6E039 /* UIStoryboardExtensions.swift */,
 				52AC05482304127D00438113 /* UIViewExtensions.swift */,
 				52AC05462304088F00438113 /* UIColorExtensions.swift */,
 			);
@@ -464,7 +457,6 @@
 			isa = PBXGroup;
 			children = (
 				52CBB72B230FEC9F00E6E039 /* ViewController */,
-				52CBB732230FF41600E6E039 /* Utils */,
 			);
 			path = SlideOutPanel;
 			sourceTree = "<group>";
@@ -475,22 +467,6 @@
 				52CBB72C230FECB500E6E039 /* ContainerViewController.swift */,
 			);
 			path = ViewController;
-			sourceTree = "<group>";
-		};
-		52CBB732230FF41600E6E039 /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-				52CBB733230FF42500E6E039 /* Extensions */,
-			);
-			path = Utils;
-			sourceTree = "<group>";
-		};
-		52CBB733230FF42500E6E039 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				52CBB734230FF43B00E6E039 /* UIStoryboardExtensions.swift */,
-			);
-			path = Extensions;
 			sourceTree = "<group>";
 		};
 		52CBB738231015AB00E6E039 /* GoogleMapsIOSUtils */ = {
@@ -588,6 +564,23 @@
 				52D625262313E6E7001B2513 /* NightStyle.json */,
 			);
 			path = GMStyes;
+			sourceTree = "<group>";
+		};
+		52D625282313E981001B2513 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				52CBB72A230FE98000E6E039 /* SlideOutPanel */,
+				52D625292313E989001B2513 /* Switch */,
+				52AC052D2302CE0D00438113 /* UIView */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		52D625292313E989001B2513 /* Switch */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Switch;
 			sourceTree = "<group>";
 		};
 		52DE5E4A230D74F60088BC8C /* GoogleMaps */ = {
@@ -706,7 +699,6 @@
 				5BB71BCD22E072E800F14DBB /* AR-Street */,
 				52DE5E4A230D74F60088BC8C /* GoogleMaps */,
 				5BB71BCE22E0731B00F14DBB /* Maps */,
-				52CBB72A230FE98000E6E039 /* SlideOutPanel */,
 				52AC051B2302B74A00438113 /* TensorFlow */,
 				52AC054F23041C4800438113 /* Resources */,
 				52AC054D23041C1D00438113 /* Utils */,
