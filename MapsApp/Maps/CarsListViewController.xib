@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CarsListViewController" customModule="mapsApp" customModuleProvider="target">
             <connections>
+                <outlet property="parkingName" destination="Dr6-sk-GB9" id="IB3-0O-Dnd"/>
                 <outlet property="tableView" destination="XGm-KS-9Uk" id="8Uq-xT-mhZ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -23,7 +24,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nombre del parking" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dr6-sk-GB9">
-                            <rect key="frame" x="25" y="46" width="325" height="40"/>
+                            <rect key="frame" x="25" y="25" width="325" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="z4Q-Ig-tFE"/>
                             </constraints>
@@ -31,36 +32,21 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vrr-W9-GoD">
-                            <rect key="frame" x="50" y="617" width="275" height="30"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="30" id="SO6-6O-NaI"/>
-                            </constraints>
-                            <state key="normal" title="Cancel"/>
-                            <connections>
-                                <action selector="cancelButtonTapped:" destination="-1" eventType="touchUpInside" id="QWy-Es-S3z"/>
-                            </connections>
-                        </button>
-                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XGm-KS-9Uk">
-                            <rect key="frame" x="0.0" y="94" width="375" height="503"/>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XGm-KS-9Uk">
+                            <rect key="frame" x="0.0" y="73" width="375" height="524"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <outlet property="delegate" destination="dPC-HA-hv1" id="mGz-II-SGt"/>
                             </connections>
                         </tableView>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="Vrr-W9-GoD" firstAttribute="top" secondItem="XGm-KS-9Uk" secondAttribute="bottom" constant="20" id="F1n-aM-I0y"/>
-                        <constraint firstItem="Vrr-W9-GoD" firstAttribute="leading" secondItem="dPC-HA-hv1" secondAttribute="leading" constant="50" id="HzP-Yj-8OV"/>
                         <constraint firstAttribute="trailing" secondItem="Dr6-sk-GB9" secondAttribute="trailing" constant="25" id="IcE-Vx-bjh"/>
                         <constraint firstItem="Dr6-sk-GB9" firstAttribute="leading" secondItem="dPC-HA-hv1" secondAttribute="leading" constant="25" id="UUc-rl-wWF"/>
-                        <constraint firstAttribute="trailing" secondItem="Vrr-W9-GoD" secondAttribute="trailing" constant="50" id="YfK-Ty-Yvc"/>
                         <constraint firstItem="XGm-KS-9Uk" firstAttribute="top" secondItem="Dr6-sk-GB9" secondAttribute="bottom" constant="8" id="Yvb-t4-81h"/>
-                        <constraint firstItem="Dr6-sk-GB9" firstAttribute="top" secondItem="dPC-HA-hv1" secondAttribute="top" constant="46" id="bQc-9M-baH"/>
+                        <constraint firstItem="Dr6-sk-GB9" firstAttribute="top" secondItem="dPC-HA-hv1" secondAttribute="top" constant="25" id="bQc-9M-baH"/>
                         <constraint firstAttribute="trailing" secondItem="XGm-KS-9Uk" secondAttribute="trailing" id="d90-R6-sfH"/>
                         <constraint firstItem="XGm-KS-9Uk" firstAttribute="leading" secondItem="dPC-HA-hv1" secondAttribute="leading" id="fsF-MW-VVw"/>
-                        <constraint firstAttribute="bottom" secondItem="Vrr-W9-GoD" secondAttribute="bottom" constant="20" id="ox8-eD-GEr"/>
                     </constraints>
                 </view>
             </subviews>
