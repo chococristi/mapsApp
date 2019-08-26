@@ -54,7 +54,7 @@ class GMViewController: UIViewController, GMUClusterManagerDelegate, GMSMapViewD
         setupSwitch()
 
         initializeLocationManager()
-        setupMapStyle()
+        setupMapStyle(isOn: swMap.isOn)
         //setupMap()
         //setAnnotationsInMap()
 
@@ -65,10 +65,17 @@ class GMViewController: UIViewController, GMUClusterManagerDelegate, GMSMapViewD
     }
 
     func setupSwitch() {
+        swMap.isOn = false
         swMap.onImage = nightImage
         swMap.offImage = dayImage
         swMap.onTintColor = MapsColors.mainColor
         swMap.offTintColor = MapsColors.mainColor
+
+        swMap.addTarget(self, action: #selector(self.switchValueDidChange), for: .valueChanged)
+    }
+
+    @objc func switchValueDidChange(sender:SwitchCustom!) {
+        setupMapStyle(isOn: sender.isOn)
     }
 
     func initializeLocationManager() {
@@ -80,8 +87,10 @@ class GMViewController: UIViewController, GMUClusterManagerDelegate, GMSMapViewD
         locationService.setLocationManagerDelegate(delegate: self)
     }
 
-    func setupMapStyle() {
-        guard let path = Bundle.main.path(forResource: "RetroStyle",
+    func setupMapStyle(isOn: Bool) {
+        guard let path = Bundle.main.path(forResource: isOn
+            ? "NightStyle"
+            : "RetroStyle",
                                           ofType: "json") else {
                                             return
         }
