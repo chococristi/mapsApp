@@ -17,27 +17,49 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Agg-cd-0r2" customClass="GMSMapView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2dB-j0-W1C">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Agg-cd-0r2" customClass="GMSMapView">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="es3-ec-zes" customClass="SwitchCustom" customModule="mapsApp" customModuleProvider="target">
+                                        <rect key="frame" x="355" y="10" width="51" height="31"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="49" id="GW8-Ab-yBQ"/>
+                                            <constraint firstAttribute="height" constant="31" id="hfa-Eu-RUw"/>
+                                        </constraints>
+                                    </switch>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="Agg-cd-0r2" firstAttribute="top" secondItem="2dB-j0-W1C" secondAttribute="top" id="DpJ-Ci-qJw"/>
+                                    <constraint firstItem="Agg-cd-0r2" firstAttribute="leading" secondItem="2dB-j0-W1C" secondAttribute="leading" id="GMM-K1-ECa"/>
+                                    <constraint firstAttribute="trailing" secondItem="es3-ec-zes" secondAttribute="trailing" constant="10" id="Oyp-9i-r4X"/>
+                                    <constraint firstAttribute="bottom" secondItem="Agg-cd-0r2" secondAttribute="bottom" id="WOe-yA-1Ws"/>
+                                    <constraint firstAttribute="trailing" secondItem="Agg-cd-0r2" secondAttribute="trailing" id="n01-gE-SjQ"/>
+                                    <constraint firstItem="es3-ec-zes" firstAttribute="top" secondItem="2dB-j0-W1C" secondAttribute="top" constant="10" id="nLs-53-obP"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Agg-cd-0r2" firstAttribute="top" secondItem="E0U-Xu-wvh" secondAttribute="top" id="g88-th-wD0"/>
-                            <constraint firstItem="E0U-Xu-wvh" firstAttribute="trailing" secondItem="Agg-cd-0r2" secondAttribute="trailing" id="hLu-Sx-mmW"/>
-                            <constraint firstItem="E0U-Xu-wvh" firstAttribute="bottom" secondItem="Agg-cd-0r2" secondAttribute="bottom" id="t5Q-2I-be3"/>
-                            <constraint firstItem="Agg-cd-0r2" firstAttribute="leading" secondItem="E0U-Xu-wvh" secondAttribute="leading" id="xV5-3h-ydo"/>
+                            <constraint firstItem="2dB-j0-W1C" firstAttribute="leading" secondItem="E0U-Xu-wvh" secondAttribute="leading" id="KVQ-Jh-yxR"/>
+                            <constraint firstItem="2dB-j0-W1C" firstAttribute="trailing" secondItem="E0U-Xu-wvh" secondAttribute="trailing" id="TQd-tu-pLk"/>
+                            <constraint firstItem="2dB-j0-W1C" firstAttribute="top" secondItem="E0U-Xu-wvh" secondAttribute="top" id="fWH-sN-ISI"/>
+                            <constraint firstItem="2dB-j0-W1C" firstAttribute="bottom" secondItem="E0U-Xu-wvh" secondAttribute="bottom" id="o8n-bP-Jlo"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="E0U-Xu-wvh"/>
                     </view>
                     <connections>
                         <outlet property="mapView" destination="Agg-cd-0r2" id="zB0-hV-p8t"/>
+                        <outlet property="swMap" destination="es3-ec-zes" id="Q15-NL-VdF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G8Z-ug-BVk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="149" y="84"/>
+            <point key="canvasLocation" x="147.82608695652175" y="83.705357142857139"/>
         </scene>
     </scenes>
 </document>

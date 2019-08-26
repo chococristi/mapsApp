@@ -46,6 +46,8 @@
 		52D625232313E263001B2513 /* RetroStyle.json in Resources */ = {isa = PBXBuildFile; fileRef = 52D625222313E263001B2513 /* RetroStyle.json */; };
 		52D625252313E377001B2513 /* Data+PrettyPrint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D625242313E377001B2513 /* Data+PrettyPrint.swift */; };
 		52D625272313E6E7001B2513 /* NightStyle.json in Resources */ = {isa = PBXBuildFile; fileRef = 52D625262313E6E7001B2513 /* NightStyle.json */; };
+		52D6252B2313EA70001B2513 /* SwitchCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D6252A2313EA70001B2513 /* SwitchCustom.swift */; };
+		52D6252D2313F7E6001B2513 /* SwitchCustomThumbView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D6252C2313F7E6001B2513 /* SwitchCustomThumbView.swift */; };
 		52DE5E4E230D75450088BC8C /* GoogleMaps.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52DE5E4D230D75450088BC8C /* GoogleMaps.storyboard */; };
 		52DE5E50230D77FE0088BC8C /* GMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DE5E4F230D77FE0088BC8C /* GMViewController.swift */; };
 		5B0F40B222E6F5EA00C3FC12 /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0F40B022E6F5EA00C3FC12 /* ARViewController.swift */; };
@@ -137,6 +139,8 @@
 		52D625222313E263001B2513 /* RetroStyle.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = RetroStyle.json; sourceTree = "<group>"; };
 		52D625242313E377001B2513 /* Data+PrettyPrint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+PrettyPrint.swift"; sourceTree = "<group>"; };
 		52D625262313E6E7001B2513 /* NightStyle.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = NightStyle.json; sourceTree = "<group>"; };
+		52D6252A2313EA70001B2513 /* SwitchCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchCustom.swift; sourceTree = "<group>"; };
+		52D6252C2313F7E6001B2513 /* SwitchCustomThumbView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchCustomThumbView.swift; sourceTree = "<group>"; };
 		52DE5E4D230D75450088BC8C /* GoogleMaps.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GoogleMaps.storyboard; sourceTree = "<group>"; };
 		52DE5E4F230D77FE0088BC8C /* GMViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GMViewController.swift; sourceTree = "<group>"; };
 		5B0F40B022E6F5EA00C3FC12 /* ARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewController.swift; sourceTree = "<group>"; };
@@ -579,6 +583,8 @@
 		52D625292313E989001B2513 /* Switch */ = {
 			isa = PBXGroup;
 			children = (
+				52D6252A2313EA70001B2513 /* SwitchCustom.swift */,
+				52D6252C2313F7E6001B2513 /* SwitchCustomThumbView.swift */,
 			);
 			path = Switch;
 			sourceTree = "<group>";
@@ -912,6 +918,7 @@
 				52AC05402302D86000438113 /* ModelDataHandler.swift in Sources */,
 				52CBB765231016A400E6E039 /* GQTPointQuadTree.m in Sources */,
 				52AC052F2302CE1F00438113 /* CurvedView.swift in Sources */,
+				52D6252B2313EA70001B2513 /* SwitchCustom.swift in Sources */,
 				52CBB71F230E98DD00E6E039 /* LocationService.swift in Sources */,
 				5B0F40B222E6F5EA00C3FC12 /* ARViewController.swift in Sources */,
 				5B0F40B622E71A9D00C3FC12 /* ARkitCarrousel.swift in Sources */,
@@ -921,6 +928,7 @@
 				5B3293E022E9977D00F3E268 /* QRViewController.swift in Sources */,
 				52AC052B2302CC9500438113 /* InfoCell.swift in Sources */,
 				52AC0545230407DC00438113 /* MapsColors.swift in Sources */,
+				52D6252D2313F7E6001B2513 /* SwitchCustomThumbView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

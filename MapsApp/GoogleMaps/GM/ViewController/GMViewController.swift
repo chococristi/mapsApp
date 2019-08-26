@@ -18,9 +18,13 @@ class GMViewController: UIViewController, GMUClusterManagerDelegate, GMSMapViewD
 
     // MARK: - IBOutlets
 
+    @IBOutlet weak var swMap: SwitchCustom!
     @IBOutlet weak var mapView: GMSMapView!
 
     // MARK: - Fields
+
+    let nightImage: UIImage? = UIImage.init(named: "nightModeImage")?.withRenderingMode(.alwaysOriginal)
+    let dayImage: UIImage? = UIImage.init(named: "dayModeImage")?.withRenderingMode(.alwaysOriginal)
 
     private var locationService: LocationService?
     private var markers: Markers?
@@ -47,6 +51,8 @@ class GMViewController: UIViewController, GMUClusterManagerDelegate, GMSMapViewD
     // MARK: - Helpers
 
     func setup() {
+        setupSwitch()
+
         initializeLocationManager()
         setupMapStyle()
         //setupMap()
@@ -56,6 +62,13 @@ class GMViewController: UIViewController, GMUClusterManagerDelegate, GMSMapViewD
         setupCluster()
 
         //mapView.isTrafficEnabled = true //Show traffic in map, default false
+    }
+
+    func setupSwitch() {
+        swMap.onImage = nightImage
+        swMap.offImage = dayImage
+        swMap.onTintColor = MapsColors.mainColor
+        swMap.offTintColor = MapsColors.mainColor
     }
 
     func initializeLocationManager() {
