@@ -104,6 +104,48 @@
                 "latitude": 41.401204,
                 "longitude": 2.191227
             }
+        },
+        {
+            "name": "Arc de Triomf",
+            "coordinates": {
+                "latitude": 41.39117041,
+                "longitude": 2.18075864
+            }
+        },
+        {
+            "name": "Platja de la Barceloneta",
+            "coordinates": {
+                "latitude": 41.3785412,
+                "longitude": 2.19258919
+            }
+        },
+        {
+            "name": "Aquarium",
+            "coordinates": {
+                "latitude": 41.37750947,
+                "longitude": 2.1846465
+            }
+        },
+        {
+            "name": "Hospital del Mar",
+            "coordinates": {
+                "latitude": 41.384558150,
+                "longitude": 2.194251827
+            }
+        },
+        {
+            "name": "Razzmatazz",
+            "coordinates": {
+                "latitude": 41.39781319,
+                "longitude": 2.191150188
+            }
+        },
+        {
+            "name": "Parc Zoològic de Barcelona",
+            "coordinates": {
+                "latitude": 41.386548416,
+                "longitude": 2.1899737045
+            }
         }
     ]
 }
