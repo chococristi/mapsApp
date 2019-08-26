@@ -10,8 +10,9 @@ import Foundation
 import UIKit
 import GoogleMaps
 
-//https://developers.google.com/maps/documentation/ios-sdk/utility/marker-clustering
-//https://github.com/googlemaps/google-maps-ios-utils/blob/master/Swift.md
+//https://developers.google.com/maps/documentation/ios-sdk/utility/marker-clustering //Clustering documentation
+//https://github.com/googlemaps/google-maps-ios-utils/blob/master/Swift.md 
+//https://mapstyle.withgoogle.com //Map styles
 
 class GMViewController: UIViewController, GMUClusterManagerDelegate, GMSMapViewDelegate {
 
@@ -23,7 +24,6 @@ class GMViewController: UIViewController, GMUClusterManagerDelegate, GMSMapViewD
 
     private var locationService: LocationService?
     private var markers: Markers?
-    //private var poiMarkers: POIMarkers?
     private var clusterManager: GMUClusterManager!
 
     // MARK: - Constructor
@@ -48,11 +48,14 @@ class GMViewController: UIViewController, GMUClusterManagerDelegate, GMSMapViewD
 
     func setup() {
         initializeLocationManager()
+        setupMapStyle()
         //setupMap()
-
         //setAnnotationsInMap()
+
         //setRouteInMap()   //We need to pay for route
         setupCluster()
+
+        //mapView.isTrafficEnabled = true //Show traffic in map, default false
     }
 
     func initializeLocationManager() {
@@ -62,6 +65,27 @@ class GMViewController: UIViewController, GMUClusterManagerDelegate, GMSMapViewD
         }
 
         locationService.setLocationManagerDelegate(delegate: self)
+    }
+
+    func setupMapStyle() {
+        guard let path = Bundle.main.path(forResource: "RetroStyle",
+                                          ofType: "json") else {
+                                            return
+        }
+
+        let fileUrl = URL(fileURLWithPath: path)
+
+        do {
+            let data = try Data(contentsOf: fileUrl)
+            guard let jsonString = data.prettyPrintedJSONString else {
+                return
+            }
+
+            // Set the map style by passing a valid JSON string.
+            mapView.mapStyle = try GMSMapStyle(jsonString: jsonString)
+        } catch {
+            NSLog("One or more of the map styles failed to load. \(error)")
+        }
     }
 
     func setupMap() {
