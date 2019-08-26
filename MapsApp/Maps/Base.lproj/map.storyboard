@@ -36,11 +36,19 @@
                                                     <constraint firstAttribute="height" constant="5" id="FZz-KR-JYq"/>
                                                 </constraints>
                                             </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pzR-KX-X7A">
+                                                <rect key="frame" x="0.0" y="25" width="375" height="642"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="pzR-KX-X7A" secondAttribute="trailing" id="16V-iP-kDa"/>
                                             <constraint firstItem="wEc-Zv-D7c" firstAttribute="centerX" secondItem="tCc-av-yLu" secondAttribute="centerX" id="Bv3-P1-qkx"/>
                                             <constraint firstItem="wEc-Zv-D7c" firstAttribute="top" secondItem="tCc-av-yLu" secondAttribute="top" constant="10" id="FQb-bB-jo5"/>
+                                            <constraint firstItem="pzR-KX-X7A" firstAttribute="leading" secondItem="tCc-av-yLu" secondAttribute="leading" id="FaO-uK-Bo1"/>
+                                            <constraint firstAttribute="bottom" secondItem="pzR-KX-X7A" secondAttribute="bottom" id="WYB-jo-w8M"/>
+                                            <constraint firstItem="pzR-KX-X7A" firstAttribute="top" secondItem="wEc-Zv-D7c" secondAttribute="bottom" constant="10" id="ccy-tI-bHy"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -67,6 +75,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="bottomContainerView" destination="pzR-KX-X7A" id="fNM-tl-ktR"/>
                         <outlet property="bottomSheetView" destination="tCc-av-yLu" id="NRp-H2-b3O"/>
                         <outlet property="littleView" destination="wEc-Zv-D7c" id="HrJ-PU-Cwk"/>
                         <outlet property="mapView" destination="aRk-oI-89r" id="DiB-qu-ogE"/>
