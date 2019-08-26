@@ -13,16 +13,17 @@ import CoreLocation
 class MapViewController: UIViewController {
     
     @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var bottomSheetView: UIView!
+    @IBOutlet weak var bottomSheetView: CurvedView!
     @IBOutlet weak var topSheetConstraint: NSLayoutConstraint!
+    @IBOutlet weak var littleView: UIView!
     
     let locationManager = CLLocationManager()
     let regionInMeters: Double = 10000 //put 900 to zoom in directly
     let geoCoder = CLGeocoder()
-    let DEFAULT_TOP: CGFloat = 300.0
+    
     let TOP_FULL_SCREEN: CGFloat = 0
-    let TOP_MID_SCREEN: CGFloat = 300
-    let TOP_LOW_SCREEN: CGFloat = 600
+    let TOP_MID_SCREEN: CGFloat = UIScreen.main.bounds.height * 1/2
+    let TOP_LOW_SCREEN: CGFloat = UIScreen.main.bounds.height
     
     var initialTopSpace: CGFloat = 300.0
     var previousLocation: CLLocation?
@@ -34,12 +35,29 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         checkLocationServices()
+        
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(self.didPan(panGesture:)))
         bottomSheetView.addGestureRecognizer(panGesture)
-
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+       setupBottomView()
     }
     
     // MARK: Setup functions
+    
+    func setupBottomView() {
+        //NOT WORKING
+        bottomSheetView.layer.shadowPath = UIBezierPath(roundedRect: bottomSheetView.bounds, cornerRadius: 5).cgPath
+        bottomSheetView.layer.shadowOffset = CGSize(width: 5, height: 5)
+        bottomSheetView.layer.shadowColor = UIColor.black.cgColor
+        bottomSheetView.layer.shadowRadius = 1
+        bottomSheetView.layer.shadowOpacity = 1
+        bottomSheetView.layer.masksToBounds = false
+        
+        topSheetConstraint.constant = UIScreen.main.bounds.height
+        littleView.layer.cornerRadius = 3
+    }
     
     func setupLocationManager() {
         locationManager.delegate = self
@@ -83,6 +101,8 @@ class MapViewController: UIViewController {
         case .restricted:
             break
         case .authorizedAlways:
+            break
+        @unknown default:
             break
         }
     }
@@ -173,6 +193,11 @@ extension MapViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         centerRegionOnPin(mapView: mapView, pin: view)
         navigateToDetail()
+        self.view.layoutIfNeeded()
+        UIView.animate(withDuration: 0.4, delay: 0.2, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.6, options: .curveEaseInOut, animations: {
+            self.topSheetConstraint?.constant = self.TOP_MID_SCREEN
+            self.view.layoutIfNeeded()
+        }, completion: nil)
     }
     
     func centerRegionOnPin(mapView: MKMapView, pin: MKAnnotationView) {
@@ -183,18 +208,11 @@ extension MapViewController: MKMapViewDelegate {
     }
     
     func navigateToDetail() {
-        let modalViewController = MapDetailViewController()
-        modalViewController.transitioningDelegate = self
+        let modalViewController = CarsListViewController()
         modalViewController.modalPresentationStyle = .custom
         self.present(modalViewController, animated: true, completion: nil)
     }
 
-}
-
-extension MapViewController : UIViewControllerTransitioningDelegate {
-    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-        return HalfSizePresentationController(presentedViewController: presented, presenting: presenting)
-    }
 }
 
 extension MapViewController {
@@ -202,7 +220,6 @@ extension MapViewController {
     @objc func didPan(panGesture: UIPanGestureRecognizer) {
         
         let translation = panGesture.translation(in: view)
-
         
         switch panGesture.state {
         case .began:
@@ -214,73 +231,57 @@ extension MapViewController {
             setTopSheetLayout(withTopSpace: initialTopSpace)
         case .ended:
             translateBottomSheetAtEndOfPan(withVerticalTranslation: translation.y, gesture: panGesture)
-            initialTopSpace = DEFAULT_TOP
+            initialTopSpace = TOP_MID_SCREEN
         default:
             break
         }
     }
     
     func setTopSheetLayout(withTopSpace bottomSpace: CGFloat) {
-        UIView.animate(withDuration: 2, animations: {
+        UIView.animate(withDuration: 0.4, delay: 0.2, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.6, options: .curveEaseInOut, animations: {
             self.view.setNeedsLayout()
             self.topSheetConstraint.constant = bottomSpace
-            self.view.setNeedsLayout()
+            self.view.layoutIfNeeded()
         })
     }
-    
-//    private func translateBottomSheetAtEndOfPan(withVerticalTranslation verticalTranslation: CGFloat) {
-//
-//        // Changes bottom sheet state to either fully open or closed at the end of pan.
-//        var topSpace = initialTopSpace - verticalTranslation
-//        print("++++++++++++ top space : \(topSpace)")
-//        var height: CGFloat = 0.0
-//        if initialTopSpace == 0.0 {
-//            height = bottomSheetView.bounds.size.height
-//        }
-//        else {
-//            height = 100
-//            //height = inferenceViewController!.collapsedHeight
-//        }
-//        print("++++++++++++ height : \(height)")
-//
-//        let currentHeight = bottomSheetView.bounds.size.height + topSpace
-//         print("++++++++++++ currentHeight (height+topSpace) : \(currentHeight)")
-//
-//        if currentHeight - height <= 300 {
-//            topSpace = 100 - bottomSheetView.bounds.size.height
-//        }
-//        else if currentHeight - height >= 100 {
-//            topSpace = 0.0
-//        }
-//        else {
-//            topSpace = initialTopSpace
-//        }
-//        print("++++++++++++ top space : \(topSpace)")
-//        setTopSheetLayout(withTopSpace: topSpace)
-//    }
 
     private func translateBottomSheetAtEndOfPan(withVerticalTranslation verticalTranslation: CGFloat, gesture: UIPanGestureRecognizer) {
         
         let direction = gesture.verticalDirection(target: self.view)
-        var currentTopSpace = initialTopSpace + verticalTranslation
+        let currentTopSpace = initialTopSpace + verticalTranslation
         var nextTopSpace: CGFloat = 0
         print("+++++ initialTopSpace: \(initialTopSpace)")
         print("+++++ verticalTranslation: \(verticalTranslation)")
         print("+++++ currentTopSpace (initialTop-Translation): \(currentTopSpace)")
         
-        if (currentTopSpace >= TOP_FULL_SCREEN) && (currentTopSpace <= TOP_MID_SCREEN) && direction == .Up {
-            nextTopSpace = TOP_FULL_SCREEN
-        } else if (currentTopSpace >= TOP_FULL_SCREEN) && (currentTopSpace <= TOP_MID_SCREEN) && direction == .Down {
-             nextTopSpace = TOP_MID_SCREEN
-        } else if (currentTopSpace >= TOP_MID_SCREEN) && (currentTopSpace <= TOP_LOW_SCREEN) && direction == .Up {
-            nextTopSpace = TOP_MID_SCREEN
-        } else if (currentTopSpace >= TOP_MID_SCREEN) && (currentTopSpace <= TOP_LOW_SCREEN) && direction == .Down {
-            nextTopSpace = TOP_LOW_SCREEN
+        if isInMiddleTop(currentTopSpace) {
+            nextTopSpace = (direction == .Up) ? TOP_FULL_SCREEN : TOP_MID_SCREEN
+            
+        } else if isInMiddleDown(currentTopSpace) {
+            nextTopSpace = (direction == .Up) ? TOP_MID_SCREEN : TOP_LOW_SCREEN
+            
         } else {
             nextTopSpace = TOP_LOW_SCREEN
+            
         }
         setTopSheetLayout(withTopSpace: nextTopSpace)
 
+    }
+    
+    func isInMiddleTop(_ currentTopSpace: CGFloat) -> Bool {
+        if (currentTopSpace >= TOP_FULL_SCREEN)
+        && (currentTopSpace <= TOP_MID_SCREEN) {
+             return true
+        }
+       return false
+    }
+    
+    func isInMiddleDown(_ currentTopSpace: CGFloat) -> Bool {
+        if (currentTopSpace >= TOP_MID_SCREEN)
+        && (currentTopSpace <= TOP_LOW_SCREEN) {
+             return true
+        }
+       return false
     }
 
 }
