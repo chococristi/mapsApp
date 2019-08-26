@@ -1,87 +1,87 @@
 {
-    "poiMarkers": [
+    "markers": [
         {
             "name": "Sagrada Família",
             "coordinates": {
-                "latitud": 41.403831,
-                "longitud": 2.174399
+                "latitude": 41.403831,
+                "longitude": 2.174399
             }
         },
         {
             "name": "Parc Güell",
             "coordinates": {
-                "latitud": 41.414465,
-                "longitud": 2.153044
+                "latitude": 41.414465,
+                "longitude": 2.153044
             }
         },
         {
             "name": "Cine Verdi",
             "coordinates": {
-                "latitud": 41.404713,
-                "longitud": 2.156921
+                "latitude": 41.404713,
+                "longitude": 2.156921
             }
         },
         {
             "name": "Plaça Kennedy",
             "coordinates": {
-                "latitud": 41.409991,
-                "longitud": 2.136940
+                "latitude": 41.409991,
+                "longitude": 2.136940
             }
         },
         {
             "name": "Monasterio Pedralbes",
             "coordinates": {
-                "latitud": 41.398215,
-                "longitud": 2.111951
+                "latitude": 41.398215,
+                "longitude": 2.111951
             }
         },
         {
             "name": "Plaça Catalunya",
             "coordinates": {
-                "latitud": 41.387219,
-                "longitud": 2.170041
+                "latitude": 41.387219,
+                "longitude": 2.170041
             }
         },
         {
             "name": "C.C. La illa",
             "coordinates": {
-                "latitud": 41.390128,
-                "longitud": 2.135641
+                "latitude": 41.390128,
+                "longitude": 2.135641
             }
         },
         {
             "name": "Goiko Les Corts",
             "coordinates": {
-                "latitud": 41.389884,
-                "longitud": 2.132114
+                "latitude": 41.389884,
+                "longitude": 2.132114
             }
         },
         {
             "name": "Hilton Barcelona",
             "coordinates": {
-                "latitud": 41.388942,
-                "longitud": 2.131438
+                "latitude": 41.388942,
+                "longitude": 2.131438
             }
         },
         {
             "name": "C.C. Les Glories",
             "coordinates": {
-                "latitud": 41.405887,
-                "longitud": 2.191378
+                "latitude": 41.405887,
+                "longitude": 2.191378
             }
         },
         {
             "name": "CAP El Clot",
             "coordinates": {
-                "latitud": 41.411989,
-                "longitud": 2.192907
+                "latitude": 41.411989,
+                "longitude": 2.192907
             }
         },
         {
             "name": "Parc del Clot",
             "coordinates": {
-                "latitud": 41.4079019,
-                "longitud": 2.190064
+                "latitude": 41.4079019,
+                "longitude": 2.190064
             }
         },
         {
@@ -94,15 +94,15 @@
         {
             "name": "Discoteca Merlin",
             "coordinates": {
-                "latitud": 41.400841,
-                "longitud": 2.190799
+                "latitude": 41.400841,
+                "longitude": 2.190799
             }
         },
         {
             "name": "Hewlett Packard",
             "coordinates": {
-                "latitud": 41.401204,
-                "longitud": 2.191227
+                "latitude": 41.401204,
+                "longitude": 2.191227
             }
         }
     ]
