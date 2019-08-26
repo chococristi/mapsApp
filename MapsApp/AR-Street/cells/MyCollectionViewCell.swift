@@ -1,25 +1,26 @@
 //
-//  ARCollectionCell.swift
-//  mapsApp
+//  MyCollectionViewCell.swift
+//  uicollectionviewcell-from-xib
 //
-//  Created by Adrià González Fernández on 22/08/2019.
-//  Copyright © 2019 Cristina Saura Pérez. All rights reserved.
+//  Created by bett on 8/18/17.
+//  Copyright © 2017 bett. All rights reserved.
 //
 
 import UIKit
 import ARKit
 
-class ARCollectionCell: UICollectionViewCell {
+class MyCollectionViewCell: UICollectionViewCell {
 
- 
-    @IBOutlet weak var label: UILabel!
-    var object : SCNNode = SCNNode()
-    var text : String = ""
+    
+    @IBOutlet var sceneView: SCNView!
+    @IBOutlet weak var lbName: UILabel!
+    @IBOutlet var view: UIView!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
-
-        //self.init3DObject(node: object)
+        // Initialization code
+        self.sceneSetup()
     }
     
     func sceneSetup() {
@@ -52,24 +53,25 @@ class ARCollectionCell: UICollectionViewCell {
         // camera
         let cameraNode = SCNNode()
         cameraNode.camera = SCNCamera()
-        cameraNode.position = SCNVector3Make(0, 0, 50)
+        cameraNode.position = SCNVector3Make(0, 0, 20)
         scene.rootNode.addChildNode(cameraNode)
         
-//
-//        let panRecognizer = UIPanGestureRecognizer(target: self, action:#selector(panGesture(_:)))
-//        panRecognizer.maximumNumberOfTouches = 1
-//        panRecognizer.minimumNumberOfTouches = 1
-//        sceneView.addGestureRecognizer(panRecognizer)
-//
-//        let panTwoFingers = UIPanGestureRecognizer(target: self, action:#selector(panGestureTwoFinguers(_:)))
-//        panTwoFingers.maximumNumberOfTouches = 2
-//        panTwoFingers.minimumNumberOfTouches = 2
-//        sceneView.addGestureRecognizer(panTwoFingers)
-
-     //   self.ViewScene.scene = scene
+        //
+        //        let panRecognizer = UIPanGestureRecognizer(target: self, action:#selector(panGesture(_:)))
+        //        panRecognizer.maximumNumberOfTouches = 1
+        //        panRecognizer.minimumNumberOfTouches = 1
+        //        sceneView.addGestureRecognizer(panRecognizer)
+        //
+        //        let panTwoFingers = UIPanGestureRecognizer(target: self, action:#selector(panGestureTwoFinguers(_:)))
+        //        panTwoFingers.maximumNumberOfTouches = 2
+        //        panTwoFingers.minimumNumberOfTouches = 2
+        //        sceneView.addGestureRecognizer(panTwoFingers)
+        
+           self.sceneView.scene = scene
     }
     
-//    func init3DObject(node: SCNNode){
-//        ViewScene.scene.rootNode.addChildNode(node)
-//    }
+        func init3DObject(node: SCNNode){
+            self.sceneView.scene?.rootNode.addChildNode(node)
+        }
 }
+

@@ -30,11 +30,15 @@
                                 <constraint firstAttribute="height" constant="200" id="0Pm-WV-alY"/>
                             </constraints>
                             <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="gk2-Z6-YLu">
-                                <size key="itemSize" width="50" height="50"/>
+                                <size key="itemSize" width="200" height="200"/>
                                 <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                 <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                 <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                             </collectionViewFlowLayout>
+                            <connections>
+                                <outlet property="dataSource" destination="-1" id="rvN-Wv-q1e"/>
+                                <outlet property="delegate" destination="-1" id="VMK-Gx-2F0"/>
+                            </connections>
                         </collectionView>
                     </subviews>
                     <color key="backgroundColor" cocoaTouchSystemColor="systemBrownColor"/>

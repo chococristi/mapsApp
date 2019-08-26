@@ -37,6 +37,8 @@
 		5B4738D8230EAAB00013EB62 /* ARCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B4738D6230EAAB00013EB62 /* ARCollectionCell.xib */; };
 		5B4738DB230EACFB0013EB62 /* ARCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4738D9230EACFB0013EB62 /* ARCollectionViewController.swift */; };
 		5B4738DC230EACFB0013EB62 /* ARCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B4738DA230EACFB0013EB62 /* ARCollectionViewController.xib */; };
+		5B58A3C92313DC780096CF9B /* MyCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B58A3C72313DC780096CF9B /* MyCollectionViewCell.xib */; };
+		5B58A3CA2313DC780096CF9B /* MyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B58A3C82313DC780096CF9B /* MyCollectionViewCell.swift */; };
 		5B785E8423069BED00176DF6 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B785E8323069BED00176DF6 /* MainViewController.swift */; };
 		5B8E20AF2302B4FB00066534 /* PlaceObjectsplaneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8E20AD2302B4FB00066534 /* PlaceObjectsplaneViewController.swift */; };
 		5B8E20B02302B4FB00066534 /* PlaceObjectsplaneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B8E20AE2302B4FB00066534 /* PlaceObjectsplaneViewController.xib */; };
@@ -85,6 +87,8 @@
 		5B4738D6230EAAB00013EB62 /* ARCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ARCollectionCell.xib; sourceTree = "<group>"; };
 		5B4738D9230EACFB0013EB62 /* ARCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARCollectionViewController.swift; sourceTree = "<group>"; };
 		5B4738DA230EACFB0013EB62 /* ARCollectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ARCollectionViewController.xib; sourceTree = "<group>"; };
+		5B58A3C72313DC780096CF9B /* MyCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyCollectionViewCell.xib; sourceTree = "<group>"; };
+		5B58A3C82313DC780096CF9B /* MyCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCollectionViewCell.swift; sourceTree = "<group>"; };
 		5B785E8323069BED00176DF6 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		5B8E20AD2302B4FB00066534 /* PlaceObjectsplaneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceObjectsplaneViewController.swift; sourceTree = "<group>"; };
 		5B8E20AE2302B4FB00066534 /* PlaceObjectsplaneViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlaceObjectsplaneViewController.xib; sourceTree = "<group>"; };
@@ -345,6 +349,8 @@
 		5B4738D4230EAA8E0013EB62 /* cells */ = {
 			isa = PBXGroup;
 			children = (
+				5B58A3C82313DC780096CF9B /* MyCollectionViewCell.swift */,
+				5B58A3C72313DC780096CF9B /* MyCollectionViewCell.xib */,
 				5B4738D5230EAAB00013EB62 /* ARCollectionCell.swift */,
 				5B4738D6230EAAB00013EB62 /* ARCollectionCell.xib */,
 			);
@@ -500,6 +506,7 @@
 				5B4738DC230EACFB0013EB62 /* ARCollectionViewController.xib in Resources */,
 				52AC055223041E3A00438113 /* SplashScreenMainColor.json in Resources */,
 				52AC055623042C7800438113 /* SplashScreenWhiteColor.json in Resources */,
+				5B58A3C92313DC780096CF9B /* MyCollectionViewCell.xib in Resources */,
 				5B32AE8222F1C0AA000872ED /* art.scnassets in Resources */,
 				52AC051D2302BC4B00438113 /* TensorFlow.storyboard in Resources */,
 				5B0F40B722E71A9D00C3FC12 /* ARkitCarrousel.xib in Resources */,
@@ -608,6 +615,7 @@
 				52AC055423041FFF00438113 /* LaunchScreenView.swift in Sources */,
 				5B3293E022E9977D00F3E268 /* QRViewController.swift in Sources */,
 				52AC052B2302CC9500438113 /* InfoCell.swift in Sources */,
+				5B58A3CA2313DC780096CF9B /* MyCollectionViewCell.swift in Sources */,
 				52AC0545230407DC00438113 /* MapsColors.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
