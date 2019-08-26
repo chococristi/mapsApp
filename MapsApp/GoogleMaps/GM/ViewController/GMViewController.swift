@@ -147,7 +147,7 @@ class GMViewController: UIViewController, GMUClusterManagerDelegate, GMSMapViewD
     }
 
     func setupPOIMarkers() {
-        guard let path = Bundle.main.path(forResource: "bcnlocations",
+        guard let path = Bundle.main.path(forResource: "BcnMarkers",
                                           ofType: "json") else {
                                             return
         }

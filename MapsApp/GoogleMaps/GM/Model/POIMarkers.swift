@@ -8,17 +8,6 @@
 
 import Foundation
 
-/// Point of Interest Item which implements the GMUClusterItem protocol.
-class POIItem: NSObject, GMUClusterItem {
-    var position: CLLocationCoordinate2D
-    var name: String!
-
-    init(position: CLLocationCoordinate2D, name: String) {
-        self.position = position
-        self.name = name
-    }
-}
-
 struct POIMarkers {
     var poiMarkers: [POIItem]
 }
@@ -33,17 +22,28 @@ extension POIMarkers {
         for markerJSON in markersJSON {
 
             if let name = markerJSON["name"] as? String,
-                let coordinates = markerJSON["coordinates"] as? [Double] {
-                if let latitude = coordinates.first,
-                    let longitude = coordinates.last {
+                let coordinatesJSON = markerJSON["coordinates"] as? [String: Any],
+                let latitude = coordinatesJSON["latitude"] as? Double,
+                let longitude = coordinatesJSON["longitude"] as? Double {
+
                     let newPOIMarker = POIItem(position: CLLocationCoordinate2DMake(latitude,
                                                                                     longitude),
                                                name: name)
                     poiMarkersObtanied.append(newPOIMarker)
-                }
             }
         }
 
         self.poiMarkers = poiMarkersObtanied
+    }
+}
+
+/// Point of Interest Item which implements the GMUClusterItem protocol.
+class POIItem: NSObject, GMUClusterItem {
+    var position: CLLocationCoordinate2D
+    var name: String!
+    
+    init(position: CLLocationCoordinate2D, name: String) {
+        self.position = position
+        self.name = name
     }
 }
