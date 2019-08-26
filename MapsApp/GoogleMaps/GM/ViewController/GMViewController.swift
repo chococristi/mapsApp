@@ -14,7 +14,7 @@ import GoogleMaps
 //https://github.com/googlemaps/google-maps-ios-utils/blob/master/Swift.md 
 //https://mapstyle.withgoogle.com //Map styles
 
-class GMViewController: UIViewController, GMUClusterManagerDelegate, GMSMapViewDelegate {
+class GMViewController: UIViewController {
 
     // MARK: - IBOutlets
 
@@ -55,8 +55,6 @@ class GMViewController: UIViewController, GMUClusterManagerDelegate, GMSMapViewD
 
         initializeLocationManager()
         setupMapStyle(isOn: swMap.isOn)
-        //setupMap()
-        //setAnnotationsInMap()
 
         //setRouteInMap()   //We need to pay for route
         setupCluster()
@@ -110,44 +108,6 @@ class GMViewController: UIViewController, GMUClusterManagerDelegate, GMSMapViewD
         }
     }
 
-    func setupMap() {
-        guard let path = Bundle.main.path(forResource: "bcnlocations",
-                                          ofType: "json") else {
-            return
-        }
-
-        let fileUrl = URL(fileURLWithPath: path)
-        do {
-            let data = try Data(contentsOf: fileUrl)
-            let json = try JSONSerialization.jsonObject(with: data,
-                                                        options: .mutableContainers)
-
-            guard let array = json as? [String: Any] else { return }
-            self.markers = Markers.init(json: array)
-        } catch {
-            print(error)
-        }
-    }
-
-    fileprivate func setAnnotationsInMap() {
-
-        guard let markersArray = markers?.markers else {
-            return
-        }
-
-        for marker in markersArray {
-            guard let latitude = marker.coordinates.first,
-                let longitude = marker.coordinates.last else {
-                    return
-            }
-
-            let position = CLLocationCoordinate2DMake(latitude, longitude)
-            let gmsMarker = GMSMarker(position: position)
-            gmsMarker.title = marker.name
-            gmsMarker.map = mapView
-        }
-    }
-
     fileprivate func setRouteInMap() {
 
         guard let markersArray = markers?.markers else {
@@ -175,6 +135,7 @@ class GMViewController: UIViewController, GMUClusterManagerDelegate, GMSMapViewD
     }
 
     func setupCluster() {
+
         // Set up the cluster manager with the supplied icon generator and
         // renderer.
         let iconGenerator = GMUDefaultClusterIconGenerator()
@@ -184,7 +145,7 @@ class GMViewController: UIViewController, GMUClusterManagerDelegate, GMSMapViewD
         clusterManager = GMUClusterManager(map: mapView,
                                            algorithm: algorithm,
                                            renderer: renderer)
-
+        clusterManager.setDelegate(self, mapDelegate: self)
         // Generate and add items to the cluster manager.
         setupPOIMarkers()
         // Call cluster() after items have been added to perform the clustering
@@ -230,16 +191,29 @@ extension GMViewController: CLLocationManagerDelegate {
 
         cameraMoveToLocation(toLocation: manager.location?.coordinate)
     }
+}
 
-//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-//
-//        guard let location = locations.first else {
-//            return
-//        }
-//
-//        cameraMoveToLocation(toLocation: location.coordinate)
-//
-//    }
+extension GMViewController: GMUClusterManagerDelegate {
+
+    func clusterManager(_ clusterManager: GMUClusterManager, didTap cluster: GMUCluster) -> Bool {
+        let newCamera = GMSCameraPosition.camera(withTarget: cluster.position,
+                                                 zoom: mapView.camera.zoom + 1)
+        let update = GMSCameraUpdate.setCamera(newCamera)
+        mapView.moveCamera(update)
+
+        return true
+    }
+}
+
+extension GMViewController: GMSMapViewDelegate {
+    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+        if let poiItem = marker.userData as? POIItem {
+            NSLog("Did tap marker for cluster item \(String(describing: poiItem.name))")
+        } else {
+            NSLog("Did tap a normal marker")
+        }
+        return false
+    }
 }
 
 extension GMViewController {
