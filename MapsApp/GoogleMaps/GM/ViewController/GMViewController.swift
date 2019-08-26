@@ -13,7 +13,7 @@ import GoogleMaps
 //https://developers.google.com/maps/documentation/ios-sdk/utility/marker-clustering
 //https://github.com/googlemaps/google-maps-ios-utils/blob/master/Swift.md
 
-class GMViewController: UIViewController {
+class GMViewController: UIViewController, GMUClusterManagerDelegate, GMSMapViewDelegate {
 
     // MARK: - IBOutlets
 
@@ -23,6 +23,9 @@ class GMViewController: UIViewController {
 
     private var locationService: LocationService?
     private var markers: Markers?
+    //private var poiMarkers: POIMarkers?
+    private var clusterManager: GMUClusterManager!
+
     // MARK: - Constructor
 
     // MARK: - Life cycle
@@ -45,7 +48,11 @@ class GMViewController: UIViewController {
 
     func setup() {
         initializeLocationManager()
-        setupMap()
+        //setupMap()
+
+        //setAnnotationsInMap()
+        //setRouteInMap()   //We need to pay for route
+        setupCluster()
     }
 
     func initializeLocationManager() {
@@ -71,8 +78,6 @@ class GMViewController: UIViewController {
 
             guard let array = json as? [String: Any] else { return }
             self.markers = Markers.init(json: array)
-            setAnnotationsInMap()
-            //setRouteInMap()   //We need to pay for route
         } catch {
             print(error)
         }
@@ -121,6 +126,48 @@ class GMViewController: UIViewController {
 
         mapView.drawPolygon(from: position, to: position2)
 
+    }
+
+    func setupCluster() {
+        // Set up the cluster manager with the supplied icon generator and
+        // renderer.
+        let iconGenerator = GMUDefaultClusterIconGenerator()
+        let algorithm = GMUNonHierarchicalDistanceBasedAlgorithm()
+        let renderer = GMUDefaultClusterRenderer(mapView: mapView,
+                                                 clusterIconGenerator: iconGenerator)
+        clusterManager = GMUClusterManager(map: mapView,
+                                           algorithm: algorithm,
+                                           renderer: renderer)
+
+        // Generate and add items to the cluster manager.
+        setupPOIMarkers()
+        // Call cluster() after items have been added to perform the clustering
+        // and rendering on map.
+        clusterManager.cluster()
+    }
+
+    func setupPOIMarkers() {
+        guard let path = Bundle.main.path(forResource: "bcnlocations",
+                                          ofType: "json") else {
+                                            return
+        }
+
+        let fileUrl = URL(fileURLWithPath: path)
+        do {
+            let data = try Data(contentsOf: fileUrl)
+            let json = try JSONSerialization.jsonObject(with: data,
+                                                        options: .mutableContainers)
+
+            guard let array = json as? [String: Any],
+                let poiMarkers = POIMarkers.init(json: array) else { return }
+
+            for item in poiMarkers.poiMarkers {
+                clusterManager.add(item)
+            }
+
+        } catch {
+            print(error)
+        }
     }
 }
 

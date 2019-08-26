@@ -41,6 +41,8 @@
 		52CBB75C2310160500E6E039 /* GMUStaticCluster.m in Sources */ = {isa = PBXBuildFile; fileRef = 52CBB7522310160500E6E039 /* GMUStaticCluster.m */; };
 		52CBB765231016A400E6E039 /* GQTPointQuadTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 52CBB75E231016A400E6E039 /* GQTPointQuadTree.m */; };
 		52CBB766231016A400E6E039 /* GQTPointQuadTreeChild.m in Sources */ = {isa = PBXBuildFile; fileRef = 52CBB760231016A400E6E039 /* GQTPointQuadTreeChild.m */; };
+		52D625192313B733001B2513 /* POIMarkers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D625182313B733001B2513 /* POIMarkers.swift */; };
+		52D6251D2313C863001B2513 /* BcnPOIMarkers.json in Resources */ = {isa = PBXBuildFile; fileRef = 52D6251C2313C863001B2513 /* BcnPOIMarkers.json */; };
 		52DE5E4E230D75450088BC8C /* GoogleMaps.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52DE5E4D230D75450088BC8C /* GoogleMaps.storyboard */; };
 		52DE5E50230D77FE0088BC8C /* GMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DE5E4F230D77FE0088BC8C /* GMViewController.swift */; };
 		5B0F40B222E6F5EA00C3FC12 /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0F40B022E6F5EA00C3FC12 /* ARViewController.swift */; };
@@ -127,6 +129,8 @@
 		52CBB763231016A400E6E039 /* GQTPointQuadTreeChild.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GQTPointQuadTreeChild.h; sourceTree = "<group>"; };
 		52CBB764231016A400E6E039 /* GQTBounds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GQTBounds.h; sourceTree = "<group>"; };
 		52CBB7672310172F00E6E039 /* GMHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMHeader.h; sourceTree = "<group>"; };
+		52D625182313B733001B2513 /* POIMarkers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POIMarkers.swift; sourceTree = "<group>"; };
+		52D6251C2313C863001B2513 /* BcnPOIMarkers.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = BcnPOIMarkers.json; sourceTree = "<group>"; };
 		52DE5E4D230D75450088BC8C /* GoogleMaps.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GoogleMaps.storyboard; sourceTree = "<group>"; };
 		52DE5E4F230D77FE0088BC8C /* GMViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GMViewController.swift; sourceTree = "<group>"; };
 		5B0F40B022E6F5EA00C3FC12 /* ARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewController.swift; sourceTree = "<group>"; };
@@ -394,6 +398,7 @@
 			isa = PBXGroup;
 			children = (
 				AA2829A822E1D7BA00A5F6C7 /* bcnlocations.json */,
+				52D6251C2313C863001B2513 /* BcnPOIMarkers.json */,
 			);
 			path = Locations;
 			sourceTree = "<group>";
@@ -553,6 +558,14 @@
 			path = QuadTree;
 			sourceTree = "<group>";
 		};
+		52D625172313B70D001B2513 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				52D625182313B733001B2513 /* POIMarkers.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		52DE5E4A230D74F60088BC8C /* GoogleMaps */ = {
 			isa = PBXGroup;
 			children = (
@@ -575,6 +588,7 @@
 			isa = PBXGroup;
 			children = (
 				52CBB715230E789300E6E039 /* ViewController */,
+				52D625172313B70D001B2513 /* Model */,
 				52CBB71C230E98C100E6E039 /* Services */,
 			);
 			path = GM;
@@ -744,6 +758,7 @@
 				52AC055623042C7800438113 /* SplashScreenWhiteColor.json in Resources */,
 				52DE5E4E230D75450088BC8C /* GoogleMaps.storyboard in Resources */,
 				5B32AE8222F1C0AA000872ED /* art.scnassets in Resources */,
+				52D6251D2313C863001B2513 /* BcnPOIMarkers.json in Resources */,
 				52AC051D2302BC4B00438113 /* TensorFlow.storyboard in Resources */,
 				5B0F40B722E71A9D00C3FC12 /* ARkitCarrousel.xib in Resources */,
 				AA2121CE22D32A26005D058D /* LaunchScreen.storyboard in Resources */,
@@ -861,6 +876,7 @@
 				52CBB735230FF43B00E6E039 /* UIStoryboardExtensions.swift in Sources */,
 				52CBB729230EC2C300E6E039 /* GMSMapViewExtensions.swift in Sources */,
 				52AC05392302CF6A00438113 /* TFEmbededViewController.swift in Sources */,
+				52D625192313B733001B2513 /* POIMarkers.swift in Sources */,
 				AA2121C422D32A25005D058D /* AppDelegate.swift in Sources */,
 				52AC05352302CEDE00438113 /* CameraFeedManagerDelegate.swift in Sources */,
 				AA2829AB22E1D80A00A5F6C7 /* MarkersResponseModel.swift in Sources */,
