@@ -23,7 +23,7 @@ class MapViewController: UIViewController {
     let regionInMeters: Double = 10000 //put 900 to zoom in directly
     let geoCoder = CLGeocoder()
 
-    let kTopFullScreen: CGFloat = 0
+    let kTopFullScreen: CGFloat = .zero
     let kTopMidScreen: CGFloat = UIScreen.main.bounds.height * 1/2
     let kTopLowScreen: CGFloat = UIScreen.main.bounds.height
 
@@ -178,6 +178,9 @@ extension MapViewController: MKMapViewDelegate {
 
     //this function allows to SHOW THE NUMBER OF CLUSTER annotations
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+
+        if annotation is MKUserLocation { return nil }
+
         let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier, for: annotation)
         annotationView.clusteringIdentifier = "identifier"
         return annotationView
@@ -199,20 +202,55 @@ extension MapViewController: MKMapViewDelegate {
         centerRegionOnPin(mapView: mapView, pin: view)
 
         self.view.layoutIfNeeded()
-        UIView.animate(withDuration: 0.4, delay: 0.2, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.6, options: .curveEaseInOut, animations: {
+
+        UIView.animate(withDuration: 0.4,
+                       delay: 0.2,
+                       usingSpringWithDamping: 0.9,
+                       initialSpringVelocity: 0.6,
+                       options: .curveEaseInOut,
+                       animations: {
             self.topSheetConstraint?.constant = self.kTopMidScreen
             self.view.layoutIfNeeded()
         }, completion: nil)
 
+        if let clustered = view.annotation as? MKClusterAnnotation {
+            var minLat = CLLocationDegrees(exactly: 90)!
+            var maxLat = CLLocationDegrees(exactly: -90)!
+            var minLong = CLLocationDegrees(exactly: 180)!
+            var maxLong = CLLocationDegrees(exactly: -180)!
+            clustered.memberAnnotations.forEach { (annotation) in
+                let coordinate = annotation.coordinate
+                minLat = min(minLat, coordinate.latitude)
+                maxLat = max(maxLat, coordinate.latitude)
+                minLong = min(minLong, coordinate.longitude)
+                maxLong = max(maxLong, coordinate.longitude)
+            }
+
+            let centerLat = (minLat + maxLat) / 2
+            let centerLong = (minLong + maxLong) / 2
+            let center = CLLocationCoordinate2D(latitude: centerLat, longitude: centerLong)
+            let span = MKCoordinateSpan(latitudeDelta: (maxLat - minLat) * 1.5, longitudeDelta: (maxLong - minLong) * 1.5) // with some padding
+            let region = MKCoordinateRegion(center: center, span: span)
+
+            mapView.setRegion(region, animated: true)
+        }
+
         guard let marker = getMarkerFromAnnotation(view: view) else {
             //TODO hacer zoom
             //TODO bajar el cuadrado si está seleccionado
+//            let pin = view as! MKPinAnnotationView
+//            zoomInOnPin(annotation: pin.annotation!)
             return
             //TODO tambien hacer q se deseleccione al hacer tap fuera
         }
 
         navigateToDetail(marker: marker)
 
+    }
+
+    func zoomInOnPin(annotation:MKAnnotation) {
+        let zoomOutRegion = MKCoordinateRegion(center: mapView.region.center, span: MKCoordinateSpan(latitudeDelta: 0.09, longitudeDelta: 0.09))
+        mapView.setRegion(zoomOutRegion, animated: true)
     }
 
     func getMarkerFromAnnotation(view: MKAnnotationView) -> Marker? {
