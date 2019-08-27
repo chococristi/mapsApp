@@ -17,7 +17,7 @@ DEPENDENCIES:
   - TensorFlowLiteSwift
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - GoogleMaps
     - lottie-ios
     - SwiftLint
@@ -33,4 +33,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 33de9146d157046430222df7a52c916ad9ced8ac
 
-COCOAPODS: 1.7.5
+COCOAPODS: 1.8.0.beta.1
