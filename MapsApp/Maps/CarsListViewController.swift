@@ -10,8 +10,9 @@ import UIKit
 
 class CarsListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    var teams: [String] = []
-    
+    var marker: Marker!
+
+    @IBOutlet weak var parkingName: UILabel!
     @IBOutlet weak var tableView: UITableView!
     @IBAction func cancelButtonTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
@@ -19,24 +20,24 @@ class CarsListViewController: UIViewController, UITableViewDataSource, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        parkingName.text = marker.name
+        
         tableView.dataSource = self
         tableView.delegate = self
-        
-        tableView.register(UINib(nibName: "CarListCellTableViewCell", bundle: nil), forCellReuseIdentifier: "CarListCell")
-
-        teams = ["Atletico de Madrid", "Barcelona", "Deportivo de la Coruña", "Las Palmas", "Malaga", "Rayo Vallecano", "Sporting", "Real Sociedad", "Espanyol", "Mallorca", "Valladolid", "Eibar",  "Ponferradina", "Albacete"]
+        tableView.register(CarListCellTableViewCell.nib, forCellReuseIdentifier: CarListCellTableViewCell.identifier)
     }
   
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return teams.count
+        return marker.cars.count
+
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "CarListCell", for: indexPath) as? CarListCellTableViewCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CarListCellTableViewCell.identifier, for: indexPath) as? CarListCellTableViewCell
             else { return UITableViewCell() }
-        cell.carImage?.image = UIImage.init(named: "seat-ibiza")
-        cell.carLabel?.text = teams[indexPath.row]
+        cell.carImage?.image = UIImage.init(named: marker.cars[indexPath.row].image)
+        cell.carLabel?.text = marker.cars[indexPath.row].brand + " " + marker.cars[indexPath.row].model
         
         return cell
     }
