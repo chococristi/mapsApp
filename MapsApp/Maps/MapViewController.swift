@@ -221,14 +221,9 @@ extension MapViewController: MKMapViewDelegate {
             annotation = anAnnotation
         }
         let selectedTitle = "\(annotation.title ?? "")"
-        var index: Int?
-        var i: Int = 0
-        for marker in markers {
-            if marker.name == selectedTitle
-            {
-                return marker
-            }
-            i += 1
+        
+        if let markerFound = markers.first(where: { $0.name == selectedTitle }) {
+            return markerFound
         }
         return nil
     }
