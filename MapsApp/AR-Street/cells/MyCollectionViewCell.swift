@@ -11,30 +11,28 @@ import ARKit
 
 class MyCollectionViewCell: UICollectionViewCell {
 
-    
     @IBOutlet var sceneView: SCNView!
     @IBOutlet weak var lbName: UILabel!
     @IBOutlet var view: UIView!
     var node = SCNNode()
-    
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         self.sceneSetup()
     }
-    
+
     func sceneSetup() {
         // 1
         let scene = SCNScene()
-        
+
         //ligth 1
         let ambientLightNode = SCNNode()
         ambientLightNode.light = SCNLight()
         ambientLightNode.light!.type = SCNLight.LightType.ambient
         ambientLightNode.light!.color = UIColor(white: 0.67, alpha: 1.0)
         scene.rootNode.addChildNode(ambientLightNode)
-        
+
         //ligth 2
         let omniLightNode = SCNNode()
         omniLightNode.light = SCNLight()
@@ -42,7 +40,7 @@ class MyCollectionViewCell: UICollectionViewCell {
         omniLightNode.light!.color = UIColor(white: 0.75, alpha: 0.5)
         omniLightNode.position = SCNVector3Make(50, 50, 50)
         scene.rootNode.addChildNode(omniLightNode)
-        
+
         //ligth 3
         let omniLightNodeContra = SCNNode()
         omniLightNodeContra.light = SCNLight()
@@ -50,13 +48,13 @@ class MyCollectionViewCell: UICollectionViewCell {
         omniLightNodeContra.light!.color = UIColor(white: 0.75, alpha: 0.5)
         omniLightNodeContra.position = SCNVector3Make(-50, -50, -50)
         scene.rootNode.addChildNode(omniLightNodeContra)
-        
+
         // camera
         let cameraNode = SCNNode()
         cameraNode.camera = SCNCamera()
         cameraNode.position = SCNVector3Make(0, 0, 20)
         scene.rootNode.addChildNode(cameraNode)
-        
+
         //
         //        let panRecognizer = UIPanGestureRecognizer(target: self, action:#selector(panGesture(_:)))
         //        panRecognizer.maximumNumberOfTouches = 1
@@ -67,26 +65,25 @@ class MyCollectionViewCell: UICollectionViewCell {
         //        panTwoFingers.maximumNumberOfTouches = 2
         //        panTwoFingers.minimumNumberOfTouches = 2
         //        sceneView.addGestureRecognizer(panTwoFingers)
-        
+
            self.sceneView.scene = scene
     }
-    
-        func init3DObject(node: SCNNode){
+
+        func init3DObject(node: SCNNode) {
             self.node = node
             self.sceneView.scene?.rootNode.addChildNode(node)
         }
-    
-    func play(){
-        
+
+    func play() {
+
         let action = SCNAction.repeatForever(SCNAction.rotate(by: .pi, around: SCNVector3(0, 1, 0), duration: 5))
         node.runAction(action, forKey: "turn")
-        
+
     }
-    
-    func stop(node: SCNNode){
-        
+
+    func stop(node: SCNNode) {
+
        node.removeAction(forKey: "turn")
-        
+
     }
 }
-

@@ -148,7 +148,7 @@ class ARkitCarrousel: UIViewController {
             if let node = getParent(hit.node) {
 
                // node.light!.color = UIColor(red: 0, green: 255, blue: 0, alpha: 0.7)
-                
+
                 geometryNode = node
                 return
             }
@@ -167,7 +167,7 @@ class ARkitCarrousel: UIViewController {
         }
         return nil
     }
-    
+
     @objc
     func panGesture(_ sender: UIPanGestureRecognizer) {
 
@@ -274,21 +274,19 @@ class ARkitCarrousel: UIViewController {
             let positionZ = cos((Double(angle) * Double.pi) / 180)*20//sin(Float(i))*10
             positions.append(SCNVector3(positionX, 0, positionZ))
         }
-        
+
         for position in 0 ..< nodeArray.count {
          self.joinNodesOnAParent(node: nodeArray[position], parentNode: parentNode, position: positions[position])
         }
 
     }
-    
-
 
     @IBAction func goToAR(_ sender: Any) {
-        
-        let vc = PlaceObjectsplaneViewController()
-        vc.nodeModel = geometryNode
-        present(vc, animated: false, completion: nil)
-        
+
+        let viewController = PlaceObjectsplaneViewController()
+        viewController.nodeModel = geometryNode
+        present(viewController, animated: false, completion: nil)
+
     }
     //    func nearestAngle(angleToCaculate angle: Double, separationAngle: Double) -> Double {
 //
