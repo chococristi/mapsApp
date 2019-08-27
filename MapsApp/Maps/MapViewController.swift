@@ -23,7 +23,7 @@ class MapViewController: UIViewController {
     let regionInMeters: Double = 10000 //put 900 to zoom in directly
     let geoCoder = CLGeocoder()
 
-    let kTopFullScreen: CGFloat = 0
+    let kTopFullScreen: CGFloat = .zero
     let kTopMidScreen: CGFloat = UIScreen.main.bounds.height * 1/2
     let kTopLowScreen: CGFloat = UIScreen.main.bounds.height
 
@@ -178,6 +178,9 @@ extension MapViewController: MKMapViewDelegate {
 
     //this function allows to SHOW THE NUMBER OF CLUSTER annotations
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+
+        if annotation is MKUserLocation { return nil }
+
         let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier, for: annotation)
         annotationView.clusteringIdentifier = "identifier"
         return annotationView
