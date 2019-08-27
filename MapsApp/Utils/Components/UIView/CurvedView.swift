@@ -22,6 +22,7 @@ class CurvedView: UIView {
 
     // Sets a mask on the view to round it's corners
     func setMask() {
+        backgroundColor = .clear
 
         let maskPath = UIBezierPath(roundedRect:self.bounds,
                                     byRoundingCorners: [.topLeft,
@@ -29,8 +30,18 @@ class CurvedView: UIView {
                                     cornerRadii: CGSize(width: cornerRadius,
                                                         height: cornerRadius))
 
+//        let shape = CAShapeLayer()
+//        shape.path = maskPath.cgPath
+//        self.layer.mask = shape
+
         let shape = CAShapeLayer()
         shape.path = maskPath.cgPath
-        self.layer.mask = shape
+        shape.fillColor = UIColor.white.cgColor
+        shape.shadowColor = UIColor.black.cgColor
+        shape.shadowPath = shape.path
+        shape.shadowOffset = CGSize(width: 0.0, height: 5.0)
+        shape.shadowOpacity = 0.5
+        shape.shadowRadius = 5
+        layer.insertSublayer(shape, at: 0)
     }
 }
