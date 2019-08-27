@@ -1,0 +1,166 @@
+{
+    "markers": [
+        {
+            "name": "Sagrada Família",
+            "coordinates": {
+                "latitude": 41.403831,
+                "longitude": 2.174399
+            }
+        },
+        {
+            "name": "Parc Güell",
+            "coordinates": {
+                "latitude": 41.414465,
+                "longitude": 2.153044
+            }
+        },
+        {
+            "name": "Cine Verdi",
+            "coordinates": {
+                "latitude": 41.404713,
+                "longitude": 2.156921
+            }
+        },
+        {
+            "name": "Plaça Kennedy",
+            "coordinates": {
+                "latitude": 41.409991,
+                "longitude": 2.136940
+            }
+        },
+        {
+            "name": "Monasterio Pedralbes",
+            "coordinates": {
+                "latitude": 41.398215,
+                "longitude": 2.111951
+            }
+        },
+        {
+            "name": "Plaça Catalunya",
+            "coordinates": {
+                "latitude": 41.387219,
+                "longitude": 2.170041
+            }
+        },
+        {
+            "name": "C.C. La illa",
+            "coordinates": {
+                "latitude": 41.390128,
+                "longitude": 2.135641
+            }
+        },
+        {
+            "name": "Goiko Les Corts",
+            "coordinates": {
+                "latitude": 41.389884,
+                "longitude": 2.132114
+            }
+        },
+        {
+            "name": "Hilton Barcelona",
+            "coordinates": {
+                "latitude": 41.388942,
+                "longitude": 2.131438
+            }
+        },
+        {
+            "name": "C.C. Les Glories",
+            "coordinates": {
+                "latitude": 41.405887,
+                "longitude": 2.191378
+            }
+        },
+        {
+            "name": "CAP El Clot",
+            "coordinates": {
+                "latitude": 41.411989,
+                "longitude": 2.192907
+            }
+        },
+        {
+            "name": "Parc del Clot",
+            "coordinates": {
+                "latitude": 41.4079019,
+                "longitude": 2.190064
+            }
+        },
+        {
+            "name": "Certio ITV del Clot",
+            "coordinates": {
+                "latitud": 41.400690,
+                "longitud": 2.191319
+            }
+        },
+        {
+            "name": "Discoteca Merlin",
+            "coordinates": {
+                "latitude": 41.400841,
+                "longitude": 2.190799
+            }
+        },
+        {
+            "name": "Hewlett Packard",
+            "coordinates": {
+                "latitude": 41.401204,
+                "longitude": 2.191227
+            }
+        },
+        {
+            "name": "Arc de Triomf",
+            "coordinates": {
+                "latitude": 41.39117041,
+                "longitude": 2.18075864
+            }
+        },
+        {
+            "name": "Platja de la Barceloneta",
+            "coordinates": {
+                "latitude": 41.3785412,
+                "longitude": 2.19258919
+            }
+        },
+        {
+            "name": "Aquarium",
+            "coordinates": {
+                "latitude": 41.37750947,
+                "longitude": 2.1846465
+            }
+        },
+        {
+            "name": "Hospital del Mar",
+            "coordinates": {
+                "latitude": 41.384558150,
+                "longitude": 2.194251827
+            }
+        },
+        {
+            "name": "Razzmatazz",
+            "coordinates": {
+                "latitude": 41.39781319,
+                "longitude": 2.191150188
+            }
+        },
+        {
+            "name": "Parc Zoològic de Barcelona",
+            "coordinates": {
+                "latitude": 41.386548416,
+                "longitude": 2.1899737045
+            }
+        },
+        {
+            "name": "Parc de la Pegaso",
+            "coordinates": {
+                "latitude": 41.427375653,
+                "longitude": 2.189249508
+            }
+        },
+        {
+            "name": "Farmàcia La Sagrera 146",
+            "coordinates": {
+                "latitude": 41.4250703815,
+                "longitude": 2.1910918503
+            }
+        }
+    ]
+}
+

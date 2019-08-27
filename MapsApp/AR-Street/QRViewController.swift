@@ -34,12 +34,12 @@ class QRViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate
         sceneView.session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
         sceneView.session.delegate = self
 
-        do {
-         // try self.scanQRCode()
-        } catch {
-
-            print("Failed to scan the QR/BarCode.")
-        }
+//        do {
+//          try self.scanQRCode()
+//        } catch {
+//
+//            print("Failed to scan the QR/BarCode.")
+//        }
         // Do any additional setup after loading the view.
     }
 
@@ -102,8 +102,11 @@ class QRViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate
     //3D Objects
 
     func addPaperPlane(xAxis: Float = 0, yAxis: Float = 0, zAxis: Float = -0.5) {
-        guard let paperPlaneScene = SCNScene(named: "paperPlane.scn"), let paperPlaneNode = paperPlaneScene.rootNode.childNode(withName: "paperPlane", recursively: true) else {
-            return
+        guard let paperPlaneScene = SCNScene(named: "paperPlane.scn"),
+            let paperPlaneNode = paperPlaneScene.rootNode.childNode(withName: "paperPlane",
+                                                                    recursively: true)
+            else {
+                return
         }
         paperPlaneNode.position = SCNVector3(xAxis, yAxis, zAxis)
         sceneView.scene.rootNode.addChildNode(paperPlaneNode)
@@ -119,9 +122,12 @@ class QRViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate
         if objectAppears {
             let image = CIImage(cvPixelBuffer: frame.capturedImage)
             let detector = CIDetector(ofType: CIDetectorTypeQRCode, context: nil, options: nil)
-            let features = detector!.features(in: image)
 
-            for feature in features as! [CIQRCodeFeature] {
+            guard let features = detector!.features(in: image) as? [CIQRCodeFeature] else {
+                return
+            }
+
+            for feature in features {
                 if !discoveredQRCodes.contains(feature.messageString!) {
                     discoveredQRCodes.append(feature.messageString!)
 

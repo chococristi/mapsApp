@@ -1,0 +1,273 @@
+[
+        {
+            "name": "Sagrada Família",
+            "coordinates": [41.403831, 2.174399],
+            "cars": [
+                { "brand" : "Seat",
+                    "model" : "Ibiza",
+                    "year" : "2018",
+                    "image" : "seat-ibiza"
+                },{"brand" : "Seat",
+                    "model" : "Leon",
+                    "year" : "2019",
+                    "image" : "seat-leon"
+                },{ "brand" : "Seat",
+                    "model" : "Ateca",
+                    "year" : "2019",
+                    "image" : "seat-ateca"
+                }]
+        },
+        {
+            "name": "Parc Güell",
+            "coordinates": [41.414465, 2.153044],
+            "cars": [
+                { "brand" : "Seat",
+                    "model" : "Ibiza",
+                    "year" : "2018",
+                    "image" : "seat-ibiza"
+                },{"brand" : "Seat",
+                    "model" : "Leon",
+                    "year" : "2019",
+                    "image" : "seat-leon"
+                },{ "brand" : "Seat",
+                    "model" : "Ateca",
+                    "year" : "2019",
+                    "image" : "seat-ateca"
+                }]
+        },
+        {
+            "name": "Cine Verdi",
+            "coordinates": [41.404713, 2.156921],
+            "cars": [
+                { "brand" : "Seat",
+                    "model" : "Ibiza",
+                    "year" : "2018",
+                    "image" : "seat-ibiza"
+                },{"brand" : "Seat",
+                    "model" : "Arona",
+                    "year" : "2019",
+                    "image" : "seat-arona"
+                },{ "brand" : "Seat",
+                    "model" : "Ateca",
+                    "year" : "2019",
+                    "image" : "seat-ateca"
+                }]
+        },
+        {
+            "name": "Plaça Kennedy",
+            "coordinates": [41.409991, 2.136940],
+            "cars": [
+                { "brand" : "Seat",
+                    "model" : "Mii",
+                    "year" : "2018",
+                    "image" : "seat-mii"
+                },{"brand" : "Seat",
+                    "model" : "Leon",
+                    "year" : "2017",
+                    "image" : "seat-leon"
+                },{ "brand" : "Seat",
+                    "model" : "Ateca",
+                    "year" : "2019",
+                    "image" : "seat-ateca"
+                }]
+        },
+        {
+            "name": "Monasterio Pedralbes",
+            "coordinates": [41.398215, 2.111951],
+            "cars": [
+                { "brand" : "Seat",
+                    "model" : "Tarraco",
+                    "year" : "2019",
+                    "image" : "seat-tarraco"
+                },{"brand" : "Seat",
+                    "model" : "Leon",
+                    "year" : "2018",
+                    "image" : "seat-leon"
+                },{ "brand" : "Seat",
+                    "model" : "Ateca",
+                    "year" : "2018",
+                    "image" : "seat-ateca"
+                }]
+        },
+        {
+            "name": "Plaça Catalunya",
+            "coordinates": [41.387219, 2.170041],
+            "cars": [
+                { "brand" : "Seat",
+                    "model" : "Ibiza",
+                    "year" : "2018",
+                    "image" : "seat-ibiza"
+                },{"brand" : "Seat",
+                    "model" : "Leon",
+                    "year" : "2019",
+                    "image" : "seat-leon"
+                },{ "brand" : "Seat",
+                    "model" : "Ateca",
+                    "year" : "2019",
+                    "image" : "seat-ateca"
+                }]
+        },
+        {
+            "name": "C.C. La illa",
+            "coordinates": [41.390128, 2.135641],
+            "cars": [
+                { "brand" : "Seat",
+                    "model" : "Ibiza",
+                    "year" : "2018",
+                    "image" : "seat-ibiza"
+                },{"brand" : "Seat",
+                    "model" : "Leon",
+                    "year" : "2019",
+                     "image" : "seat-leon"
+                },{ "brand" : "Seat",
+                    "model" : "Ateca",
+                    "year" : "2019",
+                    "image" : "seat-ateca"
+                }]
+        },
+        {
+            "name": "Goiko Les Corts",
+            "coordinates": [41.389884, 2.132114],
+            "cars": [
+                { "brand" : "Seat",
+                    "model" : "Ibiza",
+                    "year" : "2018",
+                    "image" : "seat-ibiza"
+                },{"brand" : "Seat",
+                    "model" : "Leon",
+                    "year" : "2019",
+                     "image" : "seat-leon"
+                },{ "brand" : "Seat",
+                    "model" : "Ateca",
+                    "year" : "2019",
+                    "image" : "seat-ateca"
+                }]
+        },
+        {
+            "name": "Hilton Barcelona",
+            "coordinates": [41.388942, 2.131438],
+            "cars": [
+                { "brand" : "Seat",
+                    "model" : "Ibiza",
+                    "year" : "2018",
+                    "image" : "seat-ibiza"
+                },{"brand" : "Seat",
+                    "model" : "Leon",
+                    "year" : "2019",
+                     "image" : "seat-leon"
+                },{ "brand" : "Seat",
+                    "model" : "Ateca",
+                    "year" : "2019",
+                    "image" : "seat-ateca"
+                }]
+        },
+        {
+            "name": "C.C. Les Glories",
+            "coordinates": [41.405887, 2.191378],
+            "cars": [
+                { "brand" : "Seat",
+                    "model" : "Ibiza",
+                    "year" : "2018",
+                    "image" : "seat-ibiza"
+                },{"brand" : "Seat",
+                    "model" : "Leon",
+                    "year" : "2019",
+                     "image" : "seat-leon"
+                },{ "brand" : "Seat",
+                    "model" : "Ateca",
+                    "year" : "2019",
+                    "image" : "seat-ateca"
+                }]
+        },
+        {
+            "name": "CAP El Clot",
+            "coordinates": [41.411989, 2.192907],
+            "cars": [
+                { "brand" : "Seat",
+                    "model" : "Mii",
+                    "year" : "2018",
+                    "image" : "seat-mii"
+                },{"brand" : "Seat",
+                    "model" : "Leon",
+                    "year" : "2017",
+                     "image" : "seat-leon"
+                },{ "brand" : "Seat",
+                    "model" : "Ateca",
+                    "year" : "2019",
+                    "image" : "seat-ateca"
+                }]
+        },
+        {
+            "name": "Parc del Clot",
+            "coordinates": [41.4079019, 2.190064],
+            "cars": [
+                { "brand" : "Seat",
+                    "model" : "Mii",
+                    "year" : "2018",
+                    "image" : "seat-mii"
+                },{"brand" : "Seat",
+                    "model" : "Leon",
+                    "year" : "2017",
+                     "image" : "seat-leon"
+                },{ "brand" : "Seat",
+                    "model" : "Ateca",
+                    "year" : "2019",
+                    "image" : "seat-ateca"
+                }]
+        },
+        {
+            "name": "Certio ITV del Clot",
+            "coordinates": [41.400690, 2.191319],
+            "cars": [
+                { "brand" : "Seat",
+                    "model" : "Ibiza",
+                    "year" : "2018",
+                    "image" : "seat-ibiza"
+                },{"brand" : "Seat",
+                    "model" : "Leon",
+                    "year" : "2019",
+                     "image" : "seat-leon"
+                },{ "brand" : "Seat",
+                    "model" : "Ateca",
+                    "year" : "2019",
+                    "image" : "seat-ateca"
+                }]
+        },
+        {
+            "name": "Discoteca Merlin",
+            "coordinates": [41.400841, 2.190799],
+            "cars": [
+                { "brand" : "Seat",
+                    "model" : "Mii",
+                    "year" : "2018",
+                    "image" : "seat-mii"
+                },{"brand" : "Seat",
+                    "model" : "Leon",
+                    "year" : "2017",
+                     "image" : "seat-leon"
+                },{ "brand" : "Seat",
+                    "model" : "Ateca",
+                    "year" : "2019",
+                    "image" : "seat-ateca"
+                }]
+        },
+        {
+            "name": "Hewlett Packard",
+            "coordinates": [41.401204, 2.191227],
+            "cars": [
+                { "brand" : "Seat",
+                    "model" : "Ibiza",
+                    "year" : "2018",
+                    "image" : "seat-ibiza"
+                },{"brand" : "Seat",
+                    "model" : "Leon",
+                    "year" : "2019",
+                    "image" : "seat-leon"
+                },{ "brand" : "Seat",
+                    "model" : "Ateca",
+                    "year" : "2019",
+                    "image" : "seat-ateca"
+                }]
+        }
+        
+    ]

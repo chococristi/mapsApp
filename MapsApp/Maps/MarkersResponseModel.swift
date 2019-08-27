@@ -7,32 +7,41 @@
 //
 
 import Foundation
+import UIKit
 
-struct Marker {
+struct Marker: Decodable {
     let name: String
     let coordinates: [Double]
+    let cars: [Car]
 }
 
-struct Markers {
-    var markers: [Marker]
+struct Car: Decodable {
+    let brand : String
+    let model : String
+    let year : String
+    let image: String
 }
 
-extension Markers {
-    init?(json: [String: Any]) {
+let markers: [Marker] = load("bcnlocations.json")
 
-        guard let markersJSON = json["markers"] as? [[String: Any]] else { return nil }
+func load<T: Decodable>(_ filename: String, as type: T.Type = T.self) -> T {
+    let data: Data
 
-        var markersObtanied: [Marker] = []
+    guard let file = Bundle.main.url(forResource: filename, withExtension: nil)
+        else {
+            fatalError("Couldn't find \(filename) in main bundle.")
+    }
 
-        for markerJSON in markersJSON {
+    do {
+        data = try Data(contentsOf: file)
+    } catch {
+        fatalError("Couldn't load \(filename) from main bundle:\n\(error)")
+    }
 
-            if let name = markerJSON["name"] as? String,
-                let coordinates = markerJSON["coordinates"] as? [Double] {
-                let newMarker = Marker.init(name: name, coordinates: coordinates)
-                markersObtanied.append(newMarker)
-            }
-        }
-
-        self.markers = markersObtanied
+    do {
+        let decoder = JSONDecoder()
+        return try decoder.decode(T.self, from: data)
+    } catch {
+        fatalError("Couldn't parse \(filename) as \(T.self):\n\(error)")
     }
 }
