@@ -10,21 +10,32 @@ import UIKit
 
 class CarsListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-    var marker: Marker!
+    var marker: Marker! {
+        didSet {
+            guard oldValue != self.marker else { return }
+            parkingName.text = marker.name
+            tableView.reloadData()
+        }
+    }
 
     @IBOutlet weak var parkingName: UILabel!
     @IBOutlet weak var tableView: UITableView!
-    @IBAction func cancelButtonTapped(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        parkingName.text = marker.name
-
+        setupTableView()
+    }
+    
+    func setupTableView() {
+         tableView.register(CarListCellTableViewCell.nib, forCellReuseIdentifier: CarListCellTableViewCell.identifier)
+        
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(CarListCellTableViewCell.nib, forCellReuseIdentifier: CarListCellTableViewCell.identifier)
+        
+        tableView.bounces = false
+        tableView.separatorStyle = .none
+        
+       
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
