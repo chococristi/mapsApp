@@ -27,7 +27,6 @@ class GMViewController: UIViewController, GMUClusterManagerDelegate, GMSMapViewD
     let dayImage: UIImage? = UIImage.init(named: "dayModeImage")?.withRenderingMode(.alwaysOriginal)
 
     private var locationService: LocationService?
-    private var markers: Markers?
     private var clusterManager: GMUClusterManager!
 
     // MARK: - Constructor
@@ -55,8 +54,6 @@ class GMViewController: UIViewController, GMUClusterManagerDelegate, GMSMapViewD
 
         initializeLocationManager()
         setupMapStyle(isOn: swMap.isOn)
-        //setupMap()
-        //setAnnotationsInMap()
 
         //setRouteInMap()   //We need to pay for route
         setupCluster()
@@ -110,69 +107,32 @@ class GMViewController: UIViewController, GMUClusterManagerDelegate, GMSMapViewD
         }
     }
 
-    func setupMap() {
-        guard let path = Bundle.main.path(forResource: "bcnlocations",
-                                          ofType: "json") else {
-            return
-        }
 
-        let fileUrl = URL(fileURLWithPath: path)
-        do {
-            let data = try Data(contentsOf: fileUrl)
-            let json = try JSONSerialization.jsonObject(with: data,
-                                                        options: .mutableContainers)
-
-            guard let array = json as? [String: Any] else { return }
-            self.markers = Markers.init(json: array)
-        } catch {
-            print(error)
-        }
-    }
-
-    fileprivate func setAnnotationsInMap() {
-
-        guard let markersArray = markers?.markers else {
-            return
-        }
-
-        for marker in markersArray {
-            guard let latitude = marker.coordinates.first,
-                let longitude = marker.coordinates.last else {
-                    return
-            }
-
-            let position = CLLocationCoordinate2DMake(latitude, longitude)
-            let gmsMarker = GMSMarker(position: position)
-            gmsMarker.title = marker.name
-            gmsMarker.map = mapView
-        }
-    }
-
-    fileprivate func setRouteInMap() {
-
-        guard let markersArray = markers?.markers else {
-            return
-        }
-
-        let marker = markersArray[0]
-        let marker2 = markersArray[1]
-
-        guard let latitude = marker.coordinates.first,
-            let longitude = marker.coordinates.last else {
-                return
-        }
-
-        guard let latitude2 = marker2.coordinates.first,
-            let longitude2 = marker2.coordinates.last else {
-                return
-        }
-
-        let position = CLLocationCoordinate2DMake(latitude, longitude)
-        let position2 = CLLocationCoordinate2DMake(latitude2, longitude2)
-
-        mapView.drawPolygon(from: position, to: position2)
-
-    }
+//    fileprivate func setRouteInMap() {
+//
+//        guard let markersArray = markers?.markers else {
+//            return
+//        }
+//
+//        let marker = markersArray[0]
+//        let marker2 = markersArray[1]
+//
+//        guard let latitude = marker.coordinates.first,
+//            let longitude = marker.coordinates.last else {
+//                return
+//        }
+//
+//        guard let latitude2 = marker2.coordinates.first,
+//            let longitude2 = marker2.coordinates.last else {
+//                return
+//        }
+//
+//        let position = CLLocationCoordinate2DMake(latitude, longitude)
+//        let position2 = CLLocationCoordinate2DMake(latitude2, longitude2)
+//
+//        mapView.drawPolygon(from: position, to: position2)
+//
+//    }
 
     func setupCluster() {
         // Set up the cluster manager with the supplied icon generator and
