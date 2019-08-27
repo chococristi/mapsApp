@@ -54,22 +54,6 @@ class ARCollectionViewController: UIViewController {
         cell.layer.borderColor = borderColor.cgColor
         
     }
-    
-    
-    func NodeForIndexPath(indexPath: NSIndexPath) -> Nodes {
-        return arrayNodes[indexPath.row]
-    }
-    
-    
-    func reverseNodeArray(nodesArray:[Nodes], startIndex:Int, endIndex:Int){
-        if startIndex >= endIndex{
-            return
-        }
-        swap(&arrayNodes[startIndex], &arrayNodes[endIndex])
-        
-        reverseNodeArray(nodesArray: arrayNodes, startIndex: startIndex + 1, endIndex: endIndex - 1)
-    }
-    
 }
 
 extension ARCollectionViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
