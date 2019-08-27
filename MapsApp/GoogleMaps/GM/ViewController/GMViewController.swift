@@ -107,7 +107,6 @@ class GMViewController: UIViewController, GMUClusterManagerDelegate, GMSMapViewD
         }
     }
 
-
 //    fileprivate func setRouteInMap() {
 //
 //        guard let markersArray = markers?.markers else {
