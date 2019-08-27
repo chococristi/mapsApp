@@ -70,8 +70,11 @@
 		AA2121CE22D32A26005D058D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA2121CC22D32A26005D058D /* LaunchScreen.storyboard */; };
 		AA2829A922E1D7BA00A5F6C7 /* bcnlocations.json in Resources */ = {isa = PBXBuildFile; fileRef = AA2829A822E1D7BA00A5F6C7 /* bcnlocations.json */; };
 		AA2829AB22E1D80A00A5F6C7 /* MarkersResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2829AA22E1D80A00A5F6C7 /* MarkersResponseModel.swift */; };
-		AAAD742522F2DE9100C3ED15 /* MapDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAD742322F2DE9100C3ED15 /* MapDetailViewController.swift */; };
-		AAAD742622F2DE9100C3ED15 /* MapDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAAD742422F2DE9100C3ED15 /* MapDetailViewController.xib */; };
+		AA69328F230436DA0083AB58 /* UIPanGestureExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA69328E230436DA0083AB58 /* UIPanGestureExtension.swift */; };
+		AAAA33ED2313DA760061DB2B /* CarListCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAA33EB2313DA760061DB2B /* CarListCellTableViewCell.swift */; };
+		AAAA33EE2313DA760061DB2B /* CarListCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAAA33EC2313DA760061DB2B /* CarListCellTableViewCell.xib */; };
+		AAAD742522F2DE9100C3ED15 /* CarsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAD742322F2DE9100C3ED15 /* CarsListViewController.swift */; };
+		AAAD742622F2DE9100C3ED15 /* CarsListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAAD742422F2DE9100C3ED15 /* CarsListViewController.xib */; };
 		AB69A054FF4D56995A01EAEA /* Pods_mapsApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D231BEF31481663D9598A6C /* Pods_mapsApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -167,8 +170,11 @@
 		AA2121CF22D32A26005D058D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA2829A822E1D7BA00A5F6C7 /* bcnlocations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bcnlocations.json; sourceTree = "<group>"; };
 		AA2829AA22E1D80A00A5F6C7 /* MarkersResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkersResponseModel.swift; sourceTree = "<group>"; };
-		AAAD742322F2DE9100C3ED15 /* MapDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDetailViewController.swift; sourceTree = "<group>"; };
-		AAAD742422F2DE9100C3ED15 /* MapDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapDetailViewController.xib; sourceTree = "<group>"; };
+		AA69328E230436DA0083AB58 /* UIPanGestureExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPanGestureExtension.swift; sourceTree = "<group>"; };
+		AAAA33EB2313DA760061DB2B /* CarListCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarListCellTableViewCell.swift; sourceTree = "<group>"; };
+		AAAA33EC2313DA760061DB2B /* CarListCellTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CarListCellTableViewCell.xib; sourceTree = "<group>"; };
+		AAAD742322F2DE9100C3ED15 /* CarsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarsListViewController.swift; sourceTree = "<group>"; };
+		AAAD742422F2DE9100C3ED15 /* CarsListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CarsListViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -657,8 +663,11 @@
 				AA2121C522D32A25005D058D /* MapViewController.swift */,
 				AA2121C722D32A25005D058D /* map.storyboard */,
 				AA2829AA22E1D80A00A5F6C7 /* MarkersResponseModel.swift */,
-				AAAD742322F2DE9100C3ED15 /* MapDetailViewController.swift */,
-				AAAD742422F2DE9100C3ED15 /* MapDetailViewController.xib */,
+				AAAD742322F2DE9100C3ED15 /* CarsListViewController.swift */,
+				AAAD742422F2DE9100C3ED15 /* CarsListViewController.xib */,
+				AA69328E230436DA0083AB58 /* UIPanGestureExtension.swift */,
+				AAAA33EB2313DA760061DB2B /* CarListCellTableViewCell.swift */,
+				AAAA33EC2313DA760061DB2B /* CarListCellTableViewCell.xib */,
 			);
 			path = Maps;
 			sourceTree = "<group>";
@@ -779,6 +788,7 @@
 			files = (
 				52AC055223041E3A00438113 /* SplashScreenMainColor.json in Resources */,
 				52AC055623042C7800438113 /* SplashScreenWhiteColor.json in Resources */,
+				AAAA33EE2313DA760061DB2B /* CarListCellTableViewCell.xib in Resources */,
 				52DE5E4E230D75450088BC8C /* GoogleMaps.storyboard in Resources */,
 				5B32AE8222F1C0AA000872ED /* art.scnassets in Resources */,
 				52D6251D2313C863001B2513 /* BcnMarkers.json in Resources */,
@@ -786,8 +796,8 @@
 				52D625272313E6E7001B2513 /* NightStyle.json in Resources */,
 				5B0F40B722E71A9D00C3FC12 /* ARkitCarrousel.xib in Resources */,
 				AA2121CE22D32A26005D058D /* LaunchScreen.storyboard in Resources */,
+				AAAD742622F2DE9100C3ED15 /* CarsListViewController.xib in Resources */,
 				52D625232313E263001B2513 /* RetroStyle.json in Resources */,
-				AAAD742622F2DE9100C3ED15 /* MapDetailViewController.xib in Resources */,
 				52AC053D2302D78300438113 /* labels.txt in Resources */,
 				AA2829A922E1D7BA00A5F6C7 /* bcnlocations.json in Resources */,
 				AA2121CB22D32A26005D058D /* Assets.xcassets in Resources */,
@@ -885,9 +895,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				52AC05332302CEC000438113 /* PreviewView.swift in Sources */,
+				AAAD742522F2DE9100C3ED15 /* CarsListViewController.swift in Sources */,
 				5B785E8423069BED00176DF6 /* MainViewController.swift in Sources */,
 				52CBB72D230FECB500E6E039 /* ContainerViewController.swift in Sources */,
-				AAAD742522F2DE9100C3ED15 /* MapDetailViewController.swift in Sources */,
 				52CBB7562310160500E6E039 /* GMUGridBasedClusterAlgorithm.m in Sources */,
 				52CBB7572310160500E6E039 /* GMUWrappingDictionaryKey.m in Sources */,
 				52CBB75B2310160500E6E039 /* GMUDefaultClusterIconGenerator.m in Sources */,
@@ -903,6 +913,7 @@
 				52AC05392302CF6A00438113 /* TFEmbededViewController.swift in Sources */,
 				52D625192313B733001B2513 /* POIMarkers.swift in Sources */,
 				AA2121C422D32A25005D058D /* AppDelegate.swift in Sources */,
+				AA69328F230436DA0083AB58 /* UIPanGestureExtension.swift in Sources */,
 				52AC05352302CEDE00438113 /* CameraFeedManagerDelegate.swift in Sources */,
 				AA2829AB22E1D80A00A5F6C7 /* MarkersResponseModel.swift in Sources */,
 				52D625252313E377001B2513 /* Data+PrettyPrint.swift in Sources */,
@@ -916,6 +927,7 @@
 				52CBB7552310160500E6E039 /* GMUClusterManager.m in Sources */,
 				52AC05492304127D00438113 /* UIViewExtensions.swift in Sources */,
 				52AC05402302D86000438113 /* ModelDataHandler.swift in Sources */,
+				AAAA33ED2313DA760061DB2B /* CarListCellTableViewCell.swift in Sources */,
 				52CBB765231016A400E6E039 /* GQTPointQuadTree.m in Sources */,
 				52AC052F2302CE1F00438113 /* CurvedView.swift in Sources */,
 				52D6252B2313EA70001B2513 /* SwitchCustom.swift in Sources */,

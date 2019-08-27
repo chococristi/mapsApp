@@ -14,7 +14,7 @@ import GoogleMaps
 //https://github.com/googlemaps/google-maps-ios-utils/blob/master/Swift.md 
 //https://mapstyle.withgoogle.com //Map styles
 
-class GMViewController: UIViewController {
+class GMViewController: UIViewController, GMUClusterManagerDelegate, GMSMapViewDelegate {
 
     // MARK: - IBOutlets
 
@@ -27,7 +27,6 @@ class GMViewController: UIViewController {
     let dayImage: UIImage? = UIImage.init(named: "dayModeImage")?.withRenderingMode(.alwaysOriginal)
 
     private var locationService: LocationService?
-    private var markers: Markers?
     private var clusterManager: GMUClusterManager!
 
     // MARK: - Constructor
@@ -108,34 +107,34 @@ class GMViewController: UIViewController {
         }
     }
 
-    fileprivate func setRouteInMap() {
 
-        guard let markersArray = markers?.markers else {
-            return
-        }
-
-        let marker = markersArray[0]
-        let marker2 = markersArray[1]
-
-        guard let latitude = marker.coordinates.first,
-            let longitude = marker.coordinates.last else {
-                return
-        }
-
-        guard let latitude2 = marker2.coordinates.first,
-            let longitude2 = marker2.coordinates.last else {
-                return
-        }
-
-        let position = CLLocationCoordinate2DMake(latitude, longitude)
-        let position2 = CLLocationCoordinate2DMake(latitude2, longitude2)
-
-        mapView.drawPolygon(from: position, to: position2)
-
-    }
+//    fileprivate func setRouteInMap() {
+//
+//        guard let markersArray = markers?.markers else {
+//            return
+//        }
+//
+//        let marker = markersArray[0]
+//        let marker2 = markersArray[1]
+//
+//        guard let latitude = marker.coordinates.first,
+//            let longitude = marker.coordinates.last else {
+//                return
+//        }
+//
+//        guard let latitude2 = marker2.coordinates.first,
+//            let longitude2 = marker2.coordinates.last else {
+//                return
+//        }
+//
+//        let position = CLLocationCoordinate2DMake(latitude, longitude)
+//        let position2 = CLLocationCoordinate2DMake(latitude2, longitude2)
+//
+//        mapView.drawPolygon(from: position, to: position2)
+//
+//    }
 
     func setupCluster() {
-
         // Set up the cluster manager with the supplied icon generator and
         // renderer.
         let iconGenerator = GMUDefaultClusterIconGenerator()
@@ -145,7 +144,7 @@ class GMViewController: UIViewController {
         clusterManager = GMUClusterManager(map: mapView,
                                            algorithm: algorithm,
                                            renderer: renderer)
-        clusterManager.setDelegate(self, mapDelegate: self)
+
         // Generate and add items to the cluster manager.
         setupPOIMarkers()
         // Call cluster() after items have been added to perform the clustering
@@ -191,41 +190,15 @@ extension GMViewController: CLLocationManagerDelegate {
 
         cameraMoveToLocation(toLocation: manager.location?.coordinate)
     }
-}
 
-extension GMViewController: GMUClusterManagerDelegate {
-
-    func clusterManager(_ clusterManager: GMUClusterManager, didTap cluster: GMUCluster) -> Bool {
-        let newCamera = GMSCameraPosition.camera(withTarget: cluster.position,
-                                                 zoom: mapView.camera.zoom + 1)
-        let update = GMSCameraUpdate.setCamera(newCamera)
-        mapView.moveCamera(update)
-
-        return true
-    }
-}
-
-extension GMViewController: GMSMapViewDelegate {
-
-    func mapView(_ mapView: GMSMapView, didLongPressAt coordinate: CLLocationCoordinate2D) {
-        print("You tapped at \(coordinate.latitude), \(coordinate.longitude)")
-    }
-
-    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
-        if let poiItem = marker.userData as? POIItem {
-            NSLog("Did tap marker for cluster item \(String(describing: poiItem.name))")
-            marker.snippet = poiItem.name
-        } else {
-            NSLog("Did tap a normal marker")
-        }
-        return false
-    }
-
-//    func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
-//        let view = UIView()
-//        view.frame = CGRect(x: 0, y: 0, width: 30, height: 40)
-//        view.backgroundColor = .red
-//        return view
+//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+//
+//        guard let location = locations.first else {
+//            return
+//        }
+//
+//        cameraMoveToLocation(toLocation: location.coordinate)
+//
 //    }
 }
 
