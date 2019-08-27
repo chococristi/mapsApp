@@ -40,6 +40,7 @@ class MapViewController: UIViewController {
         setAnnotationsInMap()
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(self.didPan(panGesture:)))
         bottomSheetView.addGestureRecognizer(panGesture)
+        edgesForExtendedLayout = []
         //TODO cambiar pines
     }
     
@@ -112,7 +113,7 @@ class MapViewController: UIViewController {
     
     // MARK: Location functions
     
-    func startTrackingUserLocation(){
+    func startTrackingUserLocation() {
         //it shows the blue point in the map
         mapView.showsUserLocation = true
         
