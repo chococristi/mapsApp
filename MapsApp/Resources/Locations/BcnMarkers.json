@@ -146,6 +146,20 @@
                 "latitude": 41.386548416,
                 "longitude": 2.1899737045
             }
+        },
+        {
+            "name": "Parc de la Pegaso",
+            "coordinates": {
+                "latitude": 41.427375653,
+                "longitude": 2.189249508
+            }
+        },
+        {
+            "name": "Farmàcia La Sagrera 146",
+            "coordinates": {
+                "latitude": 41.4250703815,
+                "longitude": 2.1910918503
+            }
         }
     ]
 }

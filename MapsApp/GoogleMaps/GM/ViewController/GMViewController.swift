@@ -194,7 +194,7 @@ extension GMViewController: CLLocationManagerDelegate {
 }
 
 extension GMViewController: GMUClusterManagerDelegate {
-    
+
     func clusterManager(_ clusterManager: GMUClusterManager, didTap cluster: GMUCluster) -> Bool {
         let newCamera = GMSCameraPosition.camera(withTarget: cluster.position,
                                                  zoom: mapView.camera.zoom + 1)
@@ -206,11 +206,11 @@ extension GMViewController: GMUClusterManagerDelegate {
 }
 
 extension GMViewController: GMSMapViewDelegate {
-    
+
     func mapView(_ mapView: GMSMapView, didLongPressAt coordinate: CLLocationCoordinate2D) {
         print("You tapped at \(coordinate.latitude), \(coordinate.longitude)")
     }
-    
+
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
         if let poiItem = marker.userData as? POIItem {
             NSLog("Did tap marker for cluster item \(String(describing: poiItem.name))")
