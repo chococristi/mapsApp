@@ -25,17 +25,16 @@ class CarsListViewController: UIViewController, UITableViewDataSource, UITableVi
         super.viewDidLoad()
         setupTableView()
     }
-    
+
     func setupTableView() {
          tableView.register(CarListCellTableViewCell.nib, forCellReuseIdentifier: CarListCellTableViewCell.identifier)
-        
+
         tableView.dataSource = self
         tableView.delegate = self
-        
+
         tableView.bounces = false
         tableView.separatorStyle = .none
-        
-       
+
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

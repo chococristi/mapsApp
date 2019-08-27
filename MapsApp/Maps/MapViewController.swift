@@ -11,29 +11,29 @@ import MapKit
 import CoreLocation
 
 class MapViewController: UIViewController {
-    
+
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var bottomSheetView: CurvedView!
     @IBOutlet weak var bottomContainerView: UIView!
-    
+
     @IBOutlet weak var topSheetConstraint: NSLayoutConstraint!
     @IBOutlet weak var littleView: UIView!
-    
+
     let locationManager = CLLocationManager()
     let regionInMeters: Double = 10000 //put 900 to zoom in directly
     let geoCoder = CLGeocoder()
-    
+
     let kTopFullScreen: CGFloat = .zero
     let kTopMidScreen: CGFloat = UIScreen.main.bounds.height * 1/2
     let kTopLowScreen: CGFloat = UIScreen.main.bounds.height
-    
+
     var embeddedViewController = CarsListViewController()
     var initialTopSpace: CGFloat = 300.0
     var previousLocation: CLLocation?
     var annotationsArray: [MKAnnotation] = []
-    
+
     // MARK: LifeCycle functions
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         checkLocationServices()
@@ -43,23 +43,23 @@ class MapViewController: UIViewController {
         edgesForExtendedLayout = []
         //TODO cambiar pines
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         setupBottomView()
     }
-    
+
     // MARK: Setup functions
-    
+
     func setupBottomView() {
         topSheetConstraint.constant = UIScreen.main.bounds.height
         littleView.layer.cornerRadius = 3
     }
-    
+
     func setupLocationManager() {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
     }
-    
+
     //    func setupMap() {
     //        guard let path = Bundle.main.path(forResource: "bcnlocations", ofType: "json") else { return }
     //        let url = URL(fileURLWithPath: path)
@@ -74,7 +74,7 @@ class MapViewController: UIViewController {
     //            print(error)
     //        }
     //    }
-    
+
     // MARK: Check functions
     func checkLocationServices() {
         if CLLocationManager.locationServicesEnabled() {
@@ -85,7 +85,7 @@ class MapViewController: UIViewController {
             //self.present(Alert.alert(message: "You should enable Location services!"), animated: true)
         }
     }
-    
+
     func checkLocationAuthorization() {
         switch CLLocationManager.authorizationStatus() {
         case .authorizedWhenInUse:
@@ -102,20 +102,20 @@ class MapViewController: UIViewController {
             break
         }
     }
-    
+
     // MARK: Location functions
-    
+
     func startTrackingUserLocation() {
         //it shows the blue point in the map
         mapView.showsUserLocation = true
-        
+
         //it centers the view on the blue point in the map
         centerViewOnUserLocation()
-        
+
         //it starts the didUpdateLocations function in delegate
         locationManager.startUpdatingLocation()
     }
-    
+
     func centerViewOnUserLocation() {
         #if targetEnvironment(simulator)
         // TODO harcoded to work with Simulator (if not harcoded, we are in California)
@@ -130,19 +130,19 @@ class MapViewController: UIViewController {
         }
         #endif
     }
-    
+
     func getCenterLocation(for mapView: MKMapView) -> CLLocation {
         let latitude = mapView.centerCoordinate.latitude
         let longitude = mapView.centerCoordinate.longitude
         return CLLocation(latitude: latitude, longitude: longitude)
     }
-    
+
     // MARK: Map functions
-    
+
     fileprivate func setAnnotationsInMap() {
-        
+
         let markersArray = markers
-        
+
         for marker in markersArray {
             //TODO first / last i'm not sure if can be done better
             guard let latitude = marker.coordinates.first, let longitude = marker.coordinates.last else { return }
@@ -150,40 +150,39 @@ class MapViewController: UIViewController {
             let annotation = MKPointAnnotation()
             annotation.coordinate = location
             annotation.title = marker.name
-            
+
             mapView.addAnnotation(annotation)
         }
     }
-    
+
     func resetMapView(withNew directions: MKDirections) {
         mapView.removeOverlays(mapView.overlays)
     }
 }
 
 extension MapViewController: CLLocationManagerDelegate {
-    
+
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         checkLocationAuthorization()
     }
 }
 
 extension MapViewController: MKMapViewDelegate {
-    
+
     //this function allows to SHOW THE NUMBER OF CLUSTER annotations
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if annotation is MKUserLocation { return nil }
 
         var marker = MKMarkerAnnotationView()
-            
-            
+
         let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier, for: annotation)
         annotationView.clusteringIdentifier = "identifier"
-        
+
         annotationView.image = UIImage(named: "star")?.withRenderingMode(.alwaysTemplate)
         annotationView.tintColor = MapsColors.mainColor
 
         //annotationView.tintColor = MapsColors.mainColor
-        
+
         //let pinImage = annotationView.image
     //        annotationView.image?.withRenderingMode(.alwaysTemplate)
     //        annotationView.image = annotationView.image?.imageWithColor(color1: MapsColors.mainColor)
@@ -192,19 +191,19 @@ extension MapViewController: MKMapViewDelegate {
     //        annotationView.image?.imageWithoutBaseline().tintColor = MapsColors.mainColor
         return annotationView
     }
-    
+
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         print("regionDidChangeAnimated")
         //let allAnnotations : [MKAnnotation] = mapView.annotations
         //print("number of total annotations : \(allAnnotations.count)")
         //print(allAnnotations.first?.title) //this is random orderer
-        
+
         //let selectedAnnotations : [MKAnnotation] = mapView.selectedAnnotations
         //print("number of selected annotations : \(selectedAnnotations.count)")
         //print(selectedAnnotations.first?.title)
-        
+
     }
-    
+
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         self.view.layoutIfNeeded()
 
@@ -219,27 +218,27 @@ extension MapViewController: MKMapViewDelegate {
             centerRegionOnPin(mapView: mapView, pin: view)
             navigateToDetail(marker: marker)
         }
-  
+
     }
-    
+
     //func zoomInOnPin(annotation:MKAnnotation) {
     //    let zoomOutRegion = MKCoordinateRegion(center: mapView.region.center, span: MKCoordinateSpan(latitudeDelta: 0.09, longitudeDelta: 0.09))
     //    mapView.setRegion(zoomOutRegion, animated: true)
     //}
-    
+
     func getMarkerFromAnnotation(view: MKAnnotationView) -> Marker? {
         var annotation = MKPointAnnotation()
         if let anAnnotation = view.annotation as? MKPointAnnotation {
             annotation = anAnnotation
         }
         let selectedTitle = "\(annotation.title ?? "")"
-        
+
         if let markerFound = markers.first(where: { $0.name == selectedTitle }) {
             return markerFound
         }
         return nil
     }
-    
+
     func centerRegionOnCluster(mapView: MKMapView, cluster: MKClusterAnnotation) {
             var minLat = CLLocationDegrees(exactly: 90)!
             var maxLat = CLLocationDegrees(exactly: -90)!
@@ -252,25 +251,25 @@ extension MapViewController: MKMapViewDelegate {
                 minLong = min(minLong, coordinate.longitude)
                 maxLong = max(maxLong, coordinate.longitude)
             }
-            
+
             let centerLat = (minLat + maxLat) / 2
             let centerLong = (minLong + maxLong) / 2
             let center = CLLocationCoordinate2D(latitude: centerLat, longitude: centerLong)
             let span = MKCoordinateSpan(latitudeDelta: (maxLat - minLat) * 1.5, longitudeDelta: (maxLong - minLong) * 1.5) // with some padding
             let region = MKCoordinateRegion(center: center, span: span)
-            
+
             mapView.setRegion(region, animated: true)
             setTopSheetLayout(withTopSpace: kTopLowScreen)
-        
+
     }
-    
+
     func centerRegionOnPin(mapView: MKMapView, pin: MKAnnotationView) {
         guard let location = pin.annotation?.coordinate else { return }
         let actualSpanRegion = mapView.region.span
         let region = MKCoordinateRegion(center: location, span: actualSpanRegion)
         mapView.setRegion(region, animated: true)
     }
-    
+
     func navigateToDetail(marker : Marker) {
         addChild(embeddedViewController)
         embeddedViewController.view.frame = bottomContainerView.bounds
@@ -278,15 +277,15 @@ extension MapViewController: MKMapViewDelegate {
         embeddedViewController.didMove(toParent: self)
         bottomContainerView.addSubview(embeddedViewController.view)
     }
-    
+
 }
 
 extension MapViewController {
-    
+
     @objc func didPan(panGesture: UIPanGestureRecognizer) {
-        
+
         let translation = panGesture.translation(in: view)
-        
+
         switch panGesture.state {
         case .began:
             initialTopSpace = topSheetConstraint.constant
@@ -302,7 +301,7 @@ extension MapViewController {
             break
         }
     }
-    
+
     func setTopSheetLayout(withTopSpace bottomSpace: CGFloat) {
         UIView.animate(withDuration: 0.4, delay: 0.2, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.6, options: .curveEaseInOut, animations: {
             self.view.setNeedsLayout()
@@ -310,30 +309,30 @@ extension MapViewController {
             self.view.layoutIfNeeded()
         })
     }
-    
+
     private func translateBottomSheetAtEndOfPan(withVerticalTranslation verticalTranslation: CGFloat, gesture: UIPanGestureRecognizer) {
-        
+
         let direction = gesture.verticalDirection(target: self.view)
         let currentTopSpace = initialTopSpace + verticalTranslation
         var nextTopSpace: CGFloat = 0
         print("+++++ initialTopSpace: \(initialTopSpace)")
         print("+++++ verticalTranslation: \(verticalTranslation)")
         print("+++++ currentTopSpace (initialTop-Translation): \(currentTopSpace)")
-        
+
         if isInMiddleTop(currentTopSpace) {
             nextTopSpace = (direction == .upper) ? kTopFullScreen : kTopMidScreen
-            
+
         } else if isInMiddleDown(currentTopSpace) {
             nextTopSpace = (direction == .upper) ? kTopMidScreen : kTopLowScreen
-            
+
             mapView.deselectAnnotation(mapView.selectedAnnotations.first, animated: true)
         } else {
             nextTopSpace = kTopLowScreen
-            
+
         }
         setTopSheetLayout(withTopSpace: nextTopSpace)
     }
-    
+
     func isInMiddleTop(_ currentTopSpace: CGFloat) -> Bool {
         if (currentTopSpace >= kTopFullScreen)
             && (currentTopSpace <= kTopMidScreen) {
@@ -341,7 +340,7 @@ extension MapViewController {
         }
         return false
     }
-    
+
     func isInMiddleDown(_ currentTopSpace: CGFloat) -> Bool {
         if (currentTopSpace >= kTopMidScreen)
             && (currentTopSpace <= kTopLowScreen) {
@@ -349,9 +348,8 @@ extension MapViewController {
         }
         return false
     }
-    
-}
 
+}
 
 extension UIImage {
     func imageWithColor(color1: UIColor) -> UIImage {

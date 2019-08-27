@@ -13,7 +13,7 @@ struct Marker: Decodable {
     let name: String
     let coordinates: [Double]
     let cars: [Car]
-    
+
 }
 
 extension Marker: Equatable {
@@ -32,7 +32,7 @@ struct Car: Decodable {
     let model : String
     let year : String
     let image: String
-    
+
 }
 
 extension Car: Equatable {
@@ -46,7 +46,7 @@ extension Car: Equatable {
         return false
     }
 }
-    
+
 let markers: [Marker] = load("bcnlocations.json")
 
 func load<T: Decodable>(_ filename: String, as type: T.Type = T.self) -> T {
