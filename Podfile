@@ -7,5 +7,7 @@ target 'mapsApp' do
 
   # Pods for mapsApp
    pod 'TensorFlowLiteSwift'
+   pod 'SwiftLint'
    pod 'lottie-ios'
+   pod 'GoogleMaps'
 end
