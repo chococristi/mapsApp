@@ -13,6 +13,18 @@ struct Marker: Decodable {
     let name: String
     let coordinates: [Double]
     let cars: [Car]
+    
+}
+
+extension Marker: Equatable {
+    static func == (lhs: Marker, rhs: Marker) -> Bool {
+        if lhs.name == rhs.name
+        && lhs.coordinates == rhs.coordinates
+        && lhs.cars == rhs.cars {
+            return true
+        }
+        return false
+    }
 }
 
 struct Car: Decodable {
@@ -20,8 +32,21 @@ struct Car: Decodable {
     let model : String
     let year : String
     let image: String
+    
 }
 
+extension Car: Equatable {
+    static func == (lhs: Car, rhs: Car) -> Bool {
+        if lhs.brand == rhs.brand
+        && lhs.model == rhs.model
+        && lhs.year == rhs.year
+        && lhs.image == rhs.image {
+            return true
+        }
+        return false
+    }
+}
+    
 let markers: [Marker] = load("bcnlocations.json")
 
 func load<T: Decodable>(_ filename: String, as type: T.Type = T.self) -> T {
