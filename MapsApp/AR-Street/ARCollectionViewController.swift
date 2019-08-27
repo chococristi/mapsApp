@@ -11,11 +11,12 @@ import ARKit
 
 class ARCollectionViewController: UIViewController {
 
+    @IBOutlet var buttonToAR: UIButton!
     @IBOutlet var collectionView: UICollectionView!
     var arrayNodes : [Nodes] = []
     let edge    : CGFloat = 10.0
     let spacing : CGFloat = 10.0
-    var selectedItem : Int = 0
+    var selectedItem : Int = -1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +24,7 @@ class ARCollectionViewController: UIViewController {
         
         let nibCell = UINib(nibName: "MyCollectionViewCell", bundle: nil)
         collectionView.register(nibCell, forCellWithReuseIdentifier: "MyCollectionViewCell")
+        buttonToAR.isEnabled = false
         
     }
     
@@ -54,6 +56,14 @@ class ARCollectionViewController: UIViewController {
         cell.layer.borderColor = borderColor.cgColor
         
     }
+    @IBAction func goToAR(_ sender: Any) {
+        
+        let vc = PlaceObjectsplaneViewController()
+        arrayNodes[selectedItem].node.removeAction(forKey: "turn")
+        vc.nodeModel = arrayNodes[selectedItem].node
+        present(vc, animated: false, completion: nil)
+ 
+    }
 }
 
 extension ARCollectionViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -73,27 +83,30 @@ extension ARCollectionViewController: UICollectionViewDelegate, UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let noOfColumn = 2
-        let collectionviewWidth = collectionView.frame.width
-        let bothEdge =  CGFloat(edge + edge) // left + right
-        let excludingEdge = collectionviewWidth - bothEdge
-        let cellWidthExcludingSpaces = excludingEdge - (CGFloat(noOfColumn-1) * spacing)
-        let finalCellWidth = cellWidthExcludingSpaces / CGFloat(noOfColumn)
-        let height = finalCellWidth
-        return CGSize(width: finalCellWidth, height: height)
+//        let noOfColumn = 2
+//        let collectionviewWidth = collectionView.frame.width
+//        let bothEdge =  CGFloat(edge + edge) // left + right
+//        let excludingEdge = collectionviewWidth - bothEdge
+//        let cellWidthExcludingSpaces = excludingEdge - (CGFloat(noOfColumn-1) * spacing)
+//        let finalCellWidth = cellWidthExcludingSpaces / CGFloat(noOfColumn)
+//        let height = finalCellWidth
+        
+        let height = collectionView.layer.bounds.size.height
+        
+        return CGSize(width: height, height: height)
     }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        
-        let totalCellWidth = 80 * collectionView.numberOfItems(inSection: 0)
-        let totalSpacingWidth = 10 * (collectionView.numberOfItems(inSection: 0) - 1)
-        
-        let leftInset = (collectionView.layer.frame.size.width - CGFloat(totalCellWidth + totalSpacingWidth)) / 2
-        let rightInset = leftInset
-        
-        return UIEdgeInsets(top: 0, left: leftInset, bottom: 0, right: rightInset)
-        
-    }
+//
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+//
+//        let totalCellWidth = 80 * collectionView.numberOfItems(inSection: 0)
+//        let totalSpacingWidth = 10 * (collectionView.numberOfItems(inSection: 0) - 1)
+//
+//        let leftInset = (collectionView.layer.frame.size.width - CGFloat(totalCellWidth + totalSpacingWidth)) / 2
+//        let rightInset = leftInset
+//
+//        return UIEdgeInsets(top: 0, left: leftInset, bottom: 0, right: rightInset)
+//
+//    }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCollectionViewCell", for: indexPath) as! MyCollectionViewCell
@@ -101,11 +114,11 @@ extension ARCollectionViewController: UICollectionViewDelegate, UICollectionView
         cell.lbName.text = arrayNodes[indexPath.row].title
         cell.init3DObject(node: arrayNodes[indexPath.row].node)
         self.configureCellView(cell: cell, selected: indexPath.row == self.selectedItem)
-        
-        if indexPath.row == self.selectedItem {
-            cell.play()
-            cell.isSelected = true
-        }
+//        
+//        if indexPath.row == self.selectedItem {
+//            cell.play()
+//            cell.isSelected = true
+//        }
         return cell
     }
     
@@ -113,6 +126,7 @@ extension ARCollectionViewController: UICollectionViewDelegate, UICollectionView
         if let cell = collectionView.cellForItem(at: indexPath) as? MyCollectionViewCell {
             cell.play()
             selectedItem = indexPath.row
+             buttonToAR.isEnabled = true
             self.configureCellView(cell: cell, selected: true)}
     }
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {

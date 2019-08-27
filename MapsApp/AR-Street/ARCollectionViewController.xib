@@ -6,11 +6,11 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14766.13"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
-        <capability name="iOS 13.0 system colors" minToolsVersion="11.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ARCollectionViewController" customModule="mapsApp" customModuleProvider="target">
             <connections>
+                <outlet property="buttonToAR" destination="LGk-lt-0nX" id="aXf-0N-Lij"/>
                 <outlet property="collectionView" destination="cbv-Mv-zDv" id="Mx3-fE-JA8"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -40,17 +40,28 @@
                                 <outlet property="delegate" destination="-1" id="VMK-Gx-2F0"/>
                             </connections>
                         </collectionView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LGk-lt-0nX">
+                            <rect key="frame" x="20" y="529" width="374" height="30"/>
+                            <color key="backgroundColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <state key="normal" title="Go to AR"/>
+                            <connections>
+                                <action selector="goToAR:" destination="-1" eventType="touchUpInside" id="aso-Nh-f2f"/>
+                            </connections>
+                        </button>
                     </subviews>
-                    <color key="backgroundColor" cocoaTouchSystemColor="systemBrownColor"/>
+                    <color key="backgroundColor" red="0.43529411764705883" green="0.14117647058823529" blue="0.1764705882352941" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="cbv-Mv-zDv" firstAttribute="centerY" secondItem="pua-aT-1kv" secondAttribute="centerY" id="Xit-vS-bIu"/>
+                        <constraint firstItem="LGk-lt-0nX" firstAttribute="top" secondItem="cbv-Mv-zDv" secondAttribute="bottom" constant="20" id="Xnf-fd-Oq0"/>
                         <constraint firstItem="cbv-Mv-zDv" firstAttribute="centerX" secondItem="pua-aT-1kv" secondAttribute="centerX" id="alS-VB-tRq"/>
+                        <constraint firstItem="LGk-lt-0nX" firstAttribute="leading" secondItem="pua-aT-1kv" secondAttribute="leading" constant="20" id="eFu-tP-HzN"/>
                         <constraint firstItem="cbv-Mv-zDv" firstAttribute="leading" secondItem="pua-aT-1kv" secondAttribute="leading" id="fI7-vg-Kcl"/>
+                        <constraint firstAttribute="trailing" secondItem="LGk-lt-0nX" secondAttribute="trailing" constant="20" id="nQf-8J-Off"/>
                         <constraint firstAttribute="trailing" secondItem="cbv-Mv-zDv" secondAttribute="trailing" id="uSf-8t-foo"/>
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="0.43529411764705883" green="0.14117647058823529" blue="0.1764705882352941" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="pua-aT-1kv" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="3EO-lF-lKL"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="pua-aT-1kv" secondAttribute="trailing" id="9Q9-Hz-7hk"/>
