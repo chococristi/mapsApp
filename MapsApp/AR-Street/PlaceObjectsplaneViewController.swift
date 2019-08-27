@@ -44,7 +44,7 @@ class PlaceObjectsplaneViewController: UIViewController, ARSCNViewDelegate, UIGe
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(didPan(_:)))
         panGesture.delegate = self
         sceneView.addGestureRecognizer(panGesture)
-        
+
         guard let _ = nodeModel else {
             nodeModel =  modelScene.rootNode.childNode(withName: nodeName, recursively: true)
             return
