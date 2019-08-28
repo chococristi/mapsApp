@@ -322,13 +322,18 @@ extension MapViewController {
 
         } else if isInMiddleDown(currentTopSpace) {
             nextTopSpace = (direction == .upper) ? kTopMidScreen : kTopLowScreen
+            deselectAnnotations()
 
-            mapView.deselectAnnotation(mapView.selectedAnnotations.first, animated: true)
         } else {
             nextTopSpace = kTopLowScreen
+            deselectAnnotations()
 
         }
         setTopSheetLayout(withTopSpace: nextTopSpace)
+    }
+
+    func deselectAnnotations() {
+        mapView.deselectAnnotation(mapView.selectedAnnotations.first, animated: true)
     }
 
     func isInMiddleTop(_ currentTopSpace: CGFloat) -> Bool {
