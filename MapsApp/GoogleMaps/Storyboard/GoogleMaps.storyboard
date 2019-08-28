@@ -22,24 +22,29 @@
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Agg-cd-0r2" customClass="GMSMapView">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YtB-fK-xDb" customClass="SwitchCustom" customModule="mapsApp" customModuleProvider="target">
+                                                <rect key="frame" x="355" y="10" width="49" height="31"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="31" id="0Gq-0f-QzN"/>
+                                                    <constraint firstAttribute="width" constant="49" id="77a-7S-iSk"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </view>
-                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="es3-ec-zes" customClass="SwitchCustom" customModule="mapsApp" customModuleProvider="target">
-                                        <rect key="frame" x="355" y="10" width="51" height="31"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="49" id="GW8-Ab-yBQ"/>
-                                            <constraint firstAttribute="height" constant="31" id="hfa-Eu-RUw"/>
+                                            <constraint firstAttribute="trailing" secondItem="YtB-fK-xDb" secondAttribute="trailing" constant="10" id="aGy-5y-ktm"/>
+                                            <constraint firstItem="YtB-fK-xDb" firstAttribute="top" secondItem="Agg-cd-0r2" secondAttribute="top" constant="10" id="vSf-bQ-FMO"/>
                                         </constraints>
-                                    </switch>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="Agg-cd-0r2" firstAttribute="top" secondItem="2dB-j0-W1C" secondAttribute="top" id="DpJ-Ci-qJw"/>
                                     <constraint firstItem="Agg-cd-0r2" firstAttribute="leading" secondItem="2dB-j0-W1C" secondAttribute="leading" id="GMM-K1-ECa"/>
-                                    <constraint firstAttribute="trailing" secondItem="es3-ec-zes" secondAttribute="trailing" constant="10" id="Oyp-9i-r4X"/>
                                     <constraint firstAttribute="bottom" secondItem="Agg-cd-0r2" secondAttribute="bottom" id="WOe-yA-1Ws"/>
                                     <constraint firstAttribute="trailing" secondItem="Agg-cd-0r2" secondAttribute="trailing" id="n01-gE-SjQ"/>
-                                    <constraint firstItem="es3-ec-zes" firstAttribute="top" secondItem="2dB-j0-W1C" secondAttribute="top" constant="10" id="nLs-53-obP"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -54,7 +59,7 @@
                     </view>
                     <connections>
                         <outlet property="mapView" destination="Agg-cd-0r2" id="zB0-hV-p8t"/>
-                        <outlet property="swMap" destination="es3-ec-zes" id="Q15-NL-VdF"/>
+                        <outlet property="swMap" destination="YtB-fK-xDb" id="gHC-we-GxF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G8Z-ug-BVk" userLabel="First Responder" sceneMemberID="firstResponder"/>
