@@ -141,6 +141,7 @@ class GMViewController: UIViewController, GMUClusterManagerDelegate, GMSMapViewD
         let algorithm = GMUNonHierarchicalDistanceBasedAlgorithm()
         let renderer = GMUDefaultClusterRenderer(mapView: mapView,
                                                  clusterIconGenerator: iconGenerator)
+        //renderer.delegate = self
         clusterManager = GMUClusterManager(map: mapView,
                                            algorithm: algorithm,
                                            renderer: renderer)
@@ -175,6 +176,7 @@ class GMViewController: UIViewController, GMUClusterManagerDelegate, GMSMapViewD
             print(error)
         }
     }
+    
 }
 
 extension GMViewController: CLLocationManagerDelegate {
@@ -217,3 +219,9 @@ extension GMViewController {
     }
 
 }
+
+//extension GMViewController: GMUClusterRendererDelegate {
+//    func renderer(_ renderer: GMUClusterRenderer, willRenderMarker marker: GMSMarker) {
+//
+//    }
+//}

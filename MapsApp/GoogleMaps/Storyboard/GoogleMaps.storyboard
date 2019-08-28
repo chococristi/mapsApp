@@ -22,29 +22,25 @@
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Agg-cd-0r2" customClass="GMSMapView">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
-                                        <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YtB-fK-xDb" customClass="SwitchCustom" customModule="mapsApp" customModuleProvider="target">
-                                                <rect key="frame" x="355" y="10" width="49" height="31"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="31" id="0Gq-0f-QzN"/>
-                                                    <constraint firstAttribute="width" constant="49" id="77a-7S-iSk"/>
-                                                </constraints>
-                                            </view>
-                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YtB-fK-xDb" customClass="SwitchCustom" customModule="mapsApp" customModuleProvider="target">
+                                        <rect key="frame" x="355" y="10" width="49" height="31"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="YtB-fK-xDb" secondAttribute="trailing" constant="10" id="aGy-5y-ktm"/>
-                                            <constraint firstItem="YtB-fK-xDb" firstAttribute="top" secondItem="Agg-cd-0r2" secondAttribute="top" constant="10" id="vSf-bQ-FMO"/>
+                                            <constraint firstAttribute="height" constant="31" id="0Gq-0f-QzN"/>
+                                            <constraint firstAttribute="width" constant="49" id="77a-7S-iSk"/>
                                         </constraints>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="YtB-fK-xDb" secondAttribute="trailing" constant="10" id="3jy-Yw-OB5"/>
                                     <constraint firstItem="Agg-cd-0r2" firstAttribute="top" secondItem="2dB-j0-W1C" secondAttribute="top" id="DpJ-Ci-qJw"/>
                                     <constraint firstItem="Agg-cd-0r2" firstAttribute="leading" secondItem="2dB-j0-W1C" secondAttribute="leading" id="GMM-K1-ECa"/>
                                     <constraint firstAttribute="bottom" secondItem="Agg-cd-0r2" secondAttribute="bottom" id="WOe-yA-1Ws"/>
                                     <constraint firstAttribute="trailing" secondItem="Agg-cd-0r2" secondAttribute="trailing" id="n01-gE-SjQ"/>
+                                    <constraint firstItem="YtB-fK-xDb" firstAttribute="top" secondItem="2dB-j0-W1C" secondAttribute="top" constant="10" id="vKl-T6-9BT"/>
                                 </constraints>
                             </view>
                         </subviews>
