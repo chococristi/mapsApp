@@ -24,6 +24,7 @@
 		52AC055223041E3A00438113 /* SplashScreenMainColor.json in Resources */ = {isa = PBXBuildFile; fileRef = 52AC055123041E3A00438113 /* SplashScreenMainColor.json */; };
 		52AC055423041FFF00438113 /* LaunchScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC055323041FFF00438113 /* LaunchScreenView.swift */; };
 		52AC055623042C7800438113 /* SplashScreenWhiteColor.json in Resources */ = {isa = PBXBuildFile; fileRef = 52AC055523042C7800438113 /* SplashScreenWhiteColor.json */; };
+		52B8DEBF23168B1E0071FB59 /* ClusterIconGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B8DEBE23168B1E0071FB59 /* ClusterIconGenerator.swift */; };
 		52CBB71F230E98DD00E6E039 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CBB71E230E98DD00E6E039 /* LocationService.swift */; };
 		52CBB722230E99F100E6E039 /* AlertDialogService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CBB721230E99F100E6E039 /* AlertDialogService.swift */; };
 		52CBB729230EC2C300E6E039 /* GMSMapViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CBB728230EC2C300E6E039 /* GMSMapViewExtensions.swift */; };
@@ -103,6 +104,7 @@
 		52AC055123041E3A00438113 /* SplashScreenMainColor.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SplashScreenMainColor.json; sourceTree = "<group>"; };
 		52AC055323041FFF00438113 /* LaunchScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenView.swift; sourceTree = "<group>"; };
 		52AC055523042C7800438113 /* SplashScreenWhiteColor.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SplashScreenWhiteColor.json; sourceTree = "<group>"; };
+		52B8DEBE23168B1E0071FB59 /* ClusterIconGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClusterIconGenerator.swift; sourceTree = "<group>"; };
 		52CBB71E230E98DD00E6E039 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		52CBB721230E99F100E6E039 /* AlertDialogService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDialogService.swift; sourceTree = "<group>"; };
 		52CBB728230EC2C300E6E039 /* GMSMapViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GMSMapViewExtensions.swift; sourceTree = "<group>"; };
@@ -491,6 +493,14 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
+		52B8DEBD23168B0B0071FB59 /* GMClusterIcon */ = {
+			isa = PBXGroup;
+			children = (
+				52B8DEBE23168B1E0071FB59 /* ClusterIconGenerator.swift */,
+			);
+			path = GMClusterIcon;
+			sourceTree = "<group>";
+		};
 		52CBB715230E789300E6E039 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -544,6 +554,7 @@
 		52CBB726230EC27200E6E039 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				52B8DEBD23168B0B0071FB59 /* GMClusterIcon */,
 				52CBB738231015AB00E6E039 /* GoogleMapsIOSUtils */,
 				52CBB727230EC27E00E6E039 /* Extensions */,
 			);
@@ -1022,6 +1033,7 @@
 				52CBB7582310160500E6E039 /* GMUSimpleClusterAlgorithm.m in Sources */,
 				52CBB72F230FF11000E6E039 /* LeftViewController.swift in Sources */,
 				52CBB75A2310160500E6E039 /* GMUDefaultClusterRenderer.m in Sources */,
+				52B8DEBF23168B1E0071FB59 /* ClusterIconGenerator.swift in Sources */,
 				5B1993792304370B00A6E78D /* Molecules.swift in Sources */,
 				52AC05242302BF5E00438113 /* TFMainViewController.swift in Sources */,
 				52CBB722230E99F100E6E039 /* AlertDialogService.swift in Sources */,

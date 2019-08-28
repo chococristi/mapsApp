@@ -137,7 +137,7 @@ class GMViewController: UIViewController, GMSMapViewDelegate {
     func setupCluster() {
         // Set up the cluster manager with the supplied icon generator and
         // renderer.
-        let iconGenerator = GMUDefaultClusterIconGenerator()
+        let iconGenerator = ClusterIconGenerator()
         let algorithm = GMUNonHierarchicalDistanceBasedAlgorithm()
         let renderer = GMUDefaultClusterRenderer(mapView: mapView,
                                                  clusterIconGenerator: iconGenerator)
@@ -242,8 +242,8 @@ extension GMViewController: GMUClusterManagerDelegate {
 extension GMViewController: GMUClusterRendererDelegate {
     func renderer(_ renderer: GMUClusterRenderer, markerFor object: Any) -> GMSMarker? {
         switch object {
-        case let clusterItem as POIItem:
-            let marker = GMSMarker(position: clusterItem.position)
+        case let markerPOIItem as POIItem:
+            let marker = GMSMarker(position: markerPOIItem.position)
             marker.icon = GMSMarker.markerImage(with: MapsColors.mainColor)
             return marker
         default:
