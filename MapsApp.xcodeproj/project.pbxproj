@@ -25,6 +25,9 @@
 		52AC055423041FFF00438113 /* LaunchScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC055323041FFF00438113 /* LaunchScreenView.swift */; };
 		52AC055623042C7800438113 /* SplashScreenWhiteColor.json in Resources */ = {isa = PBXBuildFile; fileRef = 52AC055523042C7800438113 /* SplashScreenWhiteColor.json */; };
 		52B8DEBF23168B1E0071FB59 /* ClusterIconGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B8DEBE23168B1E0071FB59 /* ClusterIconGenerator.swift */; };
+		52B8DEC2231695870071FB59 /* MainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B8DEC1231695870071FB59 /* MainButton.swift */; };
+		52B8DEC42316A27D0071FB59 /* UIButtonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B8DEC32316A27D0071FB59 /* UIButtonExtensions.swift */; };
+		52B8DEC62316A7A40071FB59 /* SecondaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B8DEC52316A7A40071FB59 /* SecondaryButton.swift */; };
 		52CBB71F230E98DD00E6E039 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CBB71E230E98DD00E6E039 /* LocationService.swift */; };
 		52CBB722230E99F100E6E039 /* AlertDialogService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CBB721230E99F100E6E039 /* AlertDialogService.swift */; };
 		52CBB729230EC2C300E6E039 /* GMSMapViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CBB728230EC2C300E6E039 /* GMSMapViewExtensions.swift */; };
@@ -105,6 +108,9 @@
 		52AC055323041FFF00438113 /* LaunchScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenView.swift; sourceTree = "<group>"; };
 		52AC055523042C7800438113 /* SplashScreenWhiteColor.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SplashScreenWhiteColor.json; sourceTree = "<group>"; };
 		52B8DEBE23168B1E0071FB59 /* ClusterIconGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClusterIconGenerator.swift; sourceTree = "<group>"; };
+		52B8DEC1231695870071FB59 /* MainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainButton.swift; sourceTree = "<group>"; };
+		52B8DEC32316A27D0071FB59 /* UIButtonExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtensions.swift; sourceTree = "<group>"; };
+		52B8DEC52316A7A40071FB59 /* SecondaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryButton.swift; sourceTree = "<group>"; };
 		52CBB71E230E98DD00E6E039 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		52CBB721230E99F100E6E039 /* AlertDialogService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDialogService.swift; sourceTree = "<group>"; };
 		52CBB728230EC2C300E6E039 /* GMSMapViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GMSMapViewExtensions.swift; sourceTree = "<group>"; };
@@ -384,6 +390,7 @@
 				52CBB734230FF43B00E6E039 /* UIStoryboardExtensions.swift */,
 				52AC05482304127D00438113 /* UIViewExtensions.swift */,
 				52AC05462304088F00438113 /* UIColorExtensions.swift */,
+				52B8DEC32316A27D0071FB59 /* UIButtonExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -499,6 +506,15 @@
 				52B8DEBE23168B1E0071FB59 /* ClusterIconGenerator.swift */,
 			);
 			path = GMClusterIcon;
+			sourceTree = "<group>";
+		};
+		52B8DEC0231695110071FB59 /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				52B8DEC1231695870071FB59 /* MainButton.swift */,
+				52B8DEC52316A7A40071FB59 /* SecondaryButton.swift */,
+			);
+			path = Button;
 			sourceTree = "<group>";
 		};
 		52CBB715230E789300E6E039 /* ViewController */ = {
@@ -686,6 +702,7 @@
 		52D625282313E981001B2513 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				52B8DEC0231695110071FB59 /* Button */,
 				52CBB72A230FE98000E6E039 /* SlideOutPanel */,
 				52D625292313E989001B2513 /* Switch */,
 				52AC052D2302CE0D00438113 /* UIView */,
@@ -1038,7 +1055,9 @@
 				52AC05242302BF5E00438113 /* TFMainViewController.swift in Sources */,
 				52CBB722230E99F100E6E039 /* AlertDialogService.swift in Sources */,
 				52CBB735230FF43B00E6E039 /* UIStoryboardExtensions.swift in Sources */,
+				52B8DEC42316A27D0071FB59 /* UIButtonExtensions.swift in Sources */,
 				52CBB729230EC2C300E6E039 /* GMSMapViewExtensions.swift in Sources */,
+				52B8DEC62316A7A40071FB59 /* SecondaryButton.swift in Sources */,
 				52AC05392302CF6A00438113 /* TFEmbededViewController.swift in Sources */,
 				52D625192313B733001B2513 /* POIMarkers.swift in Sources */,
 				AA2121C422D32A25005D058D /* AppDelegate.swift in Sources */,
@@ -1046,6 +1065,7 @@
 				52AC05352302CEDE00438113 /* CameraFeedManagerDelegate.swift in Sources */,
 				AA2829AB22E1D80A00A5F6C7 /* MarkersResponseModel.swift in Sources */,
 				52D625252313E377001B2513 /* Data+PrettyPrint.swift in Sources */,
+				52B8DEC2231695870071FB59 /* MainButton.swift in Sources */,
 				5B19937A2304370B00A6E78D /* Atoms.swift in Sources */,
 				52AC05262302CBCE00438113 /* CVPixelBufferExtension.swift in Sources */,
 				52CBB75C2310160500E6E039 /* GMUStaticCluster.m in Sources */,
