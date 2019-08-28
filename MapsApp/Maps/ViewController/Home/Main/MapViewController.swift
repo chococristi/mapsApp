@@ -18,15 +18,17 @@ class MapViewController: UIViewController {
 
     @IBOutlet weak var topSheetConstraint: NSLayoutConstraint!
     @IBOutlet weak var littleView: UIView!
+    @IBOutlet weak var switchCustom: SwitchCustom!
 
     let locationManager = CLLocationManager()
     let regionInMeters: Double = 10000 //put 900 to zoom in directly
     let geoCoder = CLGeocoder()
 
-    let kTopFullScreen: CGFloat = 0
+    let kTopFullScreen: CGFloat = .zero
     let kTopMidScreen: CGFloat = UIScreen.main.bounds.height * 1/2
     let kTopLowScreen: CGFloat = UIScreen.main.bounds.height
 
+    var embeddedViewController = CarsListViewController()
     var initialTopSpace: CGFloat = 300.0
     var previousLocation: CLLocation?
     var annotationsArray: [MKAnnotation] = []
@@ -37,10 +39,10 @@ class MapViewController: UIViewController {
         super.viewDidLoad()
         checkLocationServices()
         setAnnotationsInMap()
+        setupSwitch()
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(self.didPan(panGesture:)))
         bottomSheetView.addGestureRecognizer(panGesture)
         edgesForExtendedLayout = []
-        //TODO cambiar pines
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -50,14 +52,6 @@ class MapViewController: UIViewController {
     // MARK: Setup functions
 
     func setupBottomView() {
-        //NOT WORKING
-        bottomSheetView.layer.shadowPath = UIBezierPath(roundedRect: bottomSheetView.bounds, cornerRadius: 5).cgPath
-        bottomSheetView.layer.shadowOffset = CGSize(width: 5, height: 5)
-        bottomSheetView.layer.shadowColor = UIColor.black.cgColor
-        bottomSheetView.layer.shadowRadius = 1
-        bottomSheetView.layer.shadowOpacity = 1
-        bottomSheetView.layer.masksToBounds = false
-
         topSheetConstraint.constant = UIScreen.main.bounds.height
         littleView.layer.cornerRadius = 3
     }
@@ -67,22 +61,26 @@ class MapViewController: UIViewController {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
     }
 
-    //    func setupMap() {
-    //        guard let path = Bundle.main.path(forResource: "bcnlocations", ofType: "json") else { return }
-    //        let url = URL(fileURLWithPath: path)
-    //        do {
-    //            let data = try Data(contentsOf: url)
-    //            let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
-    //
-    //            guard let array = json as? [String: Any] else { return }
-    //            self.markers = Markers.init(json: array)
-    //            setAnnotationsInMap()
-    //        } catch {
-    //            print(error)
-    //        }
-    //    }
+    func setupSwitch() {
+        switchCustom.isOn = false
+        switchCustom.onImage = UIImage(named: "nightModeImage")?.withRenderingMode(.alwaysOriginal)
+        switchCustom.offImage =  UIImage(named: "dayModeImage")?.withRenderingMode(.alwaysOriginal)
+        switchCustom.onTintColor = MapsColors.mainColor
+        switchCustom.offTintColor = MapsColors.mainColor
+
+        switchCustom.addTarget(self, action: #selector(self.switchValueDidChange), for: .valueChanged)
+    }
+
+    @objc func switchValueDidChange(sender:SwitchCustom!) {
+        setupMapStyle(isOn: sender.isOn)
+    }
+
+    func setupMapStyle(isOn: Bool) {
+        mapView.mapType = isOn ? .hybrid : .standard
+    }
 
     // MARK: Check functions
+
     func checkLocationServices() {
         if CLLocationManager.locationServicesEnabled() {
             setupLocationManager()
@@ -125,12 +123,12 @@ class MapViewController: UIViewController {
 
     func centerViewOnUserLocation() {
         #if targetEnvironment(simulator)
-        // TODO harcoded to work with Simulator (if not harcoded, we are in California)
+        // Harcoded to work with Simulator (if not harcoded, we are in California)
         let location = CLLocationCoordinate2DMake(41.397272, 2.159148)
         let region = MKCoordinateRegion(center: location, latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters)
         mapView.setRegion(region, animated: true)
         #else
-        //TODO CORRECT CODE to use with a DEVICE!!!
+        // CORRECT CODE to use with a DEVICE!!!
         if let location = locationManager.location?.coordinate {
             let region = MKCoordinateRegion(center: location, latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters)
             mapView.setRegion(region, animated: true)
@@ -151,9 +149,8 @@ class MapViewController: UIViewController {
         let markersArray = markers
 
         for marker in markersArray {
-            //TODO first / last i'm not sure if can be done better
-            guard let latitude = marker.coordinates.first, let longitude = marker.coordinates.last else { return }
-            let location = CLLocationCoordinate2DMake(latitude, longitude)
+            let location = CLLocationCoordinate2DMake(marker.coordinates.latitude,
+                                                      marker.coordinates.longitude)
             let annotation = MKPointAnnotation()
             annotation.coordinate = location
             annotation.title = marker.name
@@ -178,9 +175,18 @@ extension MapViewController: MKMapViewDelegate {
 
     //this function allows to SHOW THE NUMBER OF CLUSTER annotations
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier, for: annotation)
-        annotationView.clusteringIdentifier = "identifier"
-        return annotationView
+        if annotation is MKUserLocation { return nil }
+
+        let markerAnnotationView = MKMarkerAnnotationView()
+        markerAnnotationView.clusteringIdentifier = MKMapViewDefaultAnnotationViewReuseIdentifier
+        markerAnnotationView.markerTintColor = MapsColors.mainColor
+        markerAnnotationView.canShowCallout = false
+
+        if let cluster = annotation as? MKClusterAnnotation {
+            markerAnnotationView.glyphText = String(cluster.memberAnnotations.count)
+        }
+
+        return markerAnnotationView
     }
 
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
@@ -196,24 +202,26 @@ extension MapViewController: MKMapViewDelegate {
     }
 
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        centerRegionOnPin(mapView: mapView, pin: view)
-
         self.view.layoutIfNeeded()
-        UIView.animate(withDuration: 0.4, delay: 0.2, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.6, options: .curveEaseInOut, animations: {
-            self.topSheetConstraint?.constant = self.kTopMidScreen
-            self.view.layoutIfNeeded()
-        }, completion: nil)
 
-        guard let marker = getMarkerFromAnnotation(view: view) else {
-            //TODO hacer zoom
-            //TODO bajar el cuadrado si está seleccionado
-            return
-            //TODO tambien hacer q se deseleccione al hacer tap fuera
+        if let clustered = view.annotation as? MKClusterAnnotation {
+            centerRegionOnCluster(mapView: mapView, cluster: clustered)
+            //guard let embedded = embeddedViewController else { return }
+            embeddedViewController.view.removeFromSuperview()
+            embeddedViewController.dismiss(animated: true)
+        } else {
+            guard let marker = getMarkerFromAnnotation(view: view) else { return }
+            setTopSheetLayout(withTopSpace: kTopMidScreen)
+            centerRegionOnPin(mapView: mapView, pin: view)
+            navigateToDetail(marker: marker)
         }
 
-        navigateToDetail(marker: marker)
-
     }
+
+    //func zoomInOnPin(annotation:MKAnnotation) {
+    //    let zoomOutRegion = MKCoordinateRegion(center: mapView.region.center, span: MKCoordinateSpan(latitudeDelta: 0.09, longitudeDelta: 0.09))
+    //    mapView.setRegion(zoomOutRegion, animated: true)
+    //}
 
     func getMarkerFromAnnotation(view: MKAnnotationView) -> Marker? {
         var annotation = MKPointAnnotation()
@@ -228,6 +236,30 @@ extension MapViewController: MKMapViewDelegate {
         return nil
     }
 
+    func centerRegionOnCluster(mapView: MKMapView, cluster: MKClusterAnnotation) {
+            var minLat = CLLocationDegrees(exactly: 90)!
+            var maxLat = CLLocationDegrees(exactly: -90)!
+            var minLong = CLLocationDegrees(exactly: 180)!
+            var maxLong = CLLocationDegrees(exactly: -180)!
+            cluster.memberAnnotations.forEach { (annotation) in
+                let coordinate = annotation.coordinate
+                minLat = min(minLat, coordinate.latitude)
+                maxLat = max(maxLat, coordinate.latitude)
+                minLong = min(minLong, coordinate.longitude)
+                maxLong = max(maxLong, coordinate.longitude)
+            }
+
+            let centerLat = (minLat + maxLat) / 2
+            let centerLong = (minLong + maxLong) / 2
+            let center = CLLocationCoordinate2D(latitude: centerLat, longitude: centerLong)
+            let span = MKCoordinateSpan(latitudeDelta: (maxLat - minLat) * 1.5, longitudeDelta: (maxLong - minLong) * 1.5) // with some padding
+            let region = MKCoordinateRegion(center: center, span: span)
+
+            mapView.setRegion(region, animated: true)
+            setTopSheetLayout(withTopSpace: kTopLowScreen)
+
+    }
+
     func centerRegionOnPin(mapView: MKMapView, pin: MKAnnotationView) {
         guard let location = pin.annotation?.coordinate else { return }
         let actualSpanRegion = mapView.region.span
@@ -236,15 +268,11 @@ extension MapViewController: MKMapViewDelegate {
     }
 
     func navigateToDetail(marker : Marker) {
-
-        let controller = CarsListViewController()
-
-        addChild(controller)
-        controller.marker = marker
-        controller.view.frame = bottomContainerView.bounds
-        bottomContainerView.addSubview(controller.view)
-        controller.didMove(toParent: self)
-
+        addChild(embeddedViewController)
+        embeddedViewController.view.frame = bottomContainerView.bounds
+        embeddedViewController.marker = marker
+        embeddedViewController.didMove(toParent: self)
+        bottomContainerView.addSubview(embeddedViewController.view)
     }
 
 }
@@ -272,6 +300,7 @@ extension MapViewController {
     }
 
     func setTopSheetLayout(withTopSpace bottomSpace: CGFloat) {
+
         UIView.animate(withDuration: 0.4, delay: 0.2, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.6, options: .curveEaseInOut, animations: {
             self.view.setNeedsLayout()
             self.topSheetConstraint.constant = bottomSpace
@@ -290,17 +319,21 @@ extension MapViewController {
 
         if isInMiddleTop(currentTopSpace) {
             nextTopSpace = (direction == .upper) ? kTopFullScreen : kTopMidScreen
-            //TODO quitar borde redondeados
 
         } else if isInMiddleDown(currentTopSpace) {
             nextTopSpace = (direction == .upper) ? kTopMidScreen : kTopLowScreen
-            //TODO poner borde redondeados
+            deselectAnnotations()
+
         } else {
             nextTopSpace = kTopLowScreen
+            deselectAnnotations()
 
         }
         setTopSheetLayout(withTopSpace: nextTopSpace)
+    }
 
+    func deselectAnnotations() {
+        mapView.deselectAnnotation(mapView.selectedAnnotations.first, animated: true)
     }
 
     func isInMiddleTop(_ currentTopSpace: CGFloat) -> Bool {
@@ -319,4 +352,25 @@ extension MapViewController {
         return false
     }
 
+}
+
+extension UIImage {
+    func imageWithColor(color1: UIColor) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(self.size, false, self.scale)
+        color1.setFill()
+
+        let context = UIGraphicsGetCurrentContext()
+        context?.translateBy(x: 0, y: self.size.height)
+        context?.scaleBy(x: 1.0, y: -1.0)
+        context?.setBlendMode(CGBlendMode.normal)
+
+        let rect = CGRect(origin: .zero, size: CGSize(width: self.size.width, height: self.size.height))
+        context?.clip(to: rect, mask: self.cgImage!)
+        context?.fill(rect)
+
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+
+        return newImage!
+    }
 }

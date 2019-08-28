@@ -1,7 +1,10 @@
 [
         {
             "name": "Sagrada Família",
-            "coordinates": [41.403831, 2.174399],
+            "coordinates": {
+                "latitude": 41.403831,
+                "longitude": 2.174399
+            },
             "cars": [
                 { "brand" : "Seat",
                     "model" : "Ibiza",
@@ -19,7 +22,10 @@
         },
         {
             "name": "Parc Güell",
-            "coordinates": [41.414465, 2.153044],
+            "coordinates": {
+                "latitude": 41.414465,
+                "longitude": 2.153044
+            },
             "cars": [
                 { "brand" : "Seat",
                     "model" : "Ibiza",
@@ -37,7 +43,10 @@
         },
         {
             "name": "Cine Verdi",
-            "coordinates": [41.404713, 2.156921],
+            "coordinates": {
+                "latitude": 41.404713,
+                "longitude": 2.156921
+            },
             "cars": [
                 { "brand" : "Seat",
                     "model" : "Ibiza",
@@ -55,7 +64,10 @@
         },
         {
             "name": "Plaça Kennedy",
-            "coordinates": [41.409991, 2.136940],
+            "coordinates": {
+                "latitude": 41.409991,
+                "longitude": 2.136940
+            },
             "cars": [
                 { "brand" : "Seat",
                     "model" : "Mii",
@@ -73,7 +85,10 @@
         },
         {
             "name": "Monasterio Pedralbes",
-            "coordinates": [41.398215, 2.111951],
+            "coordinates": {
+                "latitude": 41.398215,
+                "longitude": 2.111951
+            },
             "cars": [
                 { "brand" : "Seat",
                     "model" : "Tarraco",
@@ -91,7 +106,10 @@
         },
         {
             "name": "Plaça Catalunya",
-            "coordinates": [41.387219, 2.170041],
+            "coordinates": {
+                "latitude": 41.387219,
+                "longitude": 2.170041
+            },
             "cars": [
                 { "brand" : "Seat",
                     "model" : "Ibiza",
@@ -109,7 +127,10 @@
         },
         {
             "name": "C.C. La illa",
-            "coordinates": [41.390128, 2.135641],
+            "coordinates": {
+                "latitude": 41.390128,
+                "longitude": 2.135641
+            },
             "cars": [
                 { "brand" : "Seat",
                     "model" : "Ibiza",
@@ -127,7 +148,10 @@
         },
         {
             "name": "Goiko Les Corts",
-            "coordinates": [41.389884, 2.132114],
+            "coordinates": {
+                "latitude": 41.389884,
+                "longitude": 2.132114
+            },
             "cars": [
                 { "brand" : "Seat",
                     "model" : "Ibiza",
@@ -145,7 +169,10 @@
         },
         {
             "name": "Hilton Barcelona",
-            "coordinates": [41.388942, 2.131438],
+            "coordinates": {
+                "latitude": 41.388942,
+                "longitude": 2.131438
+            },
             "cars": [
                 { "brand" : "Seat",
                     "model" : "Ibiza",
@@ -163,7 +190,10 @@
         },
         {
             "name": "C.C. Les Glories",
-            "coordinates": [41.405887, 2.191378],
+            "coordinates": {
+                "latitude": 41.405887,
+                "longitude": 2.191378
+            },
             "cars": [
                 { "brand" : "Seat",
                     "model" : "Ibiza",
@@ -181,7 +211,10 @@
         },
         {
             "name": "CAP El Clot",
-            "coordinates": [41.411989, 2.192907],
+            "coordinates": {
+                "latitude": 41.411989,
+                "longitude": 2.192907
+            },
             "cars": [
                 { "brand" : "Seat",
                     "model" : "Mii",
@@ -199,7 +232,10 @@
         },
         {
             "name": "Parc del Clot",
-            "coordinates": [41.4079019, 2.190064],
+            "coordinates": {
+                "latitude": 41.4079019,
+                "longitude": 2.190064
+            },
             "cars": [
                 { "brand" : "Seat",
                     "model" : "Mii",
@@ -217,7 +253,10 @@
         },
         {
             "name": "Certio ITV del Clot",
-            "coordinates": [41.400690, 2.191319],
+            "coordinates": {
+                "latitude": 41.400690,
+                "longitude": 2.191319
+            },
             "cars": [
                 { "brand" : "Seat",
                     "model" : "Ibiza",
@@ -235,7 +274,10 @@
         },
         {
             "name": "Discoteca Merlin",
-            "coordinates": [41.400841, 2.190799],
+            "coordinates": {
+                "latitude": 41.400841,
+                "longitude": 2.190799
+            },
             "cars": [
                 { "brand" : "Seat",
                     "model" : "Mii",
@@ -253,7 +295,178 @@
         },
         {
             "name": "Hewlett Packard",
-            "coordinates": [41.401204, 2.191227],
+            "coordinates": {
+                "latitude": 41.401204,
+                "longitude": 2.191227
+            },
+            "cars": [
+                { "brand" : "Seat",
+                    "model" : "Ibiza",
+                    "year" : "2018",
+                    "image" : "seat-ibiza"
+                },{"brand" : "Seat",
+                    "model" : "Leon",
+                    "year" : "2019",
+                    "image" : "seat-leon"
+                },{ "brand" : "Seat",
+                    "model" : "Ateca",
+                    "year" : "2019",
+                    "image" : "seat-ateca"
+                }]
+        },
+        {
+            "name": "Arc de Triomf",
+            "coordinates": {
+                "latitude": 41.39117041,
+                "longitude": 2.18075864
+            },
+            "cars": [
+                { "brand" : "Seat",
+                    "model" : "Ibiza",
+                    "year" : "2018",
+                    "image" : "seat-ibiza"
+                },{"brand" : "Seat",
+                    "model" : "Leon",
+                    "year" : "2019",
+                    "image" : "seat-leon"
+                },{ "brand" : "Seat",
+                    "model" : "Ateca",
+                    "year" : "2019",
+                    "image" : "seat-ateca"
+                }]
+        },
+        {
+            "name": "Platja de la Barceloneta",
+            "coordinates": {
+                "latitude": 41.3785412,
+                "longitude": 2.19258919
+            },
+            "cars": [
+                { "brand" : "Seat",
+                    "model" : "Ibiza",
+                    "year" : "2018",
+                    "image" : "seat-ibiza"
+                },{"brand" : "Seat",
+                    "model" : "Leon",
+                    "year" : "2019",
+                    "image" : "seat-leon"
+                },{ "brand" : "Seat",
+                    "model" : "Ateca",
+                    "year" : "2019",
+                    "image" : "seat-ateca"
+                }]
+        },
+        {
+            "name": "Aquarium",
+            "coordinates": {
+                "latitude": 41.37750947,
+                "longitude": 2.1846465
+            },
+            "cars": [
+                { "brand" : "Seat",
+                    "model" : "Ibiza",
+                    "year" : "2018",
+                    "image" : "seat-ibiza"
+                },{"brand" : "Seat",
+                    "model" : "Leon",
+                    "year" : "2019",
+                    "image" : "seat-leon"
+                },{ "brand" : "Seat",
+                    "model" : "Ateca",
+                    "year" : "2019",
+                    "image" : "seat-ateca"
+                }]
+        },
+        {
+            "name": "Hospital del Mar",
+            "coordinates": {
+                "latitude": 41.384558150,
+                "longitude": 2.194251827
+            },
+            "cars": [
+                { "brand" : "Seat",
+                    "model" : "Ibiza",
+                    "year" : "2018",
+                    "image" : "seat-ibiza"
+                },{"brand" : "Seat",
+                    "model" : "Leon",
+                    "year" : "2019",
+                    "image" : "seat-leon"
+                },{ "brand" : "Seat",
+                    "model" : "Ateca",
+                    "year" : "2019",
+                    "image" : "seat-ateca"
+                }]
+        },
+        {
+            "name": "Razzmatazz",
+            "coordinates": {
+                "latitude": 41.39781319,
+                "longitude": 2.191150188
+            },
+            "cars": [
+                { "brand" : "Seat",
+                    "model" : "Ibiza",
+                    "year" : "2018",
+                    "image" : "seat-ibiza"
+                },{"brand" : "Seat",
+                    "model" : "Leon",
+                    "year" : "2019",
+                    "image" : "seat-leon"
+                },{ "brand" : "Seat",
+                    "model" : "Ateca",
+                    "year" : "2019",
+                    "image" : "seat-ateca"
+                }]
+        },
+        {
+            "name": "Parc Zoològic de Barcelona",
+            "coordinates": {
+                "latitude": 41.386548416,
+                "longitude": 2.1899737045
+            },
+            "cars": [
+                { "brand" : "Seat",
+                    "model" : "Ibiza",
+                    "year" : "2018",
+                    "image" : "seat-ibiza"
+                },{"brand" : "Seat",
+                    "model" : "Leon",
+                    "year" : "2019",
+                    "image" : "seat-leon"
+                },{ "brand" : "Seat",
+                    "model" : "Ateca",
+                    "year" : "2019",
+                    "image" : "seat-ateca"
+                }]
+        },
+        {
+            "name": "Parc de la Pegaso",
+            "coordinates": {
+                "latitude": 41.427375653,
+                "longitude": 2.189249508
+            },
+            "cars": [
+                { "brand" : "Seat",
+                    "model" : "Ibiza",
+                    "year" : "2018",
+                    "image" : "seat-ibiza"
+                },{"brand" : "Seat",
+                    "model" : "Leon",
+                    "year" : "2019",
+                    "image" : "seat-leon"
+                },{ "brand" : "Seat",
+                    "model" : "Ateca",
+                    "year" : "2019",
+                    "image" : "seat-ateca"
+                }]
+        },
+        {
+            "name": "Farmàcia La Sagrera 146",
+            "coordinates": {
+                "latitude": 41.4250703815,
+                "longitude": 2.1910918503
+            },
             "cars": [
                 { "brand" : "Seat",
                     "model" : "Ibiza",

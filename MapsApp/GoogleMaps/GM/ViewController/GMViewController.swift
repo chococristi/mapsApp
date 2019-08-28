@@ -13,6 +13,7 @@ import GoogleMaps
 //https://developers.google.com/maps/documentation/ios-sdk/utility/marker-clustering //Clustering documentation
 //https://github.com/googlemaps/google-maps-ios-utils/blob/master/Swift.md 
 //https://mapstyle.withgoogle.com //Map styles
+//https://stackoverflow.com/questions/38547622/how-to-implement-gmuclusterrenderer-in-swift // cluser style
 
 class GMViewController: UIViewController, GMUClusterManagerDelegate, GMSMapViewDelegate {
 
