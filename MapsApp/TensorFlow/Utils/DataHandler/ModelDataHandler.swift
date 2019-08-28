@@ -103,6 +103,32 @@ class ModelDataHandler {
 
     // MARK: - Internal Methods
 
+    fileprivate func buildResult(_ outputTensor: Tensor, _ interval: TimeInterval) -> Result? {
+        let results: [Float]
+        switch outputTensor.dataType {
+        case .uInt8:
+            guard let quantization = outputTensor.quantizationParameters else {
+                print("No results returned because the quantization values for the output tensor are nil.")
+                return nil
+            }
+            let quantizedResults = [UInt8](outputTensor.data)
+            results = quantizedResults.map {
+                quantization.scale * Float(Int($0) - quantization.zeroPoint)
+            }
+        case .float32:
+            results = [Float32](unsafeData: outputTensor.data) ?? []
+        default:
+            print("Output tensor data type \(outputTensor.dataType) is unsupported for this example app.")
+            return nil
+        }
+
+        // Process the results.
+        let topNInferences = getTopN(results: results)
+
+        // Return the inference time and inference results.
+        return Result(inferenceTime: interval, inferences: topNInferences)
+    }
+
     /// Performs image preprocessing, invokes the `Interpreter`, and processes the inference results.
     func runModel(onFrame pixelBuffer: CVPixelBuffer) -> Result? {
 
@@ -152,29 +178,7 @@ class ModelDataHandler {
             return nil
         }
 
-        let results: [Float]
-        switch outputTensor.dataType {
-        case .uInt8:
-            guard let quantization = outputTensor.quantizationParameters else {
-                print("No results returned because the quantization values for the output tensor are nil.")
-                return nil
-            }
-            let quantizedResults = [UInt8](outputTensor.data)
-            results = quantizedResults.map {
-                quantization.scale * Float(Int($0) - quantization.zeroPoint)
-            }
-        case .float32:
-            results = [Float32](unsafeData: outputTensor.data) ?? []
-        default:
-            print("Output tensor data type \(outputTensor.dataType) is unsupported for this example app.")
-            return nil
-        }
-
-        // Process the results.
-        let topNInferences = getTopN(results: results)
-
-        // Return the inference time and inference results.
-        return Result(inferenceTime: interval, inferences: topNInferences)
+        return buildResult(outputTensor, interval)
     }
 
     // MARK: - Private Methods
