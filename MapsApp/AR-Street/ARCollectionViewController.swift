@@ -31,16 +31,21 @@ class ARCollectionViewController: UIViewController {
     func createNodes() -> [Nodes] {
         var arrayNodes : [Nodes] = []
 
-        let colladaObject = Molecules.coladaObject()
-        colladaObject.scale = SCNVector3(0.1, 0.1, 0.1)
+        let colladaObject1 = Molecules.coladaObject(name: "cherub", path: "art.scnassets/cherub/cherub.dae")
+        colladaObject1.scale = SCNVector3(0.1, 0.1, 0.1)
+
+        let colladaObject2 = Molecules.coladaObject(name: "car", path: "art.scnassets/carScene/source/car.dae")
+        colladaObject2.scale = SCNVector3(0.02, 0.02, 0.02)
 
         let node1 = Nodes(title: "Atoms\n", node: Atoms.allAtoms())
         let node2 = Nodes(title: "Methane\n(Natural Gas)", node: Molecules.methaneMolecule())
-        let node3 = Nodes(title: "figure\n", node: colladaObject)
+        let node3 = Nodes(title: "figure\n", node: colladaObject1)
+        let node4 = Nodes(title: "figure\n", node: colladaObject2)
 
         arrayNodes.append(node1)
         arrayNodes.append(node2)
         arrayNodes.append(node3)
+        arrayNodes.append(node4)
 
         return arrayNodes
     }
@@ -60,7 +65,6 @@ class ARCollectionViewController: UIViewController {
         let viewController = PlaceObjectsplaneViewController()
         arrayNodes[selectedItem].node.removeAction(forKey: "turn")
         viewController.nodeModel = arrayNodes[selectedItem].node
-        
         self.navigationController?.pushViewController(viewController, animated: false)
 
     }
