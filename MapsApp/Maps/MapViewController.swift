@@ -173,23 +173,16 @@ extension MapViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if annotation is MKUserLocation { return nil }
 
-        var marker = MKMarkerAnnotationView()
+        let markerAnnotationView = MKMarkerAnnotationView()
+        markerAnnotationView.clusteringIdentifier = MKMapViewDefaultAnnotationViewReuseIdentifier
+        markerAnnotationView.markerTintColor = MapsColors.mainColor
+        markerAnnotationView.canShowCallout = false
 
-        let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier, for: annotation)
-        annotationView.clusteringIdentifier = "identifier"
+        if let cluster = annotation as? MKClusterAnnotation {
+            markerAnnotationView.glyphText = String(cluster.memberAnnotations.count)
+        }
 
-        annotationView.image = UIImage(named: "star")?.withRenderingMode(.alwaysTemplate)
-        annotationView.tintColor = MapsColors.mainColor
-
-        //annotationView.tintColor = MapsColors.mainColor
-
-        //let pinImage = annotationView.image
-    //        annotationView.image?.withRenderingMode(.alwaysTemplate)
-    //        annotationView.image = annotationView.image?.imageWithColor(color1: MapsColors.mainColor)
-
-    //        annotationView.image = annotationView.image?.withRenderingMode(.alwaysTemplate)
-    //        annotationView.image?.imageWithoutBaseline().tintColor = MapsColors.mainColor
-        return annotationView
+        return markerAnnotationView
     }
 
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
