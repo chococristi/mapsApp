@@ -79,20 +79,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func setupNavigationBar() {
 
-        let navigationBarAppearace = UINavigationBar.appearance()
+        let navigationBarAppearance = UINavigationBar.appearance()
 
-        navigationBarAppearace.tintColor = MapsColors.mainColor
-        navigationBarAppearace.barTintColor = MapsColors.mainColor
+        navigationBarAppearance.tintColor = .white
+        navigationBarAppearance.barTintColor = MapsColors.mainColor
 
         if #available(iOS 11.0, *) {
             //To change iOS 11 navigationBar largeTitle color
 
-            navigationBarAppearace.largeTitleTextAttributes = [
+            navigationBarAppearance.largeTitleTextAttributes = [
                 NSAttributedString.Key.foregroundColor: UIColor.white]
         }
 
         // for default navigation bar title color
-        navigationBarAppearace.titleTextAttributes = [
+        navigationBarAppearance.titleTextAttributes = [
             NSAttributedString.Key.foregroundColor: UIColor.white]
 
     }
