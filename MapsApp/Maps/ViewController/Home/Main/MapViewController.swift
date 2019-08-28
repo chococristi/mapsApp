@@ -144,9 +144,8 @@ class MapViewController: UIViewController {
         let markersArray = markers
 
         for marker in markersArray {
-            //TODO first / last i'm not sure if can be done better
-            guard let latitude = marker.coordinates.first, let longitude = marker.coordinates.last else { return }
-            let location = CLLocationCoordinate2DMake(latitude, longitude)
+            let location = CLLocationCoordinate2DMake(marker.coordinates.latitude,
+                                                      marker.coordinates.longitude)
             let annotation = MKPointAnnotation()
             annotation.coordinate = location
             annotation.title = marker.name

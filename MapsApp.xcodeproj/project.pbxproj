@@ -72,7 +72,7 @@
 		AA2121C922D32A25005D058D /* map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA2121C722D32A25005D058D /* map.storyboard */; };
 		AA2121CB22D32A26005D058D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA2121CA22D32A26005D058D /* Assets.xcassets */; };
 		AA2121CE22D32A26005D058D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA2121CC22D32A26005D058D /* LaunchScreen.storyboard */; };
-		AA2829A922E1D7BA00A5F6C7 /* bcnlocations.json in Resources */ = {isa = PBXBuildFile; fileRef = AA2829A822E1D7BA00A5F6C7 /* bcnlocations.json */; };
+		AA2829A922E1D7BA00A5F6C7 /* bcnLocations.json in Resources */ = {isa = PBXBuildFile; fileRef = AA2829A822E1D7BA00A5F6C7 /* bcnLocations.json */; };
 		AA2829AB22E1D80A00A5F6C7 /* MarkersResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2829AA22E1D80A00A5F6C7 /* MarkersResponseModel.swift */; };
 		AA69328F230436DA0083AB58 /* UIPanGestureExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA69328E230436DA0083AB58 /* UIPanGestureExtension.swift */; };
 		AAAA33ED2313DA760061DB2B /* CarListCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAA33EB2313DA760061DB2B /* CarListCellTableViewCell.swift */; };
@@ -176,7 +176,7 @@
 		AA2121CA22D32A26005D058D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AA2121CD22D32A26005D058D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AA2121CF22D32A26005D058D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AA2829A822E1D7BA00A5F6C7 /* bcnlocations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bcnlocations.json; sourceTree = "<group>"; };
+		AA2829A822E1D7BA00A5F6C7 /* bcnLocations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bcnLocations.json; sourceTree = "<group>"; };
 		AA2829AA22E1D80A00A5F6C7 /* MarkersResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkersResponseModel.swift; sourceTree = "<group>"; };
 		AA69328E230436DA0083AB58 /* UIPanGestureExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPanGestureExtension.swift; sourceTree = "<group>"; };
 		AAAA33EB2313DA760061DB2B /* CarListCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarListCellTableViewCell.swift; sourceTree = "<group>"; };
@@ -403,6 +403,90 @@
 			path = Lottie;
 			sourceTree = "<group>";
 		};
+		52B8DEB3231654710071FB59 /* Stroyboard */ = {
+			isa = PBXGroup;
+			children = (
+				AA2121C722D32A25005D058D /* map.storyboard */,
+			);
+			path = Stroyboard;
+			sourceTree = "<group>";
+		};
+		52B8DEB4231654830071FB59 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				52B8DEB8231654E90071FB59 /* Home */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		52B8DEB5231654B70071FB59 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				52B8DEB6231654BD0071FB59 /* Extensions */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		52B8DEB6231654BD0071FB59 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				AA69328E230436DA0083AB58 /* UIPanGestureExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		52B8DEB7231654CF0071FB59 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AA2829AA22E1D80A00A5F6C7 /* MarkersResponseModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		52B8DEB8231654E90071FB59 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				52B8DEBC2316555B0071FB59 /* Main */,
+				52B8DEB9231654F50071FB59 /* Embedded */,
+				52B8DEBA2316552B0071FB59 /* TableView */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		52B8DEB9231654F50071FB59 /* Embedded */ = {
+			isa = PBXGroup;
+			children = (
+				AAAD742322F2DE9100C3ED15 /* CarsListViewController.swift */,
+				AAAD742422F2DE9100C3ED15 /* CarsListViewController.xib */,
+			);
+			path = Embedded;
+			sourceTree = "<group>";
+		};
+		52B8DEBA2316552B0071FB59 /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				52B8DEBB231655330071FB59 /* Cell */,
+			);
+			path = TableView;
+			sourceTree = "<group>";
+		};
+		52B8DEBB231655330071FB59 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				AAAA33EB2313DA760061DB2B /* CarListCellTableViewCell.swift */,
+				AAAA33EC2313DA760061DB2B /* CarListCellTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		52B8DEBC2316555B0071FB59 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				AA2121C522D32A25005D058D /* MapViewController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
 		52CBB715230E789300E6E039 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -414,7 +498,7 @@
 		52CBB71B230E984800E6E039 /* Locations */ = {
 			isa = PBXGroup;
 			children = (
-				AA2829A822E1D7BA00A5F6C7 /* bcnlocations.json */,
+				AA2829A822E1D7BA00A5F6C7 /* bcnLocations.json */,
 				52D6251C2313C863001B2513 /* BcnMarkers.json */,
 			);
 			path = Locations;
@@ -680,14 +764,10 @@
 		5BB71BCE22E0731B00F14DBB /* Maps */ = {
 			isa = PBXGroup;
 			children = (
-				AA2121C522D32A25005D058D /* MapViewController.swift */,
-				AA2121C722D32A25005D058D /* map.storyboard */,
-				AA2829AA22E1D80A00A5F6C7 /* MarkersResponseModel.swift */,
-				AAAD742322F2DE9100C3ED15 /* CarsListViewController.swift */,
-				AAAD742422F2DE9100C3ED15 /* CarsListViewController.xib */,
-				AA69328E230436DA0083AB58 /* UIPanGestureExtension.swift */,
-				AAAA33EB2313DA760061DB2B /* CarListCellTableViewCell.swift */,
-				AAAA33EC2313DA760061DB2B /* CarListCellTableViewCell.xib */,
+				52B8DEB3231654710071FB59 /* Stroyboard */,
+				52B8DEB4231654830071FB59 /* ViewController */,
+				52B8DEB7231654CF0071FB59 /* Model */,
+				52B8DEB5231654B70071FB59 /* Utils */,
 			);
 			path = Maps;
 			sourceTree = "<group>";
@@ -821,7 +901,7 @@
 				AAAD742622F2DE9100C3ED15 /* CarsListViewController.xib in Resources */,
 				52D625232313E263001B2513 /* RetroStyle.json in Resources */,
 				52AC053D2302D78300438113 /* labels.txt in Resources */,
-				AA2829A922E1D7BA00A5F6C7 /* bcnlocations.json in Resources */,
+				AA2829A922E1D7BA00A5F6C7 /* bcnLocations.json in Resources */,
 				AA2121CB22D32A26005D058D /* Assets.xcassets in Resources */,
 				52AC053C2302D78300438113 /* mobilenet_quant_v1_224.tflite in Resources */,
 				5B0F40B322E6F5EA00C3FC12 /* ARViewController.xib in Resources */,

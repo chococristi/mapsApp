@@ -11,9 +11,8 @@ import UIKit
 
 struct Marker: Decodable {
     let name: String
-    let coordinates: [Double]
+    let coordinates: Coordinates
     let cars: [Car]
-
 }
 
 extension Marker: Equatable {
@@ -21,6 +20,21 @@ extension Marker: Equatable {
         if lhs.name == rhs.name
         && lhs.coordinates == rhs.coordinates
         && lhs.cars == rhs.cars {
+            return true
+        }
+        return false
+    }
+}
+
+struct Coordinates: Decodable {
+    let latitude: Double
+    let longitude: Double
+}
+
+extension Coordinates: Equatable {
+    static func == (lhs: Coordinates, rhs: Coordinates) -> Bool {
+        if lhs.latitude == rhs.latitude
+            && lhs.longitude == rhs.longitude {
             return true
         }
         return false
@@ -47,7 +61,7 @@ extension Car: Equatable {
     }
 }
 
-let markers: [Marker] = load("bcnlocations.json")
+let markers: [Marker] = load("bcnLocations.json")
 
 func load<T: Decodable>(_ filename: String, as type: T.Type = T.self) -> T {
     let data: Data
