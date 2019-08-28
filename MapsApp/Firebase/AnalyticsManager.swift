@@ -7,3 +7,16 @@
 //
 
 import Foundation
+import Firebase
+
+class AnalyticsManager {
+   
+    static func sendEvent(id: String, name: String, content: String) {
+        Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
+        AnalyticsParameterItemID: id,
+        AnalyticsParameterItemName: name,
+        AnalyticsParameterContentType: content
+        ])
+    }
+}
+

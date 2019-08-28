@@ -8,6 +8,7 @@
 
 import UIKit
 import GoogleMaps
+import Firebase
 
 let googleApiKey = "AIzaSyAdE8r0bQcPQfye1dC_LKX16OWIuqPvYmU"
 
@@ -56,6 +57,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func setup() {
 
+        setupFirebase()
+
         setupGoogleMaps()
 
         setupNavigationBar()
@@ -67,6 +70,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         setupRootViewController()
     }
 
+    func setupFirebase() {
+        FirebaseApp.configure()
+    }
     func setupGoogleMaps() {
         GMSServices.provideAPIKey(googleApiKey)
     }
