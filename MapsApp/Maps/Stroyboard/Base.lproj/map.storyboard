@@ -25,6 +25,14 @@
                                             <outlet property="delegate" destination="BYZ-38-t0r" id="fJl-aX-ukj"/>
                                         </connections>
                                     </mapView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KgW-Pj-1k1" customClass="SwitchCustom" customModule="mapsApp" customModuleProvider="target">
+                                        <rect key="frame" x="316" y="10" width="49" height="31"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="31" id="7g7-cm-crb"/>
+                                            <constraint firstAttribute="width" constant="49" id="hGt-AI-DlV"/>
+                                        </constraints>
+                                    </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tCc-av-yLu" customClass="CurvedView" customModule="mapsApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="550" width="375" height="667"/>
                                         <subviews>
@@ -49,14 +57,6 @@
                                             <constraint firstItem="pzR-KX-X7A" firstAttribute="leading" secondItem="tCc-av-yLu" secondAttribute="leading" id="FaO-uK-Bo1"/>
                                             <constraint firstAttribute="bottom" secondItem="pzR-KX-X7A" secondAttribute="bottom" id="WYB-jo-w8M"/>
                                             <constraint firstItem="pzR-KX-X7A" firstAttribute="top" secondItem="wEc-Zv-D7c" secondAttribute="bottom" constant="10" id="ccy-tI-bHy"/>
-                                        </constraints>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KgW-Pj-1k1" customClass="SwitchCustom" customModule="mapsApp" customModuleProvider="target">
-                                        <rect key="frame" x="316" y="10" width="49" height="31"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="31" id="7g7-cm-crb"/>
-                                            <constraint firstAttribute="width" constant="49" id="hGt-AI-DlV"/>
                                         </constraints>
                                     </view>
                                 </subviews>

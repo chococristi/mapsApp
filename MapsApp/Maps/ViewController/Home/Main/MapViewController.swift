@@ -39,12 +39,10 @@ class MapViewController: UIViewController {
         super.viewDidLoad()
         checkLocationServices()
         setAnnotationsInMap()
-        setupMapStyle(isOn: false)
         setupSwitch()
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(self.didPan(panGesture:)))
         bottomSheetView.addGestureRecognizer(panGesture)
         edgesForExtendedLayout = []
-        //TODO cambiar pines
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -78,9 +76,7 @@ class MapViewController: UIViewController {
     }
     
     func setupMapStyle(isOn: Bool) {
-        //TODO
-        mapView.mapType = isOn ? .standard : .hybrid
-        
+        mapView.mapType = isOn ? .hybrid : .standard
     }
     
     
@@ -305,6 +301,7 @@ extension MapViewController {
     }
 
     func setTopSheetLayout(withTopSpace bottomSpace: CGFloat) {
+        
         UIView.animate(withDuration: 0.4, delay: 0.2, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.6, options: .curveEaseInOut, animations: {
             self.view.setNeedsLayout()
             self.topSheetConstraint.constant = bottomSpace
