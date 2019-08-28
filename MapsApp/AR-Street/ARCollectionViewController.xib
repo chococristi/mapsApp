@@ -41,8 +41,8 @@
                                 <outlet property="delegate" destination="-1" id="VMK-Gx-2F0"/>
                             </connections>
                         </collectionView>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LGk-lt-0nX">
-                            <rect key="frame" x="20" y="529" width="374" height="30"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LGk-lt-0nX" customClass="MainButton" customModule="mapsApp" customModuleProvider="target">
+                            <rect key="frame" x="20" y="529" width="374" height="34"/>
                             <color key="backgroundColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <state key="normal" title="Go to AR"/>
                             <connections>

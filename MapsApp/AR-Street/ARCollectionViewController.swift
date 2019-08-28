@@ -11,7 +11,7 @@ import ARKit
 
 class ARCollectionViewController: UIViewController {
 
-    @IBOutlet var buttonToAR: UIButton!
+    @IBOutlet var buttonToAR: MainButton!
     @IBOutlet var collectionView: UICollectionView!
     var arrayNodes : [Nodes] = []
     let edge    : CGFloat = 10.0
