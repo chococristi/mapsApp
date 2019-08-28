@@ -51,6 +51,14 @@
                                             <constraint firstItem="pzR-KX-X7A" firstAttribute="top" secondItem="wEc-Zv-D7c" secondAttribute="bottom" constant="10" id="ccy-tI-bHy"/>
                                         </constraints>
                                     </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KgW-Pj-1k1" customClass="SwitchCustom" customModule="mapsApp" customModuleProvider="target">
+                                        <rect key="frame" x="316" y="10" width="49" height="31"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="31" id="7g7-cm-crb"/>
+                                            <constraint firstAttribute="width" constant="49" id="hGt-AI-DlV"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -60,8 +68,10 @@
                                     <constraint firstItem="tCc-av-yLu" firstAttribute="top" secondItem="cEF-Pn-FLN" secondAttribute="top" constant="550" id="BeH-4f-Qk6"/>
                                     <constraint firstItem="tCc-av-yLu" firstAttribute="height" secondItem="cEF-Pn-FLN" secondAttribute="height" id="E23-oF-EwR"/>
                                     <constraint firstAttribute="trailing" secondItem="tCc-av-yLu" secondAttribute="trailing" id="Em2-1L-5xf"/>
+                                    <constraint firstAttribute="trailing" secondItem="KgW-Pj-1k1" secondAttribute="trailing" constant="10" id="HJe-lS-rCM"/>
                                     <constraint firstItem="aRk-oI-89r" firstAttribute="leading" secondItem="cEF-Pn-FLN" secondAttribute="leading" id="QKZ-L7-5Ox"/>
                                     <constraint firstItem="tCc-av-yLu" firstAttribute="leading" secondItem="cEF-Pn-FLN" secondAttribute="leading" id="Zl3-Ca-ygd"/>
+                                    <constraint firstItem="KgW-Pj-1k1" firstAttribute="top" secondItem="cEF-Pn-FLN" secondAttribute="top" constant="10" id="zKo-H5-qe4"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -79,6 +89,7 @@
                         <outlet property="bottomSheetView" destination="tCc-av-yLu" id="NRp-H2-b3O"/>
                         <outlet property="littleView" destination="wEc-Zv-D7c" id="HrJ-PU-Cwk"/>
                         <outlet property="mapView" destination="aRk-oI-89r" id="DiB-qu-ogE"/>
+                        <outlet property="switchCustom" destination="KgW-Pj-1k1" id="2Xz-68-Ncc"/>
                         <outlet property="topSheetConstraint" destination="BeH-4f-Qk6" id="Gv5-cw-1YN"/>
                     </connections>
                 </viewController>

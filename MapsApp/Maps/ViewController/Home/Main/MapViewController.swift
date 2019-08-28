@@ -18,6 +18,7 @@ class MapViewController: UIViewController {
 
     @IBOutlet weak var topSheetConstraint: NSLayoutConstraint!
     @IBOutlet weak var littleView: UIView!
+    @IBOutlet weak var switchCustom: SwitchCustom!
 
     let locationManager = CLLocationManager()
     let regionInMeters: Double = 10000 //put 900 to zoom in directly
@@ -38,6 +39,8 @@ class MapViewController: UIViewController {
         super.viewDidLoad()
         checkLocationServices()
         setAnnotationsInMap()
+        setupMapStyle(isOn: false)
+        setupSwitch()
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(self.didPan(panGesture:)))
         bottomSheetView.addGestureRecognizer(panGesture)
         edgesForExtendedLayout = []
@@ -59,23 +62,30 @@ class MapViewController: UIViewController {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
     }
+    
+    func setupSwitch() {
+        switchCustom.isOn = false
+        switchCustom.onImage = UIImage(named: "nightModeImage")?.withRenderingMode(.alwaysOriginal)
+        switchCustom.offImage =  UIImage(named: "dayModeImage")?.withRenderingMode(.alwaysOriginal)
+        switchCustom.onTintColor = MapsColors.mainColor
+        switchCustom.offTintColor = MapsColors.mainColor
 
-    //    func setupMap() {
-    //        guard let path = Bundle.main.path(forResource: "bcnlocations", ofType: "json") else { return }
-    //        let url = URL(fileURLWithPath: path)
-    //        do {
-    //            let data = try Data(contentsOf: url)
-    //            let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
-    //
-    //            guard let array = json as? [String: Any] else { return }
-    //            self.markers = Markers.init(json: array)
-    //            setAnnotationsInMap()
-    //        } catch {
-    //            print(error)
-    //        }
-    //    }
+        switchCustom.addTarget(self, action: #selector(self.switchValueDidChange), for: .valueChanged)
+    }
 
+    @objc func switchValueDidChange(sender:SwitchCustom!) {
+        setupMapStyle(isOn: sender.isOn)
+    }
+    
+    func setupMapStyle(isOn: Bool) {
+        //TODO
+        mapView.mapType = isOn ? .standard : .hybrid
+        
+    }
+    
+    
     // MARK: Check functions
+    
     func checkLocationServices() {
         if CLLocationManager.locationServicesEnabled() {
             setupLocationManager()
