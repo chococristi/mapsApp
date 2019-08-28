@@ -176,7 +176,7 @@ class GMViewController: UIViewController, GMUClusterManagerDelegate, GMSMapViewD
             print(error)
         }
     }
-    
+
 }
 
 extension GMViewController: CLLocationManagerDelegate {
