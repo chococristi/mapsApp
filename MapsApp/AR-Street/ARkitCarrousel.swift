@@ -65,7 +65,7 @@ class ARkitCarrousel: UIViewController {
     func createNodes() -> [Nodes] {
          var arrayNodes : [Nodes] = []
 
-        let colladaObject = Molecules.coladaObject()
+        let colladaObject = Molecules.coladaObject(name: "cherub", path: "art.scnassets/cherub/cherub.dae")
         colladaObject.scale = SCNVector3(0.1, 0.1, 0.1)
 
         let node1 = Nodes(title: "Atoms\n", node: Atoms.allAtoms())

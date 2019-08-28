@@ -31,16 +31,20 @@ class ARCollectionViewController: UIViewController {
     func createNodes() -> [Nodes] {
         var arrayNodes : [Nodes] = []
 
-        let colladaObject = Molecules.coladaObject()
+        let colladaObject = Molecules.coladaObject(name: "cherub", path: "art.scnassets/cherub/cherub.dae")
         colladaObject.scale = SCNVector3(0.1, 0.1, 0.1)
+
+        let colladaDragon = Molecules.coladaObject(name: "dragon", path: "art.scnassets/car/dragon.dae")
 
         let node1 = Nodes(title: "Atoms\n", node: Atoms.allAtoms())
         let node2 = Nodes(title: "Methane\n(Natural Gas)", node: Molecules.methaneMolecule())
         let node3 = Nodes(title: "figure\n", node: colladaObject)
+        let node4 = Nodes(title: "dragon\n", node: colladaDragon)
 
         arrayNodes.append(node1)
         arrayNodes.append(node2)
         arrayNodes.append(node3)
+        arrayNodes.append(node4)
 
         return arrayNodes
     }

@@ -56,11 +56,11 @@ class Molecules {
         return ptfeMolecule
     }
 
-    class func coladaObject() -> SCNNode {
+    class func coladaObject(name: String, path: String) -> SCNNode {
 
-        let nodeName = "cherub"
+        let nodeName = name
        guard let modelScene = SCNScene(named:
-        "art.scnassets/cherub/cherub.dae") else {
+        path) else {
             return SCNNode()
         }
         guard let node = modelScene.rootNode.childNode(withName: nodeName, recursively: true) else {
