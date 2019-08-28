@@ -60,7 +60,7 @@ class ARCollectionViewController: UIViewController {
         let viewController = PlaceObjectsplaneViewController()
         arrayNodes[selectedItem].node.removeAction(forKey: "turn")
         viewController.nodeModel = arrayNodes[selectedItem].node
-        
+
         self.navigationController?.pushViewController(viewController, animated: false)
 
     }
