@@ -15,7 +15,7 @@ import GoogleMaps
 //https://mapstyle.withgoogle.com //Map styles
 //https://stackoverflow.com/questions/38547622/how-to-implement-gmuclusterrenderer-in-swift // cluser style
 
-class GMViewController: UIViewController, GMUClusterManagerDelegate, GMSMapViewDelegate {
+class GMViewController: UIViewController, GMSMapViewDelegate {
 
     // MARK: - IBOutlets
 
@@ -137,14 +137,15 @@ class GMViewController: UIViewController, GMUClusterManagerDelegate, GMSMapViewD
     func setupCluster() {
         // Set up the cluster manager with the supplied icon generator and
         // renderer.
-        let iconGenerator = GMUDefaultClusterIconGenerator()
+        let iconGenerator = ClusterIconGenerator()
         let algorithm = GMUNonHierarchicalDistanceBasedAlgorithm()
         let renderer = GMUDefaultClusterRenderer(mapView: mapView,
                                                  clusterIconGenerator: iconGenerator)
+        renderer.delegate = self
         clusterManager = GMUClusterManager(map: mapView,
                                            algorithm: algorithm,
                                            renderer: renderer)
-
+        clusterManager.setDelegate(self, mapDelegate: self)
         // Generate and add items to the cluster manager.
         setupPOIMarkers()
         // Call cluster() after items have been added to perform the clustering
@@ -175,6 +176,7 @@ class GMViewController: UIViewController, GMUClusterManagerDelegate, GMSMapViewD
             print(error)
         }
     }
+
 }
 
 extension GMViewController: CLLocationManagerDelegate {
@@ -214,6 +216,39 @@ extension GMViewController {
                                            zoom: 15,
                                            bearing: .zero,
                                            viewingAngle: .zero)
+    }
+
+}
+
+extension GMViewController: GMUClusterManagerDelegate {
+    func clusterManager(_ clusterManager: GMUClusterManager, didTap cluster: GMUCluster) -> Bool {
+        print("tap cluster")
+
+        let newCamera = GMSCameraPosition.camera(withTarget: cluster.position,
+                                                 zoom: mapView.camera.zoom + 1)
+        let update = GMSCameraUpdate.setCamera(newCamera)
+        mapView.moveCamera(update)
+
+        return false
+    }
+
+    func clusterManager(_ clusterManager: GMUClusterManager, didTap clusterItem: GMUClusterItem) -> Bool {
+        print("tap cluster item")
+
+        return false
+    }
+}
+
+extension GMViewController: GMUClusterRendererDelegate {
+    func renderer(_ renderer: GMUClusterRenderer, markerFor object: Any) -> GMSMarker? {
+        switch object {
+        case let markerPOIItem as POIItem:
+            let marker = GMSMarker(position: markerPOIItem.position)
+            marker.icon = GMSMarker.markerImage(with: MapsColors.mainColor)
+            return marker
+        default:
+            return nil
+        }
     }
 
 }

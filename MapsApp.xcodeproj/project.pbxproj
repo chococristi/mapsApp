@@ -24,6 +24,7 @@
 		52AC055223041E3A00438113 /* SplashScreenMainColor.json in Resources */ = {isa = PBXBuildFile; fileRef = 52AC055123041E3A00438113 /* SplashScreenMainColor.json */; };
 		52AC055423041FFF00438113 /* LaunchScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AC055323041FFF00438113 /* LaunchScreenView.swift */; };
 		52AC055623042C7800438113 /* SplashScreenWhiteColor.json in Resources */ = {isa = PBXBuildFile; fileRef = 52AC055523042C7800438113 /* SplashScreenWhiteColor.json */; };
+		52B8DEBF23168B1E0071FB59 /* ClusterIconGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B8DEBE23168B1E0071FB59 /* ClusterIconGenerator.swift */; };
 		52CBB71F230E98DD00E6E039 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CBB71E230E98DD00E6E039 /* LocationService.swift */; };
 		52CBB722230E99F100E6E039 /* AlertDialogService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CBB721230E99F100E6E039 /* AlertDialogService.swift */; };
 		52CBB729230EC2C300E6E039 /* GMSMapViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CBB728230EC2C300E6E039 /* GMSMapViewExtensions.swift */; };
@@ -75,6 +76,8 @@
 		AA2829A922E1D7BA00A5F6C7 /* bcnLocations.json in Resources */ = {isa = PBXBuildFile; fileRef = AA2829A822E1D7BA00A5F6C7 /* bcnLocations.json */; };
 		AA2829AB22E1D80A00A5F6C7 /* MarkersResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2829AA22E1D80A00A5F6C7 /* MarkersResponseModel.swift */; };
 		AA69328F230436DA0083AB58 /* UIPanGestureExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA69328E230436DA0083AB58 /* UIPanGestureExtension.swift */; };
+		AA7E44B2231675820069777E /* AnalyticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7E44B1231675820069777E /* AnalyticsManager.swift */; };
+		AA7E44B423167D720069777E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA7E44B323167D720069777E /* GoogleService-Info.plist */; };
 		AAAA33ED2313DA760061DB2B /* CarListCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAA33EB2313DA760061DB2B /* CarListCellTableViewCell.swift */; };
 		AAAA33EE2313DA760061DB2B /* CarListCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAAA33EC2313DA760061DB2B /* CarListCellTableViewCell.xib */; };
 		AAAD742522F2DE9100C3ED15 /* CarsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAD742322F2DE9100C3ED15 /* CarsListViewController.swift */; };
@@ -101,6 +104,7 @@
 		52AC055123041E3A00438113 /* SplashScreenMainColor.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SplashScreenMainColor.json; sourceTree = "<group>"; };
 		52AC055323041FFF00438113 /* LaunchScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenView.swift; sourceTree = "<group>"; };
 		52AC055523042C7800438113 /* SplashScreenWhiteColor.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SplashScreenWhiteColor.json; sourceTree = "<group>"; };
+		52B8DEBE23168B1E0071FB59 /* ClusterIconGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClusterIconGenerator.swift; sourceTree = "<group>"; };
 		52CBB71E230E98DD00E6E039 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		52CBB721230E99F100E6E039 /* AlertDialogService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDialogService.swift; sourceTree = "<group>"; };
 		52CBB728230EC2C300E6E039 /* GMSMapViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GMSMapViewExtensions.swift; sourceTree = "<group>"; };
@@ -179,6 +183,8 @@
 		AA2829A822E1D7BA00A5F6C7 /* bcnLocations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bcnLocations.json; sourceTree = "<group>"; };
 		AA2829AA22E1D80A00A5F6C7 /* MarkersResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkersResponseModel.swift; sourceTree = "<group>"; };
 		AA69328E230436DA0083AB58 /* UIPanGestureExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPanGestureExtension.swift; sourceTree = "<group>"; };
+		AA7E44B1231675820069777E /* AnalyticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsManager.swift; sourceTree = "<group>"; };
+		AA7E44B323167D720069777E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AAAA33EB2313DA760061DB2B /* CarListCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarListCellTableViewCell.swift; sourceTree = "<group>"; };
 		AAAA33EC2313DA760061DB2B /* CarListCellTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CarListCellTableViewCell.xib; sourceTree = "<group>"; };
 		AAAD742322F2DE9100C3ED15 /* CarsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarsListViewController.swift; sourceTree = "<group>"; };
@@ -487,6 +493,14 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
+		52B8DEBD23168B0B0071FB59 /* GMClusterIcon */ = {
+			isa = PBXGroup;
+			children = (
+				52B8DEBE23168B1E0071FB59 /* ClusterIconGenerator.swift */,
+			);
+			path = GMClusterIcon;
+			sourceTree = "<group>";
+		};
 		52CBB715230E789300E6E039 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -540,6 +554,7 @@
 		52CBB726230EC27200E6E039 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				52B8DEBD23168B0B0071FB59 /* GMClusterIcon */,
 				52CBB738231015AB00E6E039 /* GoogleMapsIOSUtils */,
 				52CBB727230EC27E00E6E039 /* Extensions */,
 			);
@@ -810,6 +825,7 @@
 		AA2121C222D32A25005D058D /* MapsApp */ = {
 			isa = PBXGroup;
 			children = (
+				AA7E44B02316756C0069777E /* Firebase */,
 				52AC054A23041B0A00438113 /* Main */,
 				5BB71BCD22E072E800F14DBB /* AR-Street */,
 				52DE5E4A230D74F60088BC8C /* GoogleMaps */,
@@ -818,9 +834,18 @@
 				52AC054F23041C4800438113 /* Resources */,
 				52AC054D23041C1D00438113 /* Utils */,
 				AA2121CF22D32A26005D058D /* Info.plist */,
+				AA7E44B323167D720069777E /* GoogleService-Info.plist */,
 				AA2121C322D32A25005D058D /* AppDelegate.swift */,
 			);
 			path = MapsApp;
+			sourceTree = "<group>";
+		};
+		AA7E44B02316756C0069777E /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				AA7E44B1231675820069777E /* AnalyticsManager.swift */,
+			);
+			path = Firebase;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -903,6 +928,7 @@
 				52AC053D2302D78300438113 /* labels.txt in Resources */,
 				AA2829A922E1D7BA00A5F6C7 /* bcnLocations.json in Resources */,
 				AA2121CB22D32A26005D058D /* Assets.xcassets in Resources */,
+				AA7E44B423167D720069777E /* GoogleService-Info.plist in Resources */,
 				52AC053C2302D78300438113 /* mobilenet_quant_v1_224.tflite in Resources */,
 				5B0F40B322E6F5EA00C3FC12 /* ARViewController.xib in Resources */,
 				5B3293E122E9977D00F3E268 /* QRViewController.xib in Resources */,
@@ -1007,6 +1033,7 @@
 				52CBB7582310160500E6E039 /* GMUSimpleClusterAlgorithm.m in Sources */,
 				52CBB72F230FF11000E6E039 /* LeftViewController.swift in Sources */,
 				52CBB75A2310160500E6E039 /* GMUDefaultClusterRenderer.m in Sources */,
+				52B8DEBF23168B1E0071FB59 /* ClusterIconGenerator.swift in Sources */,
 				5B1993792304370B00A6E78D /* Molecules.swift in Sources */,
 				52AC05242302BF5E00438113 /* TFMainViewController.swift in Sources */,
 				52CBB722230E99F100E6E039 /* AlertDialogService.swift in Sources */,
@@ -1038,6 +1065,7 @@
 				5B0F40B222E6F5EA00C3FC12 /* ARViewController.swift in Sources */,
 				5B0F40B622E71A9D00C3FC12 /* ARkitCarrousel.swift in Sources */,
 				52CBB766231016A400E6E039 /* GQTPointQuadTreeChild.m in Sources */,
+				AA7E44B2231675820069777E /* AnalyticsManager.swift in Sources */,
 				5B8E20AF2302B4FB00066534 /* PlaceObjectsplaneViewController.swift in Sources */,
 				52AC055423041FFF00438113 /* LaunchScreenView.swift in Sources */,
 				5B3293E022E9977D00F3E268 /* QRViewController.swift in Sources */,

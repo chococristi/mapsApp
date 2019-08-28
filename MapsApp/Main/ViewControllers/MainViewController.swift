@@ -105,6 +105,7 @@ class MainViewController: UITabBarController {
         let storyboard = UIStoryboard.init(name: "map",
                                            bundle: nil)
 
+        AnalyticsManager.sendEvent(id: "MapViewController", name: "map", content: "content")
         return storyboard.instantiateInitialViewController() as? MapViewController
     }
 
@@ -112,19 +113,20 @@ class MainViewController: UITabBarController {
         let storyboard = UIStoryboard.init(name: "GoogleMaps",
                                            bundle: nil)
 
+        AnalyticsManager.sendEvent(id: "GMViewController", name: "GoogleMaps", content: "content")
         return storyboard.instantiateInitialViewController() as? GMViewController
     }
 
     func setupARStreet() -> UIViewController? {
-
+        AnalyticsManager.sendEvent(id: "ARCollectionViewController", name: "AR", content: "content")
          return ARCollectionViewController()
     }
 
     func setupTensorFlow() -> UIViewController? {
-
         let storyboard = UIStoryboard.init(name: "TensorFlow",
                                            bundle: nil)
 
+        AnalyticsManager.sendEvent(id: "TFMainViewController", name: "TensorFlow", content: "content")
         return storyboard.instantiateInitialViewController() as? TFMainViewController
     }
 }
