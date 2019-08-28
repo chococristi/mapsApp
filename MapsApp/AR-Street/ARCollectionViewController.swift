@@ -74,28 +74,23 @@ extension ARCollectionViewController: UICollectionViewDelegate, UICollectionView
         return arrayNodes.count
     }
 
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-//        return UIEdgeInsets(top: 0, left: edge, bottom: 0, right: edge)
-//    }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return spacing
     }
 
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        let noOfColumn = 2
-//        let collectionviewWidth = collectionView.frame.width
-//        let bothEdge =  CGFloat(edge + edge) // left + right
-//        let excludingEdge = collectionviewWidth - bothEdge
-//        let cellWidthExcludingSpaces = excludingEdge - (CGFloat(noOfColumn-1) * spacing)
-//        let finalCellWidth = cellWidthExcludingSpaces / CGFloat(noOfColumn)
-//        let height = finalCellWidth
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
 
         let height = collectionView.layer.bounds.size.height
-
         return CGSize(width: height, height: height)
     }
-//
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+
+//    func collectionView(_ collectionView: UICollectionView,
+//                            layout collectionViewLayout: UICollectionViewLayout,
+//                            insetForSectionAt section: Int) -> UIEdgeInsets {
 //
 //        let totalCellWidth = 80 * collectionView.numberOfItems(inSection: 0)
 //        let totalSpacingWidth = 10 * (collectionView.numberOfItems(inSection: 0) - 1)
@@ -108,16 +103,16 @@ extension ARCollectionViewController: UICollectionViewDelegate, UICollectionView
 //    }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCollectionViewCell", for: indexPath) as! MyCollectionViewCell
+
+        guard let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: "MyCollectionViewCell",
+            for: indexPath) as? MyCollectionViewCell else {
+            return UICollectionViewCell()
+        }
 
         cell.lbName.text = arrayNodes[indexPath.row].title
         cell.init3DObject(node: arrayNodes[indexPath.row].node)
         self.configureCellView(cell: cell, selected: indexPath.row == self.selectedItem)
-//        
-//        if indexPath.row == self.selectedItem {
-//            cell.play()
-//            cell.isSelected = true
-//        }
         return cell
     }
 
