@@ -74,7 +74,7 @@ class ARCollectionViewController: UIViewController {
     @IBAction func goToAR(_ sender: Any) {
 
         let viewController = PlaceObjectsplaneViewController()
-        arrayNodes[selectedItem].node.removeAction(forKey: "turn")
+        arrayNodes[selectedItem].node.removeAction(forKey: MyCollectionViewCell.action)
         viewController.nodeModel = arrayNodes[selectedItem].node
         self.navigationController?.pushViewController(viewController, animated: false)
 
@@ -82,6 +82,7 @@ class ARCollectionViewController: UIViewController {
 }
 
 extension ARCollectionViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
