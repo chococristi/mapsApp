@@ -11,10 +11,13 @@ import ARKit
 
 class MyCollectionViewCell: UICollectionViewCell {
 
+    // MARK: - IBOutlets
+
     @IBOutlet var sceneView: SCNView!
     @IBOutlet weak var lbName: UILabel!
     @IBOutlet var view: UIView!
-    var node = SCNNode()
+
+    // MARK: - Fields
 
     static var nib: UINib {
         return UINib(nibName: identifier, bundle: Bundle(for: MyCollectionViewCell.self))
@@ -24,13 +27,56 @@ class MyCollectionViewCell: UICollectionViewCell {
         return String(describing: self)
     }
 
+    var node = SCNNode()
+
+    var item: Nodes? {
+        didSet {
+            guard let item = item else {
+                return
+            }
+
+            lbName.text = item.title
+            init3DObject(node: item.node)
+        }
+    }
+
+    override var isSelected: Bool {
+        didSet {
+            guard oldValue != self.isSelected else { return }
+
+            refreshBorderColor(color: isSelected ? .green : .red)
+            
+            doAction(isSelected: isSelected)
+        }
+    }
+
+    // MARK: - Constructor
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        self.sceneSetup()
+        setup()
     }
 
-    func sceneSetup() {
+    // MARK: - Helpers
+
+    func setup() {
+        setupUI()
+
+        setupScene()
+    }
+
+    func setupUI() {
+
+        layer.masksToBounds = true
+        layer.cornerRadius = 5
+        layer.borderWidth = 2
+        layer.shadowOffset = CGSize(width: -1, height: 1)
+
+        refreshBorderColor(color: isSelected ? .green : .red)
+    }
+
+    func setupScene() {
         // 1
         let scene = SCNScene()
 
@@ -77,21 +123,36 @@ class MyCollectionViewCell: UICollectionViewCell {
            self.sceneView.scene = scene
     }
 
-        func init3DObject(node: SCNNode) {
-            self.node = node
-            self.sceneView.scene?.rootNode.addChildNode(node)
-        }
+    func refreshBorderColor(color: UIColor) {
+        layer.borderColor = color.cgColor
+    }
 
+    func init3DObject(node: SCNNode) {
+        self.node = node
+        self.sceneView.scene?.rootNode.addChildNode(node)
+    }
+
+    func doAction(isSelected: Bool) {
+        if isSelected {
+            play()
+        } else {
+            stop()
+        }
+    }
+    
     func play() {
 
-        let action = SCNAction.repeatForever(SCNAction.rotate(by: .pi, around: SCNVector3(0, 1, 0), duration: 5))
-        node.runAction(action, forKey: "turn")
+        let action = SCNAction.repeatForever(SCNAction.rotate(by: .pi,
+                                                              around: SCNVector3(0, 1, 0),
+                                                              duration: 5))
+        node.runAction(action,
+                       forKey: "turn")
 
     }
 
-    func stop(node: SCNNode) {
+    func stop() {
 
        node.removeAction(forKey: "turn")
-
     }
+
 }
