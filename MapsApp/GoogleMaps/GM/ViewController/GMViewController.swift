@@ -15,7 +15,7 @@ import GoogleMaps
 //https://mapstyle.withgoogle.com //Map styles
 //https://stackoverflow.com/questions/38547622/how-to-implement-gmuclusterrenderer-in-swift // cluser style
 
-class GMViewController: UIViewController, GMSMapViewDelegate {
+class GMViewController: UIViewController {
 
     // MARK: - IBOutlets
 
@@ -216,6 +216,24 @@ extension GMViewController {
                                            zoom: 15,
                                            bearing: .zero,
                                            viewingAngle: .zero)
+    }
+
+}
+
+extension GMViewController: GMSMapViewDelegate {
+
+    func mapView(_ mapView: GMSMapView, didLongPressAt coordinate: CLLocationCoordinate2D) {
+
+        let geocoder = GMSGeocoder()
+        geocoder.reverseGeocodeCoordinate(coordinate) { response, _ in
+
+            if let address = response?.firstResult(),
+                let addressLines = address.lines {
+                let item = POIItem(position: coordinate, name: addressLines.description)
+                self.clusterManager.add(item)
+                self.clusterManager.cluster()
+            }
+        }
     }
 
 }
