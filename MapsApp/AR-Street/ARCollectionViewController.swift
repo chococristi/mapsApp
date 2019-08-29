@@ -14,11 +14,19 @@ class ARCollectionViewController: UIViewController {
     @IBOutlet var buttonToAR: UIButton!
     @IBOutlet var collectionView: UICollectionView!
 
-    var arrayNodes : [Nodes] = []
     let edge    : CGFloat = 10.0
     let spacing : CGFloat = 10.0
-    var selectedItem : Int = -1
     let flowLayout = ZoomAndSnapFlowLayout()
+
+    var arrayNodes : [Nodes] = []
+
+    var selectedItem : Int = -1 {
+        didSet {
+            guard oldValue != self.selectedItem else { return }
+
+            buttonToAR.isEnabled = selectedItem != -1
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -98,6 +106,5 @@ extension ARCollectionViewController: UICollectionViewDelegate, UICollectionView
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
         selectedItem = indexPath.row
-        buttonToAR.isEnabled = true
     }
 }

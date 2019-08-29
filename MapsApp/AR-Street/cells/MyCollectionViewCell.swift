@@ -45,7 +45,7 @@ class MyCollectionViewCell: UICollectionViewCell {
             guard oldValue != self.isSelected else { return }
 
             refreshBorderColor(color: isSelected ? .green : .red)
-            
+
             doAction(isSelected: isSelected)
         }
     }
@@ -139,7 +139,7 @@ class MyCollectionViewCell: UICollectionViewCell {
             stop()
         }
     }
-    
+
     func play() {
 
         let action = SCNAction.repeatForever(SCNAction.rotate(by: .pi,
