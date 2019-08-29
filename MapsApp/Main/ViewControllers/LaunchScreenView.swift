@@ -45,7 +45,44 @@ public class LaunchScreenView: UIView {
 
         backgroundColor = MapsColors.mainColor
 
+        setupView()
+
         setupAnimationView()
+
+    }
+
+    func setupView() {
+        self.addConstraint(NSLayoutConstraint(item: self,
+                                              attribute: .top,
+                                              relatedBy: .equal,
+                                              toItem: safeAreaLayoutGuide,
+                                              attribute: .top,
+                                              multiplier: 1.0,
+                                              constant: 0))
+
+        self.addConstraint(NSLayoutConstraint(item: self,
+                                              attribute: .left,
+                                              relatedBy: .equal,
+                                              toItem: safeAreaLayoutGuide,
+                                              attribute: .left,
+                                              multiplier: 1.0,
+                                              constant: 0))
+
+        self.addConstraint(NSLayoutConstraint(item: self,
+                                              attribute: .bottom,
+                                              relatedBy: .equal,
+                                              toItem: safeAreaLayoutGuide,
+                                              attribute: .bottom,
+                                              multiplier: 1.0,
+                                              constant: 0))
+
+        self.addConstraint(NSLayoutConstraint(item: self,
+                                              attribute: .right,
+                                              relatedBy: .equal,
+                                              toItem: safeAreaLayoutGuide,
+                                              attribute: .right,
+                                              multiplier: 1.0,
+                                              constant: 0))
 
     }
 
