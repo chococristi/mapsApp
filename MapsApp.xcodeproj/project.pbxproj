@@ -28,6 +28,7 @@
 		52B8DEC2231695870071FB59 /* MainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B8DEC1231695870071FB59 /* MainButton.swift */; };
 		52B8DEC42316A27D0071FB59 /* UIButtonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B8DEC32316A27D0071FB59 /* UIButtonExtensions.swift */; };
 		52B8DEC62316A7A40071FB59 /* SecondaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B8DEC52316A7A40071FB59 /* SecondaryButton.swift */; };
+		52BF4CAA2317C8E300381538 /* ZoomAndSnapFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BF4CA92317C8E300381538 /* ZoomAndSnapFlowLayout.swift */; };
 		52CBB71F230E98DD00E6E039 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CBB71E230E98DD00E6E039 /* LocationService.swift */; };
 		52CBB722230E99F100E6E039 /* AlertDialogService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CBB721230E99F100E6E039 /* AlertDialogService.swift */; };
 		52CBB729230EC2C300E6E039 /* GMSMapViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CBB728230EC2C300E6E039 /* GMSMapViewExtensions.swift */; };
@@ -111,6 +112,7 @@
 		52B8DEC1231695870071FB59 /* MainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainButton.swift; sourceTree = "<group>"; };
 		52B8DEC32316A27D0071FB59 /* UIButtonExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtensions.swift; sourceTree = "<group>"; };
 		52B8DEC52316A7A40071FB59 /* SecondaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryButton.swift; sourceTree = "<group>"; };
+		52BF4CA92317C8E300381538 /* ZoomAndSnapFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomAndSnapFlowLayout.swift; sourceTree = "<group>"; };
 		52CBB71E230E98DD00E6E039 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		52CBB721230E99F100E6E039 /* AlertDialogService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDialogService.swift; sourceTree = "<group>"; };
 		52CBB728230EC2C300E6E039 /* GMSMapViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GMSMapViewExtensions.swift; sourceTree = "<group>"; };
@@ -518,6 +520,14 @@
 			path = Button;
 			sourceTree = "<group>";
 		};
+		52BF4CA82317C8C300381538 /* FlowLayout */ = {
+			isa = PBXGroup;
+			children = (
+				52BF4CA92317C8E300381538 /* ZoomAndSnapFlowLayout.swift */,
+			);
+			path = FlowLayout;
+			sourceTree = "<group>";
+		};
 		52CBB715230E789300E6E039 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -704,6 +714,7 @@
 			isa = PBXGroup;
 			children = (
 				52B8DEC0231695110071FB59 /* Button */,
+				52BF4CA82317C8C300381538 /* FlowLayout */,
 				52CBB72A230FE98000E6E039 /* SlideOutPanel */,
 				52D625292313E989001B2513 /* Switch */,
 				52AC052D2302CE0D00438113 /* UIView */,
@@ -1064,6 +1075,7 @@
 				AA69328F230436DA0083AB58 /* UIPanGestureExtension.swift in Sources */,
 				52AC05352302CEDE00438113 /* CameraFeedManagerDelegate.swift in Sources */,
 				AA2829AB22E1D80A00A5F6C7 /* MarkersResponseModel.swift in Sources */,
+				52BF4CAA2317C8E300381538 /* ZoomAndSnapFlowLayout.swift in Sources */,
 				52D625252313E377001B2513 /* Data+PrettyPrint.swift in Sources */,
 				52B8DEC2231695870071FB59 /* MainButton.swift in Sources */,
 				5B19937A2304370B00A6E78D /* Atoms.swift in Sources */,
