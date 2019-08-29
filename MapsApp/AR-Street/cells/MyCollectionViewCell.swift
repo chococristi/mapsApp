@@ -19,6 +19,8 @@ class MyCollectionViewCell: UICollectionViewCell {
 
     // MARK: - Fields
 
+    static var action: String = "turn"
+    
     static var nib: UINib {
         return UINib(nibName: identifier, bundle: Bundle(for: MyCollectionViewCell.self))
     }
@@ -56,6 +58,13 @@ class MyCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
         setup()
+    }
+
+    // MARK: - Life cycle
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        //hide or reset anything you want
     }
 
     // MARK: - Helpers
@@ -146,13 +155,13 @@ class MyCollectionViewCell: UICollectionViewCell {
                                                               around: SCNVector3(0, 1, 0),
                                                               duration: 5))
         node.runAction(action,
-                       forKey: "turn")
+                       forKey: MyCollectionViewCell.action)
 
     }
 
     func stop() {
 
-       node.removeAction(forKey: "turn")
+       node.removeAction(forKey: MyCollectionViewCell.action)
     }
 
 }
