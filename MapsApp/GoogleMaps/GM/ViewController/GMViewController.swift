@@ -154,26 +154,13 @@ class GMViewController: UIViewController {
     }
 
     func setupPOIMarkers() {
-        guard let path = Bundle.main.path(forResource: "BcnMarkers",
-                                          ofType: "json") else {
-                                            return
-        }
+        let markersArray = markers
 
-        let fileUrl = URL(fileURLWithPath: path)
-        do {
-            let data = try Data(contentsOf: fileUrl)
-            let json = try JSONSerialization.jsonObject(with: data,
-                                                        options: .mutableContainers)
-
-            guard let array = json as? [String: Any],
-                let poiMarkers = POIMarkers.init(json: array) else { return }
-
-            for item in poiMarkers.poiMarkers {
-                clusterManager.add(item)
-            }
-
-        } catch {
-            print(error)
+        for marker in markersArray {
+            let item = POIItem(position: CLLocationCoordinate2DMake(marker.coordinates.latitude,
+                                                                    marker.coordinates.longitude),
+                               name: marker.name)
+            clusterManager.add(item)
         }
     }
 
