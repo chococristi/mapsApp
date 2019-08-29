@@ -17,15 +17,26 @@ class ARCollectionViewController: UIViewController {
     let edge    : CGFloat = 10.0
     let spacing : CGFloat = 10.0
     var selectedItem : Int = -1
+    let flowLayout = ZoomAndSnapFlowLayout()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         arrayNodes = self.createNodes()
 
-        let nibCell = UINib(nibName: "MyCollectionViewCell", bundle: nil)
-        collectionView.register(nibCell, forCellWithReuseIdentifier: "MyCollectionViewCell")
         buttonToAR.isEnabled = false
 
+        setup()
+    }
+
+    func setup() {
+        setupCollectionView()
+    }
+
+    func setupCollectionView() {
+        collectionView.collectionViewLayout = flowLayout
+        collectionView.contentInsetAdjustmentBehavior = .always
+        collectionView.register(MyCollectionViewCell.nib,
+                                forCellWithReuseIdentifier: MyCollectionViewCell.identifier)
     }
 
     func createNodes() -> [Nodes] {
@@ -79,38 +90,10 @@ extension ARCollectionViewController: UICollectionViewDelegate, UICollectionView
         return arrayNodes.count
     }
 
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return spacing
-    }
-
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAt indexPath: IndexPath) -> CGSize {
-
-        let height = collectionView.layer.bounds.size.height
-        return CGSize(width: height, height: height)
-    }
-
-//    func collectionView(_ collectionView: UICollectionView,
-//                            layout collectionViewLayout: UICollectionViewLayout,
-//                            insetForSectionAt section: Int) -> UIEdgeInsets {
-//
-//        let totalCellWidth = 80 * collectionView.numberOfItems(inSection: 0)
-//        let totalSpacingWidth = 10 * (collectionView.numberOfItems(inSection: 0) - 1)
-//
-//        let leftInset = (collectionView.layer.frame.size.width - CGFloat(totalCellWidth + totalSpacingWidth)) / 2
-//        let rightInset = leftInset
-//
-//        return UIEdgeInsets(top: 0, left: leftInset, bottom: 0, right: rightInset)
-//
-//    }
-
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
         guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: "MyCollectionViewCell",
+            withReuseIdentifier: MyCollectionViewCell.identifier,
             for: indexPath) as? MyCollectionViewCell else {
             return UICollectionViewCell()
         }
@@ -122,18 +105,24 @@ extension ARCollectionViewController: UICollectionViewDelegate, UICollectionView
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let cell = collectionView.cellForItem(at: indexPath) as? MyCollectionViewCell {
-            cell.play()
-            selectedItem = indexPath.row
-             buttonToAR.isEnabled = true
-            self.configureCellView(cell: cell, selected: true)}
-    }
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+
         guard let cell = collectionView.cellForItem(at: indexPath) as? MyCollectionViewCell else {
             return
         }
-         cell.stop(node: arrayNodes[indexPath.row].node)
-         self.configureCellView(cell: cell, selected: false)
 
+        cell.play()
+        selectedItem = indexPath.row
+        buttonToAR.isEnabled = true
+        self.configureCellView(cell: cell, selected: true)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+
+        guard let cell = collectionView.cellForItem(at: indexPath) as? MyCollectionViewCell else {
+            return
+        }
+
+        cell.stop(node: arrayNodes[indexPath.row].node)
+        self.configureCellView(cell: cell, selected: false)
     }
 }
