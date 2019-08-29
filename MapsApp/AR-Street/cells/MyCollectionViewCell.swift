@@ -16,6 +16,14 @@ class MyCollectionViewCell: UICollectionViewCell {
     @IBOutlet var view: UIView!
     var node = SCNNode()
 
+    static var nib: UINib {
+        return UINib(nibName: identifier, bundle: Bundle(for: MyCollectionViewCell.self))
+    }
+
+    static var identifier: String {
+        return String(describing: self)
+    }
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
