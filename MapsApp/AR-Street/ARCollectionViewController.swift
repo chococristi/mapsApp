@@ -13,6 +13,7 @@ class ARCollectionViewController: UIViewController {
 
     @IBOutlet var buttonToAR: UIButton!
     @IBOutlet var collectionView: UICollectionView!
+
     var arrayNodes : [Nodes] = []
     let edge    : CGFloat = 10.0
     let spacing : CGFloat = 10.0
@@ -21,14 +22,15 @@ class ARCollectionViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        arrayNodes = self.createNodes()
-
-        buttonToAR.isEnabled = false
 
         setup()
     }
 
     func setup() {
+        arrayNodes = self.createNodes()
+
+        buttonToAR.isEnabled = false
+
         setupCollectionView()
     }
 
@@ -61,16 +63,6 @@ class ARCollectionViewController: UIViewController {
         return arrayNodes
     }
 
-    func configureCellView(cell : UICollectionViewCell, selected: Bool) {
-
-        cell.layer.masksToBounds = true
-        cell.layer.cornerRadius = 5
-        cell.layer.borderWidth = 2
-        cell.layer.shadowOffset = CGSize(width: -1, height: 1)
-        let borderColor: UIColor = selected ? .green : .red
-        cell.layer.borderColor = borderColor.cgColor
-
-    }
     @IBAction func goToAR(_ sender: Any) {
 
         let viewController = PlaceObjectsplaneViewController()
@@ -81,7 +73,7 @@ class ARCollectionViewController: UIViewController {
     }
 }
 
-extension ARCollectionViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension ARCollectionViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -98,31 +90,14 @@ extension ARCollectionViewController: UICollectionViewDelegate, UICollectionView
             return UICollectionViewCell()
         }
 
-        cell.lbName.text = arrayNodes[indexPath.row].title
-        cell.init3DObject(node: arrayNodes[indexPath.row].node)
-        self.configureCellView(cell: cell, selected: indexPath.row == self.selectedItem)
+        cell.item = arrayNodes[indexPath.row]
+
         return cell
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
-        guard let cell = collectionView.cellForItem(at: indexPath) as? MyCollectionViewCell else {
-            return
-        }
-
-        cell.play()
         selectedItem = indexPath.row
         buttonToAR.isEnabled = true
-        self.configureCellView(cell: cell, selected: true)
-    }
-
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-
-        guard let cell = collectionView.cellForItem(at: indexPath) as? MyCollectionViewCell else {
-            return
-        }
-
-        cell.stop(node: arrayNodes[indexPath.row].node)
-        self.configureCellView(cell: cell, selected: false)
     }
 }
