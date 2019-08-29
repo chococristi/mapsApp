@@ -378,6 +378,7 @@
 		52AC054D23041C1D00438113 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				AA7E44B02316756C0069777E /* Firebase */,
 				52D625282313E981001B2513 /* Components */,
 				52AC054E23041C3100438113 /* Extensions */,
 			);
@@ -842,7 +843,6 @@
 		AA2121C222D32A25005D058D /* MapsApp */ = {
 			isa = PBXGroup;
 			children = (
-				AA7E44B02316756C0069777E /* Firebase */,
 				52AC054A23041B0A00438113 /* Main */,
 				5BB71BCD22E072E800F14DBB /* AR-Street */,
 				52DE5E4A230D74F60088BC8C /* GoogleMaps */,
