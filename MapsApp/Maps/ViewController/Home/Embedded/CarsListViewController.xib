@@ -11,6 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CarsListViewController" customModule="mapsApp" customModuleProvider="target">
             <connections>
                 <outlet property="parkingName" destination="Dr6-sk-GB9" id="dNy-Ce-b6F"/>
+                <outlet property="sceneContainer" destination="e7v-b7-b1h" id="c1t-P0-qC2"/>
                 <outlet property="tableView" destination="XGm-KS-9Uk" id="8Uq-xT-mhZ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -33,22 +34,30 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XGm-KS-9Uk">
-                            <rect key="frame" x="0.0" y="68" width="375" height="599"/>
+                            <rect key="frame" x="0.0" y="68" width="375" height="399"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <outlet property="delegate" destination="dPC-HA-hv1" id="mGz-II-SGt"/>
                             </connections>
                         </tableView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e7v-b7-b1h" userLabel="SceneContainer" customClass="CarSceneView" customModule="mapsApp" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="467" width="375" height="200"/>
+                            <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstItem="e7v-b7-b1h" firstAttribute="leading" secondItem="dPC-HA-hv1" secondAttribute="leading" id="8lu-SU-FLf"/>
+                        <constraint firstItem="e7v-b7-b1h" firstAttribute="top" secondItem="XGm-KS-9Uk" secondAttribute="bottom" id="G6R-Su-mvi"/>
                         <constraint firstAttribute="trailing" secondItem="Dr6-sk-GB9" secondAttribute="trailing" constant="25" id="IcE-Vx-bjh"/>
                         <constraint firstItem="Dr6-sk-GB9" firstAttribute="leading" secondItem="dPC-HA-hv1" secondAttribute="leading" constant="25" id="UUc-rl-wWF"/>
                         <constraint firstItem="XGm-KS-9Uk" firstAttribute="top" secondItem="Dr6-sk-GB9" secondAttribute="bottom" constant="8" id="Yvb-t4-81h"/>
                         <constraint firstItem="Dr6-sk-GB9" firstAttribute="top" secondItem="dPC-HA-hv1" secondAttribute="top" constant="20" id="bQc-9M-baH"/>
                         <constraint firstAttribute="trailing" secondItem="XGm-KS-9Uk" secondAttribute="trailing" id="d90-R6-sfH"/>
                         <constraint firstItem="XGm-KS-9Uk" firstAttribute="leading" secondItem="dPC-HA-hv1" secondAttribute="leading" id="fsF-MW-VVw"/>
-                        <constraint firstAttribute="bottom" secondItem="XGm-KS-9Uk" secondAttribute="bottom" id="zac-dv-jT0"/>
+                        <constraint firstAttribute="trailing" secondItem="e7v-b7-b1h" secondAttribute="trailing" id="le6-4m-aOH"/>
+                        <constraint firstAttribute="bottom" secondItem="e7v-b7-b1h" secondAttribute="bottom" id="x73-H0-5N7"/>
+                        <constraint firstAttribute="bottom" secondItem="XGm-KS-9Uk" secondAttribute="bottom" constant="200" id="zac-dv-jT0"/>
                     </constraints>
                 </view>
             </subviews>

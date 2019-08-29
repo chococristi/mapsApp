@@ -67,6 +67,8 @@
 		5B8E20AF2302B4FB00066534 /* PlaceObjectsplaneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8E20AD2302B4FB00066534 /* PlaceObjectsplaneViewController.swift */; };
 		5B8E20B02302B4FB00066534 /* PlaceObjectsplaneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B8E20AE2302B4FB00066534 /* PlaceObjectsplaneViewController.xib */; };
 		5BB71BD222E0739500F14DBB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BB71BD122E0739500F14DBB /* Main.storyboard */; };
+		AA17391B2317B9EF00A09399 /* CarSceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA17391A2317B9EF00A09399 /* CarSceneView.swift */; };
+		AA17391D2317BA4F00A09399 /* CarSceneView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA17391C2317BA4F00A09399 /* CarSceneView.xib */; };
 		AA2121C422D32A25005D058D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2121C322D32A25005D058D /* AppDelegate.swift */; };
 		AA2121C622D32A25005D058D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2121C522D32A25005D058D /* MapViewController.swift */; };
 		AA2121C922D32A25005D058D /* map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA2121C722D32A25005D058D /* map.storyboard */; };
@@ -81,6 +83,8 @@
 		AAAA33EE2313DA760061DB2B /* CarListCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAAA33EC2313DA760061DB2B /* CarListCellTableViewCell.xib */; };
 		AAAD742522F2DE9100C3ED15 /* CarsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAD742322F2DE9100C3ED15 /* CarsListViewController.swift */; };
 		AAAD742622F2DE9100C3ED15 /* CarsListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAAD742422F2DE9100C3ED15 /* CarsListViewController.xib */; };
+		AAF4AD5A2316900800E98F0A /* CarSceneCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAF4AD582316900800E98F0A /* CarSceneCell.swift */; };
+		AAF4AD5B2316900800E98F0A /* CarSceneCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAF4AD592316900800E98F0A /* CarSceneCell.xib */; };
 		AB69A054FF4D56995A01EAEA /* Pods_mapsApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D231BEF31481663D9598A6C /* Pods_mapsApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -171,6 +175,8 @@
 		5BB71BD122E0739500F14DBB /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		5D231BEF31481663D9598A6C /* Pods_mapsApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mapsApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		70FB208F7B0D431174A5B939 /* Pods-mapsApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mapsApp.debug.xcconfig"; path = "Target Support Files/Pods-mapsApp/Pods-mapsApp.debug.xcconfig"; sourceTree = "<group>"; };
+		AA17391A2317B9EF00A09399 /* CarSceneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarSceneView.swift; sourceTree = "<group>"; };
+		AA17391C2317BA4F00A09399 /* CarSceneView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CarSceneView.xib; sourceTree = "<group>"; };
 		AA2121C022D32A25005D058D /* mapsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mapsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA2121C322D32A25005D058D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AA2121C522D32A25005D058D /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -187,6 +193,8 @@
 		AAAA33EC2313DA760061DB2B /* CarListCellTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CarListCellTableViewCell.xib; sourceTree = "<group>"; };
 		AAAD742322F2DE9100C3ED15 /* CarsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarsListViewController.swift; sourceTree = "<group>"; };
 		AAAD742422F2DE9100C3ED15 /* CarsListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CarsListViewController.xib; sourceTree = "<group>"; };
+		AAF4AD582316900800E98F0A /* CarSceneCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarSceneCell.swift; sourceTree = "<group>"; };
+		AAF4AD592316900800E98F0A /* CarSceneCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CarSceneCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -469,6 +477,7 @@
 		52B8DEBA2316552B0071FB59 /* TableView */ = {
 			isa = PBXGroup;
 			children = (
+				AA1739192317B9C100A09399 /* Footer */,
 				52B8DEBB231655330071FB59 /* Cell */,
 			);
 			path = TableView;
@@ -479,6 +488,8 @@
 			children = (
 				AAAA33EB2313DA760061DB2B /* CarListCellTableViewCell.swift */,
 				AAAA33EC2313DA760061DB2B /* CarListCellTableViewCell.xib */,
+				AAF4AD582316900800E98F0A /* CarSceneCell.swift */,
+				AAF4AD592316900800E98F0A /* CarSceneCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -793,6 +804,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		AA1739192317B9C100A09399 /* Footer */ = {
+			isa = PBXGroup;
+			children = (
+				AA17391A2317B9EF00A09399 /* CarSceneView.swift */,
+				AA17391C2317BA4F00A09399 /* CarSceneView.xib */,
+			);
+			path = Footer;
+			sourceTree = "<group>";
+		};
 		AA2121B722D32A25005D058D = {
 			isa = PBXGroup;
 			children = (
@@ -910,7 +930,9 @@
 				52D6251D2313C863001B2513 /* BcnMarkers.json in Resources */,
 				52AC051D2302BC4B00438113 /* TensorFlow.storyboard in Resources */,
 				52D625272313E6E7001B2513 /* NightStyle.json in Resources */,
+				AAF4AD5B2316900800E98F0A /* CarSceneCell.xib in Resources */,
 				5B0F40B722E71A9D00C3FC12 /* ARkitCarrousel.xib in Resources */,
+				AA17391D2317BA4F00A09399 /* CarSceneView.xib in Resources */,
 				AA2121CE22D32A26005D058D /* LaunchScreen.storyboard in Resources */,
 				AAAD742622F2DE9100C3ED15 /* CarsListViewController.xib in Resources */,
 				52D625232313E263001B2513 /* RetroStyle.json in Resources */,
@@ -1015,6 +1037,7 @@
 				AAAD742522F2DE9100C3ED15 /* CarsListViewController.swift in Sources */,
 				5B785E8423069BED00176DF6 /* MainViewController.swift in Sources */,
 				52CBB72D230FECB500E6E039 /* ContainerViewController.swift in Sources */,
+				AA17391B2317B9EF00A09399 /* CarSceneView.swift in Sources */,
 				52CBB7562310160500E6E039 /* GMUGridBasedClusterAlgorithm.m in Sources */,
 				52CBB7572310160500E6E039 /* GMUWrappingDictionaryKey.m in Sources */,
 				52CBB75B2310160500E6E039 /* GMUDefaultClusterIconGenerator.m in Sources */,
@@ -1035,6 +1058,7 @@
 				AA2829AB22E1D80A00A5F6C7 /* MarkersResponseModel.swift in Sources */,
 				52D625252313E377001B2513 /* Data+PrettyPrint.swift in Sources */,
 				5B19937A2304370B00A6E78D /* Atoms.swift in Sources */,
+				AAF4AD5A2316900800E98F0A /* CarSceneCell.swift in Sources */,
 				52AC05262302CBCE00438113 /* CVPixelBufferExtension.swift in Sources */,
 				52CBB75C2310160500E6E039 /* GMUStaticCluster.m in Sources */,
 				52DE5E50230D77FE0088BC8C /* GMViewController.swift in Sources */,
