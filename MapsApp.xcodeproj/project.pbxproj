@@ -45,7 +45,7 @@
 		52CBB75C2310160500E6E039 /* GMUStaticCluster.m in Sources */ = {isa = PBXBuildFile; fileRef = 52CBB7522310160500E6E039 /* GMUStaticCluster.m */; };
 		52CBB765231016A400E6E039 /* GQTPointQuadTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 52CBB75E231016A400E6E039 /* GQTPointQuadTree.m */; };
 		52CBB766231016A400E6E039 /* GQTPointQuadTreeChild.m in Sources */ = {isa = PBXBuildFile; fileRef = 52CBB760231016A400E6E039 /* GQTPointQuadTreeChild.m */; };
-		52D625192313B733001B2513 /* POIMarkers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D625182313B733001B2513 /* POIMarkers.swift */; };
+		52D625192313B733001B2513 /* POIItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D625182313B733001B2513 /* POIItem.swift */; };
 		52D6251D2313C863001B2513 /* BcnMarkers.json in Resources */ = {isa = PBXBuildFile; fileRef = 52D6251C2313C863001B2513 /* BcnMarkers.json */; };
 		52D625232313E263001B2513 /* RetroStyle.json in Resources */ = {isa = PBXBuildFile; fileRef = 52D625222313E263001B2513 /* RetroStyle.json */; };
 		52D625252313E377001B2513 /* Data+PrettyPrint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D625242313E377001B2513 /* Data+PrettyPrint.swift */; };
@@ -151,7 +151,7 @@
 		52CBB763231016A400E6E039 /* GQTPointQuadTreeChild.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GQTPointQuadTreeChild.h; sourceTree = "<group>"; };
 		52CBB764231016A400E6E039 /* GQTBounds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GQTBounds.h; sourceTree = "<group>"; };
 		52CBB7672310172F00E6E039 /* GMHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GMHeader.h; sourceTree = "<group>"; };
-		52D625182313B733001B2513 /* POIMarkers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POIMarkers.swift; sourceTree = "<group>"; };
+		52D625182313B733001B2513 /* POIItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POIItem.swift; sourceTree = "<group>"; };
 		52D6251C2313C863001B2513 /* BcnMarkers.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = BcnMarkers.json; sourceTree = "<group>"; };
 		52D625222313E263001B2513 /* RetroStyle.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = RetroStyle.json; sourceTree = "<group>"; };
 		52D625242313E377001B2513 /* Data+PrettyPrint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+PrettyPrint.swift"; sourceTree = "<group>"; };
@@ -678,7 +678,7 @@
 		52D625172313B70D001B2513 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				52D625182313B733001B2513 /* POIMarkers.swift */,
+				52D625182313B733001B2513 /* POIItem.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1059,7 +1059,7 @@
 				52CBB729230EC2C300E6E039 /* GMSMapViewExtensions.swift in Sources */,
 				52B8DEC62316A7A40071FB59 /* SecondaryButton.swift in Sources */,
 				52AC05392302CF6A00438113 /* TFEmbededViewController.swift in Sources */,
-				52D625192313B733001B2513 /* POIMarkers.swift in Sources */,
+				52D625192313B733001B2513 /* POIItem.swift in Sources */,
 				AA2121C422D32A25005D058D /* AppDelegate.swift in Sources */,
 				AA69328F230436DA0083AB58 /* UIPanGestureExtension.swift in Sources */,
 				52AC05352302CEDE00438113 /* CameraFeedManagerDelegate.swift in Sources */,
