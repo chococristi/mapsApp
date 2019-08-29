@@ -65,7 +65,7 @@ class MyCollectionViewCell: UICollectionViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         //hide or reset anything you want
-        
+
         node.removeFromParentNode()
     }
 

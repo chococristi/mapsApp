@@ -33,6 +33,15 @@ class MapViewController: UIViewController {
     var previousLocation: CLLocation?
     var annotationsArray: [MKAnnotation] = []
 
+    var polyline: MKPolyline? {
+        didSet {
+            guard oldValue != self.polyline else { return }
+
+            for poll in self.mapView.overlays {
+                self.mapView.removeOverlay(poll)
+            }
+        }
+    }
     // MARK: LifeCycle functions
 
     override func viewDidLoad() {
@@ -213,6 +222,7 @@ extension MapViewController: MKMapViewDelegate {
             guard let marker = getMarkerFromAnnotation(view: view) else { return }
             setTopSheetLayout(withTopSpace: kTopMidScreen)
             centerRegionOnPin(mapView: mapView, pin: view)
+            showRouteOnMap(source: mapView.userLocation.coordinate, destination: view.annotation!.coordinate)
             navigateToDetail(marker: marker)
         }
 
@@ -222,6 +232,16 @@ extension MapViewController: MKMapViewDelegate {
     //    let zoomOutRegion = MKCoordinateRegion(center: mapView.region.center, span: MKCoordinateSpan(latitudeDelta: 0.09, longitudeDelta: 0.09))
     //    mapView.setRegion(zoomOutRegion, animated: true)
     //}
+
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        if overlay is MKPolyline {
+            let polylineRenderer = MKPolylineRenderer(overlay: overlay)
+            polylineRenderer.strokeColor = MapsColors.mainColor
+            polylineRenderer.lineWidth = 5
+            return polylineRenderer
+        }
+        return MKPolylineRenderer()
+    }
 
     func getMarkerFromAnnotation(view: MKAnnotationView) -> Marker? {
         var annotation = MKPointAnnotation()
@@ -273,6 +293,29 @@ extension MapViewController: MKMapViewDelegate {
         embeddedViewController.marker = marker
         embeddedViewController.didMove(toParent: self)
         bottomContainerView.addSubview(embeddedViewController.view)
+    }
+
+    func showRouteOnMap(source: CLLocationCoordinate2D, destination: CLLocationCoordinate2D ) {
+        let request = MKDirections.Request()
+        request.source = MKMapItem(placemark: MKPlacemark(coordinate: source, addressDictionary: nil))
+        request.destination = MKMapItem(placemark: MKPlacemark(coordinate: destination, addressDictionary: nil))
+        request.requestsAlternateRoutes = true
+        request.transportType = .automobile
+
+        let directions = MKDirections(request: request)
+
+        directions.calculate { [unowned self] response, _ in
+            guard let unwrappedResponse = response else { return }
+
+            if (!unwrappedResponse.routes.isEmpty) {
+                self.polyline = unwrappedResponse.routes[0].polyline
+
+                self.polyline.flatMap({ polyline in
+                    self.mapView.addOverlay(polyline)
+                    self.mapView.setVisibleMapRect(polyline.boundingMapRect, animated: true)
+                })
+            }
+        }
     }
 
 }
