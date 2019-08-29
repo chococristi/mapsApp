@@ -236,6 +236,11 @@ extension GMViewController: GMSMapViewDelegate {
         }
     }
 
+    func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
+        print("Tapped at coordinate: " + String(coordinate.latitude) + " "
+            + String(coordinate.longitude))
+    }
+
 }
 
 extension GMViewController: GMUClusterManagerDelegate {
