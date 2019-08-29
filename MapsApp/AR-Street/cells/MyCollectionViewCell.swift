@@ -20,7 +20,7 @@ class MyCollectionViewCell: UICollectionViewCell {
     // MARK: - Fields
 
     static var action: String = "turn"
-    
+
     static var nib: UINib {
         return UINib(nibName: identifier, bundle: Bundle(for: MyCollectionViewCell.self))
     }
@@ -65,6 +65,8 @@ class MyCollectionViewCell: UICollectionViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         //hide or reset anything you want
+        
+        node.removeFromParentNode()
     }
 
     // MARK: - Helpers
@@ -129,7 +131,7 @@ class MyCollectionViewCell: UICollectionViewCell {
         //        panTwoFingers.minimumNumberOfTouches = 2
         //        sceneView.addGestureRecognizer(panTwoFingers)
 
-           self.sceneView.scene = scene
+        self.sceneView.scene = scene
     }
 
     func refreshBorderColor(color: UIColor) {
