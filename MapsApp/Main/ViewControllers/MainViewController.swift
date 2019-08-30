@@ -102,11 +102,10 @@ class MainViewController: UITabBarController {
     }
 
     func setupMaps() -> UIViewController? {
-        let storyboard = UIStoryboard.init(name: "map",
-                                           bundle: nil)
+        let viewController = UIStoryboard.mapViewController()
 
         AnalyticsManager.sendEvent(id: "MapViewController", name: "map", content: "content")
-        return storyboard.instantiateInitialViewController() as? MapViewController
+        return viewController
     }
 
     func setupGoogleMaps() -> UIViewController? {

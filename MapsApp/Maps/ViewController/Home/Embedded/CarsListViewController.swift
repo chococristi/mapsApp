@@ -10,25 +10,50 @@ import UIKit
 
 class CarsListViewController: UIViewController {
 
+    // MARK: - IBOutlets
+
+    @IBOutlet weak var parkingName: UILabel?
+    @IBOutlet weak var tableView: UITableView?
+
+    // MARK: - Fields
+
     var marker: Marker! {
         didSet {
             guard oldValue != self.marker else { return }
-
-            parkingName.text = marker.name
+            guard let label = parkingName,
+            let tableView = tableView else {
+               return
+            }
+            label.text = marker.name
             tableView.reloadData()
         }
     }
 
-    @IBOutlet weak var parkingName: UILabel!
-    @IBOutlet weak var tableView: UITableView!
+    // MARK: - Contructor
+
+    // MARK: - Life cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        setup()
+    }
+
+    // MARK: - Helpers
+
+    func setup() {
+
         setupTableView()
     }
 
     func setupTableView() {
-         tableView.register(CarListCellTableViewCell.nib, forCellReuseIdentifier: CarListCellTableViewCell.identifier)
+
+        guard let tableView = tableView else {
+                return
+        }
+
+        tableView.register(CarListCellTableViewCell.nib,
+                           forCellReuseIdentifier: CarListCellTableViewCell.identifier)
 
         tableView.dataSource = self
         tableView.delegate = self

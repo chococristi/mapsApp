@@ -12,7 +12,7 @@
         <!--Map View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="MapViewController" customModule="mapsApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MapViewController" id="BYZ-38-t0r" customClass="MapViewController" customModule="mapsApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -28,7 +28,7 @@
                                     </mapView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KgW-Pj-1k1" customClass="SwitchCustom" customModule="mapsApp" customModuleProvider="target">
                                         <rect key="frame" x="316" y="10" width="49" height="31"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="31" id="7g7-cm-crb"/>
                                             <constraint firstAttribute="width" constant="49" id="hGt-AI-DlV"/>
@@ -97,6 +97,64 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="56.799999999999997" y="27.436281859070466"/>
+        </scene>
+        <!--Cars List View Controller-->
+        <scene sceneID="ZDj-BT-jdy">
+            <objects>
+                <viewController storyboardIdentifier="CarsListViewController" id="1lg-Nm-bfQ" customClass="CarsListViewController" customModule="mapsApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pRp-T8-EyF">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YUj-6w-Cj8" userLabel="ViewContainer">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nombre del parking" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d7L-AK-puZ">
+                                        <rect key="frame" x="25" y="20" width="325" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="Yjg-zz-ddT"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="22"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NC3-a3-gye">
+                                        <rect key="frame" x="0.0" y="68" width="375" height="599"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="YUj-6w-Cj8" id="5MN-oZ-tFT"/>
+                                        </connections>
+                                    </tableView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="d7L-AK-puZ" firstAttribute="top" secondItem="YUj-6w-Cj8" secondAttribute="top" constant="20" id="8rI-HR-DVK"/>
+                                    <constraint firstItem="d7L-AK-puZ" firstAttribute="leading" secondItem="YUj-6w-Cj8" secondAttribute="leading" constant="25" id="GfO-RB-AAB"/>
+                                    <constraint firstAttribute="trailing" secondItem="d7L-AK-puZ" secondAttribute="trailing" constant="25" id="YXL-Ax-g7c"/>
+                                    <constraint firstAttribute="bottom" secondItem="NC3-a3-gye" secondAttribute="bottom" id="dh0-yU-bBw"/>
+                                    <constraint firstAttribute="trailing" secondItem="NC3-a3-gye" secondAttribute="trailing" id="q5v-4b-39y"/>
+                                    <constraint firstItem="NC3-a3-gye" firstAttribute="leading" secondItem="YUj-6w-Cj8" secondAttribute="leading" id="ump-Qx-WTF"/>
+                                    <constraint firstItem="NC3-a3-gye" firstAttribute="top" secondItem="d7L-AK-puZ" secondAttribute="bottom" constant="8" id="ySK-bK-bN0"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="YUj-6w-Cj8" firstAttribute="trailing" secondItem="vca-sr-n02" secondAttribute="trailing" id="AEn-Sy-Ui4"/>
+                            <constraint firstItem="YUj-6w-Cj8" firstAttribute="leading" secondItem="vca-sr-n02" secondAttribute="leading" id="LYS-xG-oUx"/>
+                            <constraint firstItem="YUj-6w-Cj8" firstAttribute="top" secondItem="pRp-T8-EyF" secondAttribute="top" id="UtG-ed-EYh"/>
+                            <constraint firstItem="vca-sr-n02" firstAttribute="bottom" secondItem="YUj-6w-Cj8" secondAttribute="bottom" id="uNO-ic-sw9"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="vca-sr-n02"/>
+                    </view>
+                    <connections>
+                        <outlet property="parkingName" destination="d7L-AK-puZ" id="qvl-aA-m9u"/>
+                        <outlet property="tableView" destination="NC3-a3-gye" id="EaR-XY-5Ih"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PEB-Kt-eUl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="773" y="29"/>
         </scene>
     </scenes>
 </document>

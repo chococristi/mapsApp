@@ -29,6 +29,7 @@ class GMViewController: UIViewController {
 
     private var locationService: LocationService?
     private var clusterManager: GMUClusterManager!
+    private let carsListViewController = UIStoryboard.carsListViewController()
 
     // MARK: - Constructor
 
@@ -244,8 +245,26 @@ extension GMViewController: GMUClusterManagerDelegate {
 
     func clusterManager(_ clusterManager: GMUClusterManager, didTap clusterItem: GMUClusterItem) -> Bool {
         print("tap cluster item")
-
+        if let marker = getMarkerFromAnnotation(clusterItem: clusterItem) {
+            navigateToDetail(marker: marker)
+        }
         return false
+    }
+
+    func getMarkerFromAnnotation(clusterItem: GMUClusterItem) -> Marker? {
+
+        if let markerFound = markers.first(where: { $0.coordinates.latitude == clusterItem.position.latitude &&
+            $0.coordinates.longitude == clusterItem.position.longitude
+        }) {
+            return markerFound
+        }
+        return nil
+    }
+
+    func navigateToDetail(marker: Marker) {
+        guard let viewController = carsListViewController else { return }
+        viewController.marker = marker
+        navigationController?.pushViewController(viewController, animated: true)
     }
 }
 

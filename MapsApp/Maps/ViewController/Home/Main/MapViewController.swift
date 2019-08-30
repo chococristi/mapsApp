@@ -28,7 +28,7 @@ class MapViewController: UIViewController {
     let kTopMidScreen: CGFloat = UIScreen.main.bounds.height * 1/2
     let kTopLowScreen: CGFloat = UIScreen.main.bounds.height
 
-    var embeddedViewController = CarsListViewController()
+    var embeddedViewController = UIStoryboard.carsListViewController()
     var initialTopSpace: CGFloat = 300.0
     var previousLocation: CLLocation?
     var annotationsArray: [MKAnnotation] = []
@@ -215,9 +215,9 @@ extension MapViewController: MKMapViewDelegate {
 
         if let clustered = view.annotation as? MKClusterAnnotation {
             centerRegionOnCluster(mapView: mapView, cluster: clustered)
-            //guard let embedded = embeddedViewController else { return }
-            embeddedViewController.view.removeFromSuperview()
-            embeddedViewController.dismiss(animated: true)
+            guard let embedded = embeddedViewController else { return }
+            embedded.view.removeFromSuperview()
+            embedded.dismiss(animated: true)
         } else {
             guard let marker = getMarkerFromAnnotation(view: view) else { return }
             setTopSheetLayout(withTopSpace: kTopMidScreen)
@@ -288,11 +288,12 @@ extension MapViewController: MKMapViewDelegate {
     }
 
     func navigateToDetail(marker : Marker) {
-        addChild(embeddedViewController)
-        embeddedViewController.view.frame = bottomContainerView.bounds
-        embeddedViewController.marker = marker
-        embeddedViewController.didMove(toParent: self)
-        bottomContainerView.addSubview(embeddedViewController.view)
+        guard let embedded = embeddedViewController else { return }
+        addChild(embedded)
+        embedded.view.frame = bottomContainerView.bounds
+        embedded.marker = marker
+        embedded.didMove(toParent: self)
+        bottomContainerView.addSubview(embedded.view)
     }
 
     func showRouteOnMap(source: CLLocationCoordinate2D, destination: CLLocationCoordinate2D ) {

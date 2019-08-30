@@ -23,4 +23,14 @@ extension UIStoryboard {
     static func centerViewController() -> MainViewController? {
         return mainStoryboard().instantiateViewController(withIdentifier: "MainViewController") as? MainViewController
     }
+
+    static func mapStoryboard() -> UIStoryboard { return UIStoryboard(name: "map", bundle: Bundle.main) }
+
+    static func mapViewController() -> MapViewController? {
+        return mapStoryboard().instantiateViewController(withIdentifier: "MapViewController") as? MapViewController
+    }
+
+    static func carsListViewController() -> CarsListViewController? {
+        return mapStoryboard().instantiateViewController(withIdentifier: "CarsListViewController") as? CarsListViewController
+    }
 }
