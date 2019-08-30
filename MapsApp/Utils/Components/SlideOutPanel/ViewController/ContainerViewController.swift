@@ -178,7 +178,7 @@ extension ContainerViewController {
 
 extension ContainerViewController: UIGestureRecognizerDelegate {
     @objc func handlePanGesture(_ recognizer: UIPanGestureRecognizer) {
-        let gestureIsDraggingFromLeftToRight = (recognizer.velocity(in: view).x > 0)
+        let gestureIsDraggingFromLeftToRight = (recognizer.velocity(in: view).x > .zero)
 
         switch recognizer.state {
         case .began:

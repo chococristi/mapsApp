@@ -12,7 +12,7 @@ import UIKit
 public class SwitchCustom: UIControl {
 
     // MARK: Public properties
-    public var animationDelay: Double = 0
+    public var animationDelay: Double = .zero
     public var animationSpriteWithDamping = CGFloat(0.7)
     public var initialSpringVelocity = CGFloat(0.5)
     public var animationOptions: UIView.AnimationOptions = [UIView.AnimationOptions.curveEaseOut,
@@ -50,7 +50,7 @@ public class SwitchCustom: UIControl {
             return self.privateCornerRadius
         }
         set {
-            if newValue > 0.5 || newValue < 0.0 {
+            if newValue > 0.5 || newValue < .zero {
                 privateCornerRadius = 0.5
             } else {
                 privateCornerRadius = newValue
@@ -77,7 +77,7 @@ public class SwitchCustom: UIControl {
             return self.privateThumbCornerRadius
         }
         set {
-            if newValue > 0.5 || newValue < 0.0 {
+            if newValue > 0.5 || newValue < .zero {
                 privateThumbCornerRadius = 0.5
             } else {
                 privateThumbCornerRadius = newValue
@@ -236,7 +236,7 @@ extension SwitchCustom {
 
         self.isAnimating = true
 
-        UIView.animate(withDuration: self.animationDuration, delay: 0,
+        UIView.animate(withDuration: self.animationDuration, delay: .zero,
                        usingSpringWithDamping: 0.7,
                        initialSpringVelocity: 0.5,
                        options: [UIView.AnimationOptions.curveEaseOut,
@@ -287,9 +287,12 @@ extension SwitchCustom {
             //label frame
             if self.areLabelsShown {
                 let labelWidth = self.bounds.width / 2 - self.padding * 2
-                self.labelOn.frame = CGRect(x: 0, y: 0, width: labelWidth, height: self.frame.height)
+                self.labelOn.frame = CGRect(x: .zero,
+                                            y: .zero,
+                                            width: labelWidth,
+                                            height: self.frame.height)
                 self.labelOff.frame = CGRect(x: self.frame.width - labelWidth,
-                                             y: 0,
+                                             y: .zero,
                                              width: labelWidth,
                                              height: self.frame.height)
             }
@@ -308,11 +311,13 @@ extension SwitchCustom {
             self.onImageView.frame.size = onOffImageSize
             self.offImageView.frame.size = onOffImageSize
 
-            self.onImageView.center = CGPoint(x: self.onPoint.x + self.thumbView.frame.size.width / 2, y: self.thumbView.center.y)
-            self.offImageView.center = CGPoint(x: self.offPoint.x + self.thumbView.frame.size.width / 2, y: self.thumbView.center.y)
+            self.onImageView.center = CGPoint(x: self.onPoint.x + self.thumbView.frame.size.width / 2,
+                                              y: self.thumbView.center.y)
+            self.offImageView.center = CGPoint(x: self.offPoint.x + self.thumbView.frame.size.width / 2,
+                                               y: self.thumbView.center.y)
 
-            self.onImageView.alpha = self.isOn ? 1.0 : 0.0
-            self.offImageView.alpha = self.isOn ? 0.0 : 1.0
+            self.onImageView.alpha = self.isOn ? 1.0 : .zero
+            self.offImageView.alpha = self.isOn ? .zero : 1.0
 
         }
     }
@@ -323,8 +328,8 @@ extension SwitchCustom {
 
     fileprivate func setupLabels() {
         guard self.areLabelsShown else {
-            self.labelOff.alpha = 0
-            self.labelOn.alpha = 0
+            self.labelOff.alpha = .zero
+            self.labelOn.alpha = .zero
             return
 
         }
@@ -333,8 +338,14 @@ extension SwitchCustom {
         self.labelOn.alpha = 1
 
         let labelWidth = self.bounds.width / 2 - self.padding * 2
-        self.labelOn.frame = CGRect(x: 0, y: 0, width: labelWidth, height: self.frame.height)
-        self.labelOff.frame = CGRect(x: self.frame.width - labelWidth, y: 0, width: labelWidth, height: self.frame.height)
+        self.labelOn.frame = CGRect(x: .zero,
+                                    y: .zero,
+                                    width: labelWidth,
+                                    height: self.frame.height)
+        self.labelOff.frame = CGRect(x: self.frame.width - labelWidth,
+                                     y: .zero,
+                                     width: labelWidth,
+                                     height: self.frame.height)
         self.labelOn.font = UIFont.boldSystemFont(ofSize: 12)
         self.labelOff.font = UIFont.boldSystemFont(ofSize: 12)
         self.labelOn.textColor = UIColor.white
@@ -362,8 +373,8 @@ extension SwitchCustom {
         }
 
         self.onImageView.center.x = self.isOn ? self.onPoint.x + self.thumbView.frame.size.width / 2 : self.frame.width
-        self.offImageView.center.x = !self.isOn ? self.offPoint.x + self.thumbView.frame.size.width / 2 : 0
-        self.onImageView.alpha = self.isOn ? 1.0 : 0.0
-        self.offImageView.alpha = self.isOn ? 0.0 : 1.0
+        self.offImageView.center.x = !self.isOn ? self.offPoint.x + self.thumbView.frame.size.width / 2 : .zero
+        self.onImageView.alpha = self.isOn ? 1.0 : .zero
+        self.offImageView.alpha = self.isOn ? .zero : 1.0
     }
 }
