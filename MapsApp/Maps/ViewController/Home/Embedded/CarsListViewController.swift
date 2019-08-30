@@ -20,11 +20,13 @@ class CarsListViewController: UIViewController {
     var marker: Marker! {
         didSet {
             guard oldValue != self.marker else { return }
-            guard let label = parkingName,
-            let tableView = tableView else {
+
+            guard let tableView = tableView else {
                return
             }
-            label.text = marker.name
+
+            setupLabel()
+
             tableView.reloadData()
         }
     }
@@ -45,7 +47,14 @@ class CarsListViewController: UIViewController {
 
         edgesForExtendedLayout = []
 
+        setupLabel()
+
         setupTableView()
+    }
+
+    func setupLabel() {
+        guard let label = parkingName, marker != nil else { return }
+        label.text = marker.name
     }
 
     func setupTableView() {
