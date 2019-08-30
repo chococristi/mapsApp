@@ -95,7 +95,7 @@ extension ContainerViewController {
             animateCenterPanelXPosition(
                 targetPosition: centerViewController.view.frame.width - centerPanelExpandedOffset)
         } else {
-            animateCenterPanelXPosition(targetPosition: 0) { _ in
+            animateCenterPanelXPosition(targetPosition: .zero) { _ in
                 self.currentState = .bothCollapsed
                 self.leftViewController?.view.removeFromSuperview()
                 self.leftViewController = nil
@@ -128,7 +128,7 @@ extension ContainerViewController {
             animateCenterPanelXPosition(
                 targetPosition: -centerViewController.view.frame.width + centerPanelExpandedOffset)
         } else {
-            animateCenterPanelXPosition(targetPosition: 0) { _ in
+            animateCenterPanelXPosition(targetPosition: .zero) { _ in
                 self.currentState = .bothCollapsed
 
                 self.rightViewController?.view.removeFromSuperview()
@@ -150,16 +150,16 @@ extension ContainerViewController {
 
     func animateCenterPanelXPosition(targetPosition: CGFloat, completion: ((Bool) -> Void)? = nil) {
         UIView.animate(withDuration: 0.5,
-                       delay: 0,
+                       delay: .zero,
                        usingSpringWithDamping: 0.8,
-                       initialSpringVelocity: 0,
+                       initialSpringVelocity: .zero,
                        options: .curveEaseInOut, animations: {
                         self.centerViewController.view.frame.origin.x = targetPosition
         }, completion: completion)
     }
 
     func addChildSidePanelController(_ sidePanelController: UIViewController) {
-        view.insertSubview(sidePanelController.view, at: 0)
+        view.insertSubview(sidePanelController.view, at: .zero)
 
         addChild(sidePanelController)
         sidePanelController.didMove(toParent: self)
@@ -169,7 +169,7 @@ extension ContainerViewController {
         if shouldShowShadow {
             centerViewController.view.layer.shadowOpacity = 0.8
         } else {
-            centerViewController.view.layer.shadowOpacity = 0.0
+            centerViewController.view.layer.shadowOpacity = .zero
         }
     }
 }
@@ -207,7 +207,7 @@ extension ContainerViewController: UIGestureRecognizerDelegate {
                 animateLeftPanel(shouldExpand: hasMovedGreaterThanHalfway)
             } else if rightViewController != nil,
                 let rview = recognizer.view {
-                let hasMovedGreaterThanHalfway = rview.center.x < 0
+                let hasMovedGreaterThanHalfway = rview.center.x < .zero
                 animateRightPanel(shouldExpand: hasMovedGreaterThanHalfway)
             }
 
