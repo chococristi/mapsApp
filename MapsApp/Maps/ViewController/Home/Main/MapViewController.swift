@@ -163,7 +163,7 @@ class MapViewController: UIViewController, CarListDelegate {
     func resetMapView(withNew directions: MKDirections) {
         mapView.removeOverlays(mapView.overlays)
     }
-    
+
     func expandViewOnClick() {
             setTopSheetLayout(withTopSpace: kTopFullScreen)
        }

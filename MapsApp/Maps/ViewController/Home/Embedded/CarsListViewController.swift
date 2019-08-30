@@ -57,6 +57,7 @@ class CarsListViewController: UIViewController, UITableViewDataSource, UITableVi
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         delegate?.expandViewOnClick()
+
 //        sceneContainer.init3DObject(node: arrayNodes[indexPath.row].node)
     }
 
@@ -65,4 +66,3 @@ class CarsListViewController: UIViewController, UITableViewDataSource, UITableVi
 protocol CarListDelegate: class {
     func expandViewOnClick()
 }
-
