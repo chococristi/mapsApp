@@ -45,7 +45,10 @@ class ZoomAndSnapFlowLayout: UICollectionViewFlowLayout {
 
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         guard let collectionView = collectionView else { return nil }
-        let rectAttributes = super.layoutAttributesForElements(in: rect)!.map { $0.copy() as! UICollectionViewLayoutAttributes }
+        guard let rectAttributes = super.layoutAttributesForElements(in: rect)?.compactMap({
+            $0.copy() as? UICollectionViewLayoutAttributes
+        }) else { return nil }
+
         let visibleRect = CGRect(origin: collectionView.contentOffset, size: collectionView.frame.size)
 
         // Make the cells be zoomed when they reach the center of the screen
