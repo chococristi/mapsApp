@@ -44,10 +44,10 @@ class ZoomAndSnapFlowLayout: UICollectionViewFlowLayout {
     }
 
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-        guard let collectionView = collectionView else { return nil }
-        guard let rectAttributes = super.layoutAttributesForElements(in: rect)?.compactMap({
-            $0.copy() as? UICollectionViewLayoutAttributes
-        }) else { return nil }
+        guard let collectionView = collectionView,
+            let rectAttributes = super.layoutAttributesForElements(in: rect)?.compactMap({
+                $0.copy() as? UICollectionViewLayoutAttributes
+            }) else { return nil }
 
         let visibleRect = CGRect(origin: collectionView.contentOffset, size: collectionView.frame.size)
 
