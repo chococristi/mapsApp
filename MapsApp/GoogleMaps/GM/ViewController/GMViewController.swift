@@ -215,8 +215,8 @@ extension GMViewController: GMSMapViewDelegate {
         geocoder.reverseGeocodeCoordinate(coordinate) { response, _ in
 
             if let address = response?.firstResult(),
-                let addressLines = address.lines {
-                let item = POIItem(position: coordinate, name: addressLines.description)
+                let addressLines = address.thoroughfare {
+                let item = POIItem(position: coordinate, name: addressLines)
                 self.clusterManager.add(item)
                 self.clusterManager.cluster()
             }
@@ -254,11 +254,11 @@ extension GMViewController: GMUClusterRendererDelegate {
         switch object {
         case let markerPOIItem as POIItem:
             let marker = GMSMarker(position: markerPOIItem.position)
+            marker.snippet = markerPOIItem.name
             marker.icon = GMSMarker.markerImage(with: MapsColors.mainColor)
             return marker
         default:
             return nil
         }
     }
-
 }
