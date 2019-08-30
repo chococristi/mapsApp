@@ -43,6 +43,8 @@ class CarsListViewController: UIViewController {
 
     func setup() {
 
+        edgesForExtendedLayout = []
+
         setupTableView()
     }
 
