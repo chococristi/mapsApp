@@ -39,9 +39,8 @@
                                 <outlet property="delegate" destination="dPC-HA-hv1" id="mGz-II-SGt"/>
                             </connections>
                         </tableView>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xh4-kB-yte">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xh4-kB-yte" customClass="CarSceneView" customModule="mapsApp" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="407" width="375" height="260"/>
-                            <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="260" id="PU8-3h-NtH"/>
                             </constraints>
