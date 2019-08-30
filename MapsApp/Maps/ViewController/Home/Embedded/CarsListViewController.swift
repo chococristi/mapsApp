@@ -8,11 +8,12 @@
 
 import UIKit
 
-class CarsListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class CarsListViewController: UIViewController {
 
     var marker: Marker! {
         didSet {
             guard oldValue != self.marker else { return }
+
             parkingName.text = marker.name
             tableView.reloadData()
         }
@@ -36,6 +37,9 @@ class CarsListViewController: UIViewController, UITableViewDataSource, UITableVi
         tableView.separatorStyle = .none
 
     }
+}
+
+extension CarsListViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return marker.cars.count
@@ -47,8 +51,8 @@ class CarsListViewController: UIViewController, UITableViewDataSource, UITableVi
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CarListCellTableViewCell.identifier,
                                                        for: indexPath) as? CarListCellTableViewCell
             else { return UITableViewCell() }
-        cell.carImage?.image = UIImage.init(named: marker.cars[indexPath.row].image)
-        cell.carLabel?.text = marker.cars[indexPath.row].brand + " " + marker.cars[indexPath.row].model
+
+        cell.item = marker.cars[indexPath.row]
 
         return cell
     }
