@@ -7,21 +7,25 @@
 //
 
 import UIKit
+import ARKit
 
 class CarsListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     weak var delegate: CarListDelegate?
+    var arrayNodes: [Nodes] = []
 
     var marker: Marker! {
         didSet {
             guard oldValue != self.marker else { return }
             parkingName.text = marker.name
             tableView.reloadData()
+            setupNodes()
         }
     }
 
     @IBOutlet weak var parkingName: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var sceneContainer: CarSceneView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +39,30 @@ class CarsListViewController: UIViewController, UITableViewDataSource, UITableVi
         tableView.delegate = self
 
         tableView.bounces = false
-        //tableView.separatorStyle = .none
+        tableView.separatorStyle = .none
+
+    }
+
+    func setupNodes() {
+
+        for car in marker.cars {
+            var collada: SCNNode
+            var node: Nodes
+
+            switch (car.model) {
+            case "Ibiza":
+                collada = Molecules.coladaObject(name: "dragon", path: "art.scnassets/car/dragon.dae")
+                node = Nodes(title: "dragon\n", node: collada)
+            case "Leon":
+                collada = Molecules.coladaObject(name: "cherub", path: "art.scnassets/cherub/cherub.dae")
+                node = Nodes(title: "cherub\n", node: collada)
+            default:
+                collada = Molecules.coladaObject(name: "dragon", path: "art.scnassets/car/dragon.dae")
+                node = Nodes(title: "dragon\n", node: collada)
+            }
+
+            arrayNodes.append(node)
+        }
 
     }
 
@@ -57,8 +84,8 @@ class CarsListViewController: UIViewController, UITableViewDataSource, UITableVi
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         delegate?.expandViewOnClick()
-
-//        sceneContainer.init3DObject(node: arrayNodes[indexPath.row].node)
+        let car = marker.cars[indexPath.row]
+        sceneContainer.init3DObject(node: arrayNodes[indexPath.row].node, car: car)
     }
 
 }

@@ -11,6 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CarsListViewController" customModule="mapsApp" customModuleProvider="target">
             <connections>
                 <outlet property="parkingName" destination="Dr6-sk-GB9" id="dNy-Ce-b6F"/>
+                <outlet property="sceneContainer" destination="Xh4-kB-yte" id="ebT-nU-CUY"/>
                 <outlet property="tableView" destination="XGm-KS-9Uk" id="8Uq-xT-mhZ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
