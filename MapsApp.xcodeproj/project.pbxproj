@@ -380,6 +380,7 @@
 		52AC054D23041C1D00438113 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				52CBB71C230E98C100E6E039 /* Services */,
 				AA7E44B02316756C0069777E /* Firebase */,
 				52D625282313E981001B2513 /* Components */,
 				52AC054E23041C3100438113 /* Extensions */,
@@ -755,7 +756,6 @@
 			children = (
 				52CBB715230E789300E6E039 /* ViewController */,
 				52D625172313B70D001B2513 /* Model */,
-				52CBB71C230E98C100E6E039 /* Services */,
 			);
 			path = GM;
 			sourceTree = "<group>";
