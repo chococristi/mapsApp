@@ -77,6 +77,8 @@
 		AA69328F230436DA0083AB58 /* UIPanGestureExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA69328E230436DA0083AB58 /* UIPanGestureExtension.swift */; };
 		AA7E44B2231675820069777E /* AnalyticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7E44B1231675820069777E /* AnalyticsManager.swift */; };
 		AA7E44B423167D720069777E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AA7E44B323167D720069777E /* GoogleService-Info.plist */; };
+		AA9A687D23190F750091677F /* CarSceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA9A687C23190F750091677F /* CarSceneView.swift */; };
+		AA9A688023190F910091677F /* CarSceneView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA9A687F23190F910091677F /* CarSceneView.xib */; };
 		AAAA33ED2313DA760061DB2B /* CarListCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAA33EB2313DA760061DB2B /* CarListCellTableViewCell.swift */; };
 		AAAA33EE2313DA760061DB2B /* CarListCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAAA33EC2313DA760061DB2B /* CarListCellTableViewCell.xib */; };
 		AAAD742522F2DE9100C3ED15 /* CarsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAD742322F2DE9100C3ED15 /* CarsListViewController.swift */; };
@@ -183,6 +185,8 @@
 		AA69328E230436DA0083AB58 /* UIPanGestureExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPanGestureExtension.swift; sourceTree = "<group>"; };
 		AA7E44B1231675820069777E /* AnalyticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsManager.swift; sourceTree = "<group>"; };
 		AA7E44B323167D720069777E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		AA9A687C23190F750091677F /* CarSceneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarSceneView.swift; sourceTree = "<group>"; };
+		AA9A687F23190F910091677F /* CarSceneView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CarSceneView.xib; sourceTree = "<group>"; };
 		AAAA33EB2313DA760061DB2B /* CarListCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarListCellTableViewCell.swift; sourceTree = "<group>"; };
 		AAAA33EC2313DA760061DB2B /* CarListCellTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CarListCellTableViewCell.xib; sourceTree = "<group>"; };
 		AAAD742322F2DE9100C3ED15 /* CarsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarsListViewController.swift; sourceTree = "<group>"; };
@@ -469,6 +473,7 @@
 		52B8DEBA2316552B0071FB59 /* TableView */ = {
 			isa = PBXGroup;
 			children = (
+				AA9A687E23190F790091677F /* CarView */,
 				52B8DEBB231655330071FB59 /* Cell */,
 			);
 			path = TableView;
@@ -837,6 +842,15 @@
 			path = Firebase;
 			sourceTree = "<group>";
 		};
+		AA9A687E23190F790091677F /* CarView */ = {
+			isa = PBXGroup;
+			children = (
+				AA9A687C23190F750091677F /* CarSceneView.swift */,
+				AA9A687F23190F910091677F /* CarSceneView.xib */,
+			);
+			path = CarView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -912,6 +926,7 @@
 				52D625272313E6E7001B2513 /* NightStyle.json in Resources */,
 				5B0F40B722E71A9D00C3FC12 /* ARkitCarrousel.xib in Resources */,
 				AA2121CE22D32A26005D058D /* LaunchScreen.storyboard in Resources */,
+				AA9A688023190F910091677F /* CarSceneView.xib in Resources */,
 				AAAD742622F2DE9100C3ED15 /* CarsListViewController.xib in Resources */,
 				52D625232313E263001B2513 /* RetroStyle.json in Resources */,
 				52AC053D2302D78300438113 /* labels.txt in Resources */,
@@ -1054,6 +1069,7 @@
 				5B0F40B622E71A9D00C3FC12 /* ARkitCarrousel.swift in Sources */,
 				52CBB766231016A400E6E039 /* GQTPointQuadTreeChild.m in Sources */,
 				AA7E44B2231675820069777E /* AnalyticsManager.swift in Sources */,
+				AA9A687D23190F750091677F /* CarSceneView.swift in Sources */,
 				5B8E20AF2302B4FB00066534 /* PlaceObjectsplaneViewController.swift in Sources */,
 				52AC055423041FFF00438113 /* LaunchScreenView.swift in Sources */,
 				5B3293E022E9977D00F3E268 /* QRViewController.swift in Sources */,

@@ -10,6 +10,8 @@ import UIKit
 
 class CarsListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+    weak var delegate: CarListDelegate?
+
     var marker: Marker! {
         didSet {
             guard oldValue != self.marker else { return }
@@ -33,7 +35,7 @@ class CarsListViewController: UIViewController, UITableViewDataSource, UITableVi
         tableView.delegate = self
 
         tableView.bounces = false
-        tableView.separatorStyle = .none
+        //tableView.separatorStyle = .none
 
     }
 
@@ -53,4 +55,14 @@ class CarsListViewController: UIViewController, UITableViewDataSource, UITableVi
         return cell
     }
 
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        delegate?.expandViewOnClick()
+//        sceneContainer.init3DObject(node: arrayNodes[indexPath.row].node)
+    }
+
 }
+
+protocol CarListDelegate: class {
+    func expandViewOnClick()
+}
+
