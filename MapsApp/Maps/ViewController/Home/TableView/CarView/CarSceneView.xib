@@ -9,7 +9,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CarSceneView" customModule="mapsApp" customModuleProvider="target">
             <connections>
+                <outlet property="carNameLabel" destination="w8b-MA-3p0" id="9Br-ma-ylG"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="hIL-3X-gLM"/>
+                <outlet property="sceneView" destination="0Cs-cG-0qj" id="wki-Sr-XaY"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -25,10 +27,8 @@
                 </label>
                 <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Cs-cG-0qj">
                     <rect key="frame" x="0.0" y="40" width="414" height="210"/>
-                    <color key="backgroundColor" red="1" green="0.5409764051" blue="0.84731429820000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </sceneKitView>
             </subviews>
-            <color key="backgroundColor" systemColor="systemPurpleColor" red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="0Cs-cG-0qj" secondAttribute="trailing" id="6Gl-EB-1tF"/>
                 <constraint firstItem="w8b-MA-3p0" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="NL1-Sc-Afo"/>

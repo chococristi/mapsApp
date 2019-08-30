@@ -7,10 +7,15 @@
 //
 
 import UIKit
+import ARKit
 
 class CarSceneView: UIView {
 
     @IBOutlet var contentView: UIView!
+    @IBOutlet weak var carNameLabel: UILabel!
+    @IBOutlet weak var sceneView: SCNView!
+
+    var node = SCNNode()
 
     // MARK: - View Initializers
     override init(frame: CGRect) {
@@ -25,7 +30,25 @@ class CarSceneView: UIView {
 
     private func commonInit() {
         Bundle.main.loadNibNamed(String(describing: CarSceneView.self), owner: self, options: nil)
-        contentView.fixInView(self)
+            contentView.fixInView(self)
+            sceneSetup()
     }
+
+       func sceneSetup() {
+            let newScene = SCNScene()
+
+           let ambientLightNode = SCNNode()
+           ambientLightNode.light = SCNLight()
+           ambientLightNode.light!.type = SCNLight.LightType.ambient
+           ambientLightNode.light!.color = UIColor(white: 0.67, alpha: 1.0)
+           newScene.rootNode.addChildNode(ambientLightNode)
+            self.sceneView.scene = newScene
+        }
+
+    func init3DObject(node: SCNNode, car: Car) {
+        carNameLabel.text = car.brand + " " + car.model
+            self.node = node
+            self.sceneView.scene?.rootNode.addChildNode(node)
+        }
 
 }
