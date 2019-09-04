@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ARKit
 
 class CarsListViewController: UIViewController {
 
@@ -14,6 +15,11 @@ class CarsListViewController: UIViewController {
 
     @IBOutlet weak var parkingName: UILabel?
     @IBOutlet weak var tableView: UITableView?
+    @IBOutlet weak var carSceneView: CarSceneView!
+    
+    
+    weak var delegate: CarListDelegate?
+    var arrayNodes: [Nodes] = []
 
     // MARK: - Fields
 
@@ -28,6 +34,8 @@ class CarsListViewController: UIViewController {
             setupLabel()
 
             tableView.reloadData()
+
+            setupNodes()
         }
     }
 
@@ -73,6 +81,27 @@ class CarsListViewController: UIViewController {
         tableView.separatorStyle = .none
 
     }
+
+    func setupNodes() {
+
+        for car in marker.cars {
+            var collada: SCNNode
+            var node: Nodes
+
+            switch (car.model) {
+
+            case "Leon":
+                collada = Molecules.coladaObject(name: "cherub", path: "art.scnassets/cherub/cherub.dae")
+                node = Nodes(title: "cherub\n", node: collada)
+            default:
+                collada = Molecules.coladaObject(name: "car", path: "art.scnassets/carScene/source/car.dae")
+                node = Nodes(title: "car\n", node: collada)
+            }
+
+            arrayNodes.append(node)
+        }
+
+    }
 }
 
 extension CarsListViewController: UITableViewDataSource, UITableViewDelegate {
@@ -93,4 +122,14 @@ extension CarsListViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
 
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        delegate?.expandViewOnClick()
+        let node = arrayNodes[indexPath.row].node
+        let car = marker.cars[indexPath.row]
+        carSceneView.init3DObject(node: node, car: car)
+    }
+}
+
+protocol CarListDelegate: class {
+    func expandViewOnClick()
 }

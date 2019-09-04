@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class MapViewController: UIViewController {
+class MapViewController: UIViewController, CarListDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var bottomSheetView: CurvedView!
@@ -49,6 +49,7 @@ class MapViewController: UIViewController {
         checkLocationServices()
         setAnnotationsInMap()
         setupSwitch()
+        embeddedViewController?.delegate = self
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(self.didPan(panGesture:)))
         bottomSheetView.addGestureRecognizer(panGesture)
         edgesForExtendedLayout = []
@@ -171,6 +172,11 @@ class MapViewController: UIViewController {
     func resetMapView(withNew directions: MKDirections) {
         mapView.removeOverlays(mapView.overlays)
     }
+
+    func expandViewOnClick() {
+            setTopSheetLayout(withTopSpace: kTopFullScreen)
+       }
+
 }
 
 extension MapViewController: CLLocationManagerDelegate {
@@ -313,7 +319,7 @@ extension MapViewController: MKMapViewDelegate {
 
                 self.polyline.flatMap({ polyline in
                     self.mapView.addOverlay(polyline)
-                    self.mapView.setVisibleMapRect(polyline.boundingMapRect, animated: true)
+                    //self.mapView.setVisibleMapRect(polyline.boundingMapRect, animated: true)
                 })
             }
         }
