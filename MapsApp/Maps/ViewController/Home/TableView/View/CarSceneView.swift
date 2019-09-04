@@ -32,6 +32,7 @@ class CarSceneView: UIView {
             Bundle.main.loadNibNamed(String(describing: CarSceneView.self), owner: self, options: nil)
             contentView.fixInView(self)
             sceneSetup()
+            self.sceneView.scene?.rootNode.addChildNode(self.node)
     }
 
        func sceneSetup() {
@@ -46,9 +47,14 @@ class CarSceneView: UIView {
         }
 
     func init3DObject(node: SCNNode, car: Car) {
-        carNameLabel.text = car.brand + " " + car.model
-            self.node = node
-            self.sceneView.scene?.rootNode.addChildNode(node)
-        }
 
+//        self.sceneView.scene?.rootNode.enumerateChildNodes({(node, stop) in
+//            node.removeFromParentNode()
+//        })
+
+        self.sceneView.scene?.rootNode.addChildNode(self.node)
+        carNameLabel.text = car.brand + " " + car.model
+        self.node = node
+
+    }
 }
