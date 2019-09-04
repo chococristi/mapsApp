@@ -48,13 +48,20 @@ class CarSceneView: UIView {
 
     func init3DObject(node: SCNNode, car: Car) {
 
-//        self.sceneView.scene?.rootNode.enumerateChildNodes({(node, stop) in
-//            node.removeFromParentNode()
-//        })
-
-        self.sceneView.scene?.rootNode.addChildNode(self.node)
+        print("++++++++++++init3DObject++++++++++++")
+        print(self.sceneView.scene?.rootNode.childNodes.count ?? 12345)
+        
+        self.sceneView.scene?.rootNode.enumerateChildNodes({(node, stop) in
+            node.removeFromParentNode()
+        })
+        print("++++++++++++removed++++++++++++")
+        print(self.sceneView.scene?.rootNode.childNodes.count ?? 12345)
+        self.sceneView.scene?.rootNode.addChildNode(node)
         carNameLabel.text = car.brand + " " + car.model
         self.node = node
+        print("++++++++++++added++++++++++++")
+        print(self.sceneView.scene?.rootNode.childNodes.count ?? 12345)
+        print("++++++++++++fi++++++++++++")
 
     }
 }
