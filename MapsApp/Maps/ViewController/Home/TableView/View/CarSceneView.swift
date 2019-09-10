@@ -50,8 +50,18 @@ class CarSceneView: UIView {
 
         self.node = node
         sceneSetup()
-        self.sceneView.scene?.rootNode.addChildNode(node)
+        self.sceneView.scene?.rootNode.addChildNode(self.node)
         carNameLabel.text = car.brand + " " + car.model
+        play()
+    }
+
+    func play() {
+
+        let action = SCNAction.repeatForever(SCNAction.rotate(by: .pi,
+                                                              around: SCNVector3(0, 1, 0),
+                                                              duration: 5))
+        self.sceneView.scene?.rootNode.runAction(action,
+                       forKey: "turn")
 
     }
 }
