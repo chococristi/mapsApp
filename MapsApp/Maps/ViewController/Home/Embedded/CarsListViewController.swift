@@ -18,6 +18,7 @@ class CarsListViewController: UIViewController {
     @IBOutlet weak var carSceneView: CarSceneView!
     
     
+    
     weak var delegate: CarListDelegate?
     var arrayNodes: [Nodes] = []
 
@@ -35,7 +36,7 @@ class CarsListViewController: UIViewController {
 
             tableView.reloadData()
 
-            setupNodes()
+           
         }
     }
 
@@ -56,7 +57,7 @@ class CarsListViewController: UIViewController {
         edgesForExtendedLayout = []
 
         setupLabel()
-
+        setupNodes()
         setupTableView()
     }
 
@@ -89,7 +90,7 @@ class CarsListViewController: UIViewController {
             var node: Nodes
 
             switch (car.model) {
-
+             
             case "Leon":
                 collada = Molecules.coladaObject(name: "cherub", path: "art.scnassets/cherub/cherub.dae")
                 node = Nodes(title: "cherub\n", node: collada)
@@ -126,7 +127,7 @@ extension CarsListViewController: UITableViewDataSource, UITableViewDelegate {
         delegate?.expandViewOnClick()
         let node = arrayNodes[indexPath.row].node
         let car = marker.cars[indexPath.row]
-        carSceneView.init3DObject(node: node, car: car)
+        carSceneView.init3DObject(node: node,car: car)
     }
 }
 
