@@ -13,6 +13,8 @@ class ARCollectionViewController: UIViewController {
 
     @IBOutlet var buttonToAR: UIButton!
     @IBOutlet var collectionView: UICollectionView!
+    @IBOutlet var backgroundView: UIView!
+    
 
     let edge    : CGFloat = 10.0
     let spacing : CGFloat = 10.0
@@ -38,8 +40,22 @@ class ARCollectionViewController: UIViewController {
         arrayNodes = self.createNodes()
 
         buttonToAR.isEnabled = false
-
+        addGradientToView(view: self.backgroundView)
         setupCollectionView()
+    }
+
+    func addGradientToView(view: UIView){
+
+        let gradient: CAGradientLayer = CAGradientLayer()
+
+        gradient.colors = [MapsColors.mainColor.cgColor, MapsColors.secondaryColor.cgColor]
+        gradient.locations = [0.0 , 1.0]
+        gradient.startPoint = CGPoint(x: 0.0, y: 0.0)
+        gradient.endPoint = CGPoint(x: 0.0, y: 1.0)
+        gradient.frame = CGRect(x: 0.0, y: 0.0, width: view.frame.size.width, height: view.frame.size.height)
+
+        view.layer.insertSublayer(gradient, at: 0)
+
     }
 
     func setupCollectionView() {
