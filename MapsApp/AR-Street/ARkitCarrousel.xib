@@ -44,19 +44,34 @@
                         <action selector="goToAR:" destination="-1" eventType="touchUpInside" id="GJo-QG-pjG"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Vl-CT-Bbg">
+                    <rect key="frame" x="20" y="511" width="335" height="30"/>
+                    <color key="backgroundColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="Hrs-SJ-dGT"/>
+                        <constraint firstAttribute="height" constant="30" id="lJM-CL-Mfd"/>
+                    </constraints>
+                    <state key="normal" title="Go to animation"/>
+                    <connections>
+                        <action selector="goToAnimation:" destination="-1" eventType="touchUpInside" id="DKp-Zd-hWD"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="0.63921568630000003" green="0.63921568630000003" blue="0.63921568630000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="IID-Fc-g6j" firstAttribute="trailing" secondItem="lby-EJ-7et" secondAttribute="trailing" constant="20" id="1T0-Nv-TCo"/>
                 <constraint firstItem="IID-Fc-g6j" firstAttribute="bottom" secondItem="cXZ-Fk-H6f" secondAttribute="bottom" constant="59" id="3gB-oY-R1r"/>
                 <constraint firstAttribute="trailing" secondItem="1NG-Nn-obb" secondAttribute="trailing" constant="20" symbolic="YES" id="7gt-DM-wxS"/>
+                <constraint firstItem="5Vl-CT-Bbg" firstAttribute="leading" secondItem="IID-Fc-g6j" secondAttribute="leading" constant="20" id="CtW-Le-Kyz"/>
                 <constraint firstItem="IID-Fc-g6j" firstAttribute="bottom" secondItem="lby-EJ-7et" secondAttribute="bottom" constant="86" id="LNQ-CC-Zia"/>
                 <constraint firstItem="1NG-Nn-obb" firstAttribute="leading" secondItem="hhn-MB-s7j" secondAttribute="leading" constant="20" symbolic="YES" id="ZAY-Co-hnl"/>
                 <constraint firstItem="lby-EJ-7et" firstAttribute="leading" secondItem="IID-Fc-g6j" secondAttribute="leading" constant="20" id="hoV-JX-h2l"/>
                 <constraint firstItem="cXZ-Fk-H6f" firstAttribute="top" secondItem="1NG-Nn-obb" secondAttribute="bottom" constant="8" symbolic="YES" id="liY-8L-LBu"/>
                 <constraint firstItem="1NG-Nn-obb" firstAttribute="top" secondItem="IID-Fc-g6j" secondAttribute="top" id="oSp-8v-fXP"/>
                 <constraint firstItem="cXZ-Fk-H6f" firstAttribute="leading" secondItem="hhn-MB-s7j" secondAttribute="leading" id="rWg-04-Dy4"/>
+                <constraint firstItem="IID-Fc-g6j" firstAttribute="trailing" secondItem="5Vl-CT-Bbg" secondAttribute="trailing" constant="20" id="tKF-K4-rBB"/>
                 <constraint firstAttribute="centerX" secondItem="cXZ-Fk-H6f" secondAttribute="centerX" id="vPt-br-RzH"/>
+                <constraint firstItem="lby-EJ-7et" firstAttribute="top" secondItem="5Vl-CT-Bbg" secondAttribute="bottom" constant="10" id="xQM-2R-7gU"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="IID-Fc-g6j"/>
             <point key="canvasLocation" x="479" y="179"/>
