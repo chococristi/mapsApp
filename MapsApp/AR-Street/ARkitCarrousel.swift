@@ -283,9 +283,14 @@ class ARkitCarrousel: UIViewController {
 
     @IBAction func goToAR(_ sender: Any) {
 
-        let viewController = PlaceObjectsplaneViewController()
-        viewController.nodeModel = geometryNode
-        present(viewController, animated: false, completion: nil)
+//        let viewController = PlaceObjectsplaneViewController()
+//        viewController.nodeModel = geometryNode
+//        present(viewController, animated: false, completion: nil)
+        
+        
+        let viewController = ARCollectionViewController()
+        self.navigationController?.pushViewController(viewController, animated: false)
+
 
     }
     //    func nearestAngle(angleToCaculate angle: Double, separationAngle: Double) -> Double {

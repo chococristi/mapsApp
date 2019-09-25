@@ -117,8 +117,8 @@ class MainViewController: UITabBarController {
     }
 
     func setupARStreet() -> UIViewController? {
-        AnalyticsManager.sendEvent(id: "ARCollectionViewController", name: "AR", content: "content")
-         return ARCollectionViewController()
+        AnalyticsManager.sendEvent(id: "ARkitCarrousel", name: "AR", content: "content")
+         return ARkitCarrousel()
     }
 
     func setupTensorFlow() -> UIViewController? {
