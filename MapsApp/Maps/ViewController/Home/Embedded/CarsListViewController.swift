@@ -35,7 +35,7 @@ class CarsListViewController: UIViewController {
             setupLabel()
 
             tableView.reloadData()
-
+            setupNodes()
            
         }
     }
@@ -57,7 +57,7 @@ class CarsListViewController: UIViewController {
         edgesForExtendedLayout = []
 
         setupLabel()
-        setupNodes()
+//        setupNodes()
         setupTableView()
     }
 

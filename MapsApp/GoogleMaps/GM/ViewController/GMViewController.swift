@@ -264,6 +264,7 @@ extension GMViewController: GMUClusterManagerDelegate {
     func navigateToDetail(marker: Marker) {
         guard let viewController = carsListViewController else { return }
         viewController.marker = marker
+        viewController.setupNodes()
         navigationController?.pushViewController(viewController, animated: true)
     }
 }
